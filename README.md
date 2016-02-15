@@ -21,12 +21,22 @@ SendBird-SDK-JavaScript
 
 # Sample  
 
-[Web Sample](https://sample.sendbird.com) using [sendbird SDK](https://github.com/smilefam/SendBird-SDK-JavaScript). [download](https://github.com/smilefam/sendbird-sample/tree/master/SendBirdWebSample)    
+ * [Web Sample](https://sample.sendbird.com) using [sendbird SDK](https://github.com/smilefam/SendBird-SDK-JavaScript). [download](https://github.com/smilefam/sendbird-sample/tree/master/SendBirdWebSample)    
 
 
 
-## [Documentation](https://sendbird.gitbooks.io/sendbird-web-sdk/content/en/index.html)  
+# [Documentation](https://sendbird.gitbooks.io/sendbird-web-sdk/content/en/index.html)  
 
+
+## Upgrading to v2.1.3
+
+ * add `deleteMessage` function.
+
+ * add `version` value.
+ 
+
+
+## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    
 
 
 ## License
