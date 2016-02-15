@@ -18,7 +18,7 @@ Changelog
  * `getUserInfo`: return login user info   
  
 
-### add  
+### delete  
 
  * `commandSeparate`: Split message type and message text    
 
