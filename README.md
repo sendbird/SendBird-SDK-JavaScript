@@ -1,6 +1,11 @@
 SendBird-SDK-JavaScript
 ===========
 
+[SendBird](https://sendbird.com) provides the chat API and SDK for your app enabling real-time communication among your users.  
+
+
+# Getting Started  
+
 [Bower](http://bower.io) package for [SendBird.com](https://sendbird.com) JavaScript SDK  
 
       bower install sendbird
@@ -11,7 +16,17 @@ SendBird-SDK-JavaScript
       npm install sendbird
 
 
-## [Documentation](https://sendbird.gitbooks.io/sendbird-web-sdk/content/en/index.html)
+[download](https://github.com/smilefam/SendBird-SDK-JavaScript) for [SendBird.com](https://sendbird.com) JavaScript SDK  
+
+
+# Sample  
+
+[Web Sample](https://sample.sendbird.com) using [sendbird SDK](https://github.com/smilefam/SendBird-SDK-JavaScript). [download](https://github.com/smilefam/sendbird-sample/tree/master/SendBirdWebSample)    
+
+
+
+## [Documentation](https://sendbird.gitbooks.io/sendbird-web-sdk/content/en/index.html)  
+
 
 
 ## License
