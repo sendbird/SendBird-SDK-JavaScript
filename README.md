@@ -19,7 +19,7 @@ SendBird-SDK-JavaScript
 [download](https://github.com/smilefam/SendBird-SDK-JavaScript) for [SendBird.com](https://sendbird.com) JavaScript SDK  
 
 
-# Sample  
+# [Sample](https://github.com/smilefam/SendBird-JavaScript)  
 
  * [Basic Sample](https://sample.sendbird.com) using [sendbird SDK](https://github.com/smilefam/SendBird-SDK-JavaScript). [download](https://github.com/smilefam/SendBird-JavaScript/tree/master/basic-sample)    
 
