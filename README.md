@@ -21,7 +21,7 @@ SendBird-SDK-JavaScript
 
 # Sample  
 
- * [Web Sample](https://sample.sendbird.com) using [sendbird SDK](https://github.com/smilefam/SendBird-SDK-JavaScript). [download](https://github.com/smilefam/sendbird-sample/tree/master/SendBirdWebSample)    
+ * [Basic Sample](https://sample.sendbird.com) using [sendbird SDK](https://github.com/smilefam/SendBird-SDK-JavaScript). [download](https://github.com/smilefam/SendBird-JavaScript/tree/master/basic-sample)    
 
 
 
