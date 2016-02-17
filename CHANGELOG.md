@@ -1,6 +1,18 @@
 Changelog
 =========
 
+
+## v2.1.4  
+  
+### add  
+ * `isMessagingChannel`: check current channel type  
+ * `isGroupMessagingChannel`: check current channel type    
+  
+### deprecated  
+ * `isGroupMessaging`: check current channel type  
+  
+
+
 ## v2.1.3  
    
 ### add  
