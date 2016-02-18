@@ -28,14 +28,12 @@ SendBird-SDK-JavaScript
 # [Documentation](https://sendbird.gitbooks.io/sendbird-web-sdk/content/en/index.html)  
 
 
-## Upgrading to v2.1.4  
+## Upgrading to v2.1.5  
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
 
- * add `isMessagingChannel` function.  
+ * add `isMessaging` value.  
 
- * add `isGroupMessagingChannel` function.  
- 
- * deprecated `isGroupMessaging` function.
+
  
 
 

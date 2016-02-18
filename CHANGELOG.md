@@ -2,6 +2,14 @@ Changelog
 =========
 
 
+## v2.1.5  
+  
+### add  
+ * `isMessaging`: check messaging channel  
+   
+  
+
+
 ## v2.1.4  
   
 ### add  
