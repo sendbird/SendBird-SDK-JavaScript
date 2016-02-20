@@ -22,20 +22,16 @@ SendBird-SDK-JavaScript
 # [Sample](https://github.com/smilefam/SendBird-JavaScript)  
 
  * [Basic Sample](https://sample.sendbird.com) using [sendbird SDK](https://github.com/smilefam/SendBird-SDK-JavaScript). [download](https://github.com/smilefam/SendBird-JavaScript/tree/master/basic-sample)    
-
-
+  
 
 # [Documentation](https://sendbird.gitbooks.io/sendbird-web-sdk/content/en/index.html)  
 
 
-## Upgrading to v2.1.5  
+## Upgrading to v2.1.6  
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
-
- * add `isMessaging` value.  
-
-
  
-
+ * update `last_message` in events.onMessagingChannelUpdateReceived field.   
+   
 
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    
 
