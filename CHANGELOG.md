@@ -2,6 +2,12 @@ Changelog
 =========
 
 
+## v2.1.7  
+  
+### add  
+ * `typeEnd`: add typeEnd function
+ 
+
 ## v2.1.6  
   
 ### update  
