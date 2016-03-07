@@ -2,6 +2,12 @@ Changelog
 =========
 
 
+## v2.1.8  
+  
+### add  
+ * `getConnectionState`: returns ws connection status.
+ 
+
 ## v2.1.7  
   
 ### add  
