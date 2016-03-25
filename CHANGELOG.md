@@ -2,6 +2,15 @@ Changelog
 =========
 
 
+## v2.2.0  
+  
+### update  
+ * `inviteMessaging`: call this function when if not joined channel.
+
+### add
+ * `last_message_ts`: add `last_message_ts` and update `last_message` to show only message string in data response of all messaging channel info.
+ 
+
 ## v2.1.8  
   
 ### add  

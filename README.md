@@ -27,10 +27,12 @@ SendBird-SDK-JavaScript
 # [Documentation](https://sendbird.gitbooks.io/sendbird-web-sdk/content/en/index.html)  
 
 
-## Upgrading to v2.1.8  
+## Upgrading to v2.2.0  
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
  
- * add `getConnectionState` function that returns ws connection status.     
+ * add `last_message_ts` value that show last message timestamp.     
+ * update `last_message` value that show only message string.     
+ * update `inviteMessaging` function that call this function when if not joined channel.     
    
 
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    
