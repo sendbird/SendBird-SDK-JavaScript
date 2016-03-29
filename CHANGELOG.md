@@ -2,13 +2,24 @@ Changelog
 =========
 
 
+## v2.2.1  
+  
+### update  
+ * `inviteMessaging`: call this function both using 2 or 3 parameters.  
+ * `last_message`: return json message object include sent message user info.  
+
+### add
+ * `registerGCMToken`: add register token function for push notification in react-native or ionic.  
+ * `registerAPNSToken`: add register token function for push notification in react-native or ionic.  
+  
+
 ## v2.2.0  
   
 ### update  
  * `inviteMessaging`: call this function when if not joined channel.
 
 ### add
- * `last_message_ts`: add `last_message_ts` and update `last_message` to show only message string in data response of all messaging channel info.
+ * `last_message_ts`: add `last_message_ts` and update `last_message` to show only message string in data response of all messaging channel info.  
  
 
 ## v2.1.8  

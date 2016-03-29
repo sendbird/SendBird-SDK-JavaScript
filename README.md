@@ -27,12 +27,13 @@ SendBird-SDK-JavaScript
 # [Documentation](https://sendbird.gitbooks.io/sendbird-web-sdk/content/en/index.html)  
 
 
-## Upgrading to v2.2.0  
+## Upgrading to v2.2.1  
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
  
- * add `last_message_ts` value that show last message timestamp.     
- * update `last_message` value that show only message string.     
- * update `inviteMessaging` function that call this function when if not joined channel.     
+ * update `inviteMessaging`: call this function both using 2 or 3 parameters.  
+ * update `last_message`: return json message object include sent message user info.  
+ * add `registerGCMToken`: register token function for push notification in react-native or ionic.  
+ * add `registerAPNSToken`: register token function for push notification in react-native or ionic.  
    
 
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    
