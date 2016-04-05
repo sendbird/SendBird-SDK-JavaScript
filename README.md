@@ -27,13 +27,11 @@ SendBird-SDK-JavaScript
 # [Documentation](https://sendbird.gitbooks.io/sendbird-web-sdk/content/en/index.html)  
 
 
-## Upgrading to v2.2.1  
+## Upgrading to v2.2.2  
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
  
- * update `inviteMessaging`: call this function both using 2 or 3 parameters.  
- * update `last_message`: return json message object include sent message user info.  
- * add `registerGCMToken`: register token function for push notification in react-native or ionic.  
- * add `registerAPNSToken`: register token function for push notification in react-native or ionic.  
+ * update `debug message`: show console message when set to true to `setDebugMessage` function.    
+ * add `onKickReceived`: the function is called when a kick message has been received.  
    
 
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    

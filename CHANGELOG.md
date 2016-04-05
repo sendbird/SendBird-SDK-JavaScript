@@ -2,6 +2,15 @@ Changelog
 =========
 
 
+## v2.2.2  
+  
+### update  
+ * `debug message`: show console message when set to true to `setDebugMessage` function.  
+
+### add
+ * `onKickReceived`: the function is called when a kick message has been received.  
+ 
+
 ## v2.2.1  
   
 ### update  
