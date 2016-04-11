@@ -27,12 +27,14 @@ SendBird-SDK-JavaScript
 # [Documentation](https://sendbird.gitbooks.io/sendbird-web-sdk/content/en/index.html)  
 
 
-## Upgrading to v2.2.2  
+## Upgrading to v2.3.0  
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
+    
+ * update `instance`: change make sendbird SDK instance.    
+   - `e.g.) var sendbird = SB.getInstance();`  
+ * add `onBanReceived`: the function is called when a kick message has been received.  
+ * delete `onKickReceived`: the function is called when a kick message has been received.  
  
- * update `debug message`: show console message when set to true to `setDebugMessage` function.    
- * add `onKickReceived`: the function is called when a kick message has been received.  
-   
 
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    
 

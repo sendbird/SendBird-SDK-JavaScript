@@ -2,6 +2,19 @@ Changelog
 =========
 
 
+## v2.3.0  
+  
+### update  
+ * `instance`: change make sendbird SDK instance.  
+   - `e.g.) var sendbird = SB.getInstance();`  
+   
+### add
+ * `onBanReceived`: the function is called when a ban message has been received.  
+
+### delete
+ * `onKickReceived`: the function is called when a kick message has been received.
+ 
+ 
 ## v2.2.2  
   
 ### update  
