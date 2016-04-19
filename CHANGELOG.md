@@ -2,6 +2,15 @@ Changelog
 =========
 
 
+## v2.4.1  
+  
+### update  
+ * `channel info`: add max_length_message in channel object.  
+   
+### add
+ * `onChannelFreezeReceived`: the function is called when a ban message has been received.  
+
+
 ## v2.3.0  
   
 ### update  
