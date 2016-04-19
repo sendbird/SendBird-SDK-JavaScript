@@ -31,7 +31,7 @@ SendBird-SDK-JavaScript
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
     
  * update `channel info`: add max_length_message in channel object.    
- * add `onChannelFreezeReceived`: the function is called when a ban message has been received.  
+ * add `onChannelFreezeReceived`: the function is called when a freeze message has been received.  
   
 
   
