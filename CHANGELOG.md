@@ -2,28 +2,19 @@ Changelog
 =========
 
 
-## v2.4.1  
+## v2.4.5  
   
 ### update  
  * `channel info`: add max_length_message in channel object.  
    
 ### add
  * `onChannelFreezeReceived`: the function is called when a freeze message has been received.  
-
-
-## v2.3.0  
-  
-### update  
- * `instance`: change make sendbird SDK instance.  
-   - `e.g.) var sendbird = SB.getInstance();`  
-   
-### add
  * `onBanReceived`: the function is called when a ban message has been received.  
+  
+### delete  
+ * `onKickReceived`: the function is called when a kick message has been received.  
 
-### delete
- * `onKickReceived`: the function is called when a kick message has been received.
- 
- 
+
 ## v2.2.2  
   
 ### update  
