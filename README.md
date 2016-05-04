@@ -27,14 +27,11 @@ SendBird-SDK-JavaScript
 # [Documentation](https://sendbird.gitbooks.io/sendbird-web-sdk/content/en/index.html)  
 
 
-## Upgrading to v2.4.5  
+## Upgrading to v2.4.6
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
     
- * update `channel info`: add max_length_message in channel object.    
- * add `onChannelFreezeReceived`: the function is called when a freeze message has been received.  
- * add `onBanReceived`: the function is called when a ban message has been received. 
- * delete `onKickReceived`: the function is called when a kick message has been received.  
-  
+ * update: improved stability
+
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    
 

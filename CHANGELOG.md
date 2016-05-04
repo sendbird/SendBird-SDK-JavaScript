@@ -1,6 +1,11 @@
 Changelog
 =========
 
+## v2.4.6
+
+### update
+ * improved stability
+
 
 ## v2.4.5  
   
