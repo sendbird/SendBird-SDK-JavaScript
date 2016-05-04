@@ -1,6 +1,12 @@
 Changelog
 =========
 
+## v2.4.7
+
+### update
+ * disconnect bug fix
+
+
 ## v2.4.6
 
 ### update
