@@ -2,6 +2,12 @@ Changelog
 =========
 
 
+## v2.4.9
+
+### update
+ * bugfix for react native
+ 
+
 ## v2.4.8
 
 ### update
