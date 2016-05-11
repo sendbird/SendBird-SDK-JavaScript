@@ -2,6 +2,16 @@ Changelog
 =========
 
 
+## v2.4.11
+
+### update
+ * undefined window bugfix
+ * adjust reconnect function
+
+### add
+ * added `onReconnectFailed` event
+
+
 ## v2.4.10
 
 ### update
