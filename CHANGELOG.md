@@ -2,6 +2,12 @@ Changelog
 =========
 
 
+## v2.4.12
+
+### update
+ * undefined navigator bugfix
+
+
 ## v2.4.11
 
 ### update
