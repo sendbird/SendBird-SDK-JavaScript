@@ -2,6 +2,12 @@ Changelog
 =========
 
 
+## v2.4.13
+
+### update
+ * adjust reconnect function
+
+
 ## v2.4.12
 
 ### update
