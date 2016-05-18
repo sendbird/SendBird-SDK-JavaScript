@@ -2,6 +2,17 @@ Changelog
 =========
 
 
+## v2.4.15
+
+### update
+ * fixed `registerGCMToken` issues at after init.
+ * fixed `registerAPNSToken` issues at after init.
+
+### add
+ * added `unregisterGCMToken`
+ * added `unregisterAPNSToken`
+ * [xhr2(>=0.1.3)](https://www.npmjs.com/package/xhr2) and [websocket(>=1.0.22)](https://www.npmjs.com/package/websocket) are required for compatibility when you are using node.js with npm.
+
 ## v2.4.14
 
 ### update

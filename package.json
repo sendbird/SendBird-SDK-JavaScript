@@ -1,10 +1,11 @@
 {
   "name": "sendbird",
-  "version": "2.4.14",
+  "version": "2.4.15",
   "description": "SendBird JavaScript SDK",
   "main": "SendBird.min.js",
-  "devDependencies": {
-    "summernote": ">=2.1.2"
+  "dependencies": {
+   "websocket": "^1.0.22",
+   "xhr2": "^0.1.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
