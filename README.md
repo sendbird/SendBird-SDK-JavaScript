@@ -27,14 +27,10 @@ SendBird-SDK-JavaScript
 # [Documentation](https://sendbird.gitbooks.io/sendbird-web-sdk/content/en/index.html)  
 
 
-## Upgrading to v2.4.15
+## Upgrading to v2.4.16
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
     
- * fixed `registerGCMToken` issues at after init.
- * fixed `registerAPNSToken` issues at after init.
- * added `unregisterGCMToken`
- * added `unregisterAPNSToken`
- * [xhr2(>=0.1.3)](https://www.npmjs.com/package/xhr2) and [websocket(>=1.0.22)](https://www.npmjs.com/package/websocket) are required for compatibility when you are using node.js with npm.
+ * performance improved
 
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    
