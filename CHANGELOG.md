@@ -2,6 +2,13 @@ Changelog
 =========
 
 
+## v2.4.17
+
+### add
+ * added `isFreezeChannel` function.
+
+
+
 ## v2.4.16
 
 ### update
