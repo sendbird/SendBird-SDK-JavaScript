@@ -27,10 +27,11 @@ SendBird-SDK-JavaScript
 # [Documentation](https://sendbird.gitbooks.io/sendbird-web-sdk/content/en/index.html)  
 
 
-## Upgrading to v2.4.17
+## Upgrading to v2.4.18
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
     
-  * added `isFreezeChannel` function.
+  * deprecated `getMessagingChannelList` function.
+  * added `getMessagingChannelListPagination` function.
 
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    
