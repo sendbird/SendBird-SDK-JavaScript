@@ -1,6 +1,13 @@
 Changelog
 =========
 
+
+## v2.4.19
+
+### update
+ * `keep-alive` option is set to `true` when using Node.js.  
+
+
 ## v2.4.18
 
 ### deprecated
