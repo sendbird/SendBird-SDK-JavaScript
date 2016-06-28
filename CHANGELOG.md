@@ -2,6 +2,12 @@ Changelog
 =========
 
 
+## v2.4.20
+
+### update
+ * performance improved
+
+
 ## v2.4.19
 
 ### update
