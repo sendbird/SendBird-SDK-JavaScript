@@ -2,6 +2,12 @@ Changelog
 =========
 
 
+## v2.4.21
+
+### update
+ * Internet Explorer WebSocket bugfix 
+ 
+
 ## v2.4.20
 
 ### update
