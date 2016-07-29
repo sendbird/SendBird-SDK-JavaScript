@@ -2,11 +2,17 @@ Changelog
 =========
 
 
+## v2.4.22
+
+### add
+ * added `sendFileWithData` function.
+
+
 ## v2.4.21
 
 ### update
- * Internet Explorer WebSocket bugfix 
- 
+ * Internet Explorer WebSocket bugfix
+
 
 ## v2.4.20
 

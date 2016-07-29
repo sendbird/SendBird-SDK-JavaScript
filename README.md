@@ -30,8 +30,8 @@ SendBird-SDK-JavaScript
 ## Upgrading to v2.4.21
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
     
-  * Internet Explorer WebSocket bugfix
-  
+  * added `sendFileWithData` function.
+
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    
 
