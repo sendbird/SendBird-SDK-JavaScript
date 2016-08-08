@@ -2,6 +2,12 @@ Changelog
 =========
 
 
+## v2.4.24
+
+### add
+ * added `onUploadProgress` event.
+
+
 ## v2.4.22
 
 ### add
