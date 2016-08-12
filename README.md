@@ -31,6 +31,7 @@ SendBird-SDK-JavaScript
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
     
   * v3.0.0 release.
+  * Soon we will provide a npm.
 
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    
