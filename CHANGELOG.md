@@ -1,6 +1,11 @@
 Changelog
 =========
 
+## v3.0.0
+
+### update
+ * v3.0.0 release.
+
 
 ## v2.4.24
 
