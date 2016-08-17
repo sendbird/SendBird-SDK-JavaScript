@@ -7,6 +7,12 @@ Changelog
  * v3.0.0 release.
 
 
+## v2.4.25
+
+### add
+ * added `cancelHandler` for cancel upload.
+
+
 ## v2.4.24
 
 ### add
