@@ -27,10 +27,11 @@ SendBird-SDK-JavaScript
 # [Documentation](https://sendbird.gitbooks.io/sendbird-web-sdk/content/en/index.html)  
 
 
-## Upgrading to v2.4.25
+## Upgrading to v2.4.26
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
     
-  * added `cancelHandler` for cancel upload.
+  * added `user_ids` filter for filtered user list.
+  * adjust `hasImage` function. (case-insensitive) 
 
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    

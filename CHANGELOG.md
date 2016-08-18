@@ -2,6 +2,15 @@ Changelog
 =========
 
 
+## v2.4.26
+
+### add
+ * added `user_ids` filter for filtered user list.
+
+### update
+ * adjust `hasImage` function. (case-insensitive) 
+
+
 ## v2.4.25
 
 ### add
