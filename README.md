@@ -27,11 +27,11 @@ SendBird-SDK-JavaScript
 # [Documentation](https://sendbird.gitbooks.io/sendbird-web-sdk/content/en/index.html)  
 
 
-## Upgrading to v2.4.26
+## Upgrading to v2.4.27
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
     
-  * added `user_ids` filter for filtered user list.
-  * adjust `hasImage` function. (case-insensitive) 
+  * added `setDoNotDisturb`, `getDoNotDisturb` function.
+  * added `setPushPreference`, `getPushPreference` function. 
 
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    

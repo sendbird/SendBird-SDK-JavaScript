@@ -2,6 +2,13 @@ Changelog
 =========
 
 
+## v2.4.27
+
+### add
+ * added `setDoNotDisturb`, `getDoNotDisturb` function.
+ * added `setPushPreference`, `getPushPreference` function. 
+
+
 ## v2.4.26
 
 ### add
