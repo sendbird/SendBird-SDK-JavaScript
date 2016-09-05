@@ -1,6 +1,12 @@
 Changelog
 =========
 
+## v3.0.3
+
+### update
+ * npm publish.
+
+
 ## v3.0.2
 
 ### update
