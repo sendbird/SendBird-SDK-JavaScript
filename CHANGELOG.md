@@ -1,6 +1,10 @@
 Changelog
 =========
 
+## v3.0.6
+### update
+ * add dependencies
+ 
 ## v3.0.5
 ### update
  * NodeJS Keepalive bugfix.
