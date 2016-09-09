@@ -1,6 +1,11 @@
 Changelog
 =========
 
+## v3.0.5
+### update
+ * NodeJS Keepalive bugfix.
+ * React Native android bugfix.
+
 ## v3.0.4
 ### update
  * `createPreviousMessageListQuery` bugfix.
