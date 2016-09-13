@@ -27,5 +27,6 @@
   "bugs": {
     "url": "https://github.com/smilefam/SendBird-SDK-JavaScript/issues"
   },
-  "homepage": "https://sendbird.com"
+  "homepage": "https://sendbird.com",
+  "typings": "SendBird.d.ts"
 }
