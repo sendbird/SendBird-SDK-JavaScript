@@ -27,10 +27,11 @@ SendBird-SDK-JavaScript
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## Upgrading to v3.0.6
+## Upgrading to v3.0.7
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
     
-  * add dependencies.
+  * Added features like filtered user list, open channel keyword search, push preference setting, etc.
+  * `messageListQuery` bugfix.
 
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    

@@ -1,10 +1,15 @@
 Changelog
 =========
 
+## v3.0.7
+### update
+ * Added features like filtered user list, open channel keyword search, push preference setting, etc.
+ * `messageListQuery` bugfix.
+
 ## v3.0.6
 ### update
  * add dependencies
- 
+
 ## v3.0.5
 ### update
  * NodeJS Keepalive bugfix.
