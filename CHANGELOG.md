@@ -1,6 +1,10 @@
 Changelog
 =========
 
+## v3.0.8
+### update
+ * `sendFileMessage` bugfix. 
+
 ## v3.0.7
 ### update
  * Added features like filtered user list, open channel keyword search, push preference setting, etc.
