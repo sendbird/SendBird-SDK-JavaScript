@@ -37,7 +37,7 @@ interface SendBird_Instance {
   // Channel Handler
   ChannelHandler: ChannelHandlerFactory;
 
-  addChannelHandler(id: string, handler: ChannelHandlerFactory): void;
+  addChannelHandler(id: string, handler: ChannelHandler_Instance): void;
   removeChannelHandler(id: string): void;
 
   // Connection Handler
