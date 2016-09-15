@@ -147,7 +147,7 @@ interface BaseChannel {
   createdAt: number;
   data: string;
 
-  createPreviousMessageListQuery: PreviousMessageListQuery;
+  createPreviousMessageListQuery: () => PreviousMessageListQuery;
   createMessageListQuery: MessageListQuery;
 
   /* SendMessage */
