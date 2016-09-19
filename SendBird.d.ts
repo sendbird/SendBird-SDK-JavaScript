@@ -294,7 +294,7 @@ interface GroupChannel extends BaseChannel {
   isDistinct: boolean;
   unreadMessageCount: number;
   members: [number, User];
-  lastMessage: string;
+  lastMessage: BaseMessage;
   memberCount: number;
 
   createMyGroupChannelListQuery(): GroupChannelListQuery;
