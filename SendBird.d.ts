@@ -200,7 +200,7 @@ interface ChannelHandler_Instance {
   onChannelFrozen(channel: OpenChannel): void;
   onChannelUnfrozen(channel: OpenChannel): void;
   onChannelChanged(channel: OpenChannel|GroupChannel): void;
-  onChannelDeleted(channel: OpenChannel|GroupChannel): void;
+  onChannelDeleted(channelUrl: string): void;
 }
 
 
