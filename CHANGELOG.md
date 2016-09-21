@@ -1,9 +1,13 @@
 Changelog
 =========
 
+## v3.0.9
+### update
+ * minor bugfix for IE, Safari, Opera.
+
 ## v3.0.8
 ### update
- * `sendFileMessage` bugfix. 
+ * `sendFileMessage` bugfix.
 
 ## v3.0.7
 ### update
