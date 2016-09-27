@@ -27,11 +27,10 @@ SendBird-SDK-JavaScript
 # [Documentation](https://sendbird.gitbooks.io/sendbird-web-sdk/content/en/index.html)  
 
 
-## Upgrading to v2.4.27
+## Upgrading to v2.4.28
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
     
-  * added `setDoNotDisturb`, `getDoNotDisturb` function.
-  * added `setPushPreference`, `getPushPreference` function. 
+  * added `data` field to `getChannelInfo` function. 
 
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    

@@ -1,6 +1,10 @@
 Changelog
 =========
 
+## v2.4.28
+
+### add
+ * added `data` field to `getChannelInfo` function.
 
 ## v2.4.27
 
