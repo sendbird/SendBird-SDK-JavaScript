@@ -27,10 +27,12 @@ SendBird-SDK-JavaScript
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## Upgrading to v3.0.9
+## Upgrading to v3.0.10
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
     
-  * minor bugfix for IE.
+ * Fixed a bug that increases unread message count when a user gets its own messages
+ * Cleared out old ws object's event handlers after disconnect to prevent a user from getting messages from another user who logged in on the same device.
+
 
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    

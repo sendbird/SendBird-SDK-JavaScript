@@ -1,6 +1,11 @@
 Changelog
 =========
 
+## v3.0.10
+### update
+ * Fixed a bug that increases unread message count when a user gets its own messages
+ * Cleared out old ws object's event handlers after disconnect to prevent a user from getting messages from another user who logged in on the same device.
+
 ## v3.0.9
 ### update
  * minor bugfix for IE, Safari, Opera.
