@@ -21,24 +21,24 @@ SendBird-SDK-JavaScript
 
 # [Sample](https://github.com/smilefam/SendBird-JavaScript)  
 
- * [Basic Sample](https://sample.sendbird.com) using [sendbird SDK](https://github.com/smilefam/SendBird-SDK-JavaScript). [download](https://github.com/smilefam/SendBird-JavaScript/tree/master/basic-sample)    
+ * [Basic Sample](https://sample.sendbird.com) using [Sendbird SDK](https://github.com/smilefam/SendBird-SDK-JavaScript). [download](https://github.com/smilefam/SendBird-JavaScript/tree/master/basic-sample)    
   
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## Upgrading to v3.0.10
+## Upgrading to v3.0.11
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
     
- * Fixed a bug that increases unread message count when a user gets its own messages
- * Cleared out old ws object's event handlers after disconnect to prevent a user from getting messages from another user who logged in on the same device.
-
+ * Fixed a Keep-Alive bug and it should be much faster in React Native/NodeJS.
+ * Now calling "connect()" multiple times in a row triggers "disconnect()" internally to avoid having multiple websocket connections
+ * New License File
 
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    
 
 
 ## License
-[Apache 2.0 license](https://github.com/smilefam/bower-SendBird/blob/master/LICENSE)  
+[SendBird License](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/LICENSE.md)  
 
 

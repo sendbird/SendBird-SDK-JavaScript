@@ -1,6 +1,12 @@
 Changelog
 =========
 
+## v3.0.11
+### update
+ * Fixed a Keep-Alive bug now and it should be much faster in React Native/NodeJS.
+ * Now calling "connect()" multiple times in a row triggers "disconnect()" internally to avoid having multiple websocket connections
+ * New License File
+
 ## v3.0.10
 ### update
  * Fixed a bug that increases unread message count when a user gets its own messages

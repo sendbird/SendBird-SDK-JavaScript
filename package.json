@@ -1,6 +1,6 @@
 {
   "name": "sendbird",
-  "version": "3.0.10",
+  "version": "3.0.11",
   "description": "SendBird JavaScript SDK",
   "main": "SendBird.min.js",
   "dependencies": {
@@ -23,7 +23,7 @@
     "js"
   ],
   "author": "SendBird <support@sendbird.com>",
-  "license": "Apache 2.0",
+  "license": "SEE LICENSE IN LICENSE.md",
   "bugs": {
     "url": "https://github.com/smilefam/SendBird-SDK-JavaScript/issues"
   },

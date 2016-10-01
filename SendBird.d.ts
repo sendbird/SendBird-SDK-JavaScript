@@ -12,6 +12,7 @@ interface SendBirdFactory {
 interface SendBird_Instance {
   connect(userId: string, callback?: Function): void;
   connect(userId: string, accessToken: string, callback?: Function): void;
+  disconnect(callback?: Function): void;
 
   getConnectionState(): string;
   getApplicationId(): string;
@@ -26,6 +27,9 @@ interface SendBird_Instance {
   registerAPNSPushTokenForCurrentUser(apnsRegToken: string, callback?: Function): void;
   unregisterAPNSPushTokenForCurrentUser(apnsRegToken: string, callback?: Function): void;
   unregisterAPNSPushTokenAllForCurrentUser(callback: Function): void;
+
+  setDoNotDisturb(doNotDisturbOn: boolean, startHour: number, startMin: number, endHour: number, endMin: number, timezone: string, callback?: Function): void;
+  getDoNotDisturb(callback: Function): void;
 
   // Block / Unblock
   blockUser(userToBlock: User, callback?: Function): void;
@@ -290,6 +294,7 @@ interface GroupChannel extends BaseChannel {
   endTyping(): void;
   isTyping(): boolean;
   getTypingMembers(): [number, User];
+  getTotalUnreadMessageCount(callback: Function): void;
 
   isDistinct: boolean;
   unreadMessageCount: number;
@@ -298,6 +303,11 @@ interface GroupChannel extends BaseChannel {
   memberCount: number;
 
   createMyGroupChannelListQuery(): GroupChannelListQuery;
+
+  setPushPreference(pushOn: boolean, callback: Function): void;
+  getPushPreference(callback: Function): void;
+
+  getReadStatus(): Object;
 }
 
 declare var SendBird: SendBirdFactory;
