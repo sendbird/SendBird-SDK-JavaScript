@@ -151,8 +151,8 @@ interface BaseChannel {
   createdAt: number;
   data: string;
 
-  createPreviousMessageListQuery: () => PreviousMessageListQuery;
-  createMessageListQuery: MessageListQuery;
+  createPreviousMessageListQuery() : PreviousMessageListQuery;
+  createMessageListQuery(): MessageListQuery;
 
   /* SendMessage */
   sendFileMessage(file: any, callback: Function): void;
