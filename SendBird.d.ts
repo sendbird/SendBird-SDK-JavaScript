@@ -41,7 +41,7 @@ interface SendBird_Instance {
   // Channel Handler
   ChannelHandler: ChannelHandlerFactory;
 
-  addChannelHandler(id: string, handler: ChannelHandlerFactory): void;
+  addChannelHandler(id: string, handler: ChannelHandler_Instance): void;
   removeChannelHandler(id: string): void;
 
   // Connection Handler
@@ -151,7 +151,7 @@ interface BaseChannel {
   createdAt: number;
   data: string;
 
-  createPreviousMessageListQuery: PreviousMessageListQuery;
+  createPreviousMessageListQuery: () => PreviousMessageListQuery;
   createMessageListQuery: MessageListQuery;
 
   /* SendMessage */
@@ -204,7 +204,7 @@ interface ChannelHandler_Instance {
   onChannelFrozen(channel: OpenChannel): void;
   onChannelUnfrozen(channel: OpenChannel): void;
   onChannelChanged(channel: OpenChannel|GroupChannel): void;
-  onChannelDeleted(channel: OpenChannel|GroupChannel): void;
+  onChannelDeleted(channelUrl: string): void;
 }
 
 
@@ -299,7 +299,7 @@ interface GroupChannel extends BaseChannel {
   isDistinct: boolean;
   unreadMessageCount: number;
   members: [number, User];
-  lastMessage: string;
+  lastMessage: BaseMessage;
   memberCount: number;
 
   createMyGroupChannelListQuery(): GroupChannelListQuery;
