@@ -1,6 +1,10 @@
 Changelog
 =========
 
+## v3.0.12
+### update
+ * Fixed wrong message_id, data field of FileMessage object.
+
 ## v3.0.11
 ### update
  * Fixed a Keep-Alive bug now and it should be much faster in React Native/NodeJS.

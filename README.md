@@ -27,12 +27,9 @@ SendBird-SDK-JavaScript
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## Upgrading to v3.0.11
+## Upgrading to v3.0.12
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
-    
- * Fixed a Keep-Alive bug and it should be much faster in React Native/NodeJS.
- * Now calling "connect()" multiple times in a row triggers "disconnect()" internally to avoid having multiple websocket connections
- * New License File
+ * Fixed wrong message_id, data field of FileMessage object.
 
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    
