@@ -1,7 +1,7 @@
 Changelog
 =========
 
-## v3.0.13
+## v3.0.14
 ### update
  * Fixed a reconnection bug happening after calling disconnect() and connect() in serial.
  * Added "custom_type" field to message/file object.
