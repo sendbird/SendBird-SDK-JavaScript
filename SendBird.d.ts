@@ -157,10 +157,13 @@ interface BaseChannel {
   /* SendMessage */
   sendFileMessage(file: any, callback: Function): void;
   sendFileMessage(file: any, data: string, callback: Function): void;
+  sendFileMessage(file: any, data: string, customType: string, callback: Function): void;
   sendFileMessage(file: any, name: string, type: string, size: number, data: string, callback: Function): void;
+  sendFileMessage(file: any, name: string, type: string, size: number, data: string, customType: string, callback: Function): void;
 
   sendUserMessage(message: string, callback: Function): void;
   sendUserMessage(message: string, data: string, callback: Function): void;
+  sendUserMessage(message: string, data: string, customType: string, callback: Function): void;
 
   /* MetaCounter */
   createMetaCounters(metaCounterMap: Object, callback: Function): void;

@@ -1,6 +1,12 @@
 Changelog
 =========
 
+## v3.0.13
+### update
+ * Fixed a reconnection bug happening after calling disconnect() and connect() in serial.
+ * Added "custom_type" field to message/file object.
+ * Added "user_id"/"nickanme" filters to GroupChannelList.
+
 ## v3.0.12
 ### update
  * Fixed wrong message_id, data field of FileMessage object.
