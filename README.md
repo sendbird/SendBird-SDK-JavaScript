@@ -27,11 +27,9 @@ SendBird-SDK-JavaScript
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## Upgrading to v3.0.14
+## Upgrading to v3.0.15
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
- * Fixed a reconnection bug happening after calling disconnect() and connect() in serial.
- * Added "custom_type" field to message/file object.
- * Added "user_id"/"nickanme" filters to GroupChannelList.
+   * Fixed a bug that created non-integer file size field.
 
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    

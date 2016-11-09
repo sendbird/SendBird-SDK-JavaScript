@@ -1,5 +1,8 @@
 Changelog
 =========
+## v3.0.15
+### update
+ * Fixed a bug that created non-integer file size field.
 
 ## v3.0.14
 ### update
