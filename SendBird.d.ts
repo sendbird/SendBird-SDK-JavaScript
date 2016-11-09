@@ -277,7 +277,9 @@ interface GroupChannelListQuery {
 interface GroupChannel extends BaseChannel {
   createChannel(users: [User], isDistinct: boolean, callback: Function): void;
   createChannel(users: [User], isDistinct: boolean, name: string, coverUrl: string, data: any, callback: Function): void;
-
+  
+  getChannel(channelUrl: string, callback: Function): void;
+  
   markAsRead(): void;
   markAsReadAll(callback: Function): void;
 
