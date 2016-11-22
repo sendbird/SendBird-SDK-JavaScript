@@ -27,9 +27,11 @@ SendBird-SDK-JavaScript
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## Upgrading to v3.0.15
+## Upgrading to v3.0.16
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
-   * Fixed a bug that created non-integer file size field.
+   * Intial connection speed has been improved a lot!.
+   * Auto-Reconnection is now more robust.
+   * Auto-Translation support has been added.
 
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    

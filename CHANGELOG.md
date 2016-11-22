@@ -1,5 +1,11 @@
 Changelog
 =========
+## v3.0.16
+### update
+ * Intial connection speed has been improved a lot!.
+ * Auto-Reconnection is now more robust.
+ * Auto-Translation support has been added.
+
 ## v3.0.15
 ### update
  * Fixed a bug that created non-integer file size field.

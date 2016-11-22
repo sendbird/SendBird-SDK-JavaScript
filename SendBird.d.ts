@@ -164,6 +164,7 @@ interface BaseChannel {
   sendUserMessage(message: string, callback: Function): void;
   sendUserMessage(message: string, data: string, callback: Function): void;
   sendUserMessage(message: string, data: string, customType: string, callback: Function): void;
+  sendUserMessage(message: string, data: string, customType: string, targetLanguages: [string], callback: Function): void;
 
   /* MetaCounter */
   createMetaCounters(metaCounterMap: Object, callback: Function): void;
@@ -276,8 +277,12 @@ interface GroupChannelListQuery {
 
 interface GroupChannel extends BaseChannel {
   createChannel(users: [User], isDistinct: boolean, callback: Function): void;
-  createChannel(users: [User], isDistinct: boolean, name: string, coverUrl: string, data: any, callback: Function): void;
-
+  createChannel(users: [User], isDistinct: boolean, callback: Function): void;
+  createChannelWithUserIds(userIds: [string], isDistinct: boolean, name: string, coverUrl: string, data: any, callback: Function): void;
+  createChannelWithUserIds(userIds: [string], isDistinct: boolean, name: string, coverImageFile: Object, data: any, callback: Function): void;
+  
+  getChannel(channelUrl: string, callback: Function): void;
+  
   markAsRead(): void;
   markAsReadAll(callback: Function): void;
 
