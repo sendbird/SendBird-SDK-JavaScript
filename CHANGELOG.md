@@ -1,8 +1,15 @@
 Changelog
 =========
+## v3.0.17
+### update
+ * Finally push notifications feature is officially supported in V3 JS SDK.
+ * Added "setBackgroundState()" and "setForegroundState()".
+ * Added "messageType" filter to PreviousMessageQueryList.
+
+
 ## v3.0.16
 ### update
- * Intial connection speed has been improved a lot!.
+ * InItial connection speed has been improved a lot!.
  * Auto-Reconnection is now more robust.
  * Auto-Translation support has been added.
 

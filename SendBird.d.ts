@@ -28,6 +28,9 @@ interface SendBird_Instance {
   unregisterAPNSPushTokenForCurrentUser(apnsRegToken: string, callback?: Function): void;
   unregisterAPNSPushTokenAllForCurrentUser(callback: Function): void;
 
+  getPendingGCMToken(): string;
+  getPendingAPNSToken(): string;
+
   setDoNotDisturb(doNotDisturbOn: boolean, startHour: number, startMin: number, endHour: number, endMin: number, timezone: string, callback?: Function): void;
   getDoNotDisturb(callback: Function): void;
 
@@ -135,6 +138,7 @@ interface MessageListQuery {
 interface PreviousMessageListQuery {
   hasMore: boolean;
   load(limit: number, reverse: boolean, callback: Function): void;
+  load(limit: number, reverse: boolean, messageType: string, callback: Function): void;
 }
 
 
