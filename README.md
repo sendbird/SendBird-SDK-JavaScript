@@ -27,11 +27,10 @@ SendBird-SDK-JavaScript
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## Upgrading to v3.0.17
+## Upgrading to v3.0.18
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
-   * Finally push notifications feature is officially supported in V3 JS SDK.
-   * Added "setBackgroundState()" and "setForegroundState()".
-   * Added "messageType" filter to PreviousMessageQueryList.
+   * Added "getMessages" series of methods with timestamp and messageId filter.
+   * Fixed a callback handling bug.
 
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    

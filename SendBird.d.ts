@@ -56,6 +56,10 @@ interface SendBird_Instance {
   createUserListQuery(): UserListQuery;
   createBlockedUserListQuery(): UserListQuery;
 
+  // Background/Foreground Appstate for push notifications in React Native / Ionic
+  setBackgroundState(): void;
+  setForegroundState(): void;
+
   currentUser: User;
   GroupChannel: GroupChannel;
   OpenChannel: OpenChannel;
@@ -105,6 +109,7 @@ interface BaseMessage {
   createdAt: number;
   channelType: string;
   messageType: string;
+  customType: string;
 }
 
 interface AdminMessage extends BaseMessage {
@@ -154,6 +159,7 @@ interface BaseChannel {
   coverUrl: string;
   createdAt: number;
   data: string;
+  customType: string;
 
   createPreviousMessageListQuery() : PreviousMessageListQuery;
   createMessageListQuery(): MessageListQuery;
@@ -189,6 +195,15 @@ interface BaseChannel {
   deleteAllMetaData(callback: Function): void;
 
   deleteMessage(message: FileMessage|UserMessage, callback: Function): void;
+
+  /* GetMessages */  
+  getNextMessagesByTimestamp(ts: number, isInclusive: boolean, nextResultSize: number, shouldReverse:boolean, messageType: string, customType: string, callback: Function): void;
+  getPreviousMessagesByTimestamp(ts: number, isInclusive: boolean, prevtResultSize: number, shouldReverse:boolean, messageType: string, customType: string, callback: Function): void;
+  getPreviousAndNextMessagesByTimestamp(ts: number, prevtResultSize: number, nextResultSize: number, shouldReverse:boolean, messageType: string, customType: string, callback: Function): void;
+  getNextMessagesByID(messageId: number, isInclusive: boolean, nextResultSize: number, shouldReverse:boolean, messageType: string, customType: string, callback: Function): void;
+  getPreviousMessagesByID(messageId: number, isInclusive: boolean, prevtResultSize: number, shouldReverse:boolean, messageType: string, customType: string, callback: Function): void;
+  getPreviousAndNextMessagesByID(messageId: number, prevtResultSize: number, nextResultSize: number, shouldReverse:boolean, messageType: string, customType: string, callback: Function): void;
+
 }
 
 interface ChannelHandlerFactory {
@@ -197,7 +212,7 @@ interface ChannelHandlerFactory {
 
 interface ChannelHandler_Instance {
   onMessageReceived(channel: GroupChannel|OpenChannel, message: AdminMessage|UserMessage): void;
-  onMessageDeleted(channel: GroupChannel, messageId: string): void;
+  onMessageDeleted(channel: GroupChannel, messageId: number): void;
   onReadReceiptUpdated(channel: GroupChannel): void;
   onTypingStatusUpdated(channel: GroupChannel): void;
   onTypingStatusUpdated(channel: GroupChannel): void;
@@ -224,6 +239,7 @@ interface OpenChannel extends BaseChannel {
   createChannel(callback: Function): void;
   createChannel(name: string, coverUrl: string, data: any, callback: Function): void;
   createChannel(name: string, coverUrl: string, data: any, operatorUserIds: any, callback: Function): void;
+  createChannel(name: string, coverUrl: string, data: any, operatorUserIds: any, customType: Function, callback: Function): void;
 
   enter(callback: Function): void;
   exit(callback: Function): void;
@@ -283,7 +299,9 @@ interface GroupChannel extends BaseChannel {
   createChannel(users: [User], isDistinct: boolean, callback: Function): void;
   createChannel(users: [User], isDistinct: boolean, callback: Function): void;
   createChannelWithUserIds(userIds: [string], isDistinct: boolean, name: string, coverUrl: string, data: any, callback: Function): void;
+  createChannelWithUserIds(userIds: [string], isDistinct: boolean, name: string, coverUrl: string, data: any, customType: string, callback: Function): void;
   createChannelWithUserIds(userIds: [string], isDistinct: boolean, name: string, coverImageFile: Object, data: any, callback: Function): void;
+  createChannelWithUserIds(userIds: [string], isDistinct: boolean, name: string, coverImageFile: Object, data: any, customType: string, callback: Function): void;
   
   getChannel(channelUrl: string, callback: Function): void;
   

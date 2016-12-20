@@ -1,11 +1,15 @@
 Changelog
 =========
+## v3.0.18
+### update
+ * Added "getMessages" series of methods with timestamp and messageId filter.
+ * Fixed a callback handling bug.
+
 ## v3.0.17
 ### update
  * Finally push notifications feature is officially supported in V3 JS SDK.
  * Added "setBackgroundState()" and "setForegroundState()".
  * Added "messageType" filter to PreviousMessageQueryList.
-
 
 ## v3.0.16
 ### update
