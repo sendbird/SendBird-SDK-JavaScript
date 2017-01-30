@@ -13,6 +13,8 @@ interface SendBird_Instance {
   connect(userId: string, callback?: Function): void;
   connect(userId: string, accessToken: string, callback?: Function): void;
   disconnect(callback?: Function): void;
+  // You can reinitate auto-reconnect manually.
+  reconnect(): boolean;
 
   getConnectionState(): string;
   getApplicationId(): string;
@@ -27,6 +29,8 @@ interface SendBird_Instance {
   registerAPNSPushTokenForCurrentUser(apnsRegToken: string, callback?: Function): void;
   unregisterAPNSPushTokenForCurrentUser(apnsRegToken: string, callback?: Function): void;
   unregisterAPNSPushTokenAllForCurrentUser(callback: Function): void;
+
+  unregisterPushTokenAllForCurrentUser(callback: Function): void; // This removes both All APNS/GCM tokens
 
   getPendingGCMToken(): string;
   getPendingAPNSToken(): string;
@@ -46,12 +50,14 @@ interface SendBird_Instance {
 
   addChannelHandler(id: string, handler: ChannelHandler_Instance): void;
   removeChannelHandler(id: string): void;
+  removeAllChannelHandlers(): void;
 
   // Connection Handler
   ConnectionHandler(): void;
 
   addConnectionHandler(id: string, handler: ConnectionHandler): void;
   removeConnectionHandler(id: string): void;
+  removeAllConnectionHandlers(): void;
 
   createUserListQuery(): UserListQuery;
   createBlockedUserListQuery(): UserListQuery;
