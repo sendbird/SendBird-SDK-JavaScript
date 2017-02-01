@@ -1,5 +1,9 @@
 Changelog
 =========
+## v3.0.20
+### update
+ * Fixed a bug in running SendBird SDK in Node.
+
 ## v3.0.19
 ### update
  * connect()/disconnect() doesn't clear out connection/channel handlers anymore. 
