@@ -27,12 +27,11 @@ SendBird-SDK-JavaScript
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## Upgrading to v3.0.19
+## Upgrading to v3.0.22
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
-  * connect()/disconnect() doesn't clear out connection/channel handlers anymore.
-    Instead you should use removeAllConnectionHandlers() and removeAllChannelHandlers().
-  * Fixed a bug in removing ios push tokens.
-  * Now reconnect() method has been added which you can use when you want to manually trigger reconnect logic when network condition gets better.
+ * Fixed a bug in calling markAsRead().
+ * Added supports for video/image thumbnail generations and file encryptio
+n/access control.  
 
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    

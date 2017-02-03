@@ -1,5 +1,10 @@
 Changelog
 =========
+## v3.0.22
+### update
+ * Fixed a bug in calling markAsRead().
+ * Added supports for video/image thumbnail generations and file encryption/access control.
+
 ## v3.0.19
 ### update
  * connect()/disconnect() doesn't clear out connection/channel handlers anymore. 
