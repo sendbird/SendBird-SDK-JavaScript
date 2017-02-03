@@ -138,6 +138,7 @@ interface FileMessage extends BaseMessage {
   size: number;
   type: string;
   data: string;
+  thumbnails : [Object];
 }
 
 interface ThumbnailSize {
