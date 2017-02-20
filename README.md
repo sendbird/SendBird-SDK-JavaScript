@@ -27,11 +27,12 @@ SendBird-SDK-JavaScript
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## Upgrading to v3.0.22
+## Upgrading to v3.0.23
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
- * Fixed a bug in calling markAsRead().
- * Added supports for video/image thumbnail generations and file encryptio
 n/access control.  
+ * Fixed a file uploading bug in React Native.
+ * Fixed minor bugs related to null check.
+
 
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    

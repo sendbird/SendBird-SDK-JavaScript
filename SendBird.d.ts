@@ -66,6 +66,10 @@ interface SendBird_Instance {
   setBackgroundState(): void;
   setForegroundState(): void;
 
+  // State change should be disabled when image picker is loaded in Android.
+  disableStateChange(): void;
+  enableStateChange(): void;
+
   currentUser: User;
   GroupChannel: GroupChannel;
   OpenChannel: OpenChannel;

@@ -1,5 +1,10 @@
 Changelog
 =========
+## v3.0.23
+### update
+ * Fixed a file uploading bug in React Native.
+ * Fixed minor bugs related to null check.
+
 ## v3.0.22
 ### update
  * Fixed a bug in calling markAsRead().
