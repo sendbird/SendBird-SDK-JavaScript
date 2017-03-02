@@ -27,11 +27,11 @@ SendBird-SDK-JavaScript
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## Upgrading to v3.0.23
+## Upgrading to v3.0.24
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
 n/access control.  
- * Fixed a file uploading bug in React Native.
- * Fixed minor bugs related to null check.
+ * Now it supports IE8/9 with some Flash libraries
+ * Fixed a bug regarding disableStateChange/enableStateChange 
 
 
   
