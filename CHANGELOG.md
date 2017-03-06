@@ -1,5 +1,11 @@
 Changelog
 =========
+## v3.0.25
+ * Now GroupChannelList returns correct readstatus as well.
+ * Member nickname/profile get updated when new messages arrived.
+ * Return more consistent errors when connection() is not made before calling methods.
+ * Now we don't count senders in readreceipt.
+
 ## v3.0.24
  * Now it supports IE8/9 with some Flash libraries
  * Fixed a bug regarding disableStateChange/enableStateChange

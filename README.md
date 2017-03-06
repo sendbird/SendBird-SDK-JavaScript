@@ -27,12 +27,13 @@ SendBird-SDK-JavaScript
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## Upgrading to v3.0.24
+## Upgrading to v3.0.25
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
 n/access control.  
- * Now it supports IE8/9 with some Flash libraries
- * Fixed a bug regarding disableStateChange/enableStateChange 
-
+ * Now GroupChannelList returns correct readstatus as well.
+ * Member nickname/profile get updated when new messages arrived.
+ * Return more consistent errors when connection() is not made before calling methods.
+ * Now we don't count senders in readreceipt.
 
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    
