@@ -1,5 +1,9 @@
 Changelog
 =========
+## v3.0.26
+ * Added getTotalUnreadChannelCount
+ * Now markAsRead doesn't have any delays
+
 ## v3.0.25
  * Now GroupChannelList returns correct readstatus as well.
  * Member nickname/profile get updated when new messages arrived.

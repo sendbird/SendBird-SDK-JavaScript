@@ -333,7 +333,6 @@ interface GroupChannel extends BaseChannel {
 
   hide(callback: Function): void;
   leave(callback: Function): void;
-  markAsRead(): void;
 
   getReadReceipt(message: UserMessage): number;
   updateReadReceipt(userId: string, timestamp: number): void;
@@ -343,6 +342,7 @@ interface GroupChannel extends BaseChannel {
   isTyping(): boolean;
   getTypingMembers(): [number, User];
   getTotalUnreadMessageCount(callback: Function): void;
+  getTotalUnreadChannelCount(callback: Function): void;
 
   isDistinct: boolean;
   unreadMessageCount: number;

@@ -27,13 +27,11 @@ SendBird-SDK-JavaScript
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## Upgrading to v3.0.25
+## Upgrading to v3.0.26
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
 n/access control.  
- * Now GroupChannelList returns correct readstatus as well.
- * Member nickname/profile get updated when new messages arrived.
- * Return more consistent errors when connection() is not made before calling methods.
- * Now we don't count senders in readreceipt.
+ * Added getTotalUnreadChannelCount
+ * Now markAsRead doesn't have any delays
 
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    
