@@ -32,10 +32,10 @@ SendBird-SDK-JavaScript
 ## Upgrading to v3.0.27
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
 
- * Added updateUserMessage function and updateFileMessage function.
- * Added onMessageUpdated function in ChannelHandler.
- * now can confirm file upload progress by using progressHandler function if send param when sendFileMessage function call.
- * Added cancelUploadingFileMessage function.
+ * Added `updateUserMessage()` and `updateFileMessage()`.
+ * Added `onMessageUpdated()` in ChannelHandler.
+ * You now can confirm file upload progress by passing a progressHandler as a parameter when calling `sendFileMessage()`.
+ * Added `cancelUploadingFileMessage()`.
 
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    
