@@ -1,10 +1,10 @@
 Changelog
 =========
 ## v3.0.27
- * Added updateUserMessage function and updateFileMessage function.
- * Added onMessageUpdated function in ChannelHandler.
- * now can confirm file upload progress by using progressHandler function if send param when sendFileMessage function call.
- * Added cancelUploadingFileMessage function.
+ * Added `updateUserMessage()` and `updateFileMessage()`.
+ * Added `onMessageUpdated()` in ChannelHandler.
+ * You now can confirm file upload progress by passing a progressHandler as a parameter when calling `sendFileMessage()`.
+ * Added `cancelUploadingFileMessage()`.
  
 ## v3.0.26
  * Added getTotalUnreadChannelCount
