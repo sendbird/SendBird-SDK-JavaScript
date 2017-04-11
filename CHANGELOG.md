@@ -1,5 +1,11 @@
 Changelog
 =========
+## v3.0.27
+ * Added updateUserMessage function and updateFileMessage function.
+ * Added onMessageUpdated function in ChannelHandler.
+ * now can confirm file upload progress by using progressHandler function if send param when sendFileMessage function call.
+ * Added cancelUploadingFileMessage function.
+ 
 ## v3.0.26
  * Added getTotalUnreadChannelCount
  * Now markAsRead doesn't have any delays

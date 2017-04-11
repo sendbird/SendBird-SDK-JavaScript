@@ -117,6 +117,7 @@ interface BaseMessage {
   channelUrl: string;
   messageId: number;
   createdAt: number;
+  updatedAt: number;
   channelType: string;
   messageType: string;
   customType: string;
@@ -181,18 +182,32 @@ interface BaseChannel {
   createMessageListQuery(): MessageListQuery;
 
   /* SendMessage */
-  sendFileMessage(file: any, callback: Function): void;
-  sendFileMessage(file: any, data: string, callback: Function): void;
-  sendFileMessage(file: any, data: string, customType: string, callback: Function): void;
-  sendFileMessage(file: any, data: string, customType: string, thumbnailSizes: [ThumbnailSize], callback: Function): void;
-  sendFileMessage(file: any, name: string, type: string, size: number, data: string, callback: Function): void;
-  sendFileMessage(file: any, name: string, type: string, size: number, data: string, customType: string, callback: Function): void;
-  sendFileMessage(file: any, name: string, type: string, size: number, data: string, customType: string, thumbnailSizes: [ThumbnailSize], callback: Function): void;
+  sendFileMessage(file: any, callback: Function): FileMessage;
+  sendFileMessage(file: any, progressHandler: Function, callback: Function): FileMessage;
+  sendFileMessage(file: any, data: string, callback: Function): FileMessage;
+  sendFileMessage(file: any, data: string, progressHandler: Function, callback: Function): FileMessage;
+  sendFileMessage(file: any, data: string, customType: string, callback: Function): FileMessage;
+  sendFileMessage(file: any, data: string, customType: string, progressHandler: Function, callback: Function): FileMessage;
+  sendFileMessage(file: any, data: string, customType: string, thumbnailSizes: [ThumbnailSize], callback: Function): FileMessage;
+  sendFileMessage(file: any, data: string, customType: string, thumbnailSizes: [ThumbnailSize], progressHandler: Function, callback: Function): FileMessage;
+  sendFileMessage(file: any, name: string, type: string, size: number, data: string, callback: Function): FileMessage;
+  sendFileMessage(file: any, name: string, type: string, size: number, data: string, progressHandler: Function, callback: Function): FileMessage;
+  sendFileMessage(file: any, name: string, type: string, size: number, data: string, customType: string, callback: Function): FileMessage;
+  sendFileMessage(file: any, name: string, type: string, size: number, data: string, customType: string, progressHandler: Function, callback: Function): FileMessage;
+  sendFileMessage(file: any, name: string, type: string, size: number, data: string, customType: string, thumbnailSizes: [ThumbnailSize], callback: Function): FileMessage;
+  sendFileMessage(file: any, name: string, type: string, size: number, data: string, customType: string, thumbnailSizes: [ThumbnailSize], progressHandler: Function, callback: Function): FileMessage;
 
-  sendUserMessage(message: string, callback: Function): void;
-  sendUserMessage(message: string, data: string, callback: Function): void;
-  sendUserMessage(message: string, data: string, customType: string, callback: Function): void;
-  sendUserMessage(message: string, data: string, customType: string, targetLanguages: [string], callback: Function): void;
+  sendUserMessage(message: string, callback: Function): UserMessage;
+  sendUserMessage(message: string, data: string, callback: Function): UserMessage;
+  sendUserMessage(message: string, data: string, customType: string, callback: Function): UserMessage;
+  sendUserMessage(message: string, data: string, customType: string, targetLanguages: [string], callback: Function): UserMessage;
+
+  /* UpdateMessage */
+  updateUserMessage(messageId: number, message: string, data: string, customType: string, callback: Function): void;
+  updateFileMessage(messageId: number, data: string, customType: string, callback: Function): void;
+
+  /* Cancel File Upload */
+  cancelUploadingFileMessage(messageReqId: string, callback: Function): void;
 
   /* MetaCounter */
   createMetaCounters(metaCounterMap: Object, callback: Function): void;
@@ -315,7 +330,7 @@ interface GroupChannelListQuery {
 
 interface GroupChannel extends BaseChannel {
   createChannel(users: [User], isDistinct: boolean, callback: Function): void;
-  createChannel(users: [User], isDistinct: boolean, callback: Function): void;
+  createChannel(users: [User], isDistinct: boolean, name: string, coverUrl: string, data: any, callback: Function): void;
   createChannelWithUserIds(userIds: [string], isDistinct: boolean, name: string, coverUrl: string, data: any, callback: Function): void;
   createChannelWithUserIds(userIds: [string], isDistinct: boolean, name: string, coverUrl: string, data: any, customType: string, callback: Function): void;
   createChannelWithUserIds(userIds: [string], isDistinct: boolean, name: string, coverImageFile: Object, data: any, callback: Function): void;

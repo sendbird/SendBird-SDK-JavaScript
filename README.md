@@ -21,17 +21,21 @@ SendBird-SDK-JavaScript
 
 # [Sample](https://github.com/smilefam/SendBird-JavaScript)  
 
- * [Basic Sample](https://sample.sendbird.com) using [Sendbird SDK](https://github.com/smilefam/SendBird-SDK-JavaScript). [download](https://github.com/smilefam/SendBird-JavaScript/tree/master/basic-sample)    
+ * [Basic Sample](https://sample.sendbird.com) using [Sendbird SDK](https://github.com/smilefam/SendBird-SDK-JavaScript). [download](https://github.com/smilefam/SendBird-JavaScript/tree/master/web-sample)    
+ * [Widget Sample](https://sample.sendbird.com/widget) using [Sendbird SDK](https://github.com/smilefam/SendBird-SDK-JavaScript). [download](https://github.com/smilefam/SendBird-JavaScript/tree/master/web-widget)    
+ * [LiveChat Sample](https://sample.sendbird.com/livechat) using [Sendbird SDK](https://github.com/smilefam/SendBird-SDK-JavaScript). [download](https://github.com/smilefam/SendBird-JavaScript/tree/master/web-live-chat)    
   
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## Upgrading to v3.0.26
+## Upgrading to v3.0.27
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
-n/access control.  
- * Added getTotalUnreadChannelCount
- * Now markAsRead doesn't have any delays
+
+ * Added updateUserMessage function and updateFileMessage function.
+ * Added onMessageUpdated function in ChannelHandler.
+ * now can confirm file upload progress by using progressHandler function if send param when sendFileMessage function call.
+ * Added cancelUploadingFileMessage function.
 
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    
