@@ -1,5 +1,9 @@
 Changelog
 =========
+## v3.0.28
+ * `SendBirdException` now inherits from the JavaScript Error object.  
+ * You can now decide the error parameter order in callback functions using `sb.setErrorFirstCallback(True|False)`.  
+
 ## v3.0.27
  * Added `updateUserMessage()` and `updateFileMessage()`.
  * Added `onMessageUpdated()` in ChannelHandler.
