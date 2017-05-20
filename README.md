@@ -29,11 +29,9 @@ SendBird-SDK-JavaScript
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## Upgrading to v3.0.28
+## Upgrading to v3.0.29
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
-
- * `SendBirdException` now inherits from the JavaScript Error object.  
- * You can now decide the error parameter order in callback functions using `sb.setErrorFirstCallback(True|False)`.  
+ * Fix the bug that drops message events when sb.setErrorFirstCallback was set to True.
 
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    

@@ -1,5 +1,8 @@
 Changelog
 =========
+## v3.0.29
+ * Fix the bug that drops message events when sb.setErrorFirstCallback was set to True.
+
 ## v3.0.28
  * `SendBirdException` now inherits from the JavaScript Error object.  
  * You can now decide the error parameter order in callback functions using `sb.setErrorFirstCallback(True|False)`.  
