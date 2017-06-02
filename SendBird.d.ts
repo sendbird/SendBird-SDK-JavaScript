@@ -2,6 +2,8 @@
 // Project: https://sendbird.com/
 
 interface SendBirdFactory {
+  version: number; // SendBird SDK version
+
   new(option: Object): SendBird_Instance;
 }
 
@@ -11,7 +13,9 @@ interface SendBirdFactory {
  */
 interface SendBird_Instance {
   connect(userId: string, callback?: Function): void;
+  connect(userId: string, apiHost: string, wsHost: string, callback?: Function): void;
   connect(userId: string, accessToken: string, callback?: Function): void;
+  connect(userId: string, accessToken: string, apiHost: string, wsHost: string, callback?: Function): void;
   disconnect(callback?: Function): void;
   // You can reinitate auto-reconnect manually.
   reconnect(): boolean;
@@ -20,6 +24,7 @@ interface SendBird_Instance {
   getApplicationId(): string;
 
   updateCurrentUserInfo(nickname: string, profileImage: string, callback?: Function): void;
+  updateCurrentUserInfo(nickname: string, profileImage: File, callback?: Function): void;
 
   // Push token
   registerGCMPushTokenForCurrentUser(gcmRegToken: string, callback?: Function): void;
@@ -37,6 +42,9 @@ interface SendBird_Instance {
 
   setDoNotDisturb(doNotDisturbOn: boolean, startHour: number, startMin: number, endHour: number, endMin: number, timezone: string, callback?: Function): void;
   getDoNotDisturb(callback: Function): void;
+
+  setPushTemplate(templateName: string, callback?: Function): void;
+  getPushTemplate(callback?: Function): void;
 
   // Block / Unblock
   blockUser(userToBlock: User, callback?: Function): void;
@@ -60,6 +68,8 @@ interface SendBird_Instance {
   removeAllConnectionHandlers(): void;
 
   createUserListQuery(): UserListQuery;
+  createUserListQuery(userIds: Array<string>): UserListQuery;
+
   createBlockedUserListQuery(): UserListQuery;
 
   // Background/Foreground Appstate for push notifications in React Native / Ionic
@@ -99,7 +109,7 @@ interface UserListQuery {
   limit: number;
   isLoading: boolean;
 
-  next(callback: Function): void;
+  next(callback?: Function): void;
 }
 
 
@@ -207,7 +217,7 @@ interface BaseChannel {
   updateFileMessage(messageId: number, data: string, customType: string, callback: Function): void;
 
   /* Cancel File Upload */
-  cancelUploadingFileMessage(messageReqId: string, callback: Function): void;
+  cancelUploadingFileMessage(messageReqId: string, callback: Function): boolean;
 
   /* MetaCounter */
   createMetaCounters(metaCounterMap: Object, callback: Function): void;

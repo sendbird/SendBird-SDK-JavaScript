@@ -29,9 +29,12 @@ SendBird-SDK-JavaScript
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## Upgrading to v3.0.29
+## Upgrading to v3.0.30
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
- * Fix the bug that drops message events when sb.setErrorFirstCallback was set to True.
+ * Added `getPushTemplate()` and `setPushTemplate()`.  
+ * Added checking SDK's version using `SendBird.version`.  
+ * Now support connecting to custom host.  
+ * Added return value when call `cancelUploadingFileMessage()`.  
 
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    

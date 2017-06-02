@@ -1,5 +1,11 @@
 Changelog
 =========
+## v3.0.30
+ * Added `getPushTemplate()` and `setPushTemplate()`.  
+ * Added checking SDK's version using `SendBird.version`.  
+ * Now support connecting to custom host.  
+ * Added return value when call `cancelUploadingFileMessage()`.  
+ 
 ## v3.0.29
  * Fix the bug that drops message events when sb.setErrorFirstCallback was set to True.
 
