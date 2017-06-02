@@ -1,5 +1,8 @@
 Changelog
 =========
+## v3.0.31
+ * Fixed a compatibility issue with React Native.
+
 ## v3.0.30
  * Added `getPushTemplate()` and `setPushTemplate()`.  
  * Added checking SDK's version using `SendBird.version`.  

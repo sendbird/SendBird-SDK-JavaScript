@@ -29,12 +29,9 @@ SendBird-SDK-JavaScript
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## Upgrading to v3.0.30
+## Upgrading to v3.0.31
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
- * Added `getPushTemplate()` and `setPushTemplate()`.  
- * Added checking SDK's version using `SendBird.version`.  
- * Now support connecting to custom host.  
- * Added return value when call `cancelUploadingFileMessage()`.  
+ * Fixed a compatibility issue with React Native.
 
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    
