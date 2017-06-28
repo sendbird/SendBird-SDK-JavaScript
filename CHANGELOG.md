@@ -1,5 +1,10 @@
 Changelog
 =========
+
+## v3.0.32
+ * Added `delete()` in OpenChannel.  
+ * Added `updateChannel()` in GroupChannel and OpenChannel.  
+ 
 ## v3.0.31
  * Fixed a compatibility issue with React Native.
 

@@ -29,9 +29,10 @@ SendBird-SDK-JavaScript
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## Upgrading to v3.0.31
+## Upgrading to v3.0.32
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
- * Fixed a compatibility issue with React Native.
+ * Added `delete()` in OpenChannel.  
+ * Added `updateChannel()` in GroupChannel and OpenChannel.
 
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    

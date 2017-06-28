@@ -23,8 +23,7 @@ interface SendBird_Instance {
   getConnectionState(): string;
   getApplicationId(): string;
 
-  updateCurrentUserInfo(nickname: string, profileImage: string, callback?: Function): void;
-  updateCurrentUserInfo(nickname: string, profileImage: File, callback?: Function): void;
+  updateCurrentUserInfo(nickname: string, profileUrlOrImageFile: string|File, callback?: Function): void;
 
   // Push token
   registerGCMPushTokenForCurrentUser(gcmRegToken: string, callback?: Function): void;
@@ -33,9 +32,9 @@ interface SendBird_Instance {
 
   registerAPNSPushTokenForCurrentUser(apnsRegToken: string, callback?: Function): void;
   unregisterAPNSPushTokenForCurrentUser(apnsRegToken: string, callback?: Function): void;
-  unregisterAPNSPushTokenAllForCurrentUser(callback: Function): void;
+  unregisterAPNSPushTokenAllForCurrentUser(callback?: Function): void;
 
-  unregisterPushTokenAllForCurrentUser(callback: Function): void; // This removes both All APNS/GCM tokens
+  unregisterPushTokenAllForCurrentUser(callback?: Function): void; // This removes both All APNS/GCM tokens
 
   getPendingGCMToken(): string;
   getPendingAPNSToken(): string;
@@ -280,22 +279,36 @@ interface ChannelHandler_Instance {
 interface OpenChannel extends BaseChannel {
 
   createChannel(callback: Function): void;
-  createChannel(name: string, coverUrl: string, data: any, callback: Function): void;
-  createChannel(name: string, coverUrl: string, data: any, operatorUserIds: any, callback: Function): void;
-  createChannel(name: string, coverUrl: string, data: any, operatorUserIds: any, customType: Function, callback: Function): void;
+  createChannel(name: string, coverUrlOrImageFile: string|File, data: string, callback: Function): void;
+  createChannel(name: string, coverUrlOrImageFile: string|File, data: string, operatorUserIds: Array<string>|string, callback: Function): void;
+  createChannel(name: string, coverUrlOrImageFile: string|File, data: string, operatorUserIds: Array<string>|string, customType: string, callback: Function): void;
+
+  createChannelWithOperatorUserIds(name: string, coverUrlOrImageFile: string|File, data: string, operatorUserIds: Array<string>|string, callback: Function): void;
+  createChannelWithOperatorUserIds(name: string, coverUrlOrImageFile: string|File, data: string, operatorUserIds: Array<string>|string, customType: string, callback: Function): void;
+
+  updateChannel(name: string, coverUrl: string, data: string, callback: Function): void;
+  updateChannel(name: string, coverUrl: string, data: string, operatorUserIds: Array<string>|string, callback: Function): void;
+  updateChannel(name: string, coverUrl: string, data: string, operatorUserIds: Array<string>|string, customType: string, callback: Function): void;
+
+  updateChannelWithOperatorUserIds(name: string, coverUrl: string, data: string, operatorUserIds: Array<string>|string, callback: Function): void;
+  updateChannelWithOperatorUserIds(name: string, coverUrl: string, data: string, operatorUserIds: Array<string>|string, customType: string, callback: Function): void;
 
   enter(callback: Function): void;
   exit(callback: Function): void;
 
   getChannel(channelUrl: string, callback: Function): void;
+  getChannelWithoutCache(channelUrl: string, callback: Function): void;
+  refresh(callback: Function): void;
 
-  refresh(): void;
+  delete(callback: Function): void;
 
   createParticipantListQuery(): UserListQuery;
   createMutedUserListQuery(): UserListQuery;
   createBannedUserListQuery(): UserListQuery;
 
+  banUser(user: User, callback: Function): void;
   banUser(user: User, seconds: number, callback: Function): void;
+  banUserWithUserId(userId: string, callback: Function): void;
   banUserWithUserId(userId: string, seconds: number, callback: Function): void;
 
   unbanUser(user: User, callback: Function): void;
@@ -316,7 +329,7 @@ interface OpenChannel extends BaseChannel {
 interface OpenChannelListQuery {
   limit: number;
   hasNext: boolean;
-  next(callback: Function): void;
+  next(callback?: Function): void;
 }
 
 interface OpenChannelParticipantListQuery {
@@ -335,29 +348,37 @@ interface GroupChannelListQuery {
   includeEmpty: boolean;
   order: string;
   hasNext: boolean;
-  next(callback: Function): void;
+  next(callback?: Function): void;
 }
 
 interface GroupChannel extends BaseChannel {
-  createChannel(users: [User], isDistinct: boolean, callback: Function): void;
-  createChannel(users: [User], isDistinct: boolean, name: string, coverUrl: string, data: any, callback: Function): void;
-  createChannelWithUserIds(userIds: [string], isDistinct: boolean, name: string, coverUrl: string, data: any, callback: Function): void;
-  createChannelWithUserIds(userIds: [string], isDistinct: boolean, name: string, coverUrl: string, data: any, customType: string, callback: Function): void;
-  createChannelWithUserIds(userIds: [string], isDistinct: boolean, name: string, coverImageFile: Object, data: any, callback: Function): void;
-  createChannelWithUserIds(userIds: [string], isDistinct: boolean, name: string, coverImageFile: Object, data: any, customType: string, callback: Function): void;
-  
-  getChannel(channelUrl: string, callback: Function): void;
-  
-  markAsRead(): void;
-  markAsReadAll(callback: Function): void;
+  createChannel(users: Array<User>, callback: Function): void;
+  createChannel(users: Array<User>, isDistinct: boolean, callback: Function): void;
+  createChannel(users: Array<User>, isDistinct: boolean, customType: string, callback: Function): void;
+  createChannel(users: Array<User>, isDistinct: boolean, name: string, coverUrlOrImageFile: string|File, data: string, callback: Function): void;
+  createChannel(users: Array<User>, isDistinct: boolean, name: string, coverUrlOrImageFile: string|File, data: string, customType: string, callback: Function): void;
 
+  createChannelWithUserIds(userIds: Array<string>, callback: Function): void;
+  createChannelWithUserIds(userIds: Array<string>, isDistinct: boolean, callback: Function): void;
+  createChannelWithUserIds(userIds: Array<string>, isDistinct: boolean, customType: string, callback: Function): void;
+  createChannelWithUserIds(userIds: Array<string>, isDistinct: boolean, name: string, coverUrlOrImageFile: string|File, data: string, callback: Function): void;
+  createChannelWithUserIds(userIds: Array<string>, isDistinct: boolean, name: string, coverUrlOrImageFile: string|File, data: string, customType: string, callback: Function): void;
+
+  updateChannel(name: string, coverUrlOrImageFile: string|File, data: string, callback: Function): void;
+  updateChannel(isDistinct: boolean, name: string, coverUrlOrImageFile: string|File, data: string, callback: Function): void;
+  updateChannel(isDistinct: boolean, name: string, coverUrlOrImageFile: string|File, data: string, customType: string, callback: Function): void;
+
+  getChannel(channelUrl: string, callback: Function): void;
+  getChannelWithoutCache(channelUrl: string, callback: Function): void;
   refresh(callback: Function): void;
 
-  invite(users: [User], callback: Function): void;
-  inviteWithUserIds(userIds: [string], callback: Function): void;
-
-  hide(callback: Function): void;
+  invite(users: Array<User>, callback: Function): void;
+  inviteWithUserIds(userIds: Array<string>, callback: Function): void;
   leave(callback: Function): void;
+  hide(callback: Function): void;
+
+  markAsRead(): void;
+  markAsReadAll(callback: Function): void;
 
   getReadReceipt(message: UserMessage): number;
   updateReadReceipt(userId: string, timestamp: number): void;
