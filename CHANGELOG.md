@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## v3.0.33
+ * Fixed version check.   
+ 
 ## v3.0.32
  * Added `delete()` in OpenChannel.  
  * Added `updateChannel()` in GroupChannel and OpenChannel.  

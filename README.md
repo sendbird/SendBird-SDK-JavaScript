@@ -29,10 +29,9 @@ SendBird-SDK-JavaScript
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## Upgrading to v3.0.32
+## Upgrading to v3.0.33
   If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
- * Added `delete()` in OpenChannel.  
- * Added `updateChannel()` in GroupChannel and OpenChannel.
+ * Fixed version check.   
 
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    
