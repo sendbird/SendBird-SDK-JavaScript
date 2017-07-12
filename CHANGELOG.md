@@ -1,5 +1,7 @@
 Changelog
 =========
+## v3.0.35
+ * Updated dependent libs for NodeJS.
 
 ## v3.0.34
  * Updated the TypeScript file.  
