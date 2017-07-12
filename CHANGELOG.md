@@ -1,6 +1,10 @@
 Changelog
 =========
 
+## v3.0.34
+ * Updated the TypeScript file.  
+ * Fixed the WebSocket disconnect.  
+
 ## v3.0.33
  * Fixed version check.   
  

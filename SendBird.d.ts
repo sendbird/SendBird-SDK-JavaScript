@@ -25,6 +25,9 @@ interface SendBird_Instance {
 
   updateCurrentUserInfo(nickname: string, profileUrlOrImageFile: string|File, callback?: Function): void;
 
+  setChannelInvitationPreference(isAutoAccept: boolean, callback: Function): void;
+  getChannelInvitationPreference(callback: Function): void;
+
   // Push token
   registerGCMPushTokenForCurrentUser(gcmRegToken: string, callback?: Function): void;
   unregisterGCMPushTokenForCurrentUser(gcmRegToken: string, callback?: Function): void;
@@ -101,6 +104,10 @@ interface User {
   userId: string;
   connectionStatus: string;
   lastSeenAt: string;
+}
+
+interface Member extends User {
+  state: 'invited' | 'joined'
 }
 
 interface UserListQuery {
@@ -270,6 +277,8 @@ interface ChannelHandler_Instance {
   onChannelUnfrozen(channel: OpenChannel): void;
   onChannelChanged(channel: OpenChannel|GroupChannel): void;
   onChannelDeleted(channelUrl: string): void;
+  onUserReceivedInvitation(channel: GroupChannel, inviter: User, invitees: Array<Member>): void;
+  onUserDeclinedInvitation(channel: GroupChannel, inviter: User, invitee: Array<Member>): void;
 }
 
 
@@ -344,14 +353,24 @@ interface OpenChannelParticipantListQuery {
  *  Group Channel
  */
 interface GroupChannelListQuery {
+  hasNext: boolean;
   limit: number;
   includeEmpty: boolean;
   order: string;
-  hasNext: boolean;
+  userIdsFilter: Array<string>;
+  userIdsFilterExactMatch: boolean;
+  queryType: 'AND'|'OR';
   next(callback?: Function): void;
 }
 
 interface GroupChannel extends BaseChannel {
+  isDistinct: boolean;
+  isPushEnabled: boolean;
+  unreadMessageCount: number;
+  members: Array<Member>;
+  lastMessage: BaseMessage;
+  memberCount: number;
+
   createChannel(users: Array<User>, callback: Function): void;
   createChannel(users: Array<User>, isDistinct: boolean, callback: Function): void;
   createChannel(users: Array<User>, isDistinct: boolean, customType: string, callback: Function): void;
@@ -377,31 +396,27 @@ interface GroupChannel extends BaseChannel {
   leave(callback: Function): void;
   hide(callback: Function): void;
 
+  acceptInvitation(callback: Function): void;
+  declineInvitation(callback: Function): void;
+
   markAsRead(): void;
   markAsReadAll(callback: Function): void;
 
-  getReadReceipt(message: UserMessage): number;
-  updateReadReceipt(userId: string, timestamp: number): void;
+  getReadReceipt(message: BaseMessage): number;
+  getReadStatus(): Object;
 
   startTyping(): void;
   endTyping(): void;
   isTyping(): boolean;
-  getTypingMembers(): [number, User];
+  getTypingMembers(): Array<Member>;
   getTotalUnreadMessageCount(callback: Function): void;
   getTotalUnreadChannelCount(callback: Function): void;
-
-  isDistinct: boolean;
-  unreadMessageCount: number;
-  members: [number, User];
-  lastMessage: BaseMessage;
-  memberCount: number;
 
   createMyGroupChannelListQuery(): GroupChannelListQuery;
 
   setPushPreference(pushOn: boolean, callback: Function): void;
   getPushPreference(callback: Function): void;
 
-  getReadStatus(): Object;
 }
 
 declare var SendBird: SendBirdFactory;
