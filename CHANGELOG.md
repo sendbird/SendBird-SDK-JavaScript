@@ -1,5 +1,9 @@
 Changelog
 =========
+## v3.0.36
+ * Updated login status check.  
+ * minor bugfix for NodeJS.  
+ 
 ## v3.0.35
  * Updated dependent libs for NodeJS.
 

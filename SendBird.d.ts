@@ -227,18 +227,20 @@ interface BaseChannel {
 
   /* MetaCounter */
   createMetaCounters(metaCounterMap: Object, callback: Function): void;
+  updateMetaCounters(metaCounterMap: Object, callback: Function): void;
   updateMetaCounters(metaCounterMap: Object, upsert: boolean, callback: Function): void;
   increaseMetaCounters(metaCounterMap: Object, callback: Function): void;
   decreaseMetaCounters(metaCounterMap: Object, callback: Function): void;
-  getMetaCounters(keys: Object, callback: Function): void;
+  getMetaCounters(keys: Array<string>, callback: Function): void;
   getAllMetaCounters(callback: Function): void;
   deleteMetaCounter(key: string, callback: Function): void;
   deleteAllMetaCounters(callback: Function): void;
 
   /* MetaData */
   createMetaData(metaDataMap: Object, callback: Function): void;
+  updateMetaData(metaDataMap: Object, callback: Function): void;
   updateMetaData(metaDataMap: Object, upsert: boolean, callback: Function): void;
-  getMetaData(keys: Object, callback: Function): void;
+  getMetaData(keys: Array<string>, callback: Function): void;
   getAllMetaData(callback: Function): void;
   deleteMetaData(key: string, callback: Function): void;
   deleteAllMetaData(callback: Function): void;
@@ -416,7 +418,6 @@ interface GroupChannel extends BaseChannel {
 
   setPushPreference(pushOn: boolean, callback: Function): void;
   getPushPreference(callback: Function): void;
-
 }
 
 declare var SendBird: SendBirdFactory;
