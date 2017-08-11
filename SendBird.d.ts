@@ -198,29 +198,45 @@ interface BaseChannel {
   createMessageListQuery(): MessageListQuery;
 
   /* SendMessage */
-  sendFileMessage(file: any, callback: Function): FileMessage;
-  sendFileMessage(file: any, progressHandler: Function, callback: Function): FileMessage;
-  sendFileMessage(file: any, data: string, callback: Function): FileMessage;
-  sendFileMessage(file: any, data: string, progressHandler: Function, callback: Function): FileMessage;
-  sendFileMessage(file: any, data: string, customType: string, callback: Function): FileMessage;
-  sendFileMessage(file: any, data: string, customType: string, progressHandler: Function, callback: Function): FileMessage;
-  sendFileMessage(file: any, data: string, customType: string, thumbnailSizes: [ThumbnailSize], callback: Function): FileMessage;
-  sendFileMessage(file: any, data: string, customType: string, thumbnailSizes: [ThumbnailSize], progressHandler: Function, callback: Function): FileMessage;
-  sendFileMessage(file: any, name: string, type: string, size: number, data: string, callback: Function): FileMessage;
-  sendFileMessage(file: any, name: string, type: string, size: number, data: string, progressHandler: Function, callback: Function): FileMessage;
-  sendFileMessage(file: any, name: string, type: string, size: number, data: string, customType: string, callback: Function): FileMessage;
-  sendFileMessage(file: any, name: string, type: string, size: number, data: string, customType: string, progressHandler: Function, callback: Function): FileMessage;
-  sendFileMessage(file: any, name: string, type: string, size: number, data: string, customType: string, thumbnailSizes: [ThumbnailSize], callback: Function): FileMessage;
-  sendFileMessage(file: any, name: string, type: string, size: number, data: string, customType: string, thumbnailSizes: [ThumbnailSize], progressHandler: Function, callback: Function): FileMessage;
+  sendFileMessage(file: File, callback: Function): FileMessage;
+  sendFileMessage(file: File, data: string, callback: Function): FileMessage;
+  sendFileMessage(file: File, data: string, customType: string, callback: Function): FileMessage;
+  sendFileMessage(file: File, data: string, customType: string, thumbnailSizes: Array<ThumbnailSize>, callback: Function): FileMessage;
+  sendFileMessage(file: File, name: string, type: string, size: number, data: string, callback: Function): FileMessage;
+  sendFileMessage(file: File, name: string, type: string, size: number, data: string, customType: string, callback: Function): FileMessage;
+  sendFileMessage(file: File, name: string, type: string, size: number, data: string, customType: string, thumbnailSizes: Array<ThumbnailSize>, callback: Function): FileMessage;
+
+  sendFileMessage(file: File, progressHandler: Function, callback: Function): FileMessage;
+  sendFileMessage(file: File, data: string, progressHandler: Function, callback: Function): FileMessage;
+  sendFileMessage(file: File, data: string, customType: string, progressHandler: Function, callback: Function): FileMessage;
+  sendFileMessage(file: File, data: string, customType: string, thumbnailSizes: Array<ThumbnailSize>, progressHandler: Function, callback: Function): FileMessage;
+  sendFileMessage(file: File, name: string, type: string, size: number, data: string, progressHandler: Function, callback: Function): FileMessage;
+  sendFileMessage(file: File, name: string, type: string, size: number, data: string, customType: string, progressHandler: Function, callback: Function): FileMessage;
+  sendFileMessage(file: File, name: string, type: string, size: number, data: string, customType: string, thumbnailSizes: Array<ThumbnailSize>, progressHandler: Function, callback: Function): FileMessage;
+
+  sendFileMessage(file: string, callback: Function): FileMessage;
+  sendFileMessage(file: string, data: string, callback: Function): FileMessage;
+  sendFileMessage(file: string, data: string, customType: string, callback: Function): FileMessage;
+  sendFileMessage(file: string, name: string, type: string, size: number, data: string, callback: Function): FileMessage;
+  sendFileMessage(file: string, name: string, type: string, size: number, data: string, customType: string, callback: Function): FileMessage;
+
+  sendFileMessage(file: string, progressHandler: Function, callback: Function): FileMessage;
+  sendFileMessage(file: string, data: string, progressHandler: Function, callback: Function): FileMessage;
+  sendFileMessage(file: string, data: string, customType: string, progressHandler: Function, callback: Function): FileMessage;
+  sendFileMessage(file: string, name: string, type: string, size: number, data: string, progressHandler: Function, callback: Function): FileMessage;
+  sendFileMessage(file: string, name: string, type: string, size: number, data: string, customType: string, progressHandler: Function, callback: Function): FileMessage;
 
   sendUserMessage(message: string, callback: Function): UserMessage;
   sendUserMessage(message: string, data: string, callback: Function): UserMessage;
   sendUserMessage(message: string, data: string, customType: string, callback: Function): UserMessage;
-  sendUserMessage(message: string, data: string, customType: string, targetLanguages: [string], callback: Function): UserMessage;
+  sendUserMessage(message: string, data: string, customType: string, targetLanguages: Array<string>, callback: Function): UserMessage;
 
   /* UpdateMessage */
-  updateUserMessage(messageId: number, message: string, data: string, customType: string, callback: Function): void;
   updateFileMessage(messageId: number, data: string, customType: string, callback: Function): void;
+  updateUserMessage(messageId: number, message: string, data: string, customType: string, callback: Function): void;
+
+  /* DeleteMessage */
+  deleteMessage(message: FileMessage|UserMessage, callback: Function): void;
 
   /* Cancel File Upload */
   cancelUploadingFileMessage(messageReqId: string, callback: Function): boolean;
@@ -245,8 +261,6 @@ interface BaseChannel {
   deleteMetaData(key: string, callback: Function): void;
   deleteAllMetaData(callback: Function): void;
 
-  deleteMessage(message: FileMessage|UserMessage, callback: Function): void;
-
   /* GetMessages */  
   getNextMessagesByTimestamp(ts: number, isInclusive: boolean, nextResultSize: number, shouldReverse:boolean, messageType: string, customType: string, callback: Function): void;
   getPreviousMessagesByTimestamp(ts: number, isInclusive: boolean, prevtResultSize: number, shouldReverse:boolean, messageType: string, customType: string, callback: Function): void;
@@ -263,7 +277,7 @@ interface ChannelHandlerFactory {
 
 interface ChannelHandler_Instance {
   onMessageReceived(channel: GroupChannel|OpenChannel, message: AdminMessage|UserMessage): void;
-  onMessageDeleted(channel: GroupChannel, messageId: number): void;
+  onMessageDeleted(channel: GroupChannel|OpenChannel, messageId: number): void;
   onReadReceiptUpdated(channel: GroupChannel): void;
   onTypingStatusUpdated(channel: GroupChannel): void;
   onTypingStatusUpdated(channel: GroupChannel): void;
@@ -281,6 +295,12 @@ interface ChannelHandler_Instance {
   onChannelDeleted(channelUrl: string): void;
   onUserReceivedInvitation(channel: GroupChannel, inviter: User, invitees: Array<Member>): void;
   onUserDeclinedInvitation(channel: GroupChannel, inviter: User, invitee: Array<Member>): void;
+  onMetaDataCreated(channel: GroupChannel|OpenChannel, metaData: Object): void;
+  onMetaDataUpdated(channel: GroupChannel|OpenChannel, metaData: Object): void;
+  onMetaDataDeleted(channel: GroupChannel|OpenChannel, metaData: Array<string>): void;
+  onMetaCountersCreated(channel: GroupChannel|OpenChannel, metaCounter: Object): void;
+  onMetaCountersUpdated(channel: GroupChannel|OpenChannel, metaCounter: Object): void;
+  onMetaCountersDeleted(channel: GroupChannel|OpenChannel, metaCounter: Array<string>): void;
 }
 
 
@@ -288,7 +308,6 @@ interface ChannelHandler_Instance {
  *  Open Channel
  */
 interface OpenChannel extends BaseChannel {
-
   createChannel(callback: Function): void;
   createChannel(name: string, coverUrlOrImageFile: string|File, data: string, callback: Function): void;
   createChannel(name: string, coverUrlOrImageFile: string|File, data: string, operatorUserIds: Array<string>|string, callback: Function): void;
@@ -362,6 +381,8 @@ interface GroupChannelListQuery {
   userIdsFilter: Array<string>;
   userIdsFilterExactMatch: boolean;
   queryType: 'AND'|'OR';
+  nicknameContainsFilter: string;
+  channelNameContainsFilter: string;
   next(callback?: Function): void;
 }
 
@@ -369,6 +390,7 @@ interface GroupChannel extends BaseChannel {
   isDistinct: boolean;
   isPushEnabled: boolean;
   unreadMessageCount: number;
+  inviter: User;
   members: Array<Member>;
   lastMessage: BaseMessage;
   memberCount: number;

@@ -1,5 +1,9 @@
 Changelog
 =========
+## v3.0.37
+ * Added `channelNameContainsFilter` in myGroupChannelListQuery object.    
+ * Added `onMetaDataCreated`, `onMetaDataUpdated`, `onMetaDataDeleted`, `onMetaCountersCreated`, `onMetaCountersUpdated` and `onMetaCountersDeleted` handlers in `ChannelHandler`.  
+ 
 ## v3.0.36
  * Updated login status check.  
  * minor bugfix for NodeJS.  

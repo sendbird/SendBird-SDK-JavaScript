@@ -29,10 +29,10 @@ SendBird-SDK-JavaScript
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## Upgrading to v3.0.36
+## Upgrading to v3.0.37
  If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
- * Updated login status check.  
- * minor bugfix for NodeJS.  
+ * Added `channelNameContainsFilter` in myGroupChannelListQuery object.    
+ * Added `onMetaDataCreated`, `onMetaDataUpdated`, `onMetaDataDeleted`, `onMetaCountersCreated`, `onMetaCountersUpdated` and `onMetaCountersDeleted` handlers in `ChannelHandler`.
 
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    
