@@ -1,5 +1,12 @@
 Changelog
 =========
+
+## v3.0.38
+ * Added `createMetaData`, `updateMetaData`, `deleteMetaData` and `deleteAllMetaData` in `User`.  
+ * Added `metaDataKey` and `metaDataValues` filter in `UserListQuery`.  
+ * Added `isFrozen` in `OpenChannel`.  
+ * Added `hidePreviousMessages` option in `hide` function.  
+
 ## v3.0.37
  * Added `channelNameContainsFilter` in myGroupChannelListQuery object.    
  * Added `onMetaDataCreated`, `onMetaDataUpdated`, `onMetaDataDeleted`, `onMetaCountersCreated`, `onMetaCountersUpdated` and `onMetaCountersDeleted` handlers in `ChannelHandler`.  

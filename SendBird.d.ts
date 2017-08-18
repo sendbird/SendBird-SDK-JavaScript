@@ -104,6 +104,13 @@ interface User {
   userId: string;
   connectionStatus: string;
   lastSeenAt: string;
+  metaData: Object;
+
+  createMetaData(metaDataMap: Object, callback: Function): void;
+  updateMetaData(metaDataMap: Object, callback: Function): void;
+  updateMetaData(metaDataMap: Object, upsert: boolean, callback: Function): void;
+  deleteMetaData(metaDataKey: string, callback: Function): void;
+  deleteAllMetaData(callback: Function): void;
 }
 
 interface Member extends User {
@@ -114,6 +121,8 @@ interface UserListQuery {
   hasNext: boolean;
   limit: number;
   isLoading: boolean;
+  metaDataKey: string;
+  metaDataValues: Array<string>;
 
   next(callback?: Function): void;
 }
@@ -308,6 +317,10 @@ interface ChannelHandler_Instance {
  *  Open Channel
  */
 interface OpenChannel extends BaseChannel {
+  isFrozen: boolean;
+  participantCount: number;
+  operators: Array<User>;
+
   createChannel(callback: Function): void;
   createChannel(name: string, coverUrlOrImageFile: string|File, data: string, callback: Function): void;
   createChannel(name: string, coverUrlOrImageFile: string|File, data: string, operatorUserIds: Array<string>|string, callback: Function): void;
@@ -419,6 +432,7 @@ interface GroupChannel extends BaseChannel {
   inviteWithUserIds(userIds: Array<string>, callback: Function): void;
   leave(callback: Function): void;
   hide(callback: Function): void;
+  hide(hidePreviousMessages: boolean, callback: Function): void;
 
   acceptInvitation(callback: Function): void;
   declineInvitation(callback: Function): void;
