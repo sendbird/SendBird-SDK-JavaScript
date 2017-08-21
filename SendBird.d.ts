@@ -114,7 +114,9 @@ interface User {
 }
 
 interface Member extends User {
-  state: 'invited' | 'joined'
+  state: 'invited' | 'joined';
+  isBlockedByMe: boolean;
+  isBlockingMe: boolean;
 }
 
 interface UserListQuery {

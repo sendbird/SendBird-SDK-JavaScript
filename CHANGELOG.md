@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## v3.0.39
+ * Added `isBlockedByMe` and `isBlockingMe` in `Member`.  
+
 ## v3.0.38
  * Added `createMetaData`, `updateMetaData`, `deleteMetaData` and `deleteAllMetaData` in `User`.  
  * Added `metaDataKey` and `metaDataValues` filter in `UserListQuery`.  

@@ -29,12 +29,9 @@ SendBird-SDK-JavaScript
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## Upgrading to v3.0.38
+## Upgrading to v3.0.39
  If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
- * Added `createMetaData`, `updateMetaData`, `deleteMetaData` and `deleteAllMetaData` in `User`.  
- * Added `metaDataKey` and `metaDataValues` filter in `UserListQuery`.  
- * Added `isFrozen` in `OpenChannel`.  
- * Added `hidePreviousMessages` option in `hide` function.
+ * Added `isBlockedByMe` and `isBlockingMe` in `Member`.  
 
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    
