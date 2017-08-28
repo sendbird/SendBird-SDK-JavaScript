@@ -29,9 +29,10 @@ SendBird-SDK-JavaScript
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## Upgrading to v3.0.39
+## Upgrading to v3.0.40
  If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
- * Added `isBlockedByMe` and `isBlockingMe` in `Member`.  
+ * Added `serialize()` and `buildFromSerializedData()` in `User`, `Message` and `Channel`.  
+ * Added `getChannelCount()` and `resetMyHistory()` in `GroupChannel`.  
 
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    

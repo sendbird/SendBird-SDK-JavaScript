@@ -111,6 +111,9 @@ interface User {
   updateMetaData(metaDataMap: Object, upsert: boolean, callback: Function): void;
   deleteMetaData(metaDataKey: string, callback: Function): void;
   deleteAllMetaData(callback: Function): void;
+
+  serialize(): Object;
+  buildFromSerializedData(serializedObject: Object): User;
 }
 
 interface Member extends User {
@@ -148,6 +151,9 @@ interface BaseMessage {
   channelType: string;
   messageType: string;
   customType: string;
+
+  serialize(): Object;
+  buildFromSerializedData(serializedObject: Object): UserMessage | FileMessage | AdminMessage;
 }
 
 interface AdminMessage extends BaseMessage {
@@ -280,6 +286,8 @@ interface BaseChannel {
   getPreviousMessagesByID(messageId: number, isInclusive: boolean, prevtResultSize: number, shouldReverse:boolean, messageType: string, customType: string, callback: Function): void;
   getPreviousAndNextMessagesByID(messageId: number, prevtResultSize: number, nextResultSize: number, shouldReverse:boolean, messageType: string, customType: string, callback: Function): void;
 
+  serialize(): Object;
+  buildFromSerializedData(serializedObject: Object): OpenChannel | GroupChannel;
 }
 
 interface ChannelHandlerFactory {
@@ -401,6 +409,7 @@ interface GroupChannelListQuery {
   next(callback?: Function): void;
 }
 
+
 interface GroupChannel extends BaseChannel {
   isDistinct: boolean;
   isPushEnabled: boolean;
@@ -456,6 +465,8 @@ interface GroupChannel extends BaseChannel {
 
   setPushPreference(pushOn: boolean, callback: Function): void;
   getPushPreference(callback: Function): void;
+
+  resetMyHistory(callback?: Function): void;
 }
 
 declare var SendBird: SendBirdFactory;

@@ -1,6 +1,10 @@
 Changelog
 =========
 
+## v3.0.40
+ * Added `serialize()` and `buildFromSerializedData()` in `User`, `Message` and `Channel`.  
+ * Added `getChannelCount()` and `resetMyHistory()` in `GroupChannel`.  
+   
 ## v3.0.39
  * Added `isBlockedByMe` and `isBlockingMe` in `Member`.  
 
