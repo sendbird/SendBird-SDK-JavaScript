@@ -1,69 +1,51 @@
-// Type definitions for SendBird 3.0.x
-// Project: https://sendbird.com/
+/**
+ * Type Definitions for SendBird SDK v3.0.41
+ * homepage: https://sendbird.com/
+ * git: https://github.com/smilefam/SendBird-SDK-JavaScript
+ */
 
-interface SendBirdFactory {
-  version: number; // SendBird SDK version
-
-  new(option: Object): SendBird_Instance;
+declare const SendBird: SendBirdStatic;
+declare module 'SendBird' {
+  export = SendBird;
 }
 
+type userCallback = (user: User, error: Object) => void;
+type pushSettingCallback = (response: string, error: Object) => void;
 
-/**
- * Interface for the SendBird Main
- */
-interface SendBird_Instance {
-  connect(userId: string, callback?: Function): void;
-  connect(userId: string, apiHost: string, wsHost: string, callback?: Function): void;
-  connect(userId: string, accessToken: string, callback?: Function): void;
-  connect(userId: string, accessToken: string, apiHost: string, wsHost: string, callback?: Function): void;
-  disconnect(callback?: Function): void;
-  // You can reinitate auto-reconnect manually.
-  reconnect(): boolean;
+interface SendBirdStatic {
+  version: number;
+  new({'appId': string}): SendBirdInstance;
+}
+interface SendBirdInstance {
+  currentUser: User;
+  User: UserStatic;
+  Member: MemberStatic;
+  OpenChannel: OpenChannelStatic;
+  GroupChannel: GroupChannelStatic;
+  UserMessage: UserMessageStatic;
+  FileMessage: FileMessageStatic;
+  AdminMessage: AdminMessageStatic;
 
-  getConnectionState(): string;
+  ChannelHandler: ChannelHandlerStatic;
+  ConnectionHandler: ConnectionHandlerStatic;
+
+  connect(userId: string, callback?: userCallback): void;
+  connect(userId: string, apiHost: string, wsHost: string, callback?: userCallback): void;
+  connect(userId: string, accessToken: string, callback?: userCallback): void;
+  connect(userId: string, accessToken: string, apiHost: string, wsHost: string, callback?: userCallback): void;
+  disconnect(callback?: commonCallback): void;
+  reconnect(): boolean; // You can reinitate auto-reconnect manually.
+
+  updateCurrentUserInfo(nickname: string, profileUrl: string, callback?: userCallback): void;
+  updateCurrentUserInfoWithProfileImage(nickname: string, profileImageFile: File, callback?: userCallback): void;
+
+  getCurrentUserId(): string;
   getApplicationId(): string;
+  getConnectionState(): string;
 
-  updateCurrentUserInfo(nickname: string, profileUrlOrImageFile: string|File, callback?: Function): void;
-
-  setChannelInvitationPreference(isAutoAccept: boolean, callback: Function): void;
-  getChannelInvitationPreference(callback: Function): void;
-
-  // Push token
-  registerGCMPushTokenForCurrentUser(gcmRegToken: string, callback?: Function): void;
-  unregisterGCMPushTokenForCurrentUser(gcmRegToken: string, callback?: Function): void;
-  unregisterGCMPushTokenAllForCurrentUser(callback?: Function): void;
-
-  registerAPNSPushTokenForCurrentUser(apnsRegToken: string, callback?: Function): void;
-  unregisterAPNSPushTokenForCurrentUser(apnsRegToken: string, callback?: Function): void;
-  unregisterAPNSPushTokenAllForCurrentUser(callback?: Function): void;
-
-  unregisterPushTokenAllForCurrentUser(callback?: Function): void; // This removes both All APNS/GCM tokens
-
-  getPendingGCMToken(): string;
-  getPendingAPNSToken(): string;
-
-  setDoNotDisturb(doNotDisturbOn: boolean, startHour: number, startMin: number, endHour: number, endMin: number, timezone: string, callback?: Function): void;
-  getDoNotDisturb(callback: Function): void;
-
-  setPushTemplate(templateName: string, callback?: Function): void;
-  getPushTemplate(callback?: Function): void;
-
-  // Block / Unblock
-  blockUser(userToBlock: User, callback?: Function): void;
-  blockUserWithUserId(userToBlock: string, callback?: Function): void;
-
-  unblockUser(blockedUser: User, callback?: Function): void;
-  unblockUserWithUserId(blockedUserId: string, callback?: Function): void;
-
-  // Channel Handler
-  ChannelHandler: ChannelHandlerFactory;
-
-  addChannelHandler(id: string, handler: ChannelHandler_Instance): void;
+  addChannelHandler(id: string, handler: ChannelHandler): void;
   removeChannelHandler(id: string): void;
   removeAllChannelHandlers(): void;
-
-  // Connection Handler
-  ConnectionHandler(): void;
 
   addConnectionHandler(id: string, handler: ConnectionHandler): void;
   removeConnectionHandler(id: string): void;
@@ -71,8 +53,35 @@ interface SendBird_Instance {
 
   createUserListQuery(): UserListQuery;
   createUserListQuery(userIds: Array<string>): UserListQuery;
-
   createBlockedUserListQuery(): UserListQuery;
+
+  blockUser(userToBlock: User, callback?: userCallback): void;
+  blockUserWithUserId(userToBlock: string, callback?: userCallback): void;
+
+  unblockUser(blockedUser: User, callback?: commonCallback): void;
+  unblockUserWithUserId(blockedUserId: string, callback?: commonCallback): void;
+
+  setChannelInvitationPreference(isAutoAccept: boolean, callback: commonCallback): void;
+  getChannelInvitationPreference(callback: commonCallback): void;
+
+  getPendingGCMToken(): string;
+  getPendingAPNSToken(): string;
+
+  registerGCMPushTokenForCurrentUser(gcmRegToken: string, callback?: pushSettingCallback): void;
+  unregisterGCMPushTokenForCurrentUser(gcmRegToken: string, callback?: commonCallback): void;
+  unregisterGCMPushTokenAllForCurrentUser(callback?: commonCallback): void;
+
+  registerAPNSPushTokenForCurrentUser(apnsRegToken: string, callback?: pushSettingCallback): void;
+  unregisterAPNSPushTokenForCurrentUser(apnsRegToken: string, callback?: commonCallback): void;
+  unregisterAPNSPushTokenAllForCurrentUser(callback?: commonCallback): void;
+
+  unregisterPushTokenAllForCurrentUser(callback?: commonCallback): void; // This removes both All APNS/GCM tokens
+
+  setPushTemplate(templateName: string, callback?: pushSettingCallback): void;
+  getPushTemplate(callback?: pushSettingCallback): void;
+
+  setDoNotDisturb(doNotDisturbOn: boolean, startHour: number, startMin: number, endHour: number, endMin: number, timezone: string, callback?: commonCallback): void;
+  getDoNotDisturb(callback: commonCallback): void;
 
   // Background/Foreground Appstate for push notifications in React Native / Ionic
   setBackgroundState(): void;
@@ -81,220 +90,12 @@ interface SendBird_Instance {
   // State change should be disabled when image picker is loaded in Android.
   disableStateChange(): void;
   enableStateChange(): void;
-
-  currentUser: User;
-  GroupChannel: GroupChannel;
-  OpenChannel: OpenChannel;
-  UserMessage: UserMessage;
 }
 
-interface ConnectionHandler {
-  onReconnectStarted(): void;
-  onReconnectSucceeded(): void;
-  onReconnectFailed(): void;
+interface ChannelHandlerStatic {
+  new(): ChannelHandler;
 }
-
-
-/**
- * User
- */
-interface User {
-  nickname: string;
-  profileUrl: string;
-  userId: string;
-  connectionStatus: string;
-  lastSeenAt: string;
-  metaData: Object;
-
-  createMetaData(metaDataMap: Object, callback: Function): void;
-  updateMetaData(metaDataMap: Object, callback: Function): void;
-  updateMetaData(metaDataMap: Object, upsert: boolean, callback: Function): void;
-  deleteMetaData(metaDataKey: string, callback: Function): void;
-  deleteAllMetaData(callback: Function): void;
-
-  serialize(): Object;
-  buildFromSerializedData(serializedObject: Object): User;
-}
-
-interface Member extends User {
-  state: 'invited' | 'joined';
-  isBlockedByMe: boolean;
-  isBlockingMe: boolean;
-}
-
-interface UserListQuery {
-  hasNext: boolean;
-  limit: number;
-  isLoading: boolean;
-  metaDataKey: string;
-  metaDataValues: Array<string>;
-
-  next(callback?: Function): void;
-}
-
-
-/**
- *  Message
- */
-interface BaseMessage {
-  isGroupChannel(): boolean;
-  isOpenChannel(): boolean;
-
-  isUserMessage(): boolean;
-  isAdminMessage(): boolean;
-  isFileMessage(): boolean;
-
-  channelUrl: string;
-  messageId: number;
-  createdAt: number;
-  updatedAt: number;
-  channelType: string;
-  messageType: string;
-  customType: string;
-
-  serialize(): Object;
-  buildFromSerializedData(serializedObject: Object): UserMessage | FileMessage | AdminMessage;
-}
-
-interface AdminMessage extends BaseMessage {
-  message: string;
-  data: string;
-}
-
-interface UserMessage extends BaseMessage {
-  message: string;
-  data: string;
-  sender: User;
-}
-
-interface FileMessage extends BaseMessage {
-  message: string;
-  sender: User;
-
-  url: string;
-  name: string;
-  size: number;
-  type: string;
-  data: string;
-  thumbnails : [Object];
-}
-
-interface ThumbnailSize {
-  maxWidth: number;
-  maxHeight: number;
-}
-
-interface MessageListQuery {
-  next(messageTimestamp: number, limit: number, reverse: boolean, callback: Function): void;
-  prev(messageTimestamp: number, limit: number, reverse: boolean, callback: Function): void;
-  load(messageTimestamp: number, prevLimit: number, nextLimit: number, reverse: boolean, callback: Function): void;
-}
-
-interface PreviousMessageListQuery {
-  hasMore: boolean;
-  load(limit: number, reverse: boolean, callback: Function): void;
-  load(limit: number, reverse: boolean, messageType: string, callback: Function): void;
-}
-
-
-/**
- *  Channel
- */
-interface BaseChannel {
-  isGroupChannel: boolean;
-  isOpenChannel: boolean;
-
-  url: string;
-  name: string;
-  coverUrl: string;
-  createdAt: number;
-  data: string;
-  customType: string;
-
-  createPreviousMessageListQuery() : PreviousMessageListQuery;
-  createMessageListQuery(): MessageListQuery;
-
-  /* SendMessage */
-  sendFileMessage(file: File, callback: Function): FileMessage;
-  sendFileMessage(file: File, data: string, callback: Function): FileMessage;
-  sendFileMessage(file: File, data: string, customType: string, callback: Function): FileMessage;
-  sendFileMessage(file: File, data: string, customType: string, thumbnailSizes: Array<ThumbnailSize>, callback: Function): FileMessage;
-  sendFileMessage(file: File, name: string, type: string, size: number, data: string, callback: Function): FileMessage;
-  sendFileMessage(file: File, name: string, type: string, size: number, data: string, customType: string, callback: Function): FileMessage;
-  sendFileMessage(file: File, name: string, type: string, size: number, data: string, customType: string, thumbnailSizes: Array<ThumbnailSize>, callback: Function): FileMessage;
-
-  sendFileMessage(file: File, progressHandler: Function, callback: Function): FileMessage;
-  sendFileMessage(file: File, data: string, progressHandler: Function, callback: Function): FileMessage;
-  sendFileMessage(file: File, data: string, customType: string, progressHandler: Function, callback: Function): FileMessage;
-  sendFileMessage(file: File, data: string, customType: string, thumbnailSizes: Array<ThumbnailSize>, progressHandler: Function, callback: Function): FileMessage;
-  sendFileMessage(file: File, name: string, type: string, size: number, data: string, progressHandler: Function, callback: Function): FileMessage;
-  sendFileMessage(file: File, name: string, type: string, size: number, data: string, customType: string, progressHandler: Function, callback: Function): FileMessage;
-  sendFileMessage(file: File, name: string, type: string, size: number, data: string, customType: string, thumbnailSizes: Array<ThumbnailSize>, progressHandler: Function, callback: Function): FileMessage;
-
-  sendFileMessage(file: string, callback: Function): FileMessage;
-  sendFileMessage(file: string, data: string, callback: Function): FileMessage;
-  sendFileMessage(file: string, data: string, customType: string, callback: Function): FileMessage;
-  sendFileMessage(file: string, name: string, type: string, size: number, data: string, callback: Function): FileMessage;
-  sendFileMessage(file: string, name: string, type: string, size: number, data: string, customType: string, callback: Function): FileMessage;
-
-  sendFileMessage(file: string, progressHandler: Function, callback: Function): FileMessage;
-  sendFileMessage(file: string, data: string, progressHandler: Function, callback: Function): FileMessage;
-  sendFileMessage(file: string, data: string, customType: string, progressHandler: Function, callback: Function): FileMessage;
-  sendFileMessage(file: string, name: string, type: string, size: number, data: string, progressHandler: Function, callback: Function): FileMessage;
-  sendFileMessage(file: string, name: string, type: string, size: number, data: string, customType: string, progressHandler: Function, callback: Function): FileMessage;
-
-  sendUserMessage(message: string, callback: Function): UserMessage;
-  sendUserMessage(message: string, data: string, callback: Function): UserMessage;
-  sendUserMessage(message: string, data: string, customType: string, callback: Function): UserMessage;
-  sendUserMessage(message: string, data: string, customType: string, targetLanguages: Array<string>, callback: Function): UserMessage;
-
-  /* UpdateMessage */
-  updateFileMessage(messageId: number, data: string, customType: string, callback: Function): void;
-  updateUserMessage(messageId: number, message: string, data: string, customType: string, callback: Function): void;
-
-  /* DeleteMessage */
-  deleteMessage(message: FileMessage|UserMessage, callback: Function): void;
-
-  /* Cancel File Upload */
-  cancelUploadingFileMessage(messageReqId: string, callback: Function): boolean;
-
-  /* MetaCounter */
-  createMetaCounters(metaCounterMap: Object, callback: Function): void;
-  updateMetaCounters(metaCounterMap: Object, callback: Function): void;
-  updateMetaCounters(metaCounterMap: Object, upsert: boolean, callback: Function): void;
-  increaseMetaCounters(metaCounterMap: Object, callback: Function): void;
-  decreaseMetaCounters(metaCounterMap: Object, callback: Function): void;
-  getMetaCounters(keys: Array<string>, callback: Function): void;
-  getAllMetaCounters(callback: Function): void;
-  deleteMetaCounter(key: string, callback: Function): void;
-  deleteAllMetaCounters(callback: Function): void;
-
-  /* MetaData */
-  createMetaData(metaDataMap: Object, callback: Function): void;
-  updateMetaData(metaDataMap: Object, callback: Function): void;
-  updateMetaData(metaDataMap: Object, upsert: boolean, callback: Function): void;
-  getMetaData(keys: Array<string>, callback: Function): void;
-  getAllMetaData(callback: Function): void;
-  deleteMetaData(key: string, callback: Function): void;
-  deleteAllMetaData(callback: Function): void;
-
-  /* GetMessages */  
-  getNextMessagesByTimestamp(ts: number, isInclusive: boolean, nextResultSize: number, shouldReverse:boolean, messageType: string, customType: string, callback: Function): void;
-  getPreviousMessagesByTimestamp(ts: number, isInclusive: boolean, prevtResultSize: number, shouldReverse:boolean, messageType: string, customType: string, callback: Function): void;
-  getPreviousAndNextMessagesByTimestamp(ts: number, prevtResultSize: number, nextResultSize: number, shouldReverse:boolean, messageType: string, customType: string, callback: Function): void;
-  getNextMessagesByID(messageId: number, isInclusive: boolean, nextResultSize: number, shouldReverse:boolean, messageType: string, customType: string, callback: Function): void;
-  getPreviousMessagesByID(messageId: number, isInclusive: boolean, prevtResultSize: number, shouldReverse:boolean, messageType: string, customType: string, callback: Function): void;
-  getPreviousAndNextMessagesByID(messageId: number, prevtResultSize: number, nextResultSize: number, shouldReverse:boolean, messageType: string, customType: string, callback: Function): void;
-
-  serialize(): Object;
-  buildFromSerializedData(serializedObject: Object): OpenChannel | GroupChannel;
-}
-
-interface ChannelHandlerFactory {
-  new(): ChannelHandler_Instance;
-}
-
-interface ChannelHandler_Instance {
+interface ChannelHandler {
   onMessageReceived(channel: GroupChannel|OpenChannel, message: AdminMessage|UserMessage): void;
   onMessageDeleted(channel: GroupChannel|OpenChannel, messageId: number): void;
   onReadReceiptUpdated(channel: GroupChannel): void;
@@ -322,83 +123,373 @@ interface ChannelHandler_Instance {
   onMetaCountersDeleted(channel: GroupChannel|OpenChannel, metaCounter: Array<string>): void;
 }
 
+interface ConnectionHandlerStatic {
+  new(): ConnectionHandler;
+}
+interface ConnectionHandler {
+  onReconnectStarted(): void;
+  onReconnectSucceeded(): void;
+  onReconnectFailed(): void;
+}
 
 /**
- *  Open Channel
+ * Message
  */
+interface BaseMessageInstance {
+  channelUrl: string;
+  channelType: string;
+  messageId: number;
+  message: string;
+  messageType: string;
+  data: string;
+  customType: string;
+  createdAt: number;
+  updatedAt: number;
+
+  isOpenChannel(): boolean;
+  isGroupChannel(): boolean;
+  isUserMessage(): boolean;
+  isFileMessage(): boolean;
+  isAdminMessage(): boolean;
+  serialize(): Object;
+}
+
+interface AdminMessage extends BaseMessageInstance {
+  translations: Object;
+}
+interface AdminMessageStatic {
+  buildFromSerializedData(serializedObject: Object): AdminMessage;
+}
+
+interface UserMessage extends BaseMessageInstance {
+  sender: User;
+  reqId: string;
+  translations: Object;
+}
+interface UserMessageStatic {
+  buildFromSerializedData(serializedObject: Object): UserMessage;
+}
+
+interface FileMessage extends BaseMessageInstance {
+  sender: User;
+  reqId: string;
+  url: string;
+  name: string;
+  size: number;
+  type: string;
+  thumbnails: Array<ThumbnailObject>;
+}
+interface FileMessageStatic {
+  buildFromSerializedData(serializedObject: Object): FileMessage;
+}
+
+interface ThumbnailObject {
+  url: string;
+  height: number;
+  width: number;
+  real_height: number;
+  real_width: number;
+}
+interface ThumbnailSize {
+  maxWidth: number;
+  maxHeight: number;
+}
+
+/**
+ * User
+ */
+interface User {
+  userId: string;
+  nickname: string;
+  profileUrl: string;
+  metaData: Object;
+  connectionStatus: string;
+  lastSeenAt: string;
+
+  createMetaData(metaDataMap: Object, callback: commonCallback): void;
+  updateMetaData(metaDataMap: Object, callback: commonCallback): void;
+  updateMetaData(metaDataMap: Object, upsert: boolean, callback: commonCallback): void;
+  deleteMetaData(metaDataKey: string, callback: commonCallback): void;
+  deleteAllMetaData(callback: commonCallback): void;
+
+  serialize(): Object;
+}
+interface UserStatic {
+  buildFromSerializedData(serializedObject: Object): User;
+}
+
+interface Member extends User {
+  state: 'invited' | 'joined';
+  isBlockedByMe: boolean;
+  isBlockingMe: boolean;
+}
+interface MemberStatic {
+  buildFromSerializedData(serializedObject: Object): Member;
+}
+
+/**
+ * Channel
+ */
+type messageCallback = (message: UserMessage | FileMessage, error: Object) => void;
+type cancelUploadingFileMessageCallback = (isSuccess: boolean, error: Object) => void;
+type fileUploadprogressHandler = (event: Object) => void;
+interface BaseChannel {
+  url: string;
+  name: string;
+  coverUrl: string;
+  data: string;
+  customType: string;
+  createdAt: string;
+
+  isGroupChannel(): boolean;
+  isOpenChannel(): boolean;
+  serialize(): Object;
+
+  /** Message  */
+  createMessageListQuery(): MessageListQuery; /* Deprecated */
+  createPreviousMessageListQuery(): PreviousMessageListQuery;
+  getNextMessagesByTimestamp(ts: number, isInclusive: boolean, nextResultSize: number, shouldReverse:boolean, messageType: string, customType: string, callback: messageListCallback): void;
+  getPreviousMessagesByTimestamp(ts: number, isInclusive: boolean, prevtResultSize: number, shouldReverse:boolean, messageType: string, customType: string, callback: messageListCallback): void;
+  getPreviousAndNextMessagesByTimestamp(ts: number, prevtResultSize: number, nextResultSize: number, shouldReverse:boolean, messageType: string, customType: string, callback: messageListCallback): void;
+  getNextMessagesByID(messageId: number, isInclusive: boolean, nextResultSize: number, shouldReverse:boolean, messageType: string, customType: string, callback: messageListCallback): void;
+  getPreviousMessagesByID(messageId: number, isInclusive: boolean, prevtResultSize: number, shouldReverse:boolean, messageType: string, customType: string, callback: messageListCallback): void;
+  getPreviousAndNextMessagesByID(messageId: number, prevtResultSize: number, nextResultSize: number, shouldReverse:boolean, messageType: string, customType: string, callback: messageListCallback): void;
+
+  /** FileMessage  */
+  sendFileMessage(file: File, callback: messageCallback): FileMessage;
+  sendFileMessage(file: File, data: string, callback: messageCallback): FileMessage;
+  sendFileMessage(file: File, data: string, customType: string, callback: messageCallback): FileMessage;
+  sendFileMessage(file: File, data: string, customType: string, thumbnailSizes: Array<ThumbnailSize>, callback: messageCallback): FileMessage;
+  sendFileMessage(file: File, name: string, type: string, size: number, data: string, callback: messageCallback): FileMessage;
+  sendFileMessage(file: File, name: string, type: string, size: number, data: string, customType: string, callback: messageCallback): FileMessage;
+  sendFileMessage(file: File, name: string, type: string, size: number, data: string, customType: string, thumbnailSizes: Array<ThumbnailSize>, callback: messageCallback): FileMessage;
+
+  sendFileMessage(file: File, progressHandler: fileUploadprogressHandler, callback: messageCallback): FileMessage;
+  sendFileMessage(file: File, data: string, progressHandler: fileUploadprogressHandler, callback: messageCallback): FileMessage;
+  sendFileMessage(file: File, data: string, customType: string, progressHandler: fileUploadprogressHandler, callback: messageCallback): FileMessage;
+  sendFileMessage(file: File, data: string, customType: string, thumbnailSizes: Array<ThumbnailSize>, progressHandler: fileUploadprogressHandler, callback: messageCallback): FileMessage;
+  sendFileMessage(file: File, name: string, type: string, size: number, data: string, progressHandler: fileUploadprogressHandler, callback: messageCallback): FileMessage;
+  sendFileMessage(file: File, name: string, type: string, size: number, data: string, customType: string, progressHandler: fileUploadprogressHandler, callback: messageCallback): FileMessage;
+  sendFileMessage(file: File, name: string, type: string, size: number, data: string, customType: string, thumbnailSizes: Array<ThumbnailSize>, progressHandler: fileUploadprogressHandler, callback: messageCallback): FileMessage;
+
+  sendFileMessage(file: string, callback: messageCallback): FileMessage;
+  sendFileMessage(file: string, data: string, callback: messageCallback): FileMessage;
+  sendFileMessage(file: string, data: string, customType: string, callback: messageCallback): FileMessage;
+  sendFileMessage(file: string, name: string, type: string, size: number, data: string, callback: messageCallback): FileMessage;
+  sendFileMessage(file: string, name: string, type: string, size: number, data: string, customType: string, callback: messageCallback): FileMessage;
+
+  sendFileMessage(file: string, progressHandler: fileUploadprogressHandler, callback: messageCallback): FileMessage;
+  sendFileMessage(file: string, data: string, progressHandler: fileUploadprogressHandler, callback: messageCallback): FileMessage;
+  sendFileMessage(file: string, data: string, customType: string, progressHandler: fileUploadprogressHandler, callback: messageCallback): FileMessage;
+  sendFileMessage(file: string, name: string, type: string, size: number, data: string, progressHandler: fileUploadprogressHandler, callback: messageCallback): FileMessage;
+  sendFileMessage(file: string, name: string, type: string, size: number, data: string, customType: string, progressHandler: fileUploadprogressHandler, callback: messageCallback): FileMessage;
+
+  /** UserMessage  */
+  sendUserMessage(message: string, callback: messageCallback): UserMessage;
+  sendUserMessage(message: string, data: string, callback: messageCallback): UserMessage;
+  sendUserMessage(message: string, data: string, customType: string, callback: messageCallback): UserMessage;
+  sendUserMessage(message: string, data: string, customType: string, targetLanguages: Array<string>, callback: messageCallback): UserMessage;
+
+  /** Edit Message  */
+  updateFileMessage(messageId: number, data: string, customType: string, callback: messageCallback): void;
+  updateUserMessage(messageId: number, message: string, data: string, customType: string, callback: messageCallback): void;
+  deleteMessage(message: FileMessage|UserMessage, callback: commonCallback): void;
+  cancelUploadingFileMessage(messageReqId: string, callback: cancelUploadingFileMessageCallback): boolean;
+
+  /** MetaData */
+  createMetaData(metaDataMap: Object, callback: commonCallback): void;
+  updateMetaData(metaDataMap: Object, callback: commonCallback): void;
+  updateMetaData(metaDataMap: Object, upsert: boolean, callback: commonCallback): void;
+  getMetaData(keys: Array<string>, callback: commonCallback): void;
+  getAllMetaData(callback: commonCallback): void;
+  deleteMetaData(key: string, callback: commonCallback): void;
+  deleteAllMetaData(callback: commonCallback): void;
+
+  /** MetaCounter */
+  createMetaCounters(metaCounterMap: Object, callback: commonCallback): void;
+  updateMetaCounters(metaCounterMap: Object, callback: commonCallback): void;
+  updateMetaCounters(metaCounterMap: Object, upsert: boolean, callback: commonCallback): void;
+  increaseMetaCounters(metaCounterMap: Object, callback: commonCallback): void;
+  decreaseMetaCounters(metaCounterMap: Object, callback: commonCallback): void;
+  getMetaCounters(keys: Array<string>, callback: commonCallback): void;
+  getAllMetaCounters(callback: commonCallback): void;
+  deleteMetaCounter(key: string, callback: commonCallback): void;
+  deleteAllMetaCounters(callback: commonCallback): void;
+}
+
+type messageListCallback = (messageList: Array<UserMessage | FileMessage | AdminMessage>, error: Object) => void;
+interface MessageListQuery { /* Deprecated */
+  next(messageTimestamp: number, limit: number, reverse: boolean, callback: messageListCallback): void;
+  prev(messageTimestamp: number, limit: number, reverse: boolean, callback: messageListCallback): void;
+  load(messageTimestamp: number, prevLimit: number, nextLimit: number, reverse: boolean, callback: messageListCallback): void;
+}
+
+interface PreviousMessageListQuery {
+  hasMore: boolean;
+  isLoading: boolean;
+  load(limit: number, reverse: boolean, callback: messageListCallback): void;
+  load(limit: number, reverse: boolean, messageType: string, callback: messageListCallback): void;
+}
+
+/**
+ * OpenChannel
+ */
+type commonCallback = (response: Object, error: Object) => void;
+type openChannelCallback = (openChannel: OpenChannel, error: Object) => void;
 interface OpenChannel extends BaseChannel {
   isFrozen: boolean;
   participantCount: number;
   operators: Array<User>;
 
-  createChannel(callback: Function): void;
-  createChannel(name: string, coverUrlOrImageFile: string|File, data: string, callback: Function): void;
-  createChannel(name: string, coverUrlOrImageFile: string|File, data: string, operatorUserIds: Array<string>|string, callback: Function): void;
-  createChannel(name: string, coverUrlOrImageFile: string|File, data: string, operatorUserIds: Array<string>|string, customType: string, callback: Function): void;
-
-  createChannelWithOperatorUserIds(name: string, coverUrlOrImageFile: string|File, data: string, operatorUserIds: Array<string>|string, callback: Function): void;
-  createChannelWithOperatorUserIds(name: string, coverUrlOrImageFile: string|File, data: string, operatorUserIds: Array<string>|string, customType: string, callback: Function): void;
-
-  updateChannel(name: string, coverUrl: string, data: string, callback: Function): void;
-  updateChannel(name: string, coverUrl: string, data: string, operatorUserIds: Array<string>|string, callback: Function): void;
-  updateChannel(name: string, coverUrl: string, data: string, operatorUserIds: Array<string>|string, customType: string, callback: Function): void;
-
-  updateChannelWithOperatorUserIds(name: string, coverUrl: string, data: string, operatorUserIds: Array<string>|string, callback: Function): void;
-  updateChannelWithOperatorUserIds(name: string, coverUrl: string, data: string, operatorUserIds: Array<string>|string, customType: string, callback: Function): void;
-
-  enter(callback: Function): void;
-  exit(callback: Function): void;
-
-  getChannel(channelUrl: string, callback: Function): void;
-  getChannelWithoutCache(channelUrl: string, callback: Function): void;
-  refresh(callback: Function): void;
-
-  delete(callback: Function): void;
+  refresh(callback: openChannelCallback): void;
+  delete(callback: openChannelCallback): void;
+  enter(callback: openChannelCallback): void;
+  exit(callback: openChannelCallback): void;
 
   createParticipantListQuery(): UserListQuery;
   createMutedUserListQuery(): UserListQuery;
   createBannedUserListQuery(): UserListQuery;
 
-  banUser(user: User, callback: Function): void;
-  banUser(user: User, seconds: number, callback: Function): void;
-  banUserWithUserId(userId: string, callback: Function): void;
-  banUserWithUserId(userId: string, seconds: number, callback: Function): void;
+  updateChannel(name: string, coverUrl: string, data: string, callback: openChannelCallback): void;
+  updateChannel(name: string, coverUrl: string, data: string, operatorUserIds: Array<string>|string, callback: openChannelCallback): void;
+  updateChannel(name: string, coverUrl: string, data: string, operatorUserIds: Array<string>|string, customType: string, callback: openChannelCallback): void;
 
-  unbanUser(user: User, callback: Function): void;
-  unbanUserWithUserId(userId: string, callback: Function): void;
+  updateChannelWithOperatorUserIds(name: string, coverUrl: string, data: string, operatorUserIds: Array<string>|string, callback: openChannelCallback): void;
+  updateChannelWithOperatorUserIds(name: string, coverUrl: string, data: string, operatorUserIds: Array<string>|string, customType: string, callback: openChannelCallback): void;
 
-  muteUser(user: User, callback: Function): void;
-  muteUserWithUserId(userId: string, callback: Function): void;
+  banUser(user: User, callback: commonCallback): void;
+  banUser(user: User, seconds: number, callback: commonCallback): void;
+  banUserWithUserId(userId: string, callback: commonCallback): void;
+  banUserWithUserId(userId: string, seconds: number, callback: commonCallback): void;
+  unbanUser(user: User, callback: commonCallback): void;
+  unbanUserWithUserId(userId: string, callback: commonCallback): void;
 
-  unmuteUser(user: User, callback: Function): void;
-  unmuteUserWithUserId(userId: string, callback: Function): void;
+  muteUser(user: User, callback: commonCallback): void;
+  muteUserWithUserId(userId: string, callback: commonCallback): void;
+  unmuteUser(user: User, callback: commonCallback): void;
+  unmuteUserWithUserId(userId: string, callback: commonCallback): void;
 
   isOperator(user: User): boolean;
   isOperatorWithUserId(userId: string): boolean;
+}
+
+type userListQueryCallback = (userList: Array<User>, error: Object) => void;
+interface UserListQuery {
+  limit: number;
+  hasNext: boolean;
+  isLoading: boolean;
+  metaDataKey: string;
+  metaDataValues: Array<string>;
+
+  next(callback: userListQueryCallback): void;
+}
+
+interface OpenChannelStatic {
+  buildFromSerializedData(serializedObject: Object): OpenChannel;
+
+  getChannel(channelUrl: string, callback: openChannelCallback): void;
+  getChannelWithoutCache(channelUrl: string, callback: openChannelCallback): void;
+
+  createChannel(callback: openChannelCallback): void;
+  createChannel(name: string, coverUrlOrImageFile: string|File, data: string, callback: openChannelCallback): void;
+  createChannel(name: string, coverUrlOrImageFile: string|File, data: string, operatorUserIds: Array<string>|string, callback: openChannelCallback): void;
+  createChannel(name: string, coverUrlOrImageFile: string|File, data: string, operatorUserIds: Array<string>|string, customType: string, callback: openChannelCallback): void;
+
+  createChannelWithOperatorUserIds(name: string, coverUrlOrImageFile: string|File, data: string, operatorUserIds: Array<string>|string, callback: openChannelCallback): void;
+  createChannelWithOperatorUserIds(name: string, coverUrlOrImageFile: string|File, data: string, operatorUserIds: Array<string>|string, customType: string, callback: openChannelCallback): void;
 
   createOpenChannelListQuery(): OpenChannelListQuery;
 }
 
+type openChannelListQueryCallback = (openChannelList: Array<OpenChannel>, error: Object) => void;
 interface OpenChannelListQuery {
   limit: number;
   hasNext: boolean;
-  next(callback?: Function): void;
-}
+  nameKeyword: string;
+  urlKeyword: string;
+  customType: string;
 
-interface OpenChannelParticipantListQuery {
-  limit: number;
-  hasNext: boolean;
-  mutedOnly: boolean;
-  next(callback: Function): void;
+  next(callback: openChannelListQueryCallback): void;
 }
-
 
 /**
- *  Group Channel
+ * GroupChannel
  */
+type groupChannelCallback = (groupChannel: GroupChannel, error: Object) => void;
+type getPushPreferenceCallback = (isPushOn: boolean, error: Object) => void;
+interface GroupChannel extends BaseChannel {
+  isDistinct: boolean;
+  isPushEnabled: boolean;
+  lastMessage: UserMessage | FileMessage | AdminMessage;
+  unreadMessageCount: number;
+  members: Array<Member>;
+  memberCount: number;
+  inviter: User;
+
+  refresh(callback: groupChannelCallback): void;
+
+  updateChannel(name: string, coverUrlOrImageFile: string|File, data: string, callback: groupChannelCallback): void;
+  updateChannel(isDistinct: boolean, name: string, coverUrlOrImageFile: string|File, data: string, callback: groupChannelCallback): void;
+  updateChannel(isDistinct: boolean, name: string, coverUrlOrImageFile: string|File, data: string, customType: string, callback: groupChannelCallback): void;
+
+  resetMyHistory(callback?: commonCallback): void;
+
+  invite(users: Array<User>, callback: groupChannelCallback): void;
+  inviteWithUserIds(userIds: Array<string>, callback: groupChannelCallback): void;
+  acceptInvitation(callback: groupChannelCallback): void;
+  declineInvitation(callback: commonCallback): void;
+
+  leave(callback: commonCallback): void;
+
+  hide(callback: commonCallback): void;
+  hide(hidePreviousMessages: boolean, callback: commonCallback): void;
+
+  markAsRead(): void;
+  getReadReceipt(message: UserMessage | FileMessage | AdminMessage): number;
+  getReadStatus(): Object;
+
+  startTyping(): void;
+  endTyping(): void;
+  isTyping(): boolean;
+  getTypingMembers(): Array<Member>;
+
+  setPushPreference(pushOn: boolean, callback: commonCallback): void;
+  getPushPreference(callback: getPushPreferenceCallback): void;
+
+}
+
+type groupChannelCountCallback = (count: number, error: Object) => void;
+interface GroupChannelStatic {
+  buildFromSerializedData(serializedObject: Object): OpenChannel;
+
+  createMyGroupChannelListQuery(): GroupChannelListQuery;
+
+  getTotalUnreadMessageCount(callback: groupChannelCountCallback): void;
+  getTotalUnreadChannelCount(callback: groupChannelCountCallback): void;
+
+  createChannel(users: Array<User>, callback: groupChannelCallback): void;
+  createChannel(users: Array<User>, isDistinct: boolean, callback: groupChannelCallback): void;
+  createChannel(users: Array<User>, isDistinct: boolean, customType: string, callback: groupChannelCallback): void;
+  createChannel(users: Array<User>, isDistinct: boolean, name: string, coverUrlOrImageFile: string|File, data: string, callback: groupChannelCallback): void;
+  createChannel(users: Array<User>, isDistinct: boolean, name: string, coverUrlOrImageFile: string|File, data: string, customType: string, callback: groupChannelCallback): void;
+
+  createChannelWithUserIds(userIds: Array<string>, callback: groupChannelCallback): void;
+  createChannelWithUserIds(userIds: Array<string>, isDistinct: boolean, callback: groupChannelCallback): void;
+  createChannelWithUserIds(userIds: Array<string>, isDistinct: boolean, customType: string, callback: groupChannelCallback): void;
+  createChannelWithUserIds(userIds: Array<string>, isDistinct: boolean, name: string, coverUrlOrImageFile: string|File, data: string, callback: groupChannelCallback): void;
+  createChannelWithUserIds(userIds: Array<string>, isDistinct: boolean, name: string, coverUrlOrImageFile: string|File, data: string, customType: string, callback: groupChannelCallback): void;
+
+  getChannel(channelUrl: string, callback: groupChannelCallback): void;
+  getChannelWithoutCache(channelUrl: string, callback: groupChannelCallback): void;
+
+  markAsReadAll(callback: commonCallback): void;
+}
+
+type groupChannelListQueryCallback = (groupChannelList: Array<GroupChannel>, error: Object) => void;
 interface GroupChannelListQuery {
-  hasNext: boolean;
   limit: number;
+  hasNext: boolean;
+  isLoading: boolean;
   includeEmpty: boolean;
   order: string;
   userIdsFilter: Array<string>;
@@ -406,67 +497,5 @@ interface GroupChannelListQuery {
   queryType: 'AND'|'OR';
   nicknameContainsFilter: string;
   channelNameContainsFilter: string;
-  next(callback?: Function): void;
+  next(callback: groupChannelListQueryCallback): void;
 }
-
-
-interface GroupChannel extends BaseChannel {
-  isDistinct: boolean;
-  isPushEnabled: boolean;
-  unreadMessageCount: number;
-  inviter: User;
-  members: Array<Member>;
-  lastMessage: BaseMessage;
-  memberCount: number;
-
-  createChannel(users: Array<User>, callback: Function): void;
-  createChannel(users: Array<User>, isDistinct: boolean, callback: Function): void;
-  createChannel(users: Array<User>, isDistinct: boolean, customType: string, callback: Function): void;
-  createChannel(users: Array<User>, isDistinct: boolean, name: string, coverUrlOrImageFile: string|File, data: string, callback: Function): void;
-  createChannel(users: Array<User>, isDistinct: boolean, name: string, coverUrlOrImageFile: string|File, data: string, customType: string, callback: Function): void;
-
-  createChannelWithUserIds(userIds: Array<string>, callback: Function): void;
-  createChannelWithUserIds(userIds: Array<string>, isDistinct: boolean, callback: Function): void;
-  createChannelWithUserIds(userIds: Array<string>, isDistinct: boolean, customType: string, callback: Function): void;
-  createChannelWithUserIds(userIds: Array<string>, isDistinct: boolean, name: string, coverUrlOrImageFile: string|File, data: string, callback: Function): void;
-  createChannelWithUserIds(userIds: Array<string>, isDistinct: boolean, name: string, coverUrlOrImageFile: string|File, data: string, customType: string, callback: Function): void;
-
-  updateChannel(name: string, coverUrlOrImageFile: string|File, data: string, callback: Function): void;
-  updateChannel(isDistinct: boolean, name: string, coverUrlOrImageFile: string|File, data: string, callback: Function): void;
-  updateChannel(isDistinct: boolean, name: string, coverUrlOrImageFile: string|File, data: string, customType: string, callback: Function): void;
-
-  getChannel(channelUrl: string, callback: Function): void;
-  getChannelWithoutCache(channelUrl: string, callback: Function): void;
-  refresh(callback: Function): void;
-
-  invite(users: Array<User>, callback: Function): void;
-  inviteWithUserIds(userIds: Array<string>, callback: Function): void;
-  leave(callback: Function): void;
-  hide(callback: Function): void;
-  hide(hidePreviousMessages: boolean, callback: Function): void;
-
-  acceptInvitation(callback: Function): void;
-  declineInvitation(callback: Function): void;
-
-  markAsRead(): void;
-  markAsReadAll(callback: Function): void;
-
-  getReadReceipt(message: BaseMessage): number;
-  getReadStatus(): Object;
-
-  startTyping(): void;
-  endTyping(): void;
-  isTyping(): boolean;
-  getTypingMembers(): Array<Member>;
-  getTotalUnreadMessageCount(callback: Function): void;
-  getTotalUnreadChannelCount(callback: Function): void;
-
-  createMyGroupChannelListQuery(): GroupChannelListQuery;
-
-  setPushPreference(pushOn: boolean, callback: Function): void;
-  getPushPreference(callback: Function): void;
-
-  resetMyHistory(callback?: Function): void;
-}
-
-declare var SendBird: SendBirdFactory;

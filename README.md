@@ -29,10 +29,17 @@ SendBird-SDK-JavaScript
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## Upgrading to v3.0.40
+## Upgrading to v3.0.41
  If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
- * Added `serialize()` and `buildFromSerializedData()` in `User`, `Message` and `Channel`.  
- * Added `getChannelCount()` and `resetMyHistory()` in `GroupChannel`.  
+ * Updated TypeScript Definition file(SendBird.d.ts).  
+> **NOTE**  
+ Install via NPM and import like below in your TypeScript file:   
+ ```javascript  
+ import * as SendBird from 'SendBird';
+ var sb = new SendBird({'appId': 'USER_APP_ID'});
+ // do something...
+ ```  
+ If you have trouble importing `SendBird`, please check your `tsconfig.json` file and change the value of `"allowSyntheticDefaultImports"` to `true` in `compilerOptions`.     
 
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    

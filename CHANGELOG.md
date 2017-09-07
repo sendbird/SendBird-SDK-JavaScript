@@ -1,6 +1,18 @@
 Changelog
 =========
 
+## v3.0.41
+ * Updated TypeScript Definition file(SendBird.d.ts).  
+> **NOTE**  
+ Install via NPM and import like below in your TypeScript file:   
+ ```javascript  
+ import * as SendBird from 'SendBird';
+ var sb = new SendBird({'appId': 'USER_APP_ID'});
+ // do something...
+ ```  
+ If you have trouble importing `SendBird`, please check your `tsconfig.json` file and change the value of `"allowSyntheticDefaultImports"` to `true` in `compilerOptions`.  
+
+
 ## v3.0.40
  * Added `serialize()` and `buildFromSerializedData()` in `User`, `Message` and `Channel`.  
  * Added `getChannelCount()` and `resetMyHistory()` in `GroupChannel`.  
