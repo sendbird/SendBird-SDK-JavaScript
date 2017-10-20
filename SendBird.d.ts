@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.41
+ * Type Definitions for SendBird SDK v3.0.42
  * homepage: https://sendbird.com/
  * git: https://github.com/smilefam/SendBird-SDK-JavaScript
  */
@@ -233,6 +233,13 @@ interface MemberStatic {
 type messageCallback = (message: UserMessage | FileMessage, error: Object) => void;
 type cancelUploadingFileMessageCallback = (isSuccess: boolean, error: Object) => void;
 type fileUploadprogressHandler = (event: Object) => void;
+type messageChangeLogs = {
+  updatedMessages: Array<UserMessage|FileMessage|AdminMessage>,
+  deletedMessageIds: Array<string>,
+  hasMore: boolean,
+  token: string
+}
+type getMessageChangeLogsByTokenHandler = (data: messageChangeLogs, error: Object) => void;
 interface BaseChannel {
   url: string;
   name: string;
@@ -244,6 +251,9 @@ interface BaseChannel {
   isGroupChannel(): boolean;
   isOpenChannel(): boolean;
   serialize(): Object;
+
+  getMessageChangeLogsByToken(callback: getMessageChangeLogsByTokenHandler): void;
+  getMessageChangeLogsByToken(token: string, callback: getMessageChangeLogsByTokenHandler): void;
 
   /** Message  */
   createMessageListQuery(): MessageListQuery; /* Deprecated */

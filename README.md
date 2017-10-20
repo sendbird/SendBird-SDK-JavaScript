@@ -29,17 +29,9 @@ SendBird-SDK-JavaScript
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## Upgrading to v3.0.41
+## Upgrading to v3.0.42
  If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
- * Updated TypeScript Definition file(SendBird.d.ts).  
-> **NOTE**  
- Install via NPM and import like below in your TypeScript file:   
- ```javascript  
- import * as SendBird from 'SendBird';
- var sb = new SendBird({'appId': 'USER_APP_ID'});
- // do something...
- ```  
- If you have trouble importing `SendBird`, please check your `tsconfig.json` file and change the value of `"allowSyntheticDefaultImports"` to `true` in `compilerOptions`.     
+ * Added `getMessageChangeLogsByToken()` in `Channel`.  
 
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    

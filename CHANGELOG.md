@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## v3.0.42
+ * Added `getMessageChangeLogsByToken()` in `Channel`.  
+
 ## v3.0.41
  * Updated TypeScript Definition file(SendBird.d.ts).  
 > **NOTE**  
