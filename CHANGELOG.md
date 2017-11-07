@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## v3.0.43
+ * Added `isHidden` in `GroupChannel`.  
+ 
 ## v3.0.42
  * Added `getMessageChangeLogsByToken()` in `Channel`.  
 

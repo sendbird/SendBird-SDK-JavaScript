@@ -428,6 +428,7 @@ interface OpenChannelListQuery {
 type groupChannelCallback = (groupChannel: GroupChannel, error: Object) => void;
 type getPushPreferenceCallback = (isPushOn: boolean, error: Object) => void;
 interface GroupChannel extends BaseChannel {
+  isHidden: boolean;
   isDistinct: boolean;
   isPushEnabled: boolean;
   lastMessage: UserMessage | FileMessage | AdminMessage;
@@ -470,7 +471,7 @@ interface GroupChannel extends BaseChannel {
 
 type groupChannelCountCallback = (count: number, error: Object) => void;
 interface GroupChannelStatic {
-  buildFromSerializedData(serializedObject: Object): OpenChannel;
+  buildFromSerializedData(serializedObject: Object): GroupChannel;
 
   createMyGroupChannelListQuery(): GroupChannelListQuery;
 
