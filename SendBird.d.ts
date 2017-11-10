@@ -121,6 +121,7 @@ interface ChannelHandler {
   onMetaCountersCreated(channel: GroupChannel|OpenChannel, metaCounter: Object): void;
   onMetaCountersUpdated(channel: GroupChannel|OpenChannel, metaCounter: Object): void;
   onMetaCountersDeleted(channel: GroupChannel|OpenChannel, metaCounter: Array<string>): void;
+  onChannelHidden(channel: GroupChannel): void;
 }
 
 interface ConnectionHandlerStatic {
@@ -508,5 +509,6 @@ interface GroupChannelListQuery {
   queryType: 'AND'|'OR';
   nicknameContainsFilter: string;
   channelNameContainsFilter: string;
+  customTypeFilter: string;
   next(callback: groupChannelListQueryCallback): void;
 }

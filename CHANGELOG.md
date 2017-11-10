@@ -1,6 +1,10 @@
 Changelog
 =========
 
+## v3.0.44
+ * Added `customTypeFilter` in `createMyGroupChannelListQuery`.  
+ * Added `onChannelHidden` in `ChannelHandler`. 
+
 ## v3.0.43
  * Added `isHidden` in `GroupChannel`.  
  
