@@ -29,10 +29,9 @@ SendBird-SDK-JavaScript
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## Upgrading to v3.0.44
+## Upgrading to v3.0.45
  If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
- * Added `customTypeFilter` in `createMyGroupChannelListQuery`.   
- * Added `onChannelHidden` in `ChannelHandler`.    
+ * Minor bug fixes.      
 
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    

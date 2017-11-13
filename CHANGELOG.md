@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## v3.0.45
+ * Minor bug fixes.      
+ 
 ## v3.0.44
  * Added `customTypeFilter` in `createMyGroupChannelListQuery`.  
  * Added `onChannelHidden` in `ChannelHandler`. 
