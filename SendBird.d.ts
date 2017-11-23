@@ -5,9 +5,7 @@
  */
 
 declare const SendBird: SendBirdStatic;
-declare module 'SendBird' {
-  export = SendBird;
-}
+export = SendBird;
 
 type userCallback = (user: User, error: Object) => void;
 type pushSettingCallback = (response: string, error: Object) => void;
@@ -512,5 +510,3 @@ interface GroupChannelListQuery {
   customTypeFilter: string;
   next(callback: groupChannelListQueryCallback): void;
 }
-
-export default SendBird;
