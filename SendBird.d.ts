@@ -512,3 +512,5 @@ interface GroupChannelListQuery {
   customTypeFilter: string;
   next(callback: groupChannelListQueryCallback): void;
 }
+
+export default SendBird;
