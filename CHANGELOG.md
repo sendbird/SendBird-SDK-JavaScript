@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## v3.0.47
+ * Update TypeScript Definition file(SendBird.d.ts).  
+
 ## v3.0.46
  * Minor bug fixes.  
 
