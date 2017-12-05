@@ -81,7 +81,7 @@ interface SendBirdInstance {
   setDoNotDisturb(doNotDisturbOn: boolean, startHour: number, startMin: number, endHour: number, endMin: number, timezone: string, callback?: commonCallback): void;
   getDoNotDisturb(callback: commonCallback): void;
 
-  // Background/Foreground Appstate for push notifications in React Native / Ionic
+  // Background/foreground app state for push notifications
   setBackgroundState(): void;
   setForegroundState(): void;
 
