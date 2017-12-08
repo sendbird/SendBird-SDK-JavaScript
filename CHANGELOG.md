@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## v3.0.48
+ * Added `isActive` in `User`.
+
 ## v3.0.47
  * Update TypeScript Definition file(SendBird.d.ts).  
 

@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.42
+ * Type Definitions for SendBird SDK v3.0.48
  * homepage: https://sendbird.com/
  * git: https://github.com/smilefam/SendBird-SDK-JavaScript
  */
@@ -204,6 +204,7 @@ interface User {
   metaData: Object;
   connectionStatus: string;
   lastSeenAt: string;
+  isActive: boolean;
 
   createMetaData(metaDataMap: Object, callback: commonCallback): void;
   updateMetaData(metaDataMap: Object, callback: commonCallback): void;
