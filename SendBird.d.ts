@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.48
+ * Type Definitions for SendBird SDK v3.0.49
  * homepage: https://sendbird.com/
  * git: https://github.com/smilefam/SendBird-SDK-JavaScript
  */
@@ -9,6 +9,20 @@ export = SendBird;
 
 type userCallback = (user: User, error: Object) => void;
 type pushSettingCallback = (response: string, error: Object) => void;
+
+type getFriendChangeLogs = {
+  addedUsers: Array<User>,
+  updatedUsers: Array<User>,
+  deletedUserIds: Array<string>,
+  hasMore: boolean,
+  token: string
+}
+type getFriendChangeLogsByTokenHandler = (data: getFriendChangeLogs, error: Object) => void;
+
+interface DiscoveryObject {
+  friendDiscoveryKey: string,
+  friendName?: string
+}
 
 interface SendBirdStatic {
   version: number;
@@ -24,6 +38,7 @@ interface SendBirdInstance {
   FileMessage: FileMessageStatic;
   AdminMessage: AdminMessageStatic;
 
+  UserEventHandler: UserEventHandlerStatic;
   ChannelHandler: ChannelHandlerStatic;
   ConnectionHandler: ConnectionHandlerStatic;
 
@@ -48,6 +63,10 @@ interface SendBirdInstance {
   addConnectionHandler(id: string, handler: ConnectionHandler): void;
   removeConnectionHandler(id: string): void;
   removeAllConnectionHandlers(): void;
+
+  addUserEventHandler(id: string, handler: UserEventHandler): void;
+  removeUserEventHandler(id: string): void;
+  removeAllUserEventHandler(): void;
 
   createUserListQuery(): UserListQuery;
   createUserListQuery(userIds: Array<string>): UserListQuery;
@@ -88,6 +107,33 @@ interface SendBirdInstance {
   // State change should be disabled when image picker is loaded in Android.
   disableStateChange(): void;
   enableStateChange(): void;
+
+  uploadFriendDiscoveries(discoveries: Array<DiscoveryObject>, callback: commonCallback): void;
+  deleteFriendDiscovery(discoveryKey: string, callback: commonCallback): void;
+  deleteFriendDiscoveries(discoveryKeys: Array<string>, callback: commonCallback): void;
+
+  getFriendChangeLogsByToken(callback: getFriendChangeLogsByTokenHandler): void;
+  getFriendChangeLogsByToken(token: string, callback: getFriendChangeLogsByTokenHandler): void;
+
+  addFriends(userIds: Array<string>, callback: userListQueryCallback): void
+  deleteFriend(userId: string, callback: commonCallback): void
+  deleteFriends(userIds: Array<string>, callback: commonCallback): void
+
+  createFriendListQuery(): FriendListQuery;
+}
+
+interface FriendListQuery {
+  hasMore: boolean;
+  isLoading: boolean;
+  limit: number;
+  next(callback: userListQueryCallback): void;
+}
+
+interface UserEventHandlerStatic {
+  new(): UserEventHandler;
+}
+interface UserEventHandler {
+  onFriendsDiscovered(users: Array<User>): void;
 }
 
 interface ChannelHandlerStatic {
@@ -205,7 +251,10 @@ interface User {
   connectionStatus: string;
   lastSeenAt: string;
   isActive: boolean;
+  friendDiscoveryKey: string|null,
+  friendName: string|null,
 
+  getOriginalProfileUrl(): string;
   createMetaData(metaDataMap: Object, callback: commonCallback): void;
   updateMetaData(metaDataMap: Object, callback: commonCallback): void;
   updateMetaData(metaDataMap: Object, upsert: boolean, callback: commonCallback): void;
@@ -508,6 +557,7 @@ interface GroupChannelListQuery {
   queryType: 'AND'|'OR';
   nicknameContainsFilter: string;
   channelNameContainsFilter: string;
-  customTypeFilter: string;
+  customTypeFilter: string;  // Deprecated
+  customTypesFilter: Array<string>;
   next(callback: groupChannelListQueryCallback): void;
 }

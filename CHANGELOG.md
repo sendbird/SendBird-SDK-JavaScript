@@ -1,6 +1,21 @@
 Changelog
 =========
 
+## v3.0.49
+ * Added `customTypesFilter` in `GroupChannelListQuery` to search groupChannel.  
+ * Added `getOriginalProfileUrl()` in `User` for getting original profile image.  
+ * Added `Friend` feature.
+   * uploadFriendDiscoveries(): add friend using discovery key. 
+   * deleteFriendDiscovery() / deleteFriendDiscoveries(): delete friend's discovery key. 
+   * addFriends(): add friend using friend's userID. 
+   * deleteFriend() / deleteFriends(): delete friend using friend's userID.  
+   * createFriendListQuery(): create object for getting friend list. 
+   * getFriendChangeLogsByToken(): get friend relation changed log. 
+   * addUserEventHandler(): add handler for receiving user event. 
+   * removeUserEventHandler() / removeAllUserEventHandler(): remove user event handler.  
+   * UserEventHandler: user event handler object. 
+ * From now, even when you call `connect()` before the previous `connect()` finishes, all of them get called back for the connection establishment result at the same time.  
+
 ## v3.0.48
  * Added `isActive` in `User`.
 
