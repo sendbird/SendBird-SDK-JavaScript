@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.49
+ * Type Definitions for SendBird SDK v3.0.50
  * homepage: https://sendbird.com/
  * git: https://github.com/smilefam/SendBird-SDK-JavaScript
  */
@@ -11,7 +11,6 @@ type userCallback = (user: User, error: Object) => void;
 type pushSettingCallback = (response: string, error: Object) => void;
 
 type getFriendChangeLogs = {
-  addedUsers: Array<User>,
   updatedUsers: Array<User>,
   deletedUserIds: Array<string>,
   hasMore: boolean,
@@ -120,6 +119,9 @@ interface SendBirdInstance {
   deleteFriends(userIds: Array<string>, callback: commonCallback): void
 
   createFriendListQuery(): FriendListQuery;
+
+  markAsReadAll(callback: commonCallback): void;
+  markAsReadWithChannelUrls(channelUrls: Array<string>, callback:commonCallback): void;
 }
 
 interface FriendListQuery {
@@ -542,7 +544,7 @@ interface GroupChannelStatic {
   getChannel(channelUrl: string, callback: groupChannelCallback): void;
   getChannelWithoutCache(channelUrl: string, callback: groupChannelCallback): void;
 
-  markAsReadAll(callback: commonCallback): void;
+  markAsReadAll(callback: commonCallback): void;  // Deprecated
 }
 
 type groupChannelListQueryCallback = (groupChannelList: Array<GroupChannel>, error: Object) => void;

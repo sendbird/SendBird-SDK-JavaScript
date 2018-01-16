@@ -1,6 +1,12 @@
 Changelog
 =========
 
+## v3.0.50
+ * Added `markAsReadWithChannelUrls()` in `SendBird` to simultaneously mark as read multiple channels the logged in user has joined.  
+ * Added `markAsReadAll()` in `SendBird` to mark as read all channels the logged in user has joined.  
+ * Deprecated `markAsReadAll()` in `GroupChannel`.
+ * From now, if you pass param as `true` when you call `hide()`, the channel's unreadMessageCount set to 0.  
+
 ## v3.0.49
  * Added `customTypesFilter` in `GroupChannelListQuery` to search groupChannel.  
  * Added `getOriginalProfileUrl()` in `User` for getting original profile image.  
