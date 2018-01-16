@@ -39,12 +39,9 @@ If you have trouble importing `SendBird`, please check your `tsconfig.json` file
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## Upgrading to v3.0.50
+## Upgrading to v3.0.51
  If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
- * Added `markAsReadWithChannelUrls()` in `SendBird` to simultaneously mark as read multiple channels the logged in user has joined.  
- * Added `markAsReadAll()` in `SendBird` to mark as read all channels the logged in user has joined.  
- * Deprecated `markAsReadAll()` in `GroupChannel`.
- * From now, if you pass param as `true` when you call `hide()`, the channel's unreadMessageCount set to 0.      
+ * Minor bugfix for `markAsReadWithChannelUrls()`.      
  
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    

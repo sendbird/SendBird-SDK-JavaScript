@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## v3.0.51
+ * Minor bugfix for `markAsReadWithChannelUrls()`.  
+
 ## v3.0.50
  * Added `markAsReadWithChannelUrls()` in `SendBird` to simultaneously mark as read multiple channels the logged in user has joined.  
  * Added `markAsReadAll()` in `SendBird` to mark as read all channels the logged in user has joined.  
