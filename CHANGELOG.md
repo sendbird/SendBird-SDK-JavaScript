@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## v3.0.52
+ * Added `channelUrlsFilter` in `GroupChannelListQuery`.  
+ 
 ## v3.0.51
  * Minor bugfix for `markAsReadWithChannelUrls()`.  
 

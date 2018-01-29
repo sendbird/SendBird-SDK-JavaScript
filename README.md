@@ -39,9 +39,9 @@ If you have trouble importing `SendBird`, please check your `tsconfig.json` file
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## Upgrading to v3.0.51
+## Upgrading to v3.0.52
  If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
- * Minor bugfix for `markAsReadWithChannelUrls()`.      
+ * Added `channelUrlsFilter` in `GroupChannelListQuery`.      
  
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    

@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.51
+ * Type Definitions for SendBird SDK v3.0.52
  * homepage: https://sendbird.com/
  * git: https://github.com/smilefam/SendBird-SDK-JavaScript
  */
@@ -561,5 +561,6 @@ interface GroupChannelListQuery {
   channelNameContainsFilter: string;
   customTypeFilter: string;  // Deprecated
   customTypesFilter: Array<string>;
+  channelUrlsFilter: Array<string>;
   next(callback: groupChannelListQueryCallback): void;
 }
