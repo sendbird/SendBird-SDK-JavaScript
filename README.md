@@ -39,9 +39,43 @@ If you have trouble importing `SendBird`, please check your `tsconfig.json` file
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## Upgrading to v3.0.52
+## Upgrading to v3.0.53
  If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
- * Added `channelUrlsFilter` in `GroupChannelListQuery`.      
+ * Deprecated `userIdsFilter` in `GroupChannelListQuery`.
+ * Deprecated `userIdsFilterExactMatch` in `GroupChannelListQuery`.
+ * Deprecated `queryType` in `GroupChannelListQuery`.
+ * Added `userIdsExactFilter` in `GroupChannelListQuery` to replace `userIdsFilter` and `userIdsFilterExactMatch`.  
+ * Added `userIdsIncludeFilter` in `GroupChannelListQuery` to replace `userIdsFilter` and `userIdsFilterExactMatch`.    
+ * Added `userIdsIncludeFilterQueryType` in `GroupChannelListQuery` to replace `queryType`.  
+ * Added `customTypeStartsWithFilter` in `GroupChannelListQuery` to search channels based on `customType`.  
+ * Added `superChannelFilter` in `GroupChannelListQuery` to search channels that `isSuper` is true.  
+ * Added `publicChannelFilter` in `GroupChannelListQuery` to search channels that `isPublic` is true.
+ * Added `GroupChannelParams` feature.
+   * This is used in `createChannel()` and `updateChannel()` of GroupChannel.  
+   * isDistinct: set isDistinct on creation or update.  
+   * isSuper: set isSuper on creation.  
+   * isPublic: set isPublic on creation or update.  
+   * channelUrl: set url of channel on creation.  
+   * name: set name on creation or update.  
+   * data: set data on creation or update.  
+   * customType: set customType on creation or update.  
+   * coverUrl: set coverUrl on creation or update.  
+   * coverImage: set coverUrl using file on creation or update.  
+   * addUser(): add user to be invited using user instance.    
+   * addUsers(): add user to be invited using user instance array.  
+   * addUserId(): add user to be invited using userId.  
+   * addUserIds(): add user to be invited using userId array.
+ * Added `PublicGroupChannelListQuery` in `SendBird` to search channels that `isPublic` is true.  
+   * limit: set list count for result.  
+   * includeEmpty: set whether to get channel that conversation is empty.
+   * order: set order of result.  
+   * channelNameContainsFilter: set channelName to get channels based on.  
+   * channelUrlsFilter: set channelUrls to get channels based on.  
+   * customTypesFilter: set customTypes to get channels based on.  
+   * customTypeStartsWithFilter: set to get channels starting with the passed customType.  
+   * superChannelFilter: set whether to fetch all channels, super channels only, or non-super channels only.  
+   * membershipFilter: set whether to fetch according to the current user state of join.  
+   * next(): get channel list.        
  
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    

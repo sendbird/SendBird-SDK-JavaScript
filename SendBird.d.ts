@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.52
+ * Type Definitions for SendBird SDK v3.0.53
  * homepage: https://sendbird.com/
  * git: https://github.com/smilefam/SendBird-SDK-JavaScript
  */
@@ -40,6 +40,8 @@ interface SendBirdInstance {
   UserEventHandler: UserEventHandlerStatic;
   ChannelHandler: ChannelHandlerStatic;
   ConnectionHandler: ConnectionHandlerStatic;
+
+  GroupChannelParams: GroupChannelParams;
 
   connect(userId: string, callback?: userCallback): void;
   connect(userId: string, apiHost: string, wsHost: string, callback?: userCallback): void;
@@ -476,11 +478,30 @@ interface OpenChannelListQuery {
 /**
  * GroupChannel
  */
+interface GroupChannelParams {
+  isDistinct: boolean;
+  isSuper: boolean;
+  isPublic: boolean;
+  channelUrl: string;
+  name: string;
+  data: string;
+  customType: string;
+  coverUrl: string;
+  coverImage: File;
+
+  addUser(user: User): void;
+  addUsers(user: Array<User>): void;
+  addUserId(userId: string): void;
+  addUserIds(userId: Array<string>): void;
+}
+
 type groupChannelCallback = (groupChannel: GroupChannel, error: Object) => void;
 type getPushPreferenceCallback = (isPushOn: boolean, error: Object) => void;
 interface GroupChannel extends BaseChannel {
   isHidden: boolean;
   isDistinct: boolean;
+  isSuper: boolean;
+  isPublic: boolean;
   isPushEnabled: boolean;
   lastMessage: UserMessage | FileMessage | AdminMessage;
   unreadMessageCount: number;
@@ -490,6 +511,7 @@ interface GroupChannel extends BaseChannel {
 
   refresh(callback: groupChannelCallback): void;
 
+  updateChannel(groupChannelParams: GroupChannelParams, callback: groupChannelCallback): void;
   updateChannel(name: string, coverUrlOrImageFile: string|File, data: string, callback: groupChannelCallback): void;
   updateChannel(isDistinct: boolean, name: string, coverUrlOrImageFile: string|File, data: string, callback: groupChannelCallback): void;
   updateChannel(isDistinct: boolean, name: string, coverUrlOrImageFile: string|File, data: string, customType: string, callback: groupChannelCallback): void;
@@ -501,6 +523,7 @@ interface GroupChannel extends BaseChannel {
   acceptInvitation(callback: groupChannelCallback): void;
   declineInvitation(callback: commonCallback): void;
 
+  join(callback: groupChannelCallback): void;
   leave(callback: commonCallback): void;
 
   hide(callback: commonCallback): void;
@@ -525,10 +548,12 @@ interface GroupChannelStatic {
   buildFromSerializedData(serializedObject: Object): GroupChannel;
 
   createMyGroupChannelListQuery(): GroupChannelListQuery;
+  createPublicGroupChannelListQuery(): PublicGroupChannelListQuery;
 
   getTotalUnreadMessageCount(callback: groupChannelCountCallback): void;
   getTotalUnreadChannelCount(callback: groupChannelCountCallback): void;
 
+  createChannel(groupChannelParams: GroupChannelParams, callback: groupChannelCallback): void;
   createChannel(users: Array<User>, callback: groupChannelCallback): void;
   createChannel(users: Array<User>, isDistinct: boolean, callback: groupChannelCallback): void;
   createChannel(users: Array<User>, isDistinct: boolean, customType: string, callback: groupChannelCallback): void;
@@ -553,14 +578,35 @@ interface GroupChannelListQuery {
   hasNext: boolean;
   isLoading: boolean;
   includeEmpty: boolean;
-  order: string;
-  userIdsFilter: Array<string>;
-  userIdsFilterExactMatch: boolean;
-  queryType: 'AND'|'OR';
+  order: 'latest_last_message' | 'chronological' | 'channel_name_alphabetical';
+  userIdsFilter: Array<string>; // Deprecated
+  userIdsFilterExactMatch: boolean; // Deprecated
+  queryType: 'AND'|'OR'; // Deprecated
+  userIdsExactFilter: Array<string>;
+  userIdsIncludeFilter: Array<string>;
+  userIdsIncludeFilterQueryType: 'AND'|'OR';
   nicknameContainsFilter: string;
   channelNameContainsFilter: string;
   customTypeFilter: string;  // Deprecated
   customTypesFilter: Array<string>;
+  customTypeStartsWithFilter: string;
   channelUrlsFilter: Array<string>;
+  superChannelFilter: 'all' | 'super' | 'nonsuper';
+  publicChannelFilter: 'all' | 'public' | 'private';
+  next(callback: groupChannelListQueryCallback): void;
+}
+
+interface PublicGroupChannelListQuery {
+  limit: number;
+  hasNext: boolean;
+  isLoading: boolean;
+  includeEmpty: boolean;
+  order: 'chronological' | 'channel_name_alphabetical';
+  channelNameContainsFilter: string;
+  channelUrlsFilter: Array<string>;
+  customTypesFilter: Array<string>;
+  customTypeStartsWithFilter: string;
+  superChannelFilter: 'all' | 'super' | 'nonsuper';
+  membershipFilter: 'all' | 'joined';
   next(callback: groupChannelListQueryCallback): void;
 }
