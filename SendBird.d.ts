@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.53
+ * Type Definitions for SendBird SDK v3.0.54
  * homepage: https://sendbird.com/
  * git: https://github.com/smilefam/SendBird-SDK-JavaScript
  */
@@ -153,12 +153,12 @@ interface ChannelHandler {
   onUserLeft(channel: GroupChannel, user: User): void;
   onUserEntered(channel: OpenChannel, user: User): void;
   onUserExited(channel: OpenChannel, user: User): void;
-  onUserMuted(channel: OpenChannel, user: User): void;
-  onUserUnmuted(channel: OpenChannel, user: User): void;
-  onUserBanned(channel: OpenChannel, user: User): void;
-  onUserUnbanned(channel: OpenChannel, user: User): void;
-  onChannelFrozen(channel: OpenChannel): void;
-  onChannelUnfrozen(channel: OpenChannel): void;
+  onUserMuted(channel: GroupChannel|OpenChannel, user: User): void;
+  onUserUnmuted(channel: GroupChannel|OpenChannel, user: User): void;
+  onUserBanned(channel: GroupChannel|OpenChannel, user: User): void;
+  onUserUnbanned(channel: GroupChannel|OpenChannel, user: User): void;
+  onChannelFrozen(channel: GroupChannel|OpenChannel): void;
+  onChannelUnfrozen(channel: GroupChannel|OpenChannel): void;
   onChannelChanged(channel: OpenChannel|GroupChannel): void;
   onChannelDeleted(channelUrl: string): void;
   onUserReceivedInvitation(channel: GroupChannel, inviter: User, invitees: Array<Member>): void;
@@ -299,6 +299,7 @@ interface BaseChannel {
   coverUrl: string;
   data: string;
   customType: string;
+  isFrozen: boolean;
   createdAt: string;
 
   isGroupChannel(): boolean;
@@ -400,7 +401,6 @@ interface PreviousMessageListQuery {
 type commonCallback = (response: Object, error: Object) => void;
 type openChannelCallback = (openChannel: OpenChannel, error: Object) => void;
 interface OpenChannel extends BaseChannel {
-  isFrozen: boolean;
   participantCount: number;
   operators: Array<User>;
 
@@ -488,6 +488,8 @@ interface GroupChannelParams {
   customType: string;
   coverUrl: string;
   coverImage: File;
+  operators: Array<User>;
+  operatorUserIds: Array<string>;
 
   addUser(user: User): void;
   addUsers(user: Array<User>): void;
@@ -541,6 +543,21 @@ interface GroupChannel extends BaseChannel {
   setPushPreference(pushOn: boolean, callback: commonCallback): void;
   getPushPreference(callback: getPushPreferenceCallback): void;
 
+  createMemberListQuery(): GroupChannelMemberListQuery;
+  createBannedUserListQuery(): UserListQuery;
+
+  banUser(user: User, seconds: number, description: string, callback: commonCallback): void;
+  banUserWithUserId(userId: string, seconds: number, description: string, callback: commonCallback): void;
+  unbanUser(User: User, callback: commonCallback): void;
+  unbanUserWithUserId(userId: string, callback: commonCallback): void;
+
+  muteUser(user: User, callback: commonCallback): void;
+  muteUserWithUserId(userId: string, callback: commonCallback): void;
+  unmuteUser(user: User, callback: commonCallback): void;
+  unmuteUserWithUserId(userId: string, callback: commonCallback): void;
+
+  freeze(callback: commonCallback): void;
+  unfreeze(callback: commonCallback): void;
 }
 
 type groupChannelCountCallback = (count: number, error: Object) => void;
@@ -570,6 +587,16 @@ interface GroupChannelStatic {
   getChannelWithoutCache(channelUrl: string, callback: groupChannelCallback): void;
 
   markAsReadAll(callback: commonCallback): void;  // Deprecated
+}
+
+type groupChannelMemberListQueryCallback = (groupChannelList: Array<Member>, error: Object) => void;
+interface GroupChannelMemberListQuery {
+  limit: number;
+  hasNext: boolean;
+  isLoading: boolean;
+  mutedMemberFilter: 'all' | 'muted' | 'unmuted';
+  operatorFilter: 'all' | 'operator' | 'nonoperator';
+  next(callback: groupChannelMemberListQueryCallback): void;
 }
 
 type groupChannelListQueryCallback = (groupChannelList: Array<GroupChannel>, error: Object) => void;

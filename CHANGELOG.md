@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## v3.0.54
+ * Minor bugfix for `UserMessage` and `FileMessage`.  
+
 ## v3.0.53
  * Deprecated `userIdsFilter` in `GroupChannelListQuery`.
  * Deprecated `userIdsFilterExactMatch` in `GroupChannelListQuery`.
