@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.54
+ * Type Definitions for SendBird SDK v3.0.55
  * homepage: https://sendbird.com/
  * git: https://github.com/smilefam/SendBird-SDK-JavaScript
  */
@@ -42,6 +42,8 @@ interface SendBirdInstance {
   ConnectionHandler: ConnectionHandlerStatic;
 
   GroupChannelParams: GroupChannelParams;
+  UserMessageParams: UserMessageParams;
+  FileMessageParams: FileMessageParams;
 
   connect(userId: string, callback?: userCallback): void;
   connect(userId: string, apiHost: string, wsHost: string, callback?: userCallback): void;
@@ -144,8 +146,9 @@ interface ChannelHandlerStatic {
   new(): ChannelHandler;
 }
 interface ChannelHandler {
-  onMessageReceived(channel: GroupChannel|OpenChannel, message: AdminMessage|UserMessage): void;
-  onMessageDeleted(channel: GroupChannel|OpenChannel, messageId: number): void;
+  onMessageReceived(channel: OpenChannel|GroupChannel, message: AdminMessage|UserMessage|FileMessage): void;
+  onMentionReceived(channel: OpenChannel|GroupChannel, message: AdminMessage|UserMessage|FileMessage): void;
+  onMessageDeleted(channel: OpenChannel|GroupChannel, messageId: number): void;
   onReadReceiptUpdated(channel: GroupChannel): void;
   onTypingStatusUpdated(channel: GroupChannel): void;
   onTypingStatusUpdated(channel: GroupChannel): void;
@@ -153,22 +156,22 @@ interface ChannelHandler {
   onUserLeft(channel: GroupChannel, user: User): void;
   onUserEntered(channel: OpenChannel, user: User): void;
   onUserExited(channel: OpenChannel, user: User): void;
-  onUserMuted(channel: GroupChannel|OpenChannel, user: User): void;
-  onUserUnmuted(channel: GroupChannel|OpenChannel, user: User): void;
-  onUserBanned(channel: GroupChannel|OpenChannel, user: User): void;
-  onUserUnbanned(channel: GroupChannel|OpenChannel, user: User): void;
-  onChannelFrozen(channel: GroupChannel|OpenChannel): void;
-  onChannelUnfrozen(channel: GroupChannel|OpenChannel): void;
+  onUserMuted(channel: OpenChannel|GroupChannel, user: User): void;
+  onUserUnmuted(channel: OpenChannel|GroupChannel, user: User): void;
+  onUserBanned(channel: OpenChannel|GroupChannel, user: User): void;
+  onUserUnbanned(channel: OpenChannel|GroupChannel, user: User): void;
+  onChannelFrozen(channel: OpenChannel|GroupChannel): void;
+  onChannelUnfrozen(channel: OpenChannel|GroupChannel): void;
   onChannelChanged(channel: OpenChannel|GroupChannel): void;
   onChannelDeleted(channelUrl: string): void;
   onUserReceivedInvitation(channel: GroupChannel, inviter: User, invitees: Array<Member>): void;
   onUserDeclinedInvitation(channel: GroupChannel, inviter: User, invitee: Array<Member>): void;
-  onMetaDataCreated(channel: GroupChannel|OpenChannel, metaData: Object): void;
-  onMetaDataUpdated(channel: GroupChannel|OpenChannel, metaData: Object): void;
-  onMetaDataDeleted(channel: GroupChannel|OpenChannel, metaData: Array<string>): void;
-  onMetaCountersCreated(channel: GroupChannel|OpenChannel, metaCounter: Object): void;
-  onMetaCountersUpdated(channel: GroupChannel|OpenChannel, metaCounter: Object): void;
-  onMetaCountersDeleted(channel: GroupChannel|OpenChannel, metaCounter: Array<string>): void;
+  onMetaDataCreated(channel: OpenChannel|GroupChannel, metaData: Object): void;
+  onMetaDataUpdated(channel: OpenChannel|GroupChannel, metaData: Object): void;
+  onMetaDataDeleted(channel: OpenChannel|GroupChannel, metaData: Array<string>): void;
+  onMetaCountersCreated(channel: OpenChannel|GroupChannel, metaCounter: Object): void;
+  onMetaCountersUpdated(channel: OpenChannel|GroupChannel, metaCounter: Object): void;
+  onMetaCountersDeleted(channel: OpenChannel|GroupChannel, metaCounter: Array<string>): void;
   onChannelHidden(channel: GroupChannel): void;
 }
 
@@ -192,6 +195,7 @@ interface BaseMessageInstance {
   messageType: string;
   data: string;
   customType: string;
+  mentionedUsers: Array<User>;
   createdAt: number;
   updatedAt: number;
 
@@ -210,6 +214,14 @@ interface AdminMessageStatic {
   buildFromSerializedData(serializedObject: Object): AdminMessage;
 }
 
+interface UserMessageParams {
+  message: string;
+  data: string;
+  customType: string;
+  targetLanguages: Array<string>;
+  mentionedUserIds: Array<string>;
+  mentionedUsers: Array<User>;
+}
 interface UserMessage extends BaseMessageInstance {
   sender: User;
   reqId: string;
@@ -219,6 +231,18 @@ interface UserMessageStatic {
   buildFromSerializedData(serializedObject: Object): UserMessage;
 }
 
+interface FileMessageParams {
+  file: File;
+  fileUrl: string;
+  fileName: string;
+  fileSize: number;
+  mimeType: string;
+  data: string;
+  customType: string;
+  thumbnailSizes: Array<ThumbnailSize>;
+  mentionedUserIds: Array<string>;
+  mentionedUsers: Array<User>;
+}
 interface FileMessage extends BaseMessageInstance {
   sender: User;
   reqId: string;
@@ -300,6 +324,7 @@ interface BaseChannel {
   data: string;
   customType: string;
   isFrozen: boolean;
+  isEphemeral: boolean;
   createdAt: string;
 
   isGroupChannel(): boolean;
@@ -320,6 +345,7 @@ interface BaseChannel {
   getPreviousAndNextMessagesByID(messageId: number, prevtResultSize: number, nextResultSize: number, shouldReverse:boolean, messageType: string, customType: string, callback: messageListCallback): void;
 
   /** FileMessage  */
+  sendFileMessage(fileMessageParams: FileMessageParams, callback: messageCallback): FileMessage;
   sendFileMessage(file: File, callback: messageCallback): FileMessage;
   sendFileMessage(file: File, data: string, callback: messageCallback): FileMessage;
   sendFileMessage(file: File, data: string, customType: string, callback: messageCallback): FileMessage;
@@ -328,6 +354,7 @@ interface BaseChannel {
   sendFileMessage(file: File, name: string, type: string, size: number, data: string, customType: string, callback: messageCallback): FileMessage;
   sendFileMessage(file: File, name: string, type: string, size: number, data: string, customType: string, thumbnailSizes: Array<ThumbnailSize>, callback: messageCallback): FileMessage;
 
+  sendFileMessage(fileMessageParams: FileMessageParams, progressHandler: fileUploadprogressHandler, callback: messageCallback): FileMessage;
   sendFileMessage(file: File, progressHandler: fileUploadprogressHandler, callback: messageCallback): FileMessage;
   sendFileMessage(file: File, data: string, progressHandler: fileUploadprogressHandler, callback: messageCallback): FileMessage;
   sendFileMessage(file: File, data: string, customType: string, progressHandler: fileUploadprogressHandler, callback: messageCallback): FileMessage;
@@ -349,6 +376,7 @@ interface BaseChannel {
   sendFileMessage(file: string, name: string, type: string, size: number, data: string, customType: string, progressHandler: fileUploadprogressHandler, callback: messageCallback): FileMessage;
 
   /** UserMessage  */
+  sendUserMessage(userMessageParams: UserMessageParams, callback: messageCallback): UserMessage;
   sendUserMessage(message: string, callback: messageCallback): UserMessage;
   sendUserMessage(message: string, data: string, callback: messageCallback): UserMessage;
   sendUserMessage(message: string, data: string, customType: string, callback: messageCallback): UserMessage;
@@ -482,6 +510,7 @@ interface GroupChannelParams {
   isDistinct: boolean;
   isSuper: boolean;
   isPublic: boolean;
+  isEphemeral: boolean;
   channelUrl: string;
   name: string;
   data: string;
@@ -509,6 +538,7 @@ interface GroupChannel extends BaseChannel {
   unreadMessageCount: number;
   members: Array<Member>;
   memberCount: number;
+  myMemberState: 'none' | 'joined' | 'invited';
   inviter: User;
 
   refresh(callback: groupChannelCallback): void;

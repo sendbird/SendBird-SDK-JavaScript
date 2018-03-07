@@ -1,22 +1,12 @@
 {
   "name": "sendbird",
-  "version": "3.0.54",
-  "authors": [
-    "SendBird <support@sendbird.com>"
-  ],
+  "version": "3.0.55",
+  "authors": ["SendBird <support@sendbird.com>"],
   "homepage": "https://github.com/smilefam/SendBird-SDK-JavaScript",
   "description": "SendBird JavaScript SDK",
   "main": "SendBird.min.js",
   "moduleType": [],
-  "keywords": [
-    "sendbird",
-    "sendbird.com",
-    "messaging",
-    "chat",
-    "js"
-  ],
+  "keywords": ["sendbird", "sendbird.com", "messaging", "chat", "js"],
   "license": "LICENSE.md",
-  "ignore": [
-    "package.json"
-  ]
+  "ignore": ["package.json"]
 }
