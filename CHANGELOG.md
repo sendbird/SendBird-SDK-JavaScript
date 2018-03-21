@@ -1,6 +1,10 @@
 Changelog
 =========
 
+## v3.0.56
+ * Changed an ephemeral `GroupChannel` to maintain fields of `lastMessage` and `unreadMessageCount` after connected.
+ * Update `SendBird.d.ts` file.  
+ 
 ## v3.0.55
  * Added `UserMessageParams` feature.  
    * This is used in `sendUserMessage()` of channel.  
