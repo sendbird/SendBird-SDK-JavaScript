@@ -39,11 +39,10 @@ If you have trouble importing `SendBird`, please check your `tsconfig.json` file
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## Upgrading to v3.0.56
+## Upgrading to v3.0.57
  If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
- * Changed an ephemeral `GroupChannel` to maintain fields of `lastMessage` and `unreadMessageCount` after connected.
- * Update `SendBird.d.ts` file.  
- 
+ * Added `pushNotificationDeliveryOption` in `UserMessageParams` and `FileMessageParams` to determine whether it’d deliver the push notification for a user/file message.  
+ * Added `channelCustomTypes` in `getTotalUnreadMessageCount()` to get an unread message count of `GroupChannel` with specific custom types.  
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    
 

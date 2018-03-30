@@ -1,6 +1,10 @@
 Changelog
 =========
 
+## v3.0.57
+ * Added `pushNotificationDeliveryOption` in `UserMessageParams` and `FileMessageParams` to determine whether it’d deliver the push notification for a user/file message.
+ * Added `channelCustomTypes` in `getTotalUnreadMessageCount()` to get an unread message count of `GroupChannel` with specific custom types.
+
 ## v3.0.56
  * Changed an ephemeral `GroupChannel` to maintain fields of `lastMessage` and `unreadMessageCount` after connected.
  * Update `SendBird.d.ts` file.  

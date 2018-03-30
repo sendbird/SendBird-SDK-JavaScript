@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.56
+ * Type Definitions for SendBird SDK v3.0.57
  * homepage: https://sendbird.com/
  * git: https://github.com/smilefam/SendBird-SDK-JavaScript
  */
@@ -238,6 +238,7 @@ declare namespace SendBird {
     targetLanguages: Array<string>;
     mentionedUserIds: Array<string>;
     mentionedUsers: Array<User>;
+    pushNotificationDeliveryOption: 'default' | 'suppress';
   }
   interface UserMessage extends BaseMessageInstance {
     sender: User;
@@ -259,6 +260,7 @@ declare namespace SendBird {
     thumbnailSizes: Array<ThumbnailSize>;
     mentionedUserIds: Array<string>;
     mentionedUsers: Array<User>;
+    pushNotificationDeliveryOption: 'default' | 'suppress';
   }
   interface FileMessage extends BaseMessageInstance {
     sender: User;
@@ -872,6 +874,7 @@ declare namespace SendBird {
     createPublicGroupChannelListQuery(): PublicGroupChannelListQuery;
 
     getTotalUnreadMessageCount(callback: groupChannelCountCallback): void;
+    getTotalUnreadMessageCount(channelCustomTypes: Array<string>, callback: groupChannelCountCallback): void;
     getTotalUnreadChannelCount(callback: groupChannelCountCallback): void;
 
     createChannel(groupChannelParams: GroupChannelParams, callback: groupChannelCallback): void;
