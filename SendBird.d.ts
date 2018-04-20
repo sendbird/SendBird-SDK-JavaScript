@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.57
+ * Type Definitions for SendBird SDK v3.0.58
  * homepage: https://sendbird.com/
  * git: https://github.com/smilefam/SendBird-SDK-JavaScript
  */
@@ -181,13 +181,13 @@ declare namespace SendBird {
     onChannelChanged(channel: OpenChannel | GroupChannel): void;
     onChannelDeleted(channelUrl: string): void;
     onUserReceivedInvitation(channel: GroupChannel, inviter: User, invitees: Array<Member>): void;
-    onUserDeclinedInvitation(channel: GroupChannel, inviter: User, invitee: Array<Member>): void;
+    onUserDeclinedInvitation(channel: GroupChannel, inviter: User, invitee: Member): void;
     onMetaDataCreated(channel: OpenChannel | GroupChannel, metaData: Object): void;
     onMetaDataUpdated(channel: OpenChannel | GroupChannel, metaData: Object): void;
-    onMetaDataDeleted(channel: OpenChannel | GroupChannel, metaData: Array<string>): void;
+    onMetaDataDeleted(channel: OpenChannel | GroupChannel, metaDataKeys: Array<string>): void;
     onMetaCountersCreated(channel: OpenChannel | GroupChannel, metaCounter: Object): void;
     onMetaCountersUpdated(channel: OpenChannel | GroupChannel, metaCounter: Object): void;
-    onMetaCountersDeleted(channel: OpenChannel | GroupChannel, metaCounter: Array<string>): void;
+    onMetaCountersDeleted(channel: OpenChannel | GroupChannel, metaCounterKeys: Array<string>): void;
     onChannelHidden(channel: GroupChannel): void;
     onMentionReceived(channel: OpenChannel | GroupChannel, message: AdminMessage | UserMessage | FileMessage): void;
   }
@@ -352,6 +352,8 @@ declare namespace SendBird {
 
     getMessageChangeLogsByToken(callback: getMessageChangeLogsByTokenHandler): void;
     getMessageChangeLogsByToken(token: string, callback: getMessageChangeLogsByTokenHandler): void;
+
+    createOperatorListQuery(): OperatorListQuery;
 
     /** Message  */
     createMessageListQuery(): MessageListQuery /* Deprecated */;
@@ -712,6 +714,13 @@ declare namespace SendBird {
     next(callback: userListQueryCallback): void;
   }
 
+  interface OperatorListQuery {
+    limit: number;
+    hasNext: boolean;
+    isLoading: boolean;
+    next(callback: userListQueryCallback): void;
+  }
+
   interface OpenChannelStatic {
     buildFromSerializedData(serializedObject: Object): OpenChannel;
 
@@ -937,7 +946,7 @@ declare namespace SendBird {
     hasNext: boolean;
     isLoading: boolean;
     mutedMemberFilter: 'all' | 'muted' | 'unmuted';
-    operatorFilter: 'all' | 'operator' | 'nonoperator';
+    operatorFilter: 'all' | 'operator' | 'nonoperator'; // Deprecated
     next(callback: groupChannelMemberListQueryCallback): void;
   }
 

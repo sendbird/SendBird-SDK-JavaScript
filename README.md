@@ -39,10 +39,12 @@ If you have trouble importing `SendBird`, please check your `tsconfig.json` file
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## Upgrading to v3.0.57
+## Upgrading to v3.0.58
  If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
- * Added `pushNotificationDeliveryOption` in `UserMessageParams` and `FileMessageParams` to determine whether it’d deliver the push notification for a user/file message.  
- * Added `channelCustomTypes` in `getTotalUnreadMessageCount()` to get an unread message count of `GroupChannel` with specific custom types.  
+ * Deprecated `operatorFilter` in `GroupChannelMemberListQuery`.
+ * Added `createOperatorListQuery` in `BaseChannel` to search users that are operators in channel.
+ * Minor bugfix.  
+  
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    
 

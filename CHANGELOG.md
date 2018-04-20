@@ -1,6 +1,11 @@
 Changelog
 =========
 
+## v3.0.58
+ * Deprecated `operatorFilter` in `GroupChannelMemberListQuery`.
+ * Added `createOperatorListQuery` in `BaseChannel` to search users that are operators in channel.
+ * Minor bugfix.  
+
 ## v3.0.57
  * Added `pushNotificationDeliveryOption` in `UserMessageParams` and `FileMessageParams` to determine whether it’d deliver the push notification for a user/file message.
  * Added `channelCustomTypes` in `getTotalUnreadMessageCount()` to get an unread message count of `GroupChannel` with specific custom types.
