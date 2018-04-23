@@ -39,11 +39,9 @@ If you have trouble importing `SendBird`, please check your `tsconfig.json` file
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## Upgrading to v3.0.58
+## Upgrading to v3.0.59
  If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
- * Deprecated `operatorFilter` in `GroupChannelMemberListQuery`.
- * Added `createOperatorListQuery` in `BaseChannel` to search users that are operators in channel.
- * Minor bugfix.  
+ * Bugfix about myMemberState when user decline invitation.
   
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    

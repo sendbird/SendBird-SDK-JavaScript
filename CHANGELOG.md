@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## v3.0.59
+ * Bugfix about myMemberState when user decline invitation.
+ 
 ## v3.0.58
  * Deprecated `operatorFilter` in `GroupChannelMemberListQuery`.
  * Added `createOperatorListQuery` in `BaseChannel` to search users that are operators in channel.
