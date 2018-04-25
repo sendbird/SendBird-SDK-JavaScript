@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## v3.0.60
+ * Bugfix about RequireJS.  
+ 
 ## v3.0.59
  * Bugfix about myMemberState when user decline invitation.
  
