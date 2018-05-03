@@ -1,6 +1,10 @@
 Changelog
 =========
 
+## v3.0.61
+ * Ordered member list by nickname alphabetically.  
+ * Fixed a bug that a file upload.  
+
 ## v3.0.60
  * Bugfix about RequireJS.  
  
