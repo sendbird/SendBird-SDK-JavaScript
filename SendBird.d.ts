@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.61
+ * Type Definitions for SendBird SDK v3.0.62
  * homepage: https://sendbird.com/
  * git: https://github.com/smilefam/SendBird-SDK-JavaScript
  */
@@ -53,6 +53,7 @@ declare namespace SendBird {
     GroupChannelParams: GroupChannelParams;
     UserMessageParams: UserMessageParams;
     FileMessageParams: FileMessageParams;
+    GroupChannelTotalUnreadMessageCountParams: GroupChannelTotalUnreadMessageCountParams;
 
     connect(userId: string, callback?: userCallback): void;
     connect(userId: string, apiHost: string, wsHost: string, callback?: userCallback): void;
@@ -231,6 +232,11 @@ declare namespace SendBird {
     buildFromSerializedData(serializedObject: Object): AdminMessage;
   }
 
+  interface GroupChannelTotalUnreadMessageCountParams {
+    channelCustomTypesFilter: Array<string>;
+    superChannelFilter: 'all' | 'super' | 'nonsuper';
+  }
+
   interface UserMessageParams {
     message: string;
     data: string;
@@ -370,7 +376,7 @@ declare namespace SendBird {
     getPreviousMessagesByTimestamp(
       ts: number,
       isInclusive: boolean,
-      prevtResultSize: number,
+      prevResultSize: number,
       shouldReverse: boolean,
       messageType: string,
       customType: string,
@@ -378,7 +384,7 @@ declare namespace SendBird {
     ): void;
     getPreviousAndNextMessagesByTimestamp(
       ts: number,
-      prevtResultSize: number,
+      prevResultSize: number,
       nextResultSize: number,
       shouldReverse: boolean,
       messageType: string,
@@ -397,7 +403,7 @@ declare namespace SendBird {
     getPreviousMessagesByID(
       messageId: number,
       isInclusive: boolean,
-      prevtResultSize: number,
+      prevResultSize: number,
       shouldReverse: boolean,
       messageType: string,
       customType: string,
@@ -405,7 +411,7 @@ declare namespace SendBird {
     ): void;
     getPreviousAndNextMessagesByID(
       messageId: number,
-      prevtResultSize: number,
+      prevResultSize: number,
       nextResultSize: number,
       shouldReverse: boolean,
       messageType: string,
@@ -811,6 +817,7 @@ declare namespace SendBird {
     members: Array<Member>;
     memberCount: number;
     myMemberState: 'none' | 'joined' | 'invited';
+    myRole: 'operator' | 'none';
     inviter: User;
 
     refresh(callback: groupChannelCallback): void;
@@ -882,6 +889,8 @@ declare namespace SendBird {
     createMyGroupChannelListQuery(): GroupChannelListQuery;
     createPublicGroupChannelListQuery(): PublicGroupChannelListQuery;
 
+    getTotalUnreadMessageCount(groupChannelTotalUnreadMessageCountParams: GroupChannelTotalUnreadMessageCountParams,
+                               callback: groupChannelCountCallback): void;
     getTotalUnreadMessageCount(callback: groupChannelCountCallback): void;
     getTotalUnreadMessageCount(channelCustomTypes: Array<string>, callback: groupChannelCountCallback): void;
     getTotalUnreadChannelCount(callback: groupChannelCountCallback): void;

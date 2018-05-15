@@ -1,6 +1,10 @@
 Changelog
 =========
 
+## v3.0.62
+ * Added a property named `myRole` in the `GroupChannel` which is a role of current user in the group channel.
+ * Added `GroupChannelTotalUnreadMessageCountParams` class that is used to get total unread message count.
+
 ## v3.0.61
  * Ordered member list by nickname alphabetically.  
  * Fixed a bug that a file upload.  
