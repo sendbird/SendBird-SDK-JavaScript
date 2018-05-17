@@ -39,10 +39,9 @@ If you have trouble importing `SendBird`, please check your `tsconfig.json` file
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## Upgrading to v3.0.62
+## Upgrading to v3.0.63
  If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
-  * Added a property named `myRole` in the `GroupChannel` which is a role of current user in the group channel.
-  * Added `GroupChannelTotalUnreadMessageCountParams` class that is used to get total unread message count.  
+  * Fixed an occasional member count mismatch in a super group channel.  
   
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    
