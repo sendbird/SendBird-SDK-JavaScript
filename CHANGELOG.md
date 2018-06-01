@@ -1,6 +1,11 @@
 Changelog
 =========
 
+## v3.0.64(Jun 1, 2018)
+ * Added a typing indicator throttle option in SendBird.Options.  
+ * Fixed a minor bug for `GroupChannelParams`, `UserMessageParams` and `FileMessageParams`.  
+ * Fixed a minor bug for `includeEmpty` to accept only a boolean argument.  
+
 ## v3.0.63
  * Fixed an occasional member count mismatch in a super group channel.
 

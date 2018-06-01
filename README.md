@@ -39,9 +39,11 @@ If you have trouble importing `SendBird`, please check your `tsconfig.json` file
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## Upgrading to v3.0.63
+## Upgrading to v3.0.64(Jun 1, 2018)
  If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
-  * Fixed an occasional member count mismatch in a super group channel.  
+  * Added a typing indicator throttle option in SendBird.Options.  
+  * Fixed a minor bug for `GroupChannelParams`, `UserMessageParams` and `FileMessageParams`.  
+  * Fixed a minor bug for `includeEmpty` to accept only a boolean argument.    
   
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    

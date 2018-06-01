@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.63
+ * Type Definitions for SendBird SDK v3.0.64
  * homepage: https://sendbird.com/
  * git: https://github.com/smilefam/SendBird-SDK-JavaScript
  */
@@ -54,6 +54,8 @@ declare namespace SendBird {
     UserMessageParams: UserMessageParams;
     FileMessageParams: FileMessageParams;
     GroupChannelTotalUnreadMessageCountParams: GroupChannelTotalUnreadMessageCountParams;
+
+    Options: Options;
 
     connect(userId: string, callback?: userCallback): void;
     connect(userId: string, apiHost: string, wsHost: string, callback?: userCallback): void;
@@ -146,6 +148,11 @@ declare namespace SendBird {
     markAsReadWithChannelUrls(channelUrls: Array<string>, callback: commonCallback): void;
   }
 
+  interface Options {
+    useMemberAsMessageSender: boolean,
+    typingIndicatorThrottle: number
+  }
+
   interface FriendListQuery {
     hasMore: boolean;
     isLoading: boolean;
@@ -209,7 +216,6 @@ declare namespace SendBird {
     channelUrl: string;
     channelType: string;
     messageId: number;
-    message: string;
     messageType: string;
     data: string;
     customType: string;
@@ -226,6 +232,7 @@ declare namespace SendBird {
   }
 
   interface AdminMessage extends BaseMessageInstance {
+    message: string;
     translations: Object;
   }
   interface AdminMessageStatic {
@@ -247,6 +254,7 @@ declare namespace SendBird {
     pushNotificationDeliveryOption: 'default' | 'suppress';
   }
   interface UserMessage extends BaseMessageInstance {
+    message: string;
     sender: User;
     reqId: string;
     translations: Object;
