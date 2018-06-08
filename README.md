@@ -22,7 +22,7 @@ SendBird-SDK-JavaScript
 # TypeScript
 Install via NPM and import like below in your TypeScript file:   
 ```javascript  
-import * as SendBird from 'SendBird';
+import * as SendBird from 'sendbird';
 var sb = new SendBird({'appId': 'APP_ID'});
 // do something...
 ```  
