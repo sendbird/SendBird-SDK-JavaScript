@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.64
+ * Type Definitions for SendBird SDK v3.0.65
  * homepage: https://sendbird.com/
  * git: https://github.com/smilefam/SendBird-SDK-JavaScript
  */
@@ -188,7 +188,7 @@ declare namespace SendBird {
     onChannelUnfrozen(channel: OpenChannel | GroupChannel): void;
     onChannelChanged(channel: OpenChannel | GroupChannel): void;
     onChannelDeleted(channelUrl: string): void;
-    onUserReceivedInvitation(channel: GroupChannel, inviter: User, invitees: Array<Member>): void;
+    onUserReceivedInvitation(channel: GroupChannel, inviter: User, invitees: Array<User>): void;
     onUserDeclinedInvitation(channel: GroupChannel, inviter: User, invitee: Member): void;
     onMetaDataCreated(channel: OpenChannel | GroupChannel, metaData: Object): void;
     onMetaDataUpdated(channel: OpenChannel | GroupChannel, metaData: Object): void;
@@ -824,8 +824,10 @@ declare namespace SendBird {
     unreadMessageCount: number;
     members: Array<Member>;
     memberCount: number;
+    joinedMemberCount: number;
     myMemberState: 'none' | 'joined' | 'invited';
     myRole: 'operator' | 'none';
+    myMutedState: 'muted' | 'unmuted';
     inviter: User;
 
     refresh(callback: groupChannelCallback): void;
@@ -897,6 +899,7 @@ declare namespace SendBird {
     createMyGroupChannelListQuery(): GroupChannelListQuery;
     createPublicGroupChannelListQuery(): PublicGroupChannelListQuery;
 
+    getUnreadItemCount(keys: Array<string>, callback: commonCallback): void;
     getTotalUnreadMessageCount(groupChannelTotalUnreadMessageCountParams: GroupChannelTotalUnreadMessageCountParams,
                                callback: groupChannelCountCallback): void;
     getTotalUnreadMessageCount(callback: groupChannelCountCallback): void;
@@ -964,6 +967,8 @@ declare namespace SendBird {
     isLoading: boolean;
     mutedMemberFilter: 'all' | 'muted' | 'unmuted';
     operatorFilter: 'all' | 'operator' | 'nonoperator'; // Deprecated
+    memberStateFilter: 'all' | 'joined_only' | 'invited_only' | 'invited_by_friend' | 'invited_by_non_friend';
+
     next(callback: groupChannelMemberListQueryCallback): void;
   }
 
