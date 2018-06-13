@@ -2,14 +2,10 @@ Changelog
 =========
 
 ## v3.0.65(Jun 13, 2018)
- * added `memberStateFilter` in `MemberListQuery` to search members based on the state of the member in a Group Channel.
- * added `myMutedState` in `GroupChannel` to show the state of the connected user in a Group Channel.
- * added `joinedMemberCount` in `GroupChannel` to show the total count of joined users in a Group Channel.
- * added `getUnreadItemCount` in `GroupChannel` to show the count of requested items by joined user in a Group Channel.
-    * non_super_group_channel_unread_message_count: the count of unread message in a Non-Super Group Channel.
-    * non_super_group_channel_invitation_count: the count of invitation that have not yet responded in a Non-Super Group Channel.
-    * super_group_channel_unread_message_count: the count of unread message in a Super Group Channel.
-    * super_group_channel_invitation_count: the count of invitation that have not yet responded in a Super Group Channel.
+ * Added `memberStateFilter` in `MemberListQuery` to search members based on the state of the member in a Group Channel.
+ * Added `myMutedState` in `GroupChannel` to show the state of the connected user in a Group Channel.
+ * Added `joinedMemberCount` in `GroupChannel` to show the total count of joined users in a Group Channel.
+ * Added `getUnreadItemCount` that receives an array argument having at least one among 'non_super_group_channel_unread_message_count', 'non_super_group_channel_invitation_count', 'super_group_channel_unread_message_count', and 'super_group_channel_invitation_count' in `GroupChannel`.  
  * Changed the type of `invitees` from `Member` to `User` on `onUserReceivedInvitation`. 
  
 ## v3.0.64(Jun 1, 2018)
