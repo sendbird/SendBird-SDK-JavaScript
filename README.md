@@ -39,13 +39,12 @@ If you have trouble importing `SendBird`, please check your `tsconfig.json` file
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## Upgrading to v3.0.65(Jun 13, 2018)
- If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
-  * Added `memberStateFilter` in `MemberListQuery` to search members based on the state of the member in a Group Channel.
-  * Added `myMutedState` in `GroupChannel` to show the state of the connected user in a Group Channel.
-  * Added `joinedMemberCount` in `GroupChannel` to show the total count of joined users in a Group Channel.
-  * Added `getUnreadItemCount` that receives an array argument having at least one among 'non_super_group_channel_unread_message_count', 'non_super_group_channel_invitation_count', 'super_group_channel_unread_message_count', and 'super_group_channel_invitation_count' in `GroupChannel`. 
-  * Changed the type of `invitees` from `Member` to `User` on `onUserReceivedInvitation`. 
+## v3.0.66(Jun 22, 2018)
+ * Added `nicknameStartsWithFilter` in `MemberListQuery` to search Group Channel members by nickname.
+ * Added `CountPreference` in `GroupChannel` which represents an enum of count preferences - 'all', 'unread_message_count_only', 'off'.
+ * Added `myCountPreference` in `GroupChannel` to get my count preference of a Group Channel.
+ * Added `setMyCountPreference` in `GroupChannel` to set my Group Channel count preference to a value in GroupChannel.CountPreference.
+ * Minor bug-fix.
   
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    

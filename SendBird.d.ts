@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.65
+ * Type Definitions for SendBird SDK v3.0.66
  * homepage: https://sendbird.com/
  * git: https://github.com/smilefam/SendBird-SDK-JavaScript
  */
@@ -820,6 +820,7 @@ declare namespace SendBird {
     isSuper: boolean;
     isPublic: boolean;
     isPushEnabled: boolean;
+    myCountPreference: string;
     lastMessage: UserMessage | FileMessage | AdminMessage;
     unreadMessageCount: number;
     members: Array<Member>;
@@ -874,6 +875,7 @@ declare namespace SendBird {
 
     setPushPreference(pushOn: boolean, callback: commonCallback): void;
     getPushPreference(callback: getPushPreferenceCallback): void;
+    setMyCountPreference(preference: 'all' | 'unread_message_count_only' | 'off', callback: commonCallback): void;
 
     createMemberListQuery(): GroupChannelMemberListQuery;
     createBannedUserListQuery(): UserListQuery;
@@ -968,6 +970,7 @@ declare namespace SendBird {
     mutedMemberFilter: 'all' | 'muted' | 'unmuted';
     operatorFilter: 'all' | 'operator' | 'nonoperator'; // Deprecated
     memberStateFilter: 'all' | 'joined_only' | 'invited_only' | 'invited_by_friend' | 'invited_by_non_friend';
+    nicknameStartsWithFilter: string;
 
     next(callback: groupChannelMemberListQueryCallback): void;
   }

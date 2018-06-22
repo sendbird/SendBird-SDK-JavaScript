@@ -1,6 +1,13 @@
 Changelog
 =========
 
+## v3.0.66(Jun 22, 2018)
+ * Added `nicknameStartsWithFilter` in `MemberListQuery` to search Group Channel members by nickname.
+ * Added `CountPreference` in `GroupChannel` which represents an enum of count preferences - 'all', 'unread_message_count_only', 'off'.
+ * Added `myCountPreference` in `GroupChannel` to get my count preference of a Group Channel.
+ * Added `setMyCountPreference` in `GroupChannel` to set my Group Channel count preference to a value in GroupChannel.CountPreference.
+ * Minor bug-fix.
+
 ## v3.0.65(Jun 13, 2018)
  * Added `memberStateFilter` in `MemberListQuery` to search members based on the state of the member in a Group Channel.
  * Added `myMutedState` in `GroupChannel` to show the state of the connected user in a Group Channel.
