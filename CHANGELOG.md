@@ -1,6 +1,12 @@
 Changelog
 =========
 
+## v3.0.67(Jun 29, 2018)
+ * Added `unreadMentionCount` in `GroupChannel` to check the mention count of the current user.    
+ * Added `unread_mention_count_only` in CountPreference to receive only updated `unreadMentionCount`.  
+ * Added `mentionType` with `users` and `channel` in `BaseMessage` to check the type of mention.  
+ * Added `mentionType` with `users` and `channel` in `BaseMessageParams` to set type of mention.  
+ 
 ## v3.0.66(Jun 22, 2018)
  * Added `nicknameStartsWithFilter` in `MemberListQuery` to search Group Channel members by nickname.
  * Added `CountPreference` in `GroupChannel` which represents an enum of count preferences - 'all', 'unread_message_count_only', 'off'.

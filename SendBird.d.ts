@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.66
+ * Type Definitions for SendBird SDK v3.0.67
  * homepage: https://sendbird.com/
  * git: https://github.com/smilefam/SendBird-SDK-JavaScript
  */
@@ -219,6 +219,7 @@ declare namespace SendBird {
     messageType: string;
     data: string;
     customType: string;
+    mentionType: string;
     mentionedUsers: Array<User>;
     createdAt: number;
     updatedAt: number;
@@ -249,6 +250,7 @@ declare namespace SendBird {
     data: string;
     customType: string;
     targetLanguages: Array<string>;
+    mentionType: 'users' | 'channel';
     mentionedUserIds: Array<string>;
     mentionedUsers: Array<User>;
     pushNotificationDeliveryOption: 'default' | 'suppress';
@@ -272,6 +274,7 @@ declare namespace SendBird {
     data: string;
     customType: string;
     thumbnailSizes: Array<ThumbnailSize>;
+    mentionType: 'users' | 'channel';
     mentionedUserIds: Array<string>;
     mentionedUsers: Array<User>;
     pushNotificationDeliveryOption: 'default' | 'suppress';
@@ -823,6 +826,7 @@ declare namespace SendBird {
     myCountPreference: string;
     lastMessage: UserMessage | FileMessage | AdminMessage;
     unreadMessageCount: number;
+    unreadMentionCount: number;
     members: Array<Member>;
     memberCount: number;
     joinedMemberCount: number;
@@ -875,7 +879,7 @@ declare namespace SendBird {
 
     setPushPreference(pushOn: boolean, callback: commonCallback): void;
     getPushPreference(callback: getPushPreferenceCallback): void;
-    setMyCountPreference(preference: 'all' | 'unread_message_count_only' | 'off', callback: commonCallback): void;
+    setMyCountPreference(preference: 'all' | 'unread_message_count_only' | 'unread_mention_count_only' | 'off', callback: commonCallback): void;
 
     createMemberListQuery(): GroupChannelMemberListQuery;
     createBannedUserListQuery(): UserListQuery;

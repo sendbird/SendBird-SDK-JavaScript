@@ -39,12 +39,12 @@ If you have trouble importing `SendBird`, please check your `tsconfig.json` file
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## v3.0.66(Jun 22, 2018)
- * Added `nicknameStartsWithFilter` in `MemberListQuery` to search Group Channel members by nickname.
- * Added `CountPreference` in `GroupChannel` which represents an enum of count preferences - 'all', 'unread_message_count_only', 'off'.
- * Added `myCountPreference` in `GroupChannel` to get my count preference of a Group Channel.
- * Added `setMyCountPreference` in `GroupChannel` to set my Group Channel count preference to a value in GroupChannel.CountPreference.
- * Minor bug-fix.
+## v3.0.67(Jun 29, 2018)
+ If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
+ * Added `unreadMentionCount` in `GroupChannel` to check the mention count of the current user.    
+ * Added `unread_mention_count_only` in CountPreference to receive only updated `unreadMentionCount`.  
+ * Added `mentionType` with `users` and `channel` in `BaseMessage` to check the type of mention.  
+ * Added `mentionType` with `users` and `channel` in `BaseMessageParams` to set type of mention.  
   
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    
