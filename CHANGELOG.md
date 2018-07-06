@@ -1,6 +1,10 @@
 Changelog
 =========
 
+## v3.0.68(Jul 6, 2018)
+ * Disabled to put the current user into mentionedUsers, mentionedUserIds in UserMessageParams and FileMessageParams.
+ * Changed not to increase unreadMentionCount and not to call onMentionReceived for CHANNEL mention by the current user (i.e. the message sender is the current user).
+
 ## v3.0.67(Jun 29, 2018)
  * Added `unreadMentionCount` in `GroupChannel` to check the mention count of the current user.    
  * Added `unread_mention_count_only` in CountPreference to receive only updated `unreadMentionCount`.  

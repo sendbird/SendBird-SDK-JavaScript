@@ -39,12 +39,10 @@ If you have trouble importing `SendBird`, please check your `tsconfig.json` file
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## v3.0.67(Jun 29, 2018)
+## v3.0.68(Jul 6, 2018)
  If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
- * Added `unreadMentionCount` in `GroupChannel` to check the mention count of the current user.    
- * Added `unread_mention_count_only` in CountPreference to receive only updated `unreadMentionCount`.  
- * Added `mentionType` with `users` and `channel` in `BaseMessage` to check the type of mention.  
- * Added `mentionType` with `users` and `channel` in `BaseMessageParams` to set type of mention.  
+ * Disabled to put the current user into mentionedUsers, mentionedUserIds in UserMessageParams and FileMessageParams.
+ * Changed not to increase unreadMentionCount and not to call onMentionReceived for CHANNEL mention by the current user (i.e. the message sender is the current user).
   
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    
