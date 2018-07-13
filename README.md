@@ -39,10 +39,10 @@ If you have trouble importing `SendBird`, please check your `tsconfig.json` file
 # [Documentation](https://docs.sendbird.com/javascript)
 
 
-## v3.0.68(Jul 6, 2018)
- If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).  
- * Disabled to put the current user into mentionedUsers, mentionedUserIds in UserMessageParams and FileMessageParams.
- * Changed not to increase unreadMentionCount and not to call onMentionReceived for CHANNEL mention by the current user (i.e. the message sender is the current user).
+## v3.0.69(Jul 13, 2018)
+ If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
+ * Added some property as `limit`, `reverse`, `messageTypeFilter`, `customTypeFilter`, and `senderUserIdsFilter` in PreviousMessageListQuery.    
+ * Added `getNextMessagesByTimestamp`, `getPreviousMessagesByTimestamp`, `getPreviousAndNextMessagesByTimestamp`, `getNextMessagesByID`, `getPreviousMessagesByID`, and `getPreviousAndNextMessagesByID` with `sendUserIds` parameter in BaseChannel.    
   
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    

@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.68
+ * Type Definitions for SendBird SDK v3.0.69
  * homepage: https://sendbird.com/
  * git: https://github.com/smilefam/SendBird-SDK-JavaScript
  */
@@ -384,6 +384,16 @@ declare namespace SendBird {
       customType: string,
       callback: messageListCallback
     ): void;
+    getNextMessagesByTimestamp(
+      ts: number,
+      isInclusive: boolean,
+      nextResultSize: number,
+      shouldReverse: boolean,
+      messageType: string,
+      customType: string,
+      senderUserIds: Array<string>,
+      callback: messageListCallback
+    ): void;
     getPreviousMessagesByTimestamp(
       ts: number,
       isInclusive: boolean,
@@ -393,9 +403,38 @@ declare namespace SendBird {
       customType: string,
       callback: messageListCallback
     ): void;
+    getPreviousMessagesByTimestamp(
+      ts: number,
+      isInclusive: boolean,
+      prevResultSize: number,
+      shouldReverse: boolean,
+      messageType: string,
+      customType: string,
+      senderUserIds: Array<string>,
+      callback: messageListCallback
+    ): void;
     getPreviousAndNextMessagesByTimestamp(
       ts: number,
       prevResultSize: number,
+      nextResultSize: number,
+      shouldReverse: boolean,
+      messageType: string,
+      customType: string,
+      callback: messageListCallback
+    ): void;
+    getPreviousAndNextMessagesByTimestamp(
+      ts: number,
+      prevResultSize: number,
+      nextResultSize: number,
+      shouldReverse: boolean,
+      messageType: string,
+      customType: string,
+      senderUserIds: Array<string>,
+      callback: messageListCallback
+    ): void;
+    getNextMessagesByID(
+      messageId: number,
+      isInclusive: boolean,
       nextResultSize: number,
       shouldReverse: boolean,
       messageType: string,
@@ -409,12 +448,32 @@ declare namespace SendBird {
       shouldReverse: boolean,
       messageType: string,
       customType: string,
+      senderUserIds: Array<string>,
       callback: messageListCallback
     ): void;
     getPreviousMessagesByID(
       messageId: number,
       isInclusive: boolean,
       prevResultSize: number,
+      shouldReverse: boolean,
+      messageType: string,
+      customType: string,
+      callback: messageListCallback
+    ): void;
+    getPreviousMessagesByID(
+      messageId: number,
+      isInclusive: boolean,
+      prevResultSize: number,
+      shouldReverse: boolean,
+      messageType: string,
+      customType: string,
+      senderUserIds: Array<string>,
+      callback: messageListCallback
+    ): void;
+    getPreviousAndNextMessagesByID(
+      messageId: number,
+      prevResultSize: number,
+      nextResultSize: number,
       shouldReverse: boolean,
       messageType: string,
       customType: string,
@@ -427,6 +486,7 @@ declare namespace SendBird {
       shouldReverse: boolean,
       messageType: string,
       customType: string,
+      senderUserIds: Array<string>,
       callback: messageListCallback
     ): void;
 
@@ -649,8 +709,15 @@ declare namespace SendBird {
   interface PreviousMessageListQuery {
     hasMore: boolean;
     isLoading: boolean;
+    limit: number,
+    reverse: boolean,
+    messageTypeFilter: 0 | 1 | 2 | 3, // 0: ALL, 1: USER, 2: FILE, 3: ADMIN
+    customTypeFilter: string,
+    senderUserIdsFilter: Array<string>
+
     load(limit: number, reverse: boolean, callback: messageListCallback): void;
-    load(limit: number, reverse: boolean, messageType: string, callback: messageListCallback): void;
+    load(limit: number, reverse: boolean, messageType: number, callback: messageListCallback): void;
+    load(callback: messageListCallback): void;
   }
 
   /**
