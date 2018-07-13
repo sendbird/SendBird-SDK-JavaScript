@@ -41,7 +41,7 @@ If you have trouble importing `SendBird`, please check your `tsconfig.json` file
 
 ## v3.0.69(Jul 13, 2018)
  If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
- * Added some property as `limit`, `reverse`, `messageTypeFilter`, `customTypeFilter`, and `senderUserIdsFilter` in PreviousMessageListQuery.    
+ * Added properties as `limit`, `reverse`, `messageTypeFilter`, `customTypeFilter`, and `senderUserIdsFilter` in PreviousMessageListQuery.    
  * Added `getNextMessagesByTimestamp`, `getPreviousMessagesByTimestamp`, `getPreviousAndNextMessagesByTimestamp`, `getNextMessagesByID`, `getPreviousMessagesByID`, and `getPreviousAndNextMessagesByID` with `sendUserIds` parameter in BaseChannel.    
   
   

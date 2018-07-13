@@ -2,7 +2,7 @@ Changelog
 =========
 
 ## v3.0.69(Jul 13, 2018)
- * Added some property as `limit`, `reverse`, `messageTypeFilter`, `customTypeFilter`, and `senderUserIdsFilter` in PreviousMessageListQuery.    
+ * Added properties as `limit`, `reverse`, `messageTypeFilter`, `customTypeFilter`, and `senderUserIdsFilter` in PreviousMessageListQuery.    
  * Added `getNextMessagesByTimestamp`, `getPreviousMessagesByTimestamp`, `getPreviousAndNextMessagesByTimestamp`, `getNextMessagesByID`, `getPreviousMessagesByID`, and `getPreviousAndNextMessagesByID` with `sendUserIds` parameter in BaseChannel.   
 
 ## v3.0.68(Jul 6, 2018)
