@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.69
+ * Type Definitions for SendBird SDK v3.0.70
  * homepage: https://sendbird.com/
  * git: https://github.com/smilefam/SendBird-SDK-JavaScript
  */
@@ -901,6 +901,7 @@ declare namespace SendBird {
     myRole: 'operator' | 'none';
     myMutedState: 'muted' | 'unmuted';
     inviter: User;
+    invitedAt: number;
 
     refresh(callback: groupChannelCallback): void;
 

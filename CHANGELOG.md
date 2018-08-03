@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## v3.0.70(Aug 3, 2018)
+ * Added `invitedAt` in GroupChannel.
+
 ## v3.0.69(Jul 13, 2018)
  * Added properties as `limit`, `reverse`, `messageTypeFilter`, `customTypeFilter`, and `senderUserIdsFilter` in PreviousMessageListQuery.    
  * Added `getNextMessagesByTimestamp`, `getPreviousMessagesByTimestamp`, `getPreviousAndNextMessagesByTimestamp`, `getNextMessagesByID`, `getPreviousMessagesByID`, and `getPreviousAndNextMessagesByID` with `sendUserIds` parameter in BaseChannel.   
