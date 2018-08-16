@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## v3.0.71(Aug 16, 2018)
+ * Improved connection management.  
+ 
 ## v3.0.70(Aug 3, 2018)
  * Added `invitedAt` in GroupChannel.
 
