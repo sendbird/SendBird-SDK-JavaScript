@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.71
+ * Type Definitions for SendBird SDK v3.0.72
  * homepage: https://sendbird.com/
  * git: https://github.com/smilefam/SendBird-SDK-JavaScript
  */
@@ -173,7 +173,7 @@ declare namespace SendBird {
   interface ChannelHandler {
     onMessageReceived(channel: OpenChannel | GroupChannel, message: AdminMessage | UserMessage | FileMessage): void;
     onMessageUpdated(channel: OpenChannel | GroupChannel, message: AdminMessage | UserMessage | FileMessage): void;
-    onMessageDeleted(channel: OpenChannel | GroupChannel, messageId: number): void;
+    onMessageDeleted(channel: OpenChannel | GroupChannel, messageId: string): void;
     onReadReceiptUpdated(channel: GroupChannel): void;
     onTypingStatusUpdated(channel: GroupChannel): void;
     onUserJoined(channel: GroupChannel, user: User): void;
@@ -658,6 +658,7 @@ declare namespace SendBird {
 
     /** Edit Message  */
     updateFileMessage(messageId: number, data: string, customType: string, callback: messageCallback): void;
+    updateFileMessage(messageId: number, fileMessageParams: FileMessageParams, callback:messageCallback): void;
     updateUserMessage(
       messageId: number,
       message: string,
@@ -665,6 +666,7 @@ declare namespace SendBird {
       customType: string,
       callback: messageCallback
     ): void;
+    updateUserMessage(messageId: number, userMessageParams: UserMessageParams, callback:messageCallback): void;
     deleteMessage(message: FileMessage | UserMessage, callback: commonCallback): void;
     cancelUploadingFileMessage(messageReqId: string, callback: cancelUploadingFileMessageCallback): boolean;
 

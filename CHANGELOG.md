@@ -1,6 +1,11 @@
 Changelog
 =========
 
+## v3.0.72(Aug 24, 2018)
+ * Added `updateUserMessage()` with `UserMessageParams` in BaseChannel.  
+ * Added `updateFileMessage()` with `FileMessageParams` in BaseChannel.  
+ * Minor bug fixed.  
+ 
 ## v3.0.71(Aug 16, 2018)
  * Improved connection management.  
  
