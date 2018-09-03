@@ -38,10 +38,8 @@ If you have trouble importing `SendBird`, please check your `tsconfig.json` file
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
-## v3.0.72(Aug 24, 2018)
+## v3.0.73(SEP 3, 2018)  
 If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
- * Added `updateUserMessage()` with `UserMessageParams` in BaseChannel.  
- * Added `updateFileMessage()` with `FileMessageParams` in BaseChannel.  
  * Minor bug fixed.     
  
   
