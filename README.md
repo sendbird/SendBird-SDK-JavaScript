@@ -38,11 +38,9 @@ If you have trouble importing `SendBird`, please check your `tsconfig.json` file
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
-## v3.0.74(SEP 4, 2018)  
+## v3.0.75(SEP 4, 2018)  
 If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
- * Minor bug fixed.    
- * Improved reconnection mechanism to detect network recovered on browsers only.    
- * Support NodeJS version 10.       
+ * Improved connection state check when reconnected.   
  
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    

@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## v3.0.75(SEP 4, 2018)
+ * Improved connection state check when reconnected.  
+ 
 ## v3.0.74(SEP 4, 2018)
  * Minor bug fixed.    
  * Improved reconnection mechanism to detect network recovered on browsers only.    
