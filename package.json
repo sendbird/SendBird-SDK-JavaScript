@@ -1,10 +1,10 @@
 {
   "name": "sendbird",
-  "version": "3.0.73",
+  "version": "3.0.74",
   "description": "SendBird JavaScript SDK",
   "main": "SendBird.min.js",
   "dependencies": {
-    "websocket": "1.0.24",
+    "ws": "6.0.0",
     "xhr2": "0.1.4",
     "agentkeepalive": "2.2.0",
     "form-data": "2.1.2"

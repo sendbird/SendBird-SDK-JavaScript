@@ -1,6 +1,11 @@
 Changelog
 =========
 
+## v3.0.74(SEP 4, 2018)
+ * Minor bug fixed.    
+ * Improved reconnection mechanism to detect network recovered on browsers only.    
+ * Support NodeJS version 10.    
+
 ## v3.0.73(SEP 3, 2018)  
  * Minor bug fixed.  
  
