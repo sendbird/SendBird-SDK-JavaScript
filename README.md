@@ -1,6 +1,6 @@
 # SendBird JavaScript SDK
 
-[![npm](https://img.shields.io/npm/v/sendbird.svg?style=popout)](https://www.npmjs.com/package/sendbird)
+[![npm](https://img.shields.io/npm/v/sendbird.svg?style=popout&colorB=red)](https://www.npmjs.com/package/sendbird)
 
 [SendBird](https://sendbird.com) provides the chat API and SDK for your app enabling real-time communication among your users.  
 
