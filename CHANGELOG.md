@@ -1,6 +1,10 @@
 Changelog
 =========
 
+## v3.0.78(SEP 11, 2018)
+ * Improved stability.  
+ * Minor bug fixed.  
+
 ## v3.0.77(SEP 5, 2018)
  * Fixed a bug to support NodeJS below 10.  
 

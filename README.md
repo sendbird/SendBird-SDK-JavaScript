@@ -1,6 +1,8 @@
-SendBird-SDK-JavaScript
+[![npm](https://img.shields.io/npm/v/sendbird.svg?style=popout&colorB=red)](https://www.npmjs.com/package/sendbird)  
+  
+SendBird JavaScript SDK
 ===========
-
+    
 [SendBird](https://sendbird.com) provides the chat API and SDK for your app enabling real-time communication among your users.  
 
 
@@ -38,9 +40,10 @@ If you have trouble importing `SendBird`, please check your `tsconfig.json` file
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
-## v3.0.77(SEP 5, 2018)  
+## v3.0.78(SEP 11, 2018)  
 If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
- * Fixed a bug to support NodeJS below 10.  
+ * Improved stability.  
+ * Minor bug fixed.   
  
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    

@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.77
+ * Type Definitions for SendBird SDK v3.0.78
  * homepage: https://sendbird.com/
  * git: https://github.com/smilefam/SendBird-SDK-JavaScript
  */
@@ -1070,6 +1070,7 @@ declare namespace SendBird {
     channelUrlsFilter: Array<string>;
     superChannelFilter: 'all' | 'super' | 'nonsuper';
     publicChannelFilter: 'all' | 'public' | 'private';
+
     next(callback: groupChannelListQueryCallback): void;
   }
 
