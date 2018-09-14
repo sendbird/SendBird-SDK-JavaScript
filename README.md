@@ -40,9 +40,10 @@ If you have trouble importing `SendBird`, please check your `tsconfig.json` file
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
-## v3.0.78(SEP 11, 2018)  
+## v3.0.79(SEP 14, 2018)  
 If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
- * Improved stability.  
+ * From now, `useMemberAsMessageSender` option is true by default.  
+ * Fixed a bug previous messages not showing the senders' latest user metadata.  
  * Minor bug fixed.   
  
   
