@@ -1,6 +1,25 @@
 Changelog
-=========
+=========  
 
+## v3.0.80(SEP 21, 2018)  
+ * Added readStatus of currentUser by passing `true` as first argument to `getReadStatus()` in `GroupChannel`. Passing `false` or nothing to `getReadStatus()` returns the read status without currentUser.  
+ * Added `getReadMembers()` in `GroupChannel` to return a list of members who read the message.   
+ * Added `getUnreadMember()` in `GroupChannel` to return a list of members who did not read the message.  
+ * Added `isEqual()` in `GroupChannel` and `BaseMessage` to deep-equal with other instance.  
+ * Added `isIdentical()` in `GroupChannel` and `BaseMessage` to check if the instance is identical to another.  
+ * Fixed to call `connect()` callback function with an error when connection is lost while connecting to SendBird.  
+ * Minor bug fixed.  
+ * Deprecated some feature.  
+   * Deprecated `getCurrentUserId()` in `SendBird`.  
+   * Deprecated `CLOSING` in ConnectionState in `SendBird`.  
+   * Deprecated some `createChannel()`, `createChannelWithUserIds()` in `GroupChannel` and `OpenChannel`.  
+   * Deprecated some `updateChannel()` in `GroupChannel` and `OpenChannel`.  
+   * Deprecated some `sendUserMessage()` and `sendFileMessage()`.  
+   * Deprecated `getChannelCount()` in `GroupChannel`. Use newly added `SendBird.getGroupChannelCount()` instead.  
+   * Deprecated `getTotalUnreadMessageCount()` in `GroupChannel`. Use newly added `SendBird.getTotalUnreadMessageCount()` instead.  
+   * Deprecated `getTotalUnreadChannelCount()` in `GroupChannel`. Use newly added `SendBird.getTotalUnreadChannelCount()` instead.    
+   * Deprecated `getUnreadItemCount()` in `GroupChannel`. Use newly added `SendBird.getUnreadItemCount()` instead.    
+   
 ## v3.0.79(SEP 14, 2018)
  * From now, `useMemberAsMessageSender` option is true by default.  
  * Fixed a bug previous messages not showing the senders' latest user metadata.  
