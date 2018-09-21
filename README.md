@@ -40,7 +40,7 @@ If you have trouble importing `SendBird`, please check your `tsconfig.json` file
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
-## v3.0.80(SEP 21, 2018)  
+## v3.0.81(SEP 21, 2018)  
 If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
  * Added readStatus of currentUser by passing `true` as first argument to `getReadStatus()` in `GroupChannel`. Passing `false` or nothing to `getReadStatus()` returns the read status without currentUser.  
  * Added `getReadMembers()` in `GroupChannel` to return a list of members who read the message.   
