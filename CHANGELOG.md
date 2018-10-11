@@ -1,6 +1,10 @@
 Changelog
 =========  
 
+## v3.0.82(OCT 11, 2018)
+ * Improved stability.  
+ * Minor bug fixed.  
+ 
 ## v3.0.81(SEP 21, 2018)  
  * Added readStatus of currentUser by passing `true` as first argument to `getReadStatus()` in `GroupChannel`. Passing `false` or nothing to `getReadStatus()` returns the read status without currentUser.  
  * Added `getReadMembers()` in `GroupChannel` to return a list of members who read the message.   
