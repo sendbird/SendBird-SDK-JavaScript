@@ -1,6 +1,12 @@
 Changelog
 =========  
 
+## v3.0.83(OCT 18, 2018)
+ * Added `getLastConnectedAt()` in `SendBird` to get currentUser's last connection timestamp.  
+ * Improved `sendFileMessage()` in `BaseChannel`. From now, message's order is guaranteed regardless of the file size uploaded.  
+ * Improved stability.  
+ * Minor bug fixed.  
+ 
 ## v3.0.82(OCT 11, 2018)
  * Improved stability.  
  * Minor bug fixed.  

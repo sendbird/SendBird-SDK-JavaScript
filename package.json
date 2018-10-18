@@ -1,13 +1,11 @@
 {
   "name": "sendbird",
-  "version": "3.0.82",
+  "version": "3.0.83",
   "description": "SendBird JavaScript SDK",
   "main": "SendBird.min.js",
   "dependencies": {
     "ws": "6.0.0",
-    "xhr2": "0.1.4",
-    "agentkeepalive": "2.2.0",
-    "form-data": "2.1.2"
+    "agentkeepalive": "2.2.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
