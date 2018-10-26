@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.83
+ * Type Definitions for SendBird SDK v3.0.84
  * homepage: https://sendbird.com/
  * git: https://github.com/smilefam/SendBird-SDK-JavaScript
  */
@@ -365,6 +365,14 @@ declare namespace SendBird {
     token: string;
   };
   type getMessageChangeLogsByTokenHandler = (data: messageChangeLogs, error: SendBirdError) => void;
+  type mutedInfo = {
+    isMuted: boolean;
+    startAt: number;
+    endAt: number;
+    remainingDuration: number;
+    description: string;
+  };
+  type getMyMutedInfoHandler = (info: mutedInfo, error: SendBirdError) => void;
   interface BaseChannel {
     url: string;
     name: string;
@@ -381,6 +389,7 @@ declare namespace SendBird {
 
     getMessageChangeLogsByToken(callback: getMessageChangeLogsByTokenHandler): void;
     getMessageChangeLogsByToken(token: string, callback: getMessageChangeLogsByTokenHandler): void;
+    getMyMutedInfo(callback: getMyMutedInfoHandler): void;
 
     createOperatorListQuery(): OperatorListQuery;
 
@@ -792,7 +801,9 @@ declare namespace SendBird {
     unbanUserWithUserId(userId: string, callback: commonCallback): void;
 
     muteUser(user: User, callback: commonCallback): void;
+    muteUser(user: User, seconds: number, description: string, callback: commonCallback): void;
     muteUserWithUserId(userId: string, callback: commonCallback): void;
+    muteUserWithUserId(userId: string, seconds: number, description: string, callback: commonCallback): void;
     unmuteUser(user: User, callback: commonCallback): void;
     unmuteUserWithUserId(userId: string, callback: commonCallback): void;
 
@@ -975,7 +986,9 @@ declare namespace SendBird {
     unbanUserWithUserId(userId: string, callback: commonCallback): void;
 
     muteUser(user: User, callback: commonCallback): void;
+    muteUser(user: User, seconds: number, description: string, callback: commonCallback): void;
     muteUserWithUserId(userId: string, callback: commonCallback): void;
+    muteUserWithUserId(userId: string, seconds: number, description: string, callback: commonCallback): void;
     unmuteUser(user: User, callback: commonCallback): void;
     unmuteUserWithUserId(userId: string, callback: commonCallback): void;
 
@@ -1070,7 +1083,7 @@ declare namespace SendBird {
     hasNext: boolean;
     isLoading: boolean;
     includeEmpty: boolean;
-    order: 'latest_last_message' | 'chronological' | 'channel_name_alphabetical';
+    order: 'latest_last_message' | 'chronological' | 'channel_name_alphabetical' | 'metadata_value_alphabetical';
     userIdsFilter: Array<string>; // DEPRECATED
     userIdsFilterExactMatch: boolean; // DEPRECATED
     queryType: 'AND' | 'OR'; // DEPRECATED
@@ -1085,6 +1098,7 @@ declare namespace SendBird {
     channelUrlsFilter: Array<string>;
     superChannelFilter: 'all' | 'super' | 'nonsuper';
     publicChannelFilter: 'all' | 'public' | 'private';
+    metadataOrderKeyFilter: string;
 
     next(callback: groupChannelListQueryCallback): void;
   }
@@ -1094,13 +1108,14 @@ declare namespace SendBird {
     hasNext: boolean;
     isLoading: boolean;
     includeEmpty: boolean;
-    order: 'chronological' | 'channel_name_alphabetical';
+    order: 'chronological' | 'channel_name_alphabetical' | 'metadata_value_alphabetical';
     channelNameContainsFilter: string;
     channelUrlsFilter: Array<string>;
     customTypesFilter: Array<string>;
     customTypeStartsWithFilter: string;
     superChannelFilter: 'all' | 'super' | 'nonsuper';
     membershipFilter: 'all' | 'joined';
+    metadataOrderKeyFilter: string;
     next(callback: groupChannelListQueryCallback): void;
   }
 }

@@ -49,12 +49,13 @@ For more information about `SyncManager`, please refer to [SyncManager README](h
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
-## v3.0.83(OCT 18, 2018)
+## v3.0.84(OCT 26, 2018)
 If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
- * Added `getLastConnectedAt()` in `SendBird` to get currentUser's last connection timestamp.  
- * Improved `sendFileMessage()` in `BaseChannel`. From now, message's order is guaranteed regardless of the file size uploaded.  
- * Improved stability.  
- * Minor bug fixed.  
+ * Added `getMyMutedInfo()` in `BaseChannel`
+ * Added `muteUser(user, seconds, description, callback)` and `muteUserWithUserId(userId, seconds, description, callback)` in `BaseChannel`
+ * Added `metadata_value_alphabetical` order in `GroupChannelListQuery` and `PublicGroupChannelListQuery`
+ * Added `metadataOrderKeyFilter` in `GroupChannelListQuery` and `PublicGroupChannelListQuery`
+ * Minor bug fixed
  
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    

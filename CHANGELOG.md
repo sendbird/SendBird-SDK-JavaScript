@@ -1,5 +1,12 @@
 Changelog
-=========  
+=========
+
+## v3.0.84(OCT 26, 2018)
+ * Added `getMyMutedInfo()` in `BaseChannel`
+ * Added `muteUser(user, seconds, description, callback)` and `muteUserWithUserId(userId, seconds, description, callback)` in `BaseChannel`
+ * Added `metadata_value_alphabetical` order in `GroupChannelListQuery` and `PublicGroupChannelListQuery`
+ * Added `metadataOrderKeyFilter` in `GroupChannelListQuery` and `PublicGroupChannelListQuery`
+ * Minor bug fixed
 
 ## v3.0.83(OCT 18, 2018)
  * Added `getLastConnectedAt()` in `SendBird` to get currentUser's last connection timestamp.  
