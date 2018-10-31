@@ -1,6 +1,14 @@
 Changelog
 =========
 
+## v3.0.85(OCT 31, 2018)
+ * Added `ScheduledUserMessage` feature to send `UserMessage` at the time specified by a user.  
+   * Added `ScheduledUserMessage` that is a scheduled `UserMessage`.  
+   * Added `ScheduledUserMessageParams` in `SendBird` to be delivered as a parameter to register scheduled `UserMessage`.  
+   * Added `registerScheduledUserMessage` in `GroupChannel` to register scheduled `UserMessage`.  
+ * Improved stability.  
+ * Minor bug fixed.  
+
 ## v3.0.84(OCT 26, 2018)
  * Added `getMyMutedInfo()` in `BaseChannel`
  * Added `muteUser(user, seconds, description, callback)` and `muteUserWithUserId(userId, seconds, description, callback)` in `BaseChannel`

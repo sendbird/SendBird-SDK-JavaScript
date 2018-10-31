@@ -49,13 +49,14 @@ For more information about `SyncManager`, please refer to [SyncManager README](h
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
-## v3.0.84(OCT 26, 2018)
+## v3.0.85(OCT 31, 2018)
 If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
- * Added `getMyMutedInfo()` in `BaseChannel`
- * Added `muteUser(user, seconds, description, callback)` and `muteUserWithUserId(userId, seconds, description, callback)` in `BaseChannel`
- * Added `metadata_value_alphabetical` order in `GroupChannelListQuery` and `PublicGroupChannelListQuery`
- * Added `metadataOrderKeyFilter` in `GroupChannelListQuery` and `PublicGroupChannelListQuery`
- * Minor bug fixed
+ * Added `ScheduledUserMessage` feature to send `UserMessage` at the time specified by a user.  
+   * Added `ScheduledUserMessage` that is a scheduled `UserMessage`.  
+   * Added `ScheduledUserMessageParams` in `SendBird` to be delivered as a parameter to register scheduled `UserMessage`.  
+   * Added `registerScheduledUserMessage` in `GroupChannel` to register scheduled `UserMessage`.  
+ * Improved stability.  
+ * Minor bug fixed.  
  
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    
