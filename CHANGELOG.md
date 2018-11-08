@@ -1,7 +1,7 @@
 Changelog
 =========
 
-## v3.0.86(NOV 8, 2018)
+## v3.0.87(NOV 8, 2018)
  * Added `ApplicationUserListQuery`.  
    * It is used to get users created in the application.  
    * It could be derived by `createApplicationUserListQuery()` in `SendBird`.  
