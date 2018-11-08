@@ -51,12 +51,14 @@ For more information about `SyncManager`, please refer to [SyncManager README](h
 
 ## v3.0.86(OCT 31, 2018)
 If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
- * Added `ScheduledUserMessage` feature to send `UserMessage` at the time specified by a user.  
-   * Added `ScheduledUserMessage` that is a scheduled `UserMessage`.  
-   * Added `ScheduledUserMessageParams` in `SendBird` to be delivered as a parameter to register scheduled `UserMessage`.  
-   * Added `registerScheduledUserMessage` in `GroupChannel` to register scheduled `UserMessage`.  
- * Improved stability.  
- * Minor bug fixed.  
+ * Added `ApplicationUserListQuery`.  
+   * It is used to get users created in the application.  
+   * It could be derived by `createApplicationUserListQuery()` in `SendBird`.  
+   * `userIdsFilter`: use to filter through userIds to get users.  
+   * `metaDataKeyFilter`: use to filter by user's metaData to get users. If you set this value, you should set `metaDataValuesFilter` too.  
+   * `metaDataValuesFilter`: use to filter by user's metaData to get users. If you set this value, you should set `metaDataKeyFilter` too.  
+ * Added `userIdsFilter` in `BlockedUserListQuery` to get filtered by userIds among users blocked by currentUser.  
+ * Deprecated `createUserListQuery()` in `SendBird`. We recommend that you use `createApplicationUserListQuery()`.  
  
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    
