@@ -49,7 +49,7 @@ For more information about `SyncManager`, please refer to [SyncManager README](h
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
-## v3.0.86(OCT 31, 2018)
+## v3.0.86(NOV 8, 2018)
 If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
  * Added `ApplicationUserListQuery`.  
    * It is used to get users created in the application.  
