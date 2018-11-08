@@ -1,6 +1,16 @@
 Changelog
 =========
 
+## v3.0.86(NOV 8, 2018)
+ * Added `ApplicationUserListQuery`.  
+   * It is used to get users created in the application.  
+   * It could be derived by `createApplicationUserListQuery()` in `SendBird`.  
+   * `userIdsFilter`: use to filter through userIds to get users.  
+   * `metaDataKeyFilter`: use to filter by user's metaData to get users. If you set this value, you should set `metaDataValuesFilter` too.  
+   * `metaDataValuesFilter`: use to filter by user's metaData to get users. If you set this value, you should set `metaDataKeyFilter` too.  
+ * Added `userIdsFilter` in `BlockedUserListQuery` to get filtered by userIds among users blocked by currentUser.  
+ * Deprecated `createUserListQuery()` in `SendBird`. We recommend that you use `createApplicationUserListQuery()`.  
+ 
 ## v3.0.85(OCT 31, 2018)
  * Added `ScheduledUserMessage` feature to send `UserMessage` at the time specified by a user.  
    * Added `ScheduledUserMessage` that is a scheduled `UserMessage`.  

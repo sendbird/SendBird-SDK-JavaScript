@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.85
+ * Type Definitions for SendBird SDK v3.0.86
  * homepage: https://sendbird.com/
  * git: https://github.com/smilefam/SendBird-SDK-JavaScript
  */
@@ -85,9 +85,11 @@ declare namespace SendBird {
     removeUserEventHandler(id: string): void;
     removeAllUserEventHandler(): void;
 
-    createUserListQuery(): UserListQuery;
-    createUserListQuery(userIds: Array<string>): UserListQuery;
-    createBlockedUserListQuery(): UserListQuery;
+    createUserListQuery(): UserListQuery; // DEPRECATED
+    createUserListQuery(userIds: Array<string>): UserListQuery; // DEPRECATED
+    createApplicationUserListQuery(): ApplicationUserListQuery;
+
+    createBlockedUserListQuery(): BlockedUserListQuery;
 
     blockUser(userToBlock: User, callback?: userCallback): void;
     blockUserWithUserId(userToBlock: string, callback?: userCallback): void;
@@ -847,9 +849,9 @@ declare namespace SendBird {
     enter(callback: openChannelCallback): void;
     exit(callback: openChannelCallback): void;
 
-    createParticipantListQuery(): UserListQuery;
-    createMutedUserListQuery(): UserListQuery;
-    createBannedUserListQuery(): UserListQuery;
+    createParticipantListQuery(): ParticipantListQuery;
+    createMutedUserListQuery(): MutedUserListQuery;
+    createBannedUserListQuery(): BannedUserListQuery;
 
     updateChannel(name: string, coverUrl: string, data: string, callback: openChannelCallback): void;
     updateChannel(
@@ -903,12 +905,56 @@ declare namespace SendBird {
   }
 
   type userListQueryCallback = (userList: Array<User>, error: SendBirdError) => void;
-  interface UserListQuery {
+  interface UserListQuery {  // DEPRECATED
     limit: number;
     hasNext: boolean;
     isLoading: boolean;
     metaDataKey: string;
     metaDataValues: Array<string>;
+
+    next(callback: userListQueryCallback): void;
+  }
+
+  interface ApplicationUserListQuery {
+    limit: number;
+    hasNext: boolean;
+    isLoading: boolean;
+    userIdsFilter: Array<string>;
+    metaDataKeyFilter: string;
+    metaDataValuesFilter: Array<string>;
+
+    next(callback: userListQueryCallback): void;
+  }
+
+  interface BlockedUserListQuery {
+    limit: number;
+    hasNext: boolean;
+    isLoading: boolean;
+    userIdsFilter: Array<string>;
+
+    next(callback: userListQueryCallback): void;
+  }
+
+  interface ParticipantListQuery {
+    limit: number;
+    hasNext: boolean;
+    isLoading: boolean;
+
+    next(callback: userListQueryCallback): void;
+  }
+
+  interface MutedUserListQuery {
+    limit: number;
+    hasNext: boolean;
+    isLoading: boolean;
+
+    next(callback: userListQueryCallback): void;
+  }
+
+  interface BannedUserListQuery {
+    limit: number;
+    hasNext: boolean;
+    isLoading: boolean;
 
     next(callback: userListQueryCallback): void;
   }
@@ -1125,7 +1171,7 @@ declare namespace SendBird {
     setMyCountPreference(preference: 'all' | 'unread_message_count_only' | 'unread_mention_count_only' | 'off', callback: commonCallback): void;
 
     createMemberListQuery(): GroupChannelMemberListQuery;
-    createBannedUserListQuery(): UserListQuery;
+    createBannedUserListQuery(): BannedUserListQuery;
 
     banUser(user: User, seconds: number, description: string, callback: commonCallback): void;
     banUserWithUserId(userId: string, seconds: number, description: string, callback: commonCallback): void;

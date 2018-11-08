@@ -24,7 +24,7 @@ SendBird JavaScript SDK
 # TypeScript
 Install via NPM and import like below in your TypeScript file:   
 ```javascript  
-import * as SendBird from 'SendBird';
+import * as SendBird from 'sendbird';
 var sb = new SendBird({'appId': 'APP_ID'});
 // do something...
 ```  
@@ -49,7 +49,7 @@ For more information about `SyncManager`, please refer to [SyncManager README](h
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
-## v3.0.85(OCT 31, 2018)
+## v3.0.86(OCT 31, 2018)
 If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
  * Added `ScheduledUserMessage` feature to send `UserMessage` at the time specified by a user.  
    * Added `ScheduledUserMessage` that is a scheduled `UserMessage`.  
