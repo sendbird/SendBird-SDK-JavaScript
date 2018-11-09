@@ -398,7 +398,7 @@ declare namespace SendBird {
     customType: string;
     isFrozen: boolean;
     isEphemeral: boolean;
-    createdAt: string;
+    createdAt: number;
 
     isGroupChannel(): boolean;
     isOpenChannel(): boolean;
