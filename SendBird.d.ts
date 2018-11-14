@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.87
+ * Type Definitions for SendBird SDK v3.0.88
  * homepage: https://sendbird.com/
  * git: https://github.com/smilefam/SendBird-SDK-JavaScript
  */
@@ -57,6 +57,8 @@ declare namespace SendBird {
     ScheduledUserMessageParams: ScheduledUserMessageParams;
 
     Options: Options;
+
+    setErrorFirstCallback(errorFirstCallback: boolean): void;
 
     connect(userId: string, callback?: userCallback): void;
     connect(userId: string, apiHost: string, wsHost: string, callback?: userCallback): void;
@@ -280,7 +282,7 @@ declare namespace SendBird {
   }
   interface UserMessage extends BaseMessageInstance {
     message: string;
-    sender: User;
+    sender: Sender;
     reqId: string;
     translations: Object;
   }
@@ -304,7 +306,7 @@ declare namespace SendBird {
     pushNotificationDeliveryOption: 'default' | 'suppress';
   }
   interface FileMessage extends BaseMessageInstance {
-    sender: User;
+    sender: Sender;
     reqId: string;
     url: string;
     name: string;
@@ -355,6 +357,13 @@ declare namespace SendBird {
     buildFromSerializedData(serializedObject: Object): User;
   }
 
+  interface Sender extends User {
+    isBlockedByMe: boolean;
+  }
+  interface SenderStatic {
+    buildFromSerializedData(serializedObject: Object): Sender;
+  }
+
   interface Member extends User {
     state: 'invited' | 'joined';
     isBlockedByMe: boolean;
@@ -398,7 +407,7 @@ declare namespace SendBird {
     customType: string;
     isFrozen: boolean;
     isEphemeral: boolean;
-    createdAt: string;
+    createdAt: number;
 
     isGroupChannel(): boolean;
     isOpenChannel(): boolean;
