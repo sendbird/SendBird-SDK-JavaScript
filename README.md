@@ -49,16 +49,13 @@ For more information about `SyncManager`, please refer to [SyncManager README](h
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
-## v3.0.87(NOV 8, 2018)
+## v3.0.88(NOV 15, 2018)
 If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
- * Added `ApplicationUserListQuery`.  
-   * It is used to get users created in the application.  
-   * It could be derived by `createApplicationUserListQuery()` in `SendBird`.  
-   * `userIdsFilter`: use to filter through userIds to get users.  
-   * `metaDataKeyFilter`: use to filter by user's metaData to get users. If you set this value, you should set `metaDataValuesFilter` too.  
-   * `metaDataValuesFilter`: use to filter by user's metaData to get users. If you set this value, you should set `metaDataKeyFilter` too.  
- * Added `userIdsFilter` in `BlockedUserListQuery` to get filtered by userIds among users blocked by currentUser.  
- * Deprecated `createUserListQuery()` in `SendBird`. We recommend that you use `createApplicationUserListQuery()`.  
+ * Changed type of `sender` property in `UserMessage` and `FileMessage` from `User` to a new class `Sender` which extends `User`.
+   * `Sender` has `isBlockedByMe` property which indicates that the message sender is blocked by the current user (default: false).
+   * `isBlockedByMe` is valid in `GroupChannel` only.
+   * Message from blocked users is delivered only when `block_mode` in `Application` is set to `explicit` mode. Otherwise, it's not visible nor delivered.
+ * Minor bug fixed.
  
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    

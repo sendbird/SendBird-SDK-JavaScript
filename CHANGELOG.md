@@ -1,6 +1,13 @@
 Changelog
 =========
 
+## v3.0.88(NOV 15, 2018)
+ * Changed type of `sender` property in `UserMessage` and `FileMessage` from `User` to a new class `Sender` which extends `User`.
+   * `Sender` has `isBlockedByMe` property which indicates that the message sender is blocked by the current user (default: false).
+   * `isBlockedByMe` is valid in `GroupChannel` only.
+   * Message from blocked user is delivered only when `block_mode` in `Application` is set to `explicit` mode. Otherwise, it's not visible nor delivered.
+ * Minor bug fixed.
+
 ## v3.0.87(NOV 8, 2018)
  * Added `ApplicationUserListQuery`.  
    * It is used to get users created in the application.  
