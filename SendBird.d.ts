@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.88
+ * Type Definitions for SendBird SDK v3.0.89
  * homepage: https://sendbird.com/
  * git: https://github.com/smilefam/SendBird-SDK-JavaScript
  */
@@ -390,7 +390,7 @@ declare namespace SendBird {
     hasMore: boolean;
     token: string;
   };
-  type getMessageChangeLogsByTokenHandler = (data: messageChangeLogs, error: SendBirdError) => void;
+  type getMessageChangeLogsHandler = (data: messageChangeLogs, error: SendBirdError) => void;
   type mutedInfo = {
     isMuted: boolean;
     startAt: number;
@@ -413,9 +413,12 @@ declare namespace SendBird {
     isOpenChannel(): boolean;
     serialize(): Object;
 
-    getMessageChangeLogsByToken(callback: getMessageChangeLogsByTokenHandler): void;
-    getMessageChangeLogsByToken(token: string, callback: getMessageChangeLogsByTokenHandler): void;
-    getMessageChangeLogsByToken(token: string, includeMetaArray: boolean, callback: getMessageChangeLogsByTokenHandler): void;
+    getMessageChangeLogsByToken(callback: getMessageChangeLogsHandler): void;
+    getMessageChangeLogsByToken(token: string, callback: getMessageChangeLogsHandler): void;
+    getMessageChangeLogsByToken(token: string, includeMetaArray: boolean, callback: getMessageChangeLogsHandler): void;
+
+    getMessageChangeLogsByTimestamp(ts: number, callback: getMessageChangeLogsHandler): void;
+    getMessageChangeLogsByTimestamp(ts: number, includeMetaArray: boolean, callback: getMessageChangeLogsHandler): void;
 
     getMyMutedInfo(callback: getMyMutedInfoHandler): void;
     createOperatorListQuery(): OperatorListQuery;
@@ -1104,8 +1107,13 @@ declare namespace SendBird {
     setSchedule(year: number, month: number, day: number, hour: number, min: number, timezone: string): void;
 
   }
+  interface DistinctGroupChannelResponse {
+    channel: GroupChannel;
+    isCreated: boolean;
+  }
 
   type groupChannelCallback = (groupChannel: GroupChannel, error: SendBirdError) => void;
+  type distinctGroupChannelCallback = (response: DistinctGroupChannelResponse, error: SendBirdError) => void;
   type getPushPreferenceCallback = (isPushOn: boolean, error: SendBirdError) => void;
   interface GroupChannel extends BaseChannel {
     isHidden: boolean;
@@ -1126,6 +1134,7 @@ declare namespace SendBird {
     inviter: User;
     invitedAt: number;
     isAccessCodeRequired: boolean;
+    hiddenState: 'unhidden' | 'hidden_allow_auto_unhide' | 'hidden_prevent_auto_unhide';
 
     isEqual(target: GroupChannel): boolean;
     isIdentical(target: GroupChannel): boolean;
@@ -1163,6 +1172,8 @@ declare namespace SendBird {
 
     hide(callback: commonCallback): void;
     hide(hidePreviousMessages: boolean, callback: commonCallback): void;
+    hide(hidePreviousMessages: boolean, allowAutoUnhide: boolean, callback: commonCallback): void;
+    unhide(callback: commonCallback): void;
 
     markAsRead(): void;
     getReadReceipt(message: UserMessage | FileMessage | AdminMessage): number;
@@ -1235,6 +1246,7 @@ declare namespace SendBird {
       customType: string,
       callback: groupChannelCallback
     ): void;
+    createDistinctChannelIfNotExist(groupChannelParams: GroupChannelParams, callback: distinctGroupChannelCallback): void;
 
     createChannelWithUserIds(userIds: Array<string>, callback: groupChannelCallback): void;
     createChannelWithUserIds(userIds: Array<string>, isDistinct: boolean, callback: groupChannelCallback): void; // DEPRECATED
@@ -1303,6 +1315,7 @@ declare namespace SendBird {
     superChannelFilter: 'all' | 'super' | 'nonsuper';
     publicChannelFilter: 'all' | 'public' | 'private';
     metadataOrderKeyFilter: string;
+    hiddenChannelFilter: 'unhidden_only' | 'hidden_only' | 'hidden_allow_auto_unhide' | 'hidden_prevent_auto_unhide'
 
     next(callback: groupChannelListQueryCallback): void;
   }
