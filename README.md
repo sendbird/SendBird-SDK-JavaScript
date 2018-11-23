@@ -49,23 +49,9 @@ For more information about `SyncManager`, please refer to [SyncManager README](h
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
-## v3.0.89(NOV 22, 2018)
+## v3.0.90(NOV 23, 2018)
 If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
- * Added `createDistinctChannelIfNotExist()` in `GroupChannel`.
-   * It creates distinct channel and gets the channel with `isCreated` flag which represents whether the channel is actually created or not.
- * Added `getMessageChangeLogsByTimestamp()` in `SendBird`.
-   * It retrieves message change logs since the given timestamp.
- * Added `hiddenState` property in `GroupChannel` to get channel's hidden state.
-   * `unhidden`: It's not hidden channel.
-   * `hidden-allow-auto-unhide`: It's hidden channel which is automatically unhidden when new message comes in.
-   * `hidden-prevent-auto-unhide`: It's hidden channel which is not unhidden when new message comes in.
- * Added `allowAutoUnhide` as the second parameter into `hide()` to allow automatic unhide on new message.
- * Added `unhide()` in `GroupChannel` to manually unhide the channel.
- * Added `hiddenChannelFilter` in `GroupChannelListQuery` to filter by `hiddenState`.
-   * `unhidden_only`: Get all unhidden channels. (default)
-   * `hidden_only`: Get all hidden channels which `hiddenState` is `hidden_allow_auto_unhide` or `hidden_prevent_auto_unhide`.
-   * `hidden_allow_auto_unhide`: Get channels which `hiddenState` is `hidden_allow_auto_unhide`.
-   * `hidden_prevent_auto_unhide`: Get channels which `hiddenState` is `hidden_prevent_auto_unhide`.
+ * Minor bug fixed.   
  
   
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    

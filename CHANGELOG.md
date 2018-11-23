@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## v3.0.90(NOV 23, 2018)
+ * Minor bug fixed.  
+ 
 ## v3.0.89(NOV 22, 2018)
  * Added `createDistinctChannelIfNotExist()` in `GroupChannel`.
    * It creates distinct channel and gets the channel with `isCreated` flag which represents whether the channel is actually created or not.
