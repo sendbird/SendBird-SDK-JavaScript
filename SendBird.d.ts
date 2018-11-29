@@ -24,6 +24,9 @@ declare namespace SendBird {
   type userCallback = (user: User, error: SendBirdError) => void;
   type pushSettingCallback = (response: string, error: SendBirdError) => void;
 
+  type Message = UserMessage | FileMessage | AdminMessage;
+  type Channel = GroupChannel | OpenChannel;
+
   type getFriendChangeLogs = {
     updatedUsers: Array<User>;
     deletedUserIds: Array<string>;
@@ -256,6 +259,7 @@ declare namespace SendBird {
   }
 
   interface AdminMessage extends BaseMessageInstance {
+    messageType: 'admin';
     message: string;
     translations: Object;
   }
@@ -281,8 +285,9 @@ declare namespace SendBird {
     pushNotificationDeliveryOption: 'default' | 'suppress';
   }
   interface UserMessage extends BaseMessageInstance {
+    messageType: 'user';
     message: string;
-    sender: Sender;
+    _sender: Sender;
     reqId: string;
     translations: Object;
   }
@@ -306,7 +311,8 @@ declare namespace SendBird {
     pushNotificationDeliveryOption: 'default' | 'suppress';
   }
   interface FileMessage extends BaseMessageInstance {
-    sender: Sender;
+    messageType: 'file';
+    _sender: Sender;
     reqId: string;
     url: string;
     name: string;
@@ -339,7 +345,7 @@ declare namespace SendBird {
     profileUrl: string;
     metaData: Object;
     connectionStatus: string;
-    lastSeenAt: string;
+    lastSeenAt: number;
     isActive: boolean;
     friendDiscoveryKey: string | null;
     friendName: string | null;
@@ -385,7 +391,7 @@ declare namespace SendBird {
   type cancelUploadingFileMessageCallback = (isSuccess: boolean, error: SendBirdError) => void;
   type fileUploadprogressHandler = (event: Object) => void;
   type messageChangeLogs = {
-    updatedMessages: Array<UserMessage | FileMessage | AdminMessage>;
+    updatedMessages: Array<Message>;
     deletedMessageIds: Array<string>;
     hasMore: boolean;
     token: string;
@@ -404,6 +410,7 @@ declare namespace SendBird {
     name: string;
     coverUrl: string;
     data: string;
+    channelType: string;
     customType: string;
     isFrozen: boolean;
     isEphemeral: boolean;
@@ -810,14 +817,14 @@ declare namespace SendBird {
     deleteAllMetaCounters(callback: commonCallback): void;
 
     /** MessageMetaArray */
-    createMessageMetaArrayKeys(message: UserMessage | FileMessage | AdminMessage, keys: Array<string>, callback:commonCallback): void;
-    deleteMessageMetaArrayKeys(message: UserMessage | FileMessage | AdminMessage, keys: Array<string>, callback:commonCallback): void;
-    addMessageMetaArrayValues(message: UserMessage | FileMessage | AdminMessage, map: Object, callback:commonCallback): void;
-    removeMessageMetaArrayValues(message: UserMessage | FileMessage | AdminMessage, map: Object, callback:commonCallback): void;
+    createMessageMetaArrayKeys(message: Message, keys: Array<string>, callback:commonCallback): void;
+    deleteMessageMetaArrayKeys(message: Message, keys: Array<string>, callback:commonCallback): void;
+    addMessageMetaArrayValues(message: Message, map: Object, callback:commonCallback): void;
+    removeMessageMetaArrayValues(message: Message, map: Object, callback:commonCallback): void;
   }
 
   type messageListCallback = (
-    messageList: Array<UserMessage | FileMessage | AdminMessage>,
+    messageList: Array<Message>,
     error: SendBirdError
   ) => void;
   interface MessageListQuery { // DEPRECATED
@@ -853,6 +860,7 @@ declare namespace SendBird {
   type commonCallback = (response: Object, error: SendBirdError) => void;
   type openChannelCallback = (openChannel: OpenChannel, error: SendBirdError) => void;
   interface OpenChannel extends BaseChannel {
+    channelType: 'open';
     participantCount: number;
     operators: Array<User>;
 
@@ -1043,7 +1051,7 @@ declare namespace SendBird {
     createdAt: number;
     updatedAt: number;
     channelUrl: string;
-    sender: User;
+    _sender: User;
     message: string;
     customType: string;
     data: string;
@@ -1116,16 +1124,20 @@ declare namespace SendBird {
   type distinctGroupChannelCallback = (response: DistinctGroupChannelResponse, error: SendBirdError) => void;
   type getPushPreferenceCallback = (isPushOn: boolean, error: SendBirdError) => void;
   interface GroupChannel extends BaseChannel {
+    channelType: 'group';
     isHidden: boolean;
     isDistinct: boolean;
     isSuper: boolean;
     isPublic: boolean;
     isPushEnabled: boolean;
     myCountPreference: string;
-    lastMessage: UserMessage | FileMessage | AdminMessage;
+    lastMessage: Message;
     unreadMessageCount: number;
     unreadMentionCount: number;
     members: Array<Member>;
+    memberMap: {
+      [userId: string]: Member;
+    };
     memberCount: number;
     joinedMemberCount: number;
     myMemberState: 'none' | 'joined' | 'invited';
@@ -1176,7 +1188,7 @@ declare namespace SendBird {
     unhide(callback: commonCallback): void;
 
     markAsRead(): void;
-    getReadReceipt(message: UserMessage | FileMessage | AdminMessage): number;
+    getReadReceipt(message: Message): number;
     getReadStatus(includeAllMembers?: boolean): Object;
     getUnreadMembers(message: UserMessage | FileMessage, includeAllMembers?: boolean): Array<Member>;
     getReadMembers(message: UserMessage | FileMessage, includeAllMembers?: boolean): Array<Member>;
