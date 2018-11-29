@@ -382,6 +382,10 @@ declare namespace SendBird {
   /**
    * Channel
    */
+  interface ProgressEvent {
+    loaded: number;
+    total: number;
+  }
   type fileMessagesCallbackObject = {
     progress: (event: ProgressEvent, messageRequestId: string) => void;
     sent: (message: FileMessage, error: SendBirdError) => void;
@@ -389,7 +393,7 @@ declare namespace SendBird {
   };
   type messageCallback = (message: UserMessage | FileMessage, error: SendBirdError) => void;
   type cancelUploadingFileMessageCallback = (isSuccess: boolean, error: SendBirdError) => void;
-  type fileUploadprogressHandler = (event: Object) => void;
+  type fileUploadprogressHandler = (event: ProgressEvent) => void;
   type messageChangeLogs = {
     updatedMessages: Array<Message>;
     deletedMessageIds: Array<string>;
