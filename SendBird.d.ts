@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.90
+ * Type Definitions for SendBird SDK v3.0.91
  * homepage: https://sendbird.com/
  * git: https://github.com/smilefam/SendBird-SDK-JavaScript
  */
@@ -31,6 +31,14 @@ declare namespace SendBird {
     token: string;
   };
   type getFriendChangeLogsByTokenHandler = (data: getFriendChangeLogs, error: SendBirdError) => void;
+
+  type groupChannelChangeLogs = {
+    updatedChannels: Array<GroupChannel>;
+    deletedChannelUrls: Array<string>;
+    hasMore: boolean;
+    token: string;
+  };
+  type getGroupChannelChangeLogsHandler = (data: groupChannelChangeLogs, error: SendBirdError) => void;
 
   interface DiscoveryObject {
     friendDiscoveryKey: string;
@@ -165,6 +173,9 @@ declare namespace SendBird {
     getSubscribedTotalUnreadMessageCount(): number;
     getSubscribedCustomTypeTotalUnreadMessageCount(): number;
     getSubscribedCustomTypeUnreadMessageCount(customType: string): number;
+
+    getMyGroupChannelChangeLogsByToken(token: string, customTypes: Array<string>, callback:getGroupChannelChangeLogsHandler);
+    getMyGroupChannelChangeLogsByTimestamp(ts: number, customTypes: Array<string>, callback:getGroupChannelChangeLogsHandler);
   }
 
   interface Options {

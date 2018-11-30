@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## v3.0.91(NOV 30, 2018)
+ * Minor bug fixed.
+
 ## v3.0.90(NOV 23, 2018)
  * Minor bug fixed.  
  
