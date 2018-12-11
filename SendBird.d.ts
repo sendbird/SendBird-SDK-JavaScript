@@ -7,6 +7,10 @@
 export = SendBird;
 export as namespace SendBird;
 
+// Workaround for non-browser environment support.
+interface File {}
+interface ProgressEvent {}
+
 declare const SendBird: SendBirdStatic;
 
 interface SendBirdStatic {
