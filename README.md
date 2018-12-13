@@ -49,7 +49,7 @@ For more information about `SyncManager`, please refer to [SyncManager README](h
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
-## v3.0.91(NOV 30, 2018)
+## v3.0.92(DEC 13, 2018)
 If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
  * Minor bug fixed.   
  

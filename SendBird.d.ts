@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.91
+ * Type Definitions for SendBird SDK v3.0.92
  * homepage: https://sendbird.com/
  * git: https://github.com/smilefam/SendBird-SDK-JavaScript
  */
@@ -174,8 +174,8 @@ declare namespace SendBird {
     getSubscribedCustomTypeTotalUnreadMessageCount(): number;
     getSubscribedCustomTypeUnreadMessageCount(customType: string): number;
 
-    getMyGroupChannelChangeLogsByToken(token: string, customTypes: Array<string>, callback:getGroupChannelChangeLogsHandler);
-    getMyGroupChannelChangeLogsByTimestamp(ts: number, customTypes: Array<string>, callback:getGroupChannelChangeLogsHandler);
+    getMyGroupChannelChangeLogsByToken(token: string, customTypes: Array<string>, callback:getGroupChannelChangeLogsHandler): void;
+    getMyGroupChannelChangeLogsByTimestamp(ts: number, customTypes: Array<string>, callback:getGroupChannelChangeLogsHandler): void;
   }
 
   interface Options {
@@ -394,7 +394,7 @@ declare namespace SendBird {
   };
   type messageCallback = (message: UserMessage | FileMessage, error: SendBirdError) => void;
   type cancelUploadingFileMessageCallback = (isSuccess: boolean, error: SendBirdError) => void;
-  type fileUploadprogressHandler = (event: Object) => void;
+  type fileUploadprogressHandler = (event: ProgressEvent) => void;
   type messageChangeLogs = {
     updatedMessages: Array<UserMessage | FileMessage | AdminMessage>;
     deletedMessageIds: Array<string>;
@@ -770,7 +770,7 @@ declare namespace SendBird {
       progressHandler: fileUploadprogressHandler,
       callback: messageCallback
     ): FileMessage; // DEPRECATED
-    
+
     sendFileMessages(fileMessageParamsList: Array<FileMessageParams>, callbackObject: fileMessagesCallbackObject): Array<FileMessage>;
 
     /** UserMessage  */
