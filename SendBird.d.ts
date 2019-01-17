@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.92
+ * Type Definitions for SendBird SDK v3.0.93
  * homepage: https://sendbird.com/
  * git: https://github.com/smilefam/SendBird-SDK-JavaScript
  */
@@ -126,6 +126,9 @@ declare namespace SendBird {
     setPushTemplate(templateName: string, callback?: pushSettingCallback): void;
     getPushTemplate(callback?: pushSettingCallback): void;
 
+    setPushTriggerOption(pushTriggerOption: 'all' | 'mention_only' | 'off', callback: commonCallback): void;
+    getPushTriggerOption(callback: getPushTriggerOptionCallback): void;
+
     setDoNotDisturb(
       doNotDisturbOn: boolean,
       startHour: number,
@@ -136,6 +139,14 @@ declare namespace SendBird {
       callback?: commonCallback
     ): void;
     getDoNotDisturb(callback: commonCallback): void;
+
+    setSnoozePeriod(
+      snoozeOn: boolean,
+      startTs: number,
+      endTs: number,
+      callback?: commonCallback
+    ): void;
+    getSnoozePeriod(callback: commonCallback): void;
 
     // Background/Foreground Appstate for push notifications in React Native / Ionic
     setBackgroundState(): void;
@@ -275,11 +286,13 @@ declare namespace SendBird {
   }
 
   interface GroupChannelTotalUnreadMessageCountParams {
+    new(): GroupChannelTotalUnreadMessageCountParams;
     channelCustomTypesFilter: Array<string>;
     superChannelFilter: 'all' | 'super' | 'nonsuper';
   }
 
   interface UserMessageParams {
+    new(): UserMessageParams;
     message: string;
     data: string;
     customType: string;
@@ -302,6 +315,7 @@ declare namespace SendBird {
   }
 
   interface FileMessageParams {
+    new(): FileMessageParams;
     file: File;
     fileUrl: string;
     fileName: string;
@@ -1077,6 +1091,7 @@ declare namespace SendBird {
    * GroupChannel
    */
   interface GroupChannelParams {
+    new(): GroupChannelParams;
     isDistinct: boolean;
     isSuper: boolean;
     isPublic: boolean;
@@ -1098,6 +1113,7 @@ declare namespace SendBird {
   }
 
   interface ScheduledUserMessageParams {
+    new(): ScheduledUserMessageParams;
     message: string;
     data: string;
     customType: string;
@@ -1126,12 +1142,14 @@ declare namespace SendBird {
   type groupChannelCallback = (groupChannel: GroupChannel, error: SendBirdError) => void;
   type distinctGroupChannelCallback = (response: DistinctGroupChannelResponse, error: SendBirdError) => void;
   type getPushPreferenceCallback = (isPushOn: boolean, error: SendBirdError) => void;
+  type getPushTriggerOptionCallback = (pushTriggerOption: 'all' | 'mention_only' | 'off' | 'default', error: SendBirdError) => void;
   interface GroupChannel extends BaseChannel {
     isHidden: boolean;
     isDistinct: boolean;
     isSuper: boolean;
     isPublic: boolean;
-    isPushEnabled: boolean;
+    isPushEnabled: boolean; // DEPRECASED
+    myPushTriggerOption: 'default' | 'all' | 'mention_only' | 'off';
     myCountPreference: string;
     lastMessage: UserMessage | FileMessage | AdminMessage;
     unreadMessageCount: number;
@@ -1197,8 +1215,10 @@ declare namespace SendBird {
     isTyping(): boolean;
     getTypingMembers(): Array<Member>;
 
-    setPushPreference(pushOn: boolean, callback: commonCallback): void;
-    getPushPreference(callback: getPushPreferenceCallback): void;
+    setPushPreference(pushOn: boolean, callback: commonCallback): void; // DEPRECATED
+    getPushPreference(callback: getPushPreferenceCallback): void; // DEPRECATED
+    setMyPushTriggerOption(pushTriggerOption: 'all' | 'mention_only' | 'off' | 'default', callback: getPushTriggerOptionCallback): void;
+    getMyPushTriggerOption(callback: getPushTriggerOptionCallback): void;
     setMyCountPreference(preference: 'all' | 'unread_message_count_only' | 'unread_mention_count_only' | 'off', callback: commonCallback): void;
 
     createMemberListQuery(): GroupChannelMemberListQuery;

@@ -1,6 +1,16 @@
 Changelog
 =========
 
+## v3.0.93(JAN 17, 2019)
+ * Add push trigger option to enable/disable remote push notification.
+   * Added `setPushTriggerOption(option, callback)` to `SendBird`. It determines whether the current user receives remote push notification in all group channels.
+   * Added `getPushTriggerOption(callback)` to `SendBird`. It returns the current push trigger option setting for all group channels.
+   * Added `setMyPushTriggerOption(option, callback)` to `GroupChannel`. It determines whether the current user receives remote push notification in the group channel.
+   * Added `getMyPushTriggerOption(callback)` to `GroupChannel`. It returns the current push trigger option setting for the group channel.
+ * Snooze or stop snooze remote push notification in specific duration.
+   * Added `setSnoozePeriod(snoozeOn, startTs, endTs, callback)` into `SendBird`. It enables or disables snooze in the period.
+   * Added `getSnoozePeriod(callback)` into `SendBird`. It returns the current snooze setting for the current user.
+
 ## v3.0.92(DEC 13, 2018)
  * Minor bug fixed.
 
