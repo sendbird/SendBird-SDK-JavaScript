@@ -43,8 +43,7 @@ If you have trouble importing `SendBird`, please check your `tsconfig.json` file
  * Local cache integrated: store channel/message data in local storage for fast view loading.  
  * Event-driven data handling: subscribe channel/message event like `insert`, `update`, `remove` at a single spot in order to apply data event to view.  
   
-Check out [Basic Sample with SyncManager](https://github.com/smilefam/SendBird-JavaScript/tree/master/web-basic-sample-localcache) which is same as [Basic Sample](https://sample.sendbird.com/basic) with `SyncManager` integrated.    
-For more information about `SyncManager`, please refer to [SyncManager README](https://github.com/smilefam/SendBird-JavaScript/blob/master/web-basic-sample-localcache/src/js/manager/README.md).  
+Check out [Basic Sample with SyncManager](https://github.com/smilefam/SendBird-JavaScript/tree/master/web-basic-sample-syncmanager) which is similar to [Basic Sample](https://sample.sendbird.com/basic) but `SyncManager` integrated. For more information about `SyncManager`, please refer to [SyncManager README](https://github.com/smilefam/sendbird-syncmanager-javascript/blob/master/README.md).
 
 
 # [Documentation](https://docs.sendbird.com/javascript)
