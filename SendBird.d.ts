@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.93
+ * Type Definitions for SendBird SDK v3.0.94
  * homepage: https://sendbird.com/
  * git: https://github.com/smilefam/SendBird-SDK-JavaScript
  */
@@ -228,7 +228,7 @@ declare namespace SendBird {
     onChannelFrozen(channel: OpenChannel | GroupChannel): void;
     onChannelUnfrozen(channel: OpenChannel | GroupChannel): void;
     onChannelChanged(channel: OpenChannel | GroupChannel): void;
-    onChannelDeleted(channelUrl: string): void;
+    onChannelDeleted(channelUrl: string, channelType: string): void;
     onUserReceivedInvitation(channel: GroupChannel, inviter: User, invitees: Array<User>): void;
     onUserDeclinedInvitation(channel: GroupChannel, inviter: User, invitee: Member): void;
     onMetaDataCreated(channel: OpenChannel | GroupChannel, metaData: Object): void;
