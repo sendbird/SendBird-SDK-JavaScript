@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.94
+ * Type Definitions for SendBird SDK v3.0.95
  * homepage: https://sendbird.com/
  * git: https://github.com/smilefam/SendBird-SDK-JavaScript
  */
@@ -186,7 +186,9 @@ declare namespace SendBird {
     getSubscribedCustomTypeUnreadMessageCount(customType: string): number;
 
     getMyGroupChannelChangeLogsByToken(token: string, customTypes: Array<string>, callback:getGroupChannelChangeLogsHandler): void;
+    getMyGroupChannelChangeLogsByToken(token: string, customTypes: Array<string>, includeEmpty: boolean, callback:getGroupChannelChangeLogsHandler): void;
     getMyGroupChannelChangeLogsByTimestamp(ts: number, customTypes: Array<string>, callback:getGroupChannelChangeLogsHandler): void;
+    getMyGroupChannelChangeLogsByTimestamp(ts: number, customTypes: Array<string>, includeEmpty: boolean, callback:getGroupChannelChangeLogsHandler): void;
   }
 
   interface Options {

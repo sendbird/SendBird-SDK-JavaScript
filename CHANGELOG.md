@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## v3.0.95(FEB 21, 2019)
+ * Minor bug fixed.  
+
 ## v3.0.94(FEB 14, 2019)
  * Improved stability.  
  * Minor bug fixed.  

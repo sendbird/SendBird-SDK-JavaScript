@@ -48,11 +48,9 @@ Check out [Basic Sample with SyncManager](https://github.com/smilefam/SendBird-J
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
-## v3.0.94(FEB 14, 2019)
+## v3.0.95(FEB 21, 2019)
 If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
- * Improved stability.  
  * Minor bug fixed.  
- * Updated SendBird.d.ts file for TypeScript.  
 
 
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    
