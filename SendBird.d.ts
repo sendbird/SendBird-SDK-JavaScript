@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.96
+ * Type Definitions for SendBird SDK v3.0.97
  * homepage: https://sendbird.com/
  * git: https://github.com/smilefam/SendBird-SDK-JavaScript
  */
@@ -892,17 +892,17 @@ declare namespace SendBird {
     createMutedUserListQuery(): MutedUserListQuery;
     createBannedUserListQuery(): BannedUserListQuery;
 
-    updateChannel(name: string, coverUrl: string, data: string, callback: openChannelCallback): void;
+    updateChannel(name: string, coverUrlOrImageFile: string | File, data: string, callback: openChannelCallback): void;
     updateChannel(
       name: string,
-      coverUrl: string,
+      coverUrlOrImageFile: string | File,
       data: string,
       operatorUserIds: Array<string> | string,
       callback: openChannelCallback
     ): void; // DEPRECATED
     updateChannel(
       name: string,
-      coverUrl: string,
+      coverUrlOrImageFile: string | File,
       data: string,
       operatorUserIds: Array<string> | string,
       customType: string,
@@ -911,14 +911,14 @@ declare namespace SendBird {
 
     updateChannelWithOperatorUserIds(
       name: string,
-      coverUrl: string,
+      coverUrlOrImageFile: string | File,
       data: string,
       operatorUserIds: Array<string> | string,
       callback: openChannelCallback
     ): void;
     updateChannelWithOperatorUserIds(
       name: string,
-      coverUrl: string,
+      coverUrlOrImageFile: string | File,
       data: string,
       operatorUserIds: Array<string> | string,
       customType: string,
@@ -1327,6 +1327,9 @@ declare namespace SendBird {
   }
 
   type groupChannelListQueryCallback = (groupChannelList: Array<GroupChannel>, error: SendBirdError) => void;
+  interface GroupChannelListQueryStatic {
+    buildFromSerializedData(serializedObject: object): GroupChannelListQuery;
+  }
   interface GroupChannelListQuery {
     limit: number;
     hasNext: boolean;
@@ -1350,6 +1353,7 @@ declare namespace SendBird {
     metadataOrderKeyFilter: string;
     hiddenChannelFilter: 'unhidden_only' | 'hidden_only' | 'hidden_allow_auto_unhide' | 'hidden_prevent_auto_unhide'
 
+    serialize(): object;
     next(callback: groupChannelListQueryCallback): void;
   }
 
