@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## v3.0.98(APR 5, 2019)
+ * Minor bug fixed.
+
 ## v3.0.97(MAR 14, 2019)
  * Improved stability.
 
@@ -13,7 +16,7 @@ Changelog
 ## v3.0.94(FEB 14, 2019)
  * Improved stability.  
  * Minor bug fixed.  
- * Updated SendBird.d.ts file for TypeScript.   
+ * Updated SendBird.d.ts file for TypeScript.  
 
 ## v3.0.93(JAN 17, 2019)
  * Add push trigger option to enable/disable remote push notification.

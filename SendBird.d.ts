@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.97
+ * Type Definitions for SendBird SDK v3.0.98
  * homepage: https://sendbird.com/
  * git: https://github.com/smilefam/SendBird-SDK-JavaScript
  */
@@ -39,6 +39,14 @@ declare namespace SendBird {
     token: string;
   };
   type getGroupChannelChangeLogsHandler = (data: groupChannelChangeLogs, error: SendBirdError) => void;
+
+  type pushTokens = {
+    deviceTokens: Array<string>;
+    type: 'gcm' | 'apns' | 'apns_voip';
+    hasMore: boolean;
+    token: string;
+  };
+  type getMyPushTokensHandler = (data: pushTokens, error: SendBirdError) => void;
 
   interface DiscoveryObject {
     friendDiscoveryKey: string;
@@ -120,8 +128,9 @@ declare namespace SendBird {
     registerAPNSPushTokenForCurrentUser(apnsRegToken: string, callback?: pushSettingCallback): void;
     unregisterAPNSPushTokenForCurrentUser(apnsRegToken: string, callback?: commonCallback): void;
     unregisterAPNSPushTokenAllForCurrentUser(callback?: commonCallback): void;
-
-    unregisterPushTokenAllForCurrentUser(callback?: commonCallback): void; // This removes both All APNS/GCM tokens
+    
+    unregisterPushTokenAllForCurrentUser(callback?: commonCallback): void; // This removes all push tokens including APNS/GCM
+    getMyPushTokensByToken(token: string, type: 'gcm' | 'apns' | 'apns_voip', callback:getMyPushTokensHandler): void;
 
     setPushTemplate(templateName: string, callback?: pushSettingCallback): void;
     getPushTemplate(callback?: pushSettingCallback): void;
