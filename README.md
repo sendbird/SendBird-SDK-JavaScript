@@ -50,7 +50,7 @@ Check out [Basic Sample with SyncManager](https://github.com/smilefam/SendBird-J
 
 ## v3.0.98(APR 5, 2019)
 If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
- * Minor bug fixed.
+ * Improved stability.
 
 
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    
