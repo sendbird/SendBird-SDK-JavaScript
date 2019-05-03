@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.98
+ * Type Definitions for SendBird SDK v3.0.99
  * homepage: https://sendbird.com/
  * git: https://github.com/smilefam/SendBird-SDK-JavaScript
  */
@@ -1106,6 +1106,7 @@ declare namespace SendBird {
     isDistinct: boolean;
     isSuper: boolean;
     isPublic: boolean;
+    isDiscoverable: boolean;
     isEphemeral: boolean;
     channelUrl: string;
     name: string;
@@ -1175,6 +1176,7 @@ declare namespace SendBird {
     invitedAt: number;
     isAccessCodeRequired: boolean;
     hiddenState: 'unhidden' | 'hidden_allow_auto_unhide' | 'hidden_prevent_auto_unhide';
+    isDiscoverable: boolean;
 
     isEqual(target: GroupChannel): boolean;
     isIdentical(target: GroupChannel): boolean;
