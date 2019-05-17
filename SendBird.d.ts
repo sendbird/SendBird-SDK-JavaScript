@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.99
+ * Type Definitions for SendBird SDK v3.0.100
  * homepage: https://sendbird.com/
  * git: https://github.com/smilefam/SendBird-SDK-JavaScript
  */
@@ -67,6 +67,7 @@ declare namespace SendBird {
     ConnectionHandler: ConnectionHandlerStatic;
 
     GroupChannelParams: GroupChannelParams;
+    GroupChannelListQuery: GroupChannelListQueryStatic;
     UserMessageParams: UserMessageParams;
     FileMessageParams: FileMessageParams;
     GroupChannelTotalUnreadMessageCountParams: GroupChannelTotalUnreadMessageCountParams;
@@ -848,8 +849,8 @@ declare namespace SendBird {
     /** MessageMetaArray */
     createMessageMetaArrayKeys(message: UserMessage | FileMessage | AdminMessage, keys: Array<string>, callback:commonCallback): void;
     deleteMessageMetaArrayKeys(message: UserMessage | FileMessage | AdminMessage, keys: Array<string>, callback:commonCallback): void;
-    addMessageMetaArrayValues(message: UserMessage | FileMessage | AdminMessage, map: Object, callback:commonCallback): void;
-    removeMessageMetaArrayValues(message: UserMessage | FileMessage | AdminMessage, map: Object, callback:commonCallback): void;
+    addMessageMetaArrayValues(message: UserMessage | FileMessage | AdminMessage, data: Object, callback:commonCallback): void;
+    removeMessageMetaArrayValues(message: UserMessage | FileMessage | AdminMessage, data: Object, callback:commonCallback): void;
   }
 
   type messageListCallback = (
@@ -893,7 +894,7 @@ declare namespace SendBird {
     operators: Array<User>;
 
     refresh(callback: openChannelCallback): void;
-    delete(callback: openChannelCallback): void;
+    delete(callback: commonCallback): void;
     enter(callback: openChannelCallback): void;
     exit(callback: openChannelCallback): void;
 
@@ -1181,6 +1182,7 @@ declare namespace SendBird {
     isEqual(target: GroupChannel): boolean;
     isIdentical(target: GroupChannel): boolean;
     refresh(callback: groupChannelCallback): void;
+    delete(callback: commonCallback): void;
 
     updateChannel(groupChannelParams: GroupChannelParams, callback: groupChannelCallback): void;
     updateChannel(name: string, coverUrlOrImageFile: string | File, data: string, callback: groupChannelCallback): void;

@@ -48,10 +48,10 @@ Check out [Basic Sample with SyncManager](https://github.com/smilefam/SendBird-J
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
-## v3.0.99(MAY 3, 2019)
+## v3.0.100(MAY 17, 2019)  
 If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
- * Added `isDiscoverable` property to `GroupChannel` and `GroupChannelParams`.
-   * if `isDiscoverable` of a public group channel is set to false, then the channel will not appear during querying with `PublicGroupChannelListQuery`. (default: true) 
+ * Improved stability.  
+ * Added `delete()` in `GroupChannel` to delete the `GroupChannel`. Only operators can do this action.    
 
 
 ## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    
