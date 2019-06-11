@@ -1,6 +1,12 @@
 Changelog
 =========
 
+## v3.0.101(JUN 11, 2019)  
+ * Improved stability.  
+ * Added `resendUserMessage()` in `BaseChannel` to retry to send a `UserMessage` which has `requestID`.  
+ * Added `requestState` and enum `MessageRequestState` which has NONE, PENDING, FAILED, and SUCCEEDED in `SendBird`.  
+ * Added `myLastRead` in `GroupChannel` to detect last read timestamp of current connected user.  
+
 ## v3.0.100(MAY 17, 2019)  
  * Improved stability.  
  * Added `delete()` in `GroupChannel` to delete the `GroupChannel`. Only operators can do this action.    

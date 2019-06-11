@@ -48,10 +48,12 @@ Check out [Basic Sample with SyncManager](https://github.com/sendbird/SendBird-J
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
-## v3.0.100(MAY 17, 2019)  
+## v3.0.101(JUN 11, 2019)  
 If you want to check the record of other version, go to [Change Log](https://github.com/sendbird/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
  * Improved stability.  
- * Added `delete()` in `GroupChannel` to delete the `GroupChannel`. Only operators can do this action.    
+ * Added `resendUserMessage()` in `BaseChannel` to retry to send a `UserMessage` which has `requestID`.  
+ * Added `requestState` and enum `MessageRequestState` which has NONE, PENDING, FAILED, and SUCCEEDED in `SendBird`.  
+ * Added `myLastRead` in `GroupChannel` to detect last read timestamp of current connected user.  
 
 
 ## [Change Log](https://github.com/sendbird/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    
