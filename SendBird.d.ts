@@ -48,7 +48,7 @@ declare namespace SendBird {
   };
   type getMyPushTokensHandler = (data: pushTokens, error: SendBirdError) => void;
 
-  declare enum MessageRequestState { NONE = 'none', PENDING = 'pending', FAILED = 'failed', SUCCEEDED = 'succeeded' }
+  type MessageRequestState = 'none' | 'pending' | 'failed' | 'succeeded';
   interface DiscoveryObject {
     friendDiscoveryKey: string;
     friendName?: string;
