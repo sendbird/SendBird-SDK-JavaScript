@@ -13,13 +13,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/smilefam/SendBird-SDK-JavaScript"
+    "url": "https://github.com/sendbird/SendBird-SDK-JavaScript"
   },
   "keywords": ["sendbird", "sendbird.com", "messaging", "chat", "js"],
   "author": "SendBird <support@sendbird.com>",
   "license": "SEE LICENSE IN LICENSE.md",
   "bugs": {
-    "url": "https://github.com/smilefam/SendBird-SDK-JavaScript/issues"
+    "url": "https://github.com/sendbird/SendBird-SDK-JavaScript/issues"
   },
   "homepage": "https://sendbird.com",
   "typings": "SendBird.d.ts"

@@ -18,7 +18,7 @@ SendBird JavaScript SDK
       npm install sendbird --save  
 
 
-[download](https://github.com/smilefam/SendBird-SDK-JavaScript) for [SendBird.com](https://sendbird.com) JavaScript SDK  
+[download](https://github.com/sendbird/SendBird-SDK-JavaScript) for [SendBird.com](https://sendbird.com) JavaScript SDK  
 
 
 # TypeScript
@@ -31,33 +31,33 @@ var sb = new SendBird({'appId': 'APP_ID'});
 If you have trouble importing `SendBird`, please check your `tsconfig.json` file and change the value of `"allowSyntheticDefaultImports"` to `true` in `compilerOptions`.  
 
 
-# [Sample](https://github.com/smilefam/SendBird-JavaScript)  
+# [Sample](https://github.com/sendbird/SendBird-JavaScript)  
 
- * [Basic Sample](https://sample.sendbird.com/basic) using [Sendbird SDK](https://github.com/smilefam/SendBird-SDK-JavaScript). [download](https://github.com/smilefam/SendBird-JavaScript/tree/master/web-sample)    
- * [Widget Sample](https://sample.sendbird.com/widget) using [Sendbird SDK](https://github.com/smilefam/SendBird-SDK-JavaScript). [download](https://github.com/smilefam/SendBird-JavaScript/tree/master/web-widget)    
- * [LiveChat Sample](https://sample.sendbird.com/livechat) using [Sendbird SDK](https://github.com/smilefam/SendBird-SDK-JavaScript). [download](https://github.com/smilefam/SendBird-JavaScript/tree/master/web-live-chat)    
+ * [Basic Sample](https://sample.sendbird.com/basic) using [Sendbird SDK](https://github.com/sendbird/SendBird-SDK-JavaScript). [download](https://github.com/sendbird/SendBird-JavaScript/tree/master/web-sample)    
+ * [Widget Sample](https://sample.sendbird.com/widget) using [Sendbird SDK](https://github.com/sendbird/SendBird-SDK-JavaScript). [download](https://github.com/sendbird/SendBird-JavaScript/tree/master/web-widget)    
+ * [LiveChat Sample](https://sample.sendbird.com/livechat) using [Sendbird SDK](https://github.com/sendbird/SendBird-SDK-JavaScript). [download](https://github.com/sendbird/SendBird-JavaScript/tree/master/web-live-chat)    
     
 ## SyncManager
-`SyncManager` is a support add-on for [SendBird SDK](https://github.com/smilefam/SendBird-SDK-JavaScript). Major benefits of `SyncManager` are,  
+`SyncManager` is a support add-on for [SendBird SDK](https://github.com/sendbird/SendBird-SDK-JavaScript). Major benefits of `SyncManager` are,  
   
  * Local cache integrated: store channel/message data in local storage for fast view loading.  
  * Event-driven data handling: subscribe channel/message event like `insert`, `update`, `remove` at a single spot in order to apply data event to view.  
   
-Check out [Basic Sample with SyncManager](https://github.com/smilefam/SendBird-JavaScript/tree/master/web-basic-sample-syncmanager) which is similar to [Basic Sample](https://sample.sendbird.com/basic) but `SyncManager` integrated. For more information about `SyncManager`, please refer to [SyncManager README](https://github.com/smilefam/sendbird-syncmanager-javascript/blob/master/README.md).
+Check out [Basic Sample with SyncManager](https://github.com/sendbird/SendBird-JavaScript/tree/master/web-basic-sample-syncmanager) which is similar to [Basic Sample](https://sample.sendbird.com/basic) but `SyncManager` integrated. For more information about `SyncManager`, please refer to [SyncManager README](https://github.com/sendbird/sendbird-syncmanager-javascript/blob/master/README.md).
 
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
 ## v3.0.100(MAY 17, 2019)  
-If you want to check the record of other version, go to [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
+If you want to check the record of other version, go to [Change Log](https://github.com/sendbird/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
  * Improved stability.  
  * Added `delete()` in `GroupChannel` to delete the `GroupChannel`. Only operators can do this action.    
 
 
-## [Change Log](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    
+## [Change Log](https://github.com/sendbird/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)    
 
 
 ## License
-[SendBird License](https://github.com/smilefam/SendBird-SDK-JavaScript/blob/master/LICENSE.md)  
+[SendBird License](https://github.com/sendbird/SendBird-SDK-JavaScript/blob/master/LICENSE.md)  
 
 

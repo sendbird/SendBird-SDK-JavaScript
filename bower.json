@@ -2,7 +2,7 @@
   "name": "sendbird",
   "version": "3.0.100",
   "authors": ["SendBird <support@sendbird.com>"],
-  "homepage": "https://github.com/smilefam/SendBird-SDK-JavaScript",
+  "homepage": "https://github.com/sendbird/SendBird-SDK-JavaScript",
   "description": "SendBird JavaScript SDK",
   "main": "SendBird.min.js",
   "moduleType": [],
