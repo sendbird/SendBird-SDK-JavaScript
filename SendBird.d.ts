@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.101
+ * Type Definitions for SendBird SDK v3.0.102
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/SendBird-SDK-JavaScript
  */
@@ -48,7 +48,6 @@ declare namespace SendBird {
   };
   type getMyPushTokensHandler = (data: pushTokens, error: SendBirdError) => void;
 
-  type MessageRequestState = 'none' | 'pending' | 'failed' | 'succeeded';
   interface DiscoveryObject {
     friendDiscoveryKey: string;
     friendName?: string;
@@ -73,8 +72,6 @@ declare namespace SendBird {
     FileMessageParams: FileMessageParams;
     GroupChannelTotalUnreadMessageCountParams: GroupChannelTotalUnreadMessageCountParams;
     ScheduledUserMessageParams: ScheduledUserMessageParams;
-
-    MessageRequestState: MessageRequestState;
 
     Options: Options;
 
@@ -324,7 +321,7 @@ declare namespace SendBird {
     sender: Sender;
     reqId: string;
     translations: Object;
-    requestState: MessageRequestState;
+    requestState: 'none' | 'pending' | 'failed' | 'succeeded';
   }
   interface UserMessageStatic {
     buildFromSerializedData(serializedObject: Object): UserMessage;

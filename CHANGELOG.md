@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## v3.0.102(JUN 11, 2019)  
+ * Fixed a bug about TypeScript.  
+
 ## v3.0.101(JUN 11, 2019)  
  * Improved stability.  
  * Added `resendUserMessage()` in `BaseChannel` to retry to send a `UserMessage` which has `requestID`.  
