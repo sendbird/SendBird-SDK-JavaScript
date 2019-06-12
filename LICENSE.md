@@ -1,4 +1,4 @@
-#SendBird SDK LICENSE
+# SendBird SDK LICENSE
 
 This is an agreement between You ("You") and SendBird, Inc., the developer of SendBird, located at 400 1st Ave, San Mateo, CA 94401, ("SendBird") regarding Your use of the SendBird SDK and any associated documentation or other materials made available by SendBird (collectively the "SDK"). This agreement applies to any updates or supplements for the SDK, unless other terms accompany those items. If so, those other terms apply.
 
