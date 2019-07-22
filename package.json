@@ -1,6 +1,6 @@
 {
   "name": "sendbird",
-  "version": "3.0.103",
+  "version": "3.0.104",
   "description": "SendBird JavaScript SDK",
   "main": "SendBird.min.js",
   "dependencies": {
@@ -15,7 +15,13 @@
     "type": "git",
     "url": "https://github.com/sendbird/SendBird-SDK-JavaScript"
   },
-  "keywords": ["sendbird", "sendbird.com", "messaging", "chat", "js"],
+  "keywords": [
+    "sendbird",
+    "sendbird.com",
+    "messaging",
+    "chat",
+    "js"
+  ],
   "author": "SendBird <support@sendbird.com>",
   "license": "SEE LICENSE IN LICENSE.md",
   "bugs": {

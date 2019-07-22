@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.103
+ * Type Definitions for SendBird SDK v3.0.104
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/SendBird-SDK-JavaScript
  */
@@ -82,7 +82,7 @@ declare namespace SendBird {
     connect(userId: string, accessToken: string, callback?: userCallback): void;
     connect(userId: string, accessToken: string, apiHost: string, wsHost: string, callback?: userCallback): void;
     disconnect(callback?: commonCallback): void;
-    reconnect(): boolean; // You can reinitate auto-reconnect manually.
+    reconnect(): boolean; // You can initiate auto-reconnect manually.
 
     updateCurrentUserInfo(nickname: string, profileUrl: string, callback?: userCallback): void;
     updateCurrentUserInfoWithProfileImage(nickname: string, profileImageFile: File, callback?: userCallback): void;
@@ -1369,6 +1369,7 @@ declare namespace SendBird {
     metadataOrderKeyFilter: string;
     hiddenChannelFilter: 'unhidden_only' | 'hidden_only' | 'hidden_allow_auto_unhide' | 'hidden_prevent_auto_unhide'
 
+    setSearchFilter(fields: Array<string>, queryString: string): void;
     serialize(): object;
     next(callback: groupChannelListQueryCallback): void;
   }
