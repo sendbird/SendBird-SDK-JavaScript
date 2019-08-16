@@ -1,6 +1,6 @@
 {
   "name": "sendbird",
-  "version": "3.0.104",
+  "version": "3.0.105",
   "authors": ["SendBird <support@sendbird.com>"],
   "homepage": "https://github.com/sendbird/SendBird-SDK-JavaScript",
   "description": "SendBird JavaScript SDK",
