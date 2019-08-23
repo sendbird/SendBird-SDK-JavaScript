@@ -48,17 +48,8 @@ Check out [Basic Sample with SyncManager](https://github.com/sendbird/SendBird-J
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
-## v3.0.105(AUG 16, 2019)
+## v3.0.106(AUG 23, 2019)
 If you want to check the record of other version, go to [Change Log](https://github.com/sendbird/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
- * Improved stability.
- * Added `translateUserMessage()` in `BaseChannel` to support on-demand translation.
- * Added `resendFileMessage()` in `BaseChannel` to support resend file message with `Blob` object.
- * Added `metaArrays` property in `BaseMessage` and deprecated `metaArray`.
-   * `metaArrays` is an array which contains `MessageMetaArray` instances.
-   * `MessageMetaArray` is a pair of key and a value array.
-   * `metaArrays` keeps the inserted order.
- * Added `isStrict()` and `setStrict()` in `GroupChannelParams` to set strict channel creation mode.
-   * When the strict mode is `true`, creating channel with a invalid user will fail.
  * Improved stability.
 
 

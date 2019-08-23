@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## v3.0.106(AUG 23, 2019)
+ * Improved stability.
+
 ## v3.0.105(AUG 16, 2019)  
  * Added `translateUserMessage()` in `BaseChannel` to support on-demand translation.
  * Added `resendFileMessage()` in `BaseChannel` to support resend file message with `Blob` object.
