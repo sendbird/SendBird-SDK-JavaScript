@@ -1,7 +1,7 @@
 Changelog
 =========
 
-## v3.0.107(SEP 6, 2019)
+## v3.0.108(SEP 9, 2019)
  * Improved stability.
 
 ## v3.0.106(AUG 23, 2019)
