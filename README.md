@@ -48,8 +48,14 @@ Check out [Basic Sample with SyncManager](https://github.com/sendbird/SendBird-J
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
-## v3.0.108(SEP 9, 2019)
+## v3.0.109(OCT 22, 2019)
 If you want to check the record of other version, go to [Change Log](https://github.com/sendbird/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
+
+ * Added support for Promise pattern (BETA)
+   * except `sendUserMessage()`, `sendFileMessage()`, `cancelUploadingFileMessage()`
+ * Added `report()`, `reportUser()` and `reportMessage()` in `BaseChannel`.
+ * Added `onTotalUnreadMessageCountUpdated` in `UserEventHandler`.
+   * `onTotalUnreadMessageCountUpdated` is called when total unread message count is updated.
  * Improved stability.
 
 

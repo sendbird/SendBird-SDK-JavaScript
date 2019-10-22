@@ -1,6 +1,14 @@
 Changelog
 =========
 
+## v3.0.109(OCT 22, 2019)
+ * Added support for Promise pattern (BETA)
+   * except `sendUserMessage()`, `sendFileMessage()`, `cancelUploadingFileMessage()`
+ * Added `report()`, `reportUser()` and `reportMessage()` in `BaseChannel`.
+ * Added `onTotalUnreadMessageCountUpdated` in `UserEventHandler`.
+   * `onTotalUnreadMessageCountUpdated` is called when total unread message count is updated.
+ * Improved stability.
+
 ## v3.0.108(SEP 9, 2019)
  * Improved stability.
 
