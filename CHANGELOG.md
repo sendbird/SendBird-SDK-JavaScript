@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## v3.0.110(OCT 23, 2019)
+ * Improved stability.
+
 ## v3.0.109(OCT 22, 2019)
  * Added support for Promise pattern (BETA)
    * except `sendUserMessage()`, `sendFileMessage()`, `cancelUploadingFileMessage()`
