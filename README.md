@@ -48,9 +48,10 @@ Check out [Basic Sample with SyncManager](https://github.com/sendbird/SendBird-J
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
-## v3.0.110(OCT 23, 2019)
+ ## v3.0.111(OCT 25, 2019)
 If you want to check the record of other version, go to [Change Log](https://github.com/sendbird/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
+ * Compatibility fix for React Native and Internet Explorer 10.
  * Improved stability.
 
 

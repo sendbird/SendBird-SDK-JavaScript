@@ -1,6 +1,10 @@
 Changelog
 =========
 
+## v3.0.111(OCT 25, 2019)
+ * Compatibility fix for React Native and Internet Explorer 10.
+ * Improved stability.
+
 ## v3.0.110(OCT 23, 2019)
  * Improved stability.
 
