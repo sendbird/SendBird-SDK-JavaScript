@@ -1,6 +1,14 @@
 Changelog
 =========
 
+## v3.0.112(NOV 8, 2019)
+ * Added `updateCurrentUserInfoWithPreferredLanguages()` in `SendBird`.
+   * When `preferredLanguages` is set, push notification message would get translated with target languages.
+ * Added `preferredLanguages` in `User`.
+ * Added `messageOffsetTimestamp` in `GroupChannel`.
+ * Added `reqId` for the `BaseMessage`s which are fetched from API call.
+ * Improved stability.
+
 ## v3.0.111(OCT 25, 2019)
  * Compatibility fix for React Native and Internet Explorer 10.
  * Improved stability.

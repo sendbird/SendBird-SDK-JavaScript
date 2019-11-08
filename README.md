@@ -48,10 +48,14 @@ Check out [Basic Sample with SyncManager](https://github.com/sendbird/SendBird-J
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
- ## v3.0.111(OCT 25, 2019)
+## v3.0.112(NOV 8, 2019)
 If you want to check the record of other version, go to [Change Log](https://github.com/sendbird/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
- * Compatibility fix for React Native and Internet Explorer 10.
+ * Added `updateCurrentUserInfoWithPreferredLanguages()` in `SendBird`.
+   * When `preferredLanguages` is set, push notification message would get translated with target languages.
+ * Added `preferredLanguages` in `User`.
+ * Added `messageOffsetTimestamp` in `GroupChannel`.
+ * Added `reqId` for the `BaseMessage`s which are fetched from API call.
  * Improved stability.
 
 
