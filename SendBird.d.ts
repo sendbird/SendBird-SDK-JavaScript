@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.112
+ * Type Definitions for SendBird SDK v3.0.113
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/SendBird-SDK-JavaScript
  */
@@ -344,6 +344,8 @@ declare namespace SendBird {
     translations: Object;
     requestState: 'none' | 'pending' | 'failed' | 'succeeded';
     requestedMentionUserIds: Array<string>;
+    errorCode: number;
+    isResendable(): boolean;
   }
   interface UserMessageStatic {
     buildFromSerializedData(serializedObject: Object): UserMessage;
@@ -375,6 +377,8 @@ declare namespace SendBird {
     thumbnails: Array<ThumbnailObject>;
     requestState: 'none' | 'pending' | 'failed' | 'succeeded';
     requestedMentionUserIds: Array<string>;
+    errorCode: number;
+    isResendable(): boolean;
   }
   interface FileMessageStatic {
     buildFromSerializedData(serializedObject: Object): FileMessage;
