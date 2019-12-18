@@ -1,5 +1,10 @@
 # Changelog
 
+## v3.0.114(DEC 18, 2019)
+
+- Bug-fix in file uploading.
+- Improved stability.
+
 ## v3.0.113(DEC 4, 2019)
 
 - Added `errorCode` and `isResendable()` in `UserMessage` and `FileMessage`.

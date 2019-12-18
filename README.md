@@ -32,8 +32,7 @@ If you have trouble importing `SendBird`, please check your `tsconfig.json` file
 
 - [Basic Sample](https://sample.sendbird.com/basic) using [Sendbird SDK](https://github.com/sendbird/SendBird-SDK-JavaScript). [download](https://github.com/sendbird/SendBird-JavaScript/tree/master/web-sample)
 - [Widget Sample](https://sample.sendbird.com/widget) using [Sendbird SDK](https://github.com/sendbird/SendBird-SDK-JavaScript). [download](https://github.com/sendbird/SendBird-JavaScript/tree/master/web-widget)
-- [LiveChat Sample](https://sample.sendbird.com/livechat) using [Sendbird SDK](https://github.com/sendbird/SendBird-SDK-JavaScript). [download](https://github.com/sendbird/SendBird-JavaScript/tree/master/web-live-chat)  
-
+- [LiveChat Sample](https://sample.sendbird.com/livechat) using [Sendbird SDK](https://github.com/sendbird/SendBird-SDK-JavaScript). [download](https://github.com/sendbird/SendBird-JavaScript/tree/master/web-live-chat)
 
 ## SyncManager
 
@@ -46,12 +45,11 @@ Check out [Basic Sample with SyncManager](https://github.com/sendbird/SendBird-J
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
-## v3.0.113(DEC 4, 2019)
+## v3.0.114(DEC 18, 2019)
 
 If you want to check the record of other version, go to [Change Log](https://github.com/sendbird/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Added `errorCode` and `isResendable()` in `UserMessage` and `FileMessage`.
-  - `resendUserMessage()` and `resendFileMessage()` work only when `isResendable()` is `true`.
+- Bug-fix in file uploading.
 - Improved stability.
 
 ## [Change Log](https://github.com/sendbird/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)
