@@ -45,11 +45,19 @@ Check out [Basic Sample with SyncManager](https://github.com/sendbird/SendBird-J
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
-## v3.0.114(DEC 18, 2019)
+## v3.0.115(DEC 24, 2019)
 
 If you want to check the record of other version, go to [Change Log](https://github.com/sendbird/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Bug-fix in file uploading.
+- Added `reactions` in `BaseMessage`.
+  - Added `addReaction()`, `deleteReaction()` in `BaseChannel`.
+  - Added `onReactionUpdated()` in `ChannelHandler`.
+  - Added `applyReactionEvent()` in `BaseMessage`.
+  - Added `includeReaction` parameter to `get**MessagesByID()`, `get**MessagesByTimestamp()` in `BaseChannel`.
+  - Added `includeReaction` parameter to `getMessageChangeLogsByID()`, `getMessageChangeLogsByTimestamp()` in `BaseChannel`.
+- Added always push notification support.
+- Added `markAsDelivered()`, `getDeliveryReceipt()` in `GroupChannel`.
+  - Added `onDeliveryReceiptUpdated` in `ChannelHandler`.
 - Improved stability.
 
 ## [Change Log](https://github.com/sendbird/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)
