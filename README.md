@@ -55,7 +55,6 @@ If you want to check the record of other version, go to [Change Log](https://git
   - Added `applyReactionEvent()` in `BaseMessage`.
   - Added `includeReaction` parameter to `get**MessagesByID()`, `get**MessagesByTimestamp()` in `BaseChannel`.
   - Added `includeReaction` parameter to `getMessageChangeLogsByID()`, `getMessageChangeLogsByTimestamp()` in `BaseChannel`.
-- Added always push notification support.
 - Added `markAsDelivered()`, `getDeliveryReceipt()` in `GroupChannel`.
   - Added `onDeliveryReceiptUpdated` in `ChannelHandler`.
 - Improved stability.
