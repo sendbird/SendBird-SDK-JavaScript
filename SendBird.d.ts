@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.115
+ * Type Definitions for SendBird SDK v3.0.116
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/SendBird-SDK-JavaScript
  */
@@ -11,7 +11,7 @@ declare const SendBird: SendBirdStatic;
 
 interface SendBirdStatic {
   version: number;
-  new ({ appId }: { appId: string }): SendBird.SendBirdInstance;
+  new({ appId }: { appId: string }): SendBird.SendBirdInstance;
   getInstance(): SendBird.SendBirdInstance;
 }
 
@@ -179,6 +179,8 @@ declare namespace SendBird {
     markAsReadAll(callback: commonCallback): void;
     markAsReadWithChannelUrls(channelUrls: Array<string>, callback: commonCallback): void;
 
+    markAsDelivered(channelUrl: String): void;
+
     getGroupChannelCount(memberStateFilter: string, callback: commonCallback): void;
 
     getUnreadItemCount(keys: Array<string>, callback: commonCallback): void;
@@ -231,7 +233,7 @@ declare namespace SendBird {
   }
 
   interface UserEventHandlerStatic {
-    new (): UserEventHandler;
+    new(): UserEventHandler;
   }
   interface UserEventHandler {
     onFriendsDiscovered(users: Array<User>): void;
@@ -239,7 +241,7 @@ declare namespace SendBird {
   }
 
   interface ChannelHandlerStatic {
-    new (): ChannelHandler;
+    new(): ChannelHandler;
   }
   interface ChannelHandler {
     onMessageReceived(channel: OpenChannel | GroupChannel, message: AdminMessage | UserMessage | FileMessage): void;
@@ -273,7 +275,7 @@ declare namespace SendBird {
   }
 
   interface ConnectionHandlerStatic {
-    new (): ConnectionHandler;
+    new(): ConnectionHandler;
   }
   interface ConnectionHandler {
     onReconnectStarted(): void;
@@ -322,13 +324,13 @@ declare namespace SendBird {
   }
 
   interface GroupChannelTotalUnreadMessageCountParams {
-    new (): GroupChannelTotalUnreadMessageCountParams;
+    new(): GroupChannelTotalUnreadMessageCountParams;
     channelCustomTypesFilter: Array<string>;
     superChannelFilter: 'all' | 'super' | 'nonsuper';
   }
 
   interface UserMessageParams {
-    new (): UserMessageParams;
+    new(): UserMessageParams;
     message: string;
     data: string;
     customType: string;
@@ -355,7 +357,7 @@ declare namespace SendBird {
   }
 
   interface FileMessageParams {
-    new (): FileMessageParams;
+    new(): FileMessageParams;
     file: File;
     fileUrl: string;
     fileName: string;
@@ -1281,7 +1283,7 @@ declare namespace SendBird {
    * GroupChannel
    */
   interface GroupChannelParams {
-    new (): GroupChannelParams;
+    new(): GroupChannelParams;
     isDistinct: boolean;
     isSuper: boolean;
     isPublic: boolean;
@@ -1305,7 +1307,7 @@ declare namespace SendBird {
   }
 
   interface ScheduledUserMessageParams {
-    new (): ScheduledUserMessageParams;
+    new(): ScheduledUserMessageParams;
     message: string;
     data: string;
     customType: string;
@@ -1331,18 +1333,18 @@ declare namespace SendBird {
   }
 
   interface MessageMetaArray {
-    new (key: string, value: Array<string>): MessageMetaArray;
+    new(key: string, value: Array<string>): MessageMetaArray;
     key: string;
     value: Array<string>;
   }
   interface Reaction {
-    new (): Reaction;
+    new(): Reaction;
     key: string;
     userIds: Array<string>;
     updatedAt: number;
   }
   interface ReactionEvent {
-    new (): ReactionEvent;
+    new(): ReactionEvent;
     messageId: string;
     userId: string;
     key: string;
@@ -1427,6 +1429,9 @@ declare namespace SendBird {
     getReadStatus(includeAllMembers?: boolean): Object;
     getUnreadMembers(message: UserMessage | FileMessage, includeAllMembers?: boolean): Array<Member>;
     getReadMembers(message: UserMessage | FileMessage, includeAllMembers?: boolean): Array<Member>;
+
+    markAsDelivered(): void;
+    getDeliveryReceipt(message: UserMessage | FileMessage | AdminMessage): number;
 
     startTyping(): void;
     endTyping(): void;
