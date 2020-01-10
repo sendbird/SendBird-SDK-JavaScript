@@ -47,6 +47,8 @@ Check out [Basic Sample with SyncManager](https://github.com/sendbird/SendBird-J
 
 ## v3.0.116(JAN 10, 2020)
 
+If you want to check the record of other version, go to [Change Log](https://github.com/sendbird/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
+
 - Improved stability.
 
 ## [Change Log](https://github.com/sendbird/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)
