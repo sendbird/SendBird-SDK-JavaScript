@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.0.117(JAN 15, 2020)
+
+- Added `createMessageSearchQuery()` in `SendBird`.
+  - `MessageSearchQuery` searches messages with the keyword.
+  - Options like `exactMatch`, `channelUrl`, `channelCustomType`, `messageTimestampFrom`, `messageTimestampTo`, `order` are available for fine-tuned search.
+- Improved stability.
+
 ## v3.0.116(JAN 10, 2020)
 
 - Improved stability.
