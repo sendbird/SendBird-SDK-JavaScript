@@ -284,7 +284,6 @@ declare namespace SendBird {
     channelUrl: string;
     channelType: string;
     messageId: number;
-    messageType: string;
     data: string;
     customType: string;
     metaArrays: Array<MessageMetaArray>;
@@ -310,6 +309,7 @@ declare namespace SendBird {
   }
 
   interface AdminMessage extends BaseMessageInstance {
+    messageType: "admin";
     message: string;
     translations: Object;
   }
@@ -337,6 +337,7 @@ declare namespace SendBird {
     pushNotificationDeliveryOption: "default" | "suppress";
   }
   interface UserMessage extends BaseMessageInstance {
+    messageType: "user";
     message: string;
     sender: Sender;
     reqId: string;
@@ -367,6 +368,7 @@ declare namespace SendBird {
     pushNotificationDeliveryOption: "default" | "suppress";
   }
   interface FileMessage extends BaseMessageInstance {
+    messageType: "file";
     sender: Sender;
     reqId: string;
     url: string;
