@@ -1,5 +1,10 @@
 # Changelog
 
+## v3.0.118(MAR 5, 2020)
+
+- Added version control over the final state of `reactions`.
+- Improved stability.
+
 ## v3.0.117(JAN 15, 2020)
 
 - Added `createMessageSearchQuery()` in `SendBird`.

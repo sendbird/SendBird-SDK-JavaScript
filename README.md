@@ -45,13 +45,11 @@ Check out [Basic Sample with SyncManager](https://github.com/sendbird/SendBird-J
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
-## v3.0.117(JAN 15, 2020)
+## v3.0.118(MAR 5, 2020)
 
 If you want to check the record of other version, go to [Change Log](https://github.com/sendbird/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Added `createMessageSearchQuery()` in `SendBird`.
-  - `MessageSearchQuery` searches messages with the keyword.
-  - Options like `exactMatch`, `channelUrl`, `channelCustomType`, `messageTimestampFrom`, `messageTimestampTo`, `order` are available for fine-tuned search.
+- Added version control over the final state of `reactions`.
 - Improved stability.
 
 ## [Change Log](https://github.com/sendbird/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)
