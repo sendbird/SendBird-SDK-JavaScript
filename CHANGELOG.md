@@ -1,5 +1,13 @@
 # Changelog
 
+## v3.0.119(MAR 11, 2020)
+
+- Added `sendingStatus` in `UserMessage` and `FileMessage`.
+- Added `role` in `Member`.
+- Added `onOperatorUpdated` in `ChannelHandler`.
+- Deprecated `requestState` in `UserMessage` and `FileMessage`.
+- Improved stability.
+
 ## v3.0.118(MAR 5, 2020)
 
 - Added version control over the final state of `reactions`.

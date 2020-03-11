@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.118
+ * Type Definitions for SendBird SDK v3.0.119
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/SendBird-SDK-JavaScript
  */
@@ -266,6 +266,7 @@ declare namespace SendBird {
     onTypingStatusUpdated(channel: GroupChannel): void;
     onUserJoined(channel: GroupChannel, user: User): void;
     onUserLeft(channel: GroupChannel, user: User): void;
+    onOperatorUpdated(channel: BaseChannel, operators: Array<User>): void;
     onUserEntered(channel: OpenChannel, user: User): void;
     onUserExited(channel: OpenChannel, user: User): void;
     onUserMuted(channel: OpenChannel | GroupChannel, user: User): void;
@@ -362,9 +363,11 @@ declare namespace SendBird {
     sender: Sender;
     reqId: string;
     translations: Object;
-    requestState: 'none' | 'pending' | 'failed' | 'succeeded';
+    requestState: 'none' | 'pending' | 'failed' | 'succeeded'; // DEPRECATED
+    sendingStatus: 'none' | 'pending' | 'failed' | 'canceled' | 'succeeded';
     requestedMentionUserIds: Array<string>;
     errorCode: number;
+    messageSurvivalSeconds: number;
     isResendable(): boolean;
   }
   interface UserMessageStatic {
@@ -395,9 +398,11 @@ declare namespace SendBird {
     size: number;
     type: string;
     thumbnails: Array<ThumbnailObject>;
-    requestState: 'none' | 'pending' | 'failed' | 'succeeded';
+    requestState: 'none' | 'pending' | 'failed' | 'succeeded'; // DEPRECATED
+    sendingStatus: 'none' | 'pending' | 'failed' | 'canceled' | 'succeeded';
     requestedMentionUserIds: Array<string>;
     errorCode: number;
+    messageSurvivalSeconds: number;
     isResendable(): boolean;
   }
   interface FileMessageStatic {
@@ -453,6 +458,7 @@ declare namespace SendBird {
 
   interface Member extends User {
     state: 'invited' | 'joined';
+    role: 'none' | 'operator';
     isBlockedByMe: boolean;
     isBlockingMe: boolean;
   }
@@ -1315,6 +1321,7 @@ declare namespace SendBird {
     operators: Array<User>;
     operatorUserIds: Array<string>;
     accessCode: string;
+    messageSurvivalSeconds: number;
 
     addUser(user: User): void;
     addUsers(user: Array<User>): void;
@@ -1400,6 +1407,7 @@ declare namespace SendBird {
     isDiscoverable: boolean;
     myLastRead: number;
     messageOffsetTimestamp: number;
+    messageSurvivalSeconds: number;
 
     isEqual(target: GroupChannel): boolean;
     isIdentical(target: GroupChannel): boolean;
