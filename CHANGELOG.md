@@ -1,5 +1,10 @@
 # Changelog
 
+## v3.0.120(APR 7, 2020)
+
+- `webpack` build failure fix.
+- Improved stability.
+
 ## v3.0.119(MAR 11, 2020)
 
 - Added `sendingStatus` in `UserMessage` and `FileMessage`.

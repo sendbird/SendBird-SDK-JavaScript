@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.119
+ * Type Definitions for SendBird SDK v3.0.120
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/SendBird-SDK-JavaScript
  */
@@ -306,7 +306,7 @@ declare namespace SendBird {
     channelUrl: string;
     channelType: string;
     messageId: number;
-    messageType: string;
+    messageType: 'base' | 'user' | 'file' | 'admin';
     data: string;
     customType: string;
     metaArrays: Array<MessageMetaArray>;
@@ -332,6 +332,7 @@ declare namespace SendBird {
   }
 
   interface AdminMessage extends BaseMessageInstance {
+    messageType: 'admin';
     message: string;
     translations: Object;
   }
@@ -359,6 +360,7 @@ declare namespace SendBird {
     pushNotificationDeliveryOption: 'default' | 'suppress';
   }
   interface UserMessage extends BaseMessageInstance {
+    messageType: 'user';
     message: string;
     sender: Sender;
     reqId: string;
@@ -391,6 +393,7 @@ declare namespace SendBird {
     pushNotificationDeliveryOption: 'default' | 'suppress';
   }
   interface FileMessage extends BaseMessageInstance {
+    messageType: 'file';
     sender: Sender;
     reqId: string;
     url: string;
@@ -1078,6 +1081,7 @@ declare namespace SendBird {
     customTypeFilter: string;
     senderUserIdsFilter: Array<string>;
     includeMetaArray: boolean;
+    includeReaction: boolean;
 
     load(limit: number, reverse: boolean, callback: messageListCallback): void;
     load(limit: number, reverse: boolean, messageType: number, callback: messageListCallback): void;

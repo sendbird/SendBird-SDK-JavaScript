@@ -45,14 +45,11 @@ Check out [Basic Sample with SyncManager](https://github.com/sendbird/SendBird-J
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
-## v3.0.119(MAR 11, 2020)
+## v3.0.120(APR 7, 2020)
 
 If you want to check the record of other version, go to [Change Log](https://github.com/sendbird/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Added `sendingStatus` in `UserMessage` and `FileMessage`.
-- Added `role` in `Member`.
-- Added `onOperatorUpdated` in `ChannelHandler`.
-- Deprecated `requestState` in `UserMessage` and `FileMessage`.
+- `webpack` build failure fix.
 - Improved stability.
 
 ## [Change Log](https://github.com/sendbird/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)
