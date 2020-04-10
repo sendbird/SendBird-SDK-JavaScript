@@ -45,11 +45,10 @@ Check out [Basic Sample with SyncManager](https://github.com/sendbird/SendBird-J
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
-## v3.0.120(APR 7, 2020)
+## v3.0.121(APR 10, 2020)
 
 If you want to check the record of other version, go to [Change Log](https://github.com/sendbird/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- `webpack` build failure fix.
 - Improved stability.
 
 ## [Change Log](https://github.com/sendbird/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)

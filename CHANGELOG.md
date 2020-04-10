@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.0.121(APR 10, 2020)
+
+- Improved stability.
+
 ## v3.0.120(APR 7, 2020)
 
 - `webpack` build failure fix.
