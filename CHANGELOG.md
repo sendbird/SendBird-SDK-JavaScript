@@ -1,5 +1,10 @@
 # Changelog
 
+## v3.0.122(APR 29, 2020)
+
+- Added `metaArrays` in `UserMessageParams` and `FileMessageParams`.
+  - Message could be sent with predefined `metaArrays`.
+
 ## v3.0.121(APR 10, 2020)
 
 - Improved stability.
