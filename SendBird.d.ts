@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.123
+ * Type Definitions for SendBird SDK v3.0.124
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/SendBird-SDK-JavaScript
  */
@@ -344,7 +344,11 @@ declare namespace SendBird {
     serialize(): Object;
     getMetaArraysByKeys(keys: Array<string>): Array<MessageMetaArray>;
     applyReactionEvent(event: ReactionEvent): void;
-    getThreadedMessagesByTimestamp(timestamp: number, params: ThreadedMessageListParams, callback: threadedMessageListCallback): void;
+    getThreadedMessagesByTimestamp(
+      timestamp: number,
+      params: ThreadedMessageListParams,
+      callback: messageListCallback
+    ): void;
     applyThreadInfoUpdateEvent(threadInfoUpdateEvent: ThreadInfoUpdateEvent): boolean;
 
     metaArray: Object; // DEPRECATED
@@ -621,8 +625,16 @@ declare namespace SendBird {
       callback: getMessageChangeLogsHandler
     ): void;
 
-    getMessageChangeLogsSinceToken(token: string, params: MessageChangeLogsParams, callback: getMessageChangeLogsHandler): void;
-    getMessageChangeLogsSinceTimestamp(timestamp: number, params: MessageChangeLogsParams, callback: getMessageChangeLogsHandler): void;
+    getMessageChangeLogsSinceToken(
+      token: string,
+      params: MessageChangeLogsParams,
+      callback: getMessageChangeLogsHandler
+    ): void;
+    getMessageChangeLogsSinceTimestamp(
+      timestamp: number,
+      params: MessageChangeLogsParams,
+      callback: getMessageChangeLogsHandler
+    ): void;
 
     getMyMutedInfo(callback: getMyMutedInfoHandler): void;
     createOperatorListQuery(): OperatorListQuery;
@@ -1173,13 +1185,10 @@ declare namespace SendBird {
   }
 
   type threadedMessageList = {
-    parentMessage: UserMessage | FileMessage | AdminMessage,
-    threadedReplies: Array<UserMessage | FileMessage | AdminMessage>
+    parentMessage: UserMessage | FileMessage | AdminMessage;
+    threadedReplies: Array<UserMessage | FileMessage | AdminMessage>;
   };
-  type threadedMessageCallback = (
-    threadedMessageList: threadedMessageList,
-    error: SendBirdError
-  ) => void;
+  type threadedMessageCallback = (threadedMessageList: threadedMessageList, error: SendBirdError) => void;
 
   interface PreviousMessageListQuery {
     hasMore: boolean;
@@ -1494,7 +1503,7 @@ declare namespace SendBird {
   interface ThreadInfo {
     new (): ThreadInfo;
     replyCount: number;
-    mostRepliedUsers: Array<User>
+    mostRepliedUsers: Array<User>;
     lastRepliedAt: number;
   }
   interface ThreadInfoUpdateEvent {

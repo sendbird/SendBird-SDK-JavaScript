@@ -45,19 +45,11 @@ Check out [Basic Sample with SyncManager](https://github.com/sendbird/SendBird-J
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
-## v3.0.123(MAY 22, 2020)
+## v3.0.124(MAY 23, 2020)
 
 If you want to check the record of other version, go to [Change Log](https://github.com/sendbird/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Added message thread feature support
-  - Added `parentMessageId`, `parentMessageText`, `threadInfo` in `UserMessage` and `FileMessage`.
-  - Added `onThreadInfoUpdated()` in `ChannelHandler`.
-  - Added `getThreadedMessagesByTimestamp()`, `applyThreadInfoUpdateEvent()` in `UserMessage` and `FileMessage`.
-  - Added thread-related parameters in `GroupChannelListQuery`.
-- Added emoji feature support
-  - Added `getAllEmoji()`, `getEmojiCategory()`, and `getEmoji()` in `SendBird`.
-- Added parameter classes for message retrieval.
-- Bug-fix: Crash on IE strict mode.
+- Bug-fix: Failure in `getMessageList()`.
 
 ## [Change Log](https://github.com/sendbird/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)
 

@@ -1,6 +1,11 @@
 # Changelog
 
+## v3.0.124(MAY 23, 2020)
+
+- Bug-fix: Failure in `getMessageList()`.
+
 ## v3.0.123(MAY 22, 2020)
+
 - Added message thread feature support
   - Added `parentMessageId`, `parentMessageText`, `threadInfo` in `UserMessage` and `FileMessage`.
   - Added `onThreadInfoUpdated()` in `ChannelHandler`.
