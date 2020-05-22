@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.122
+ * Type Definitions for SendBird SDK v3.0.123
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/SendBird-SDK-JavaScript
  */
@@ -39,6 +39,12 @@ declare namespace SendBird {
     token: string;
   };
   type getGroupChannelChangeLogsHandler = (data: groupChannelChangeLogs, error: SendBirdError) => void;
+
+  type getEmojiContainerHandler = (data: EmojiContainer, error: SendBirdError) => void;
+
+  type getEmojiCategoryHandler = (data: EmojiCategory, error: SendBirdError) => void;
+
+  type getEmojiHandler = (data: Emoji, error: SendBirdError) => void;
 
   type pushTokens = {
     deviceTokens: Array<string>;
@@ -218,6 +224,14 @@ declare namespace SendBird {
       includeEmpty: boolean,
       callback: getGroupChannelChangeLogsHandler
     ): void;
+
+    getAllEmoji(callback: getEmojiContainerHandler): void;
+    getEmojiCategory(categoryId: number, callback: getEmojiCategoryHandler): void;
+    getEmoji(emojiKey: string, callback: getEmojiHandler): void;
+
+    getAllEmoji(): Promise<EmojiContainer>;
+    getEmojiCategory(categoryId: number): Promise<EmojiCategory>;
+    getEmoji(emojiKey: string): Promise<Emoji>;
   }
 
   interface Options {
@@ -288,6 +302,7 @@ declare namespace SendBird {
     onChannelHidden(channel: GroupChannel): void;
     onReactionUpdated(channel: OpenChannel | GroupChannel, reactionEvent: ReactionEvent): void;
     onMentionReceived(channel: OpenChannel | GroupChannel, message: AdminMessage | UserMessage | FileMessage): void;
+    onThreadInfoUpdated(channel: OpenChannel | GroupChannel, threadInfoUpdateEvent: ThreadInfoUpdateEvent): void;
   }
 
   interface ConnectionHandlerStatic {
@@ -315,6 +330,9 @@ declare namespace SendBird {
     mentionedUsers: Array<User>;
     createdAt: number;
     updatedAt: number;
+    parentMessageId: number;
+    parentMessageText: string;
+    threadInfo: ThreadInfo;
 
     isEqual(target: BaseMessageInstance): boolean;
     isIdentical(target: BaseMessageInstance): boolean;
@@ -326,6 +344,8 @@ declare namespace SendBird {
     serialize(): Object;
     getMetaArraysByKeys(keys: Array<string>): Array<MessageMetaArray>;
     applyReactionEvent(event: ReactionEvent): void;
+    getThreadedMessagesByTimestamp(timestamp: number, params: ThreadedMessageListParams, callback: threadedMessageListCallback): void;
+    applyThreadInfoUpdateEvent(threadInfoUpdateEvent: ThreadInfoUpdateEvent): boolean;
 
     metaArray: Object; // DEPRECATED
     getMetaArrayByKeys(keys: Array<string>): Object; // DEPRECATED
@@ -338,12 +358,30 @@ declare namespace SendBird {
   }
   interface AdminMessageStatic {
     buildFromSerializedData(serializedObject: Object): AdminMessage;
+    getMessage(params: MessageRetrievalParams, callback: messageCallback): void;
   }
 
   interface GroupChannelTotalUnreadMessageCountParams {
     new (): GroupChannelTotalUnreadMessageCountParams;
     channelCustomTypesFilter: Array<string>;
     superChannelFilter: 'all' | 'super' | 'nonsuper';
+  }
+
+  interface Emoji {
+    key: string;
+    url: string;
+  }
+
+  interface EmojiCategory {
+    id: number;
+    name: string;
+    url: string;
+    emojis: Array<Emoji>;
+  }
+
+  interface EmojiContainer {
+    emojiHash: string;
+    emojiCategories: Array<EmojiCategory>;
   }
 
   interface UserMessageParams {
@@ -359,6 +397,7 @@ declare namespace SendBird {
     metaArrays: Array<MessageMetaArray>;
     metaArrayKeys: Array<string>; // DEPRECATED
     pushNotificationDeliveryOption: 'default' | 'suppress';
+    parentMessageId: number;
   }
   interface UserMessage extends BaseMessageInstance {
     messageType: 'user';
@@ -375,6 +414,7 @@ declare namespace SendBird {
   }
   interface UserMessageStatic {
     buildFromSerializedData(serializedObject: Object): UserMessage;
+    getMessage(params: MessageRetrievalParams, callback: messageCallback): void;
   }
 
   interface FileMessageParams {
@@ -393,6 +433,7 @@ declare namespace SendBird {
     metaArrays: Array<MessageMetaArray>;
     metaArrayKeys: Array<string>; // DEPRECATED
     pushNotificationDeliveryOption: 'default' | 'suppress';
+    parentMessageId: number;
   }
   interface FileMessage extends BaseMessageInstance {
     messageType: 'file';
@@ -412,6 +453,53 @@ declare namespace SendBird {
   }
   interface FileMessageStatic {
     buildFromSerializedData(serializedObject: Object): FileMessage;
+    getMessage(params: MessageRetrievalParams, callback: messageCallback): void;
+  }
+
+  interface MessageRetrievalParams {
+    new (): MessageRetrievalParams;
+    channelUrl: string;
+    channelType: string;
+    messageId: number;
+    includeMetaArray: boolean;
+    includeParentMessageText: boolean;
+    includeThreadInfo: boolean;
+  }
+  interface MessageListParams {
+    new (): MessageListParams;
+    prevResultSize: number;
+    nextResultSize: number;
+    isInclusive: boolean;
+    shouldReverse: boolean;
+    messageType: string;
+    customType: string;
+    senderUserIds: Array<string>;
+    includeMetaArray: boolean;
+    includeReactions: boolean;
+    includeReplies: boolean;
+    includeParentMessageText: boolean;
+    includeThreadInfo: boolean;
+  }
+  interface ThreadedMessageListParams {
+    new (): ThreadedMessageListParams;
+    prevResultSize: number;
+    nextResultSize: number;
+    isInclusive: boolean;
+    shouldReverse: boolean;
+    messageType: string;
+    customType: string;
+    senderUserIds: Array<string>;
+    includeMetaArray: boolean;
+    includeReactions: boolean;
+    includeParentMessageText: boolean;
+  }
+  interface MessageChangeLogsParams {
+    new (): MessageChangeLogsParams;
+    includeMetaArray: boolean;
+    includeReactions: boolean;
+    includeReplies: boolean;
+    includeParentMessageText: string;
+    includeThreadInfo: boolean;
   }
 
   interface ThumbnailObject {
@@ -512,6 +600,7 @@ declare namespace SendBird {
     isOpenChannel(): boolean;
     serialize(): Object;
 
+    /* DEPRECATED */
     getMessageChangeLogsByToken(callback: getMessageChangeLogsHandler): void;
     getMessageChangeLogsByToken(token: string, callback: getMessageChangeLogsHandler): void;
     getMessageChangeLogsByToken(token: string, includeMetaArray: boolean, callback: getMessageChangeLogsHandler): void;
@@ -522,6 +611,7 @@ declare namespace SendBird {
       callback: getMessageChangeLogsHandler
     ): void;
 
+    /* DEPRECATED */
     getMessageChangeLogsByTimestamp(ts: number, callback: getMessageChangeLogsHandler): void;
     getMessageChangeLogsByTimestamp(ts: number, includeMetaArray: boolean, callback: getMessageChangeLogsHandler): void;
     getMessageChangeLogsByTimestamp(
@@ -531,12 +621,17 @@ declare namespace SendBird {
       callback: getMessageChangeLogsHandler
     ): void;
 
+    getMessageChangeLogsSinceToken(token: string, params: MessageChangeLogsParams, callback: getMessageChangeLogsHandler): void;
+    getMessageChangeLogsSinceTimestamp(timestamp: number, params: MessageChangeLogsParams, callback: getMessageChangeLogsHandler): void;
+
     getMyMutedInfo(callback: getMyMutedInfoHandler): void;
     createOperatorListQuery(): OperatorListQuery;
 
     /** Message  */
     createMessageListQuery(): MessageListQuery /* DEPRECATED */;
     createPreviousMessageListQuery(): PreviousMessageListQuery;
+
+    /* DEPRECATED */
     getNextMessagesByTimestamp(
       ts: number,
       isInclusive: boolean,
@@ -789,6 +884,9 @@ declare namespace SendBird {
       includeReaction: boolean,
       callback: messageListCallback
     ): void;
+
+    getMessagesByTimestamp(timestamp: number, params: MessageListParams, callback: messageListCallback): void;
+    getMessagesByMessageId(messageId: number, params: MessageListParams, callback: messageListCallback): void;
 
     /** FileMessage  */
     sendFileMessage(fileMessageParams: FileMessageParams, callback: messageCallback): FileMessage;
@@ -1074,6 +1172,15 @@ declare namespace SendBird {
     ): void;
   }
 
+  type threadedMessageList = {
+    parentMessage: UserMessage | FileMessage | AdminMessage,
+    threadedReplies: Array<UserMessage | FileMessage | AdminMessage>
+  };
+  type threadedMessageCallback = (
+    threadedMessageList: threadedMessageList,
+    error: SendBirdError
+  ) => void;
+
   interface PreviousMessageListQuery {
     hasMore: boolean;
     isLoading: boolean;
@@ -1084,6 +1191,9 @@ declare namespace SendBird {
     senderUserIdsFilter: Array<string>;
     includeMetaArray: boolean;
     includeReaction: boolean;
+    includeReplies: boolean;
+    includeParentMessageText: boolean;
+    includeThreadInfo: boolean;
 
     load(limit: number, reverse: boolean, callback: messageListCallback): void;
     load(limit: number, reverse: boolean, messageType: number, callback: messageListCallback): void;
@@ -1379,6 +1489,20 @@ declare namespace SendBird {
     key: string;
     operation: 'add' | 'delete';
     updatedAt: number;
+  }
+
+  interface ThreadInfo {
+    new (): ThreadInfo;
+    replyCount: number;
+    mostRepliedUsers: Array<User>
+    lastRepliedAt: number;
+  }
+  interface ThreadInfoUpdateEvent {
+    new (): ThreadInfoUpdateEvent;
+    threadInfo: ThreadInfo;
+    targetMessageId: number;
+    channelUrl: string;
+    channelType: string;
   }
 
   type groupChannelCallback = (groupChannel: GroupChannel, error: SendBirdError) => void;

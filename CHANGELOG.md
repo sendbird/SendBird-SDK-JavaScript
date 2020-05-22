@@ -1,5 +1,16 @@
 # Changelog
 
+## v3.0.123(MAY 22, 2020)
+- Added message thread feature support
+  - Added `parentMessageId`, `parentMessageText`, `threadInfo` in `UserMessage` and `FileMessage`.
+  - Added `onThreadInfoUpdated()` in `ChannelHandler`.
+  - Added `getThreadedMessagesByTimestamp()`, `applyThreadInfoUpdateEvent()` in `UserMessage` and `FileMessage`.
+  - Added thread-related parameters in `GroupChannelListQuery`.
+- Added emoji feature support
+  - Added `getAllEmoji()`, `getEmojiCategory()`, and `getEmoji()` in `SendBird`.
+- Added parameter classes for message retrieval.
+- Bug-fix: Crash on IE strict mode.
+
 ## v3.0.122(APR 29, 2020)
 
 - Added `metaArrays` in `UserMessageParams` and `FileMessageParams`.
