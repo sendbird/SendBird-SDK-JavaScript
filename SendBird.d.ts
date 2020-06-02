@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.124
+ * Type Definitions for SendBird SDK v3.0.125
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/SendBird-SDK-JavaScript
  */
@@ -11,7 +11,7 @@ declare const SendBird: SendBirdStatic;
 
 interface SendBirdStatic {
   version: number;
-  new ({ appId }: { appId: string }): SendBird.SendBirdInstance;
+  new({ appId }: { appId: string }): SendBird.SendBirdInstance;
   getInstance(): SendBird.SendBirdInstance;
 }
 
@@ -78,6 +78,7 @@ declare namespace SendBird {
     FileMessageParams: FileMessageParams;
     GroupChannelTotalUnreadMessageCountParams: GroupChannelTotalUnreadMessageCountParams;
     ScheduledUserMessageParams: ScheduledUserMessageParams;
+    GroupChannelChangeLogsParams: GroupChannelChangeLogsParams;
     MessageMetaArray: MessageMetaArray;
 
     Options: Options;
@@ -202,26 +203,40 @@ declare namespace SendBird {
     getSubscribedCustomTypeTotalUnreadMessageCount(): number;
     getSubscribedCustomTypeUnreadMessageCount(customType: string): number;
 
+    // DEPRECATED
     getMyGroupChannelChangeLogsByToken(
       token: string,
       customTypes: Array<string>,
       callback: getGroupChannelChangeLogsHandler
     ): void;
+    // DEPRECATED
     getMyGroupChannelChangeLogsByToken(
       token: string,
       customTypes: Array<string>,
       includeEmpty: boolean,
       callback: getGroupChannelChangeLogsHandler
     ): void;
+    getMyGroupChannelChangeLogsByToken(
+      token: string,
+      params: GroupChannelChangeLogsParams,
+      callback: getGroupChannelChangeLogsHandler
+    ): void;
+    // DEPRECATED
     getMyGroupChannelChangeLogsByTimestamp(
       ts: number,
       customTypes: Array<string>,
       callback: getGroupChannelChangeLogsHandler
     ): void;
+    // DEPRECATED
     getMyGroupChannelChangeLogsByTimestamp(
       ts: number,
       customTypes: Array<string>,
       includeEmpty: boolean,
+      callback: getGroupChannelChangeLogsHandler
+    ): void;
+    getMyGroupChannelChangeLogsByTimestamp(
+      ts: number,
+      params: GroupChannelChangeLogsParams,
       callback: getGroupChannelChangeLogsHandler
     ): void;
 
@@ -262,7 +277,7 @@ declare namespace SendBird {
   }
 
   interface UserEventHandlerStatic {
-    new (): UserEventHandler;
+    new(): UserEventHandler;
   }
   interface UserEventHandler {
     onFriendsDiscovered(users: Array<User>): void;
@@ -270,7 +285,7 @@ declare namespace SendBird {
   }
 
   interface ChannelHandlerStatic {
-    new (): ChannelHandler;
+    new(): ChannelHandler;
   }
   interface ChannelHandler {
     onMessageReceived(channel: OpenChannel | GroupChannel, message: AdminMessage | UserMessage | FileMessage): void;
@@ -306,7 +321,7 @@ declare namespace SendBird {
   }
 
   interface ConnectionHandlerStatic {
-    new (): ConnectionHandler;
+    new(): ConnectionHandler;
   }
   interface ConnectionHandler {
     onReconnectStarted(): void;
@@ -366,7 +381,7 @@ declare namespace SendBird {
   }
 
   interface GroupChannelTotalUnreadMessageCountParams {
-    new (): GroupChannelTotalUnreadMessageCountParams;
+    new(): GroupChannelTotalUnreadMessageCountParams;
     channelCustomTypesFilter: Array<string>;
     superChannelFilter: 'all' | 'super' | 'nonsuper';
   }
@@ -389,7 +404,7 @@ declare namespace SendBird {
   }
 
   interface UserMessageParams {
-    new (): UserMessageParams;
+    new(): UserMessageParams;
     message: string;
     data: string;
     customType: string;
@@ -422,7 +437,7 @@ declare namespace SendBird {
   }
 
   interface FileMessageParams {
-    new (): FileMessageParams;
+    new(): FileMessageParams;
     file: File;
     fileUrl: string;
     fileName: string;
@@ -461,7 +476,7 @@ declare namespace SendBird {
   }
 
   interface MessageRetrievalParams {
-    new (): MessageRetrievalParams;
+    new(): MessageRetrievalParams;
     channelUrl: string;
     channelType: string;
     messageId: number;
@@ -470,7 +485,7 @@ declare namespace SendBird {
     includeThreadInfo: boolean;
   }
   interface MessageListParams {
-    new (): MessageListParams;
+    new(): MessageListParams;
     prevResultSize: number;
     nextResultSize: number;
     isInclusive: boolean;
@@ -485,7 +500,7 @@ declare namespace SendBird {
     includeThreadInfo: boolean;
   }
   interface ThreadedMessageListParams {
-    new (): ThreadedMessageListParams;
+    new(): ThreadedMessageListParams;
     prevResultSize: number;
     nextResultSize: number;
     isInclusive: boolean;
@@ -498,7 +513,7 @@ declare namespace SendBird {
     includeParentMessageText: boolean;
   }
   interface MessageChangeLogsParams {
-    new (): MessageChangeLogsParams;
+    new(): MessageChangeLogsParams;
     includeMetaArray: boolean;
     includeReactions: boolean;
     includeReplies: boolean;
@@ -1391,6 +1406,7 @@ declare namespace SendBird {
     nameKeyword: string;
     urlKeyword: string;
     customType: string;
+    includeFrozen: boolean;
 
     next(callback: openChannelListQueryCallback): void;
   }
@@ -1429,7 +1445,7 @@ declare namespace SendBird {
    * GroupChannel
    */
   interface GroupChannelParams {
-    new (): GroupChannelParams;
+    new(): GroupChannelParams;
     isDistinct: boolean;
     isSuper: boolean;
     isBroadcast: boolean;
@@ -1455,7 +1471,7 @@ declare namespace SendBird {
   }
 
   interface ScheduledUserMessageParams {
-    new (): ScheduledUserMessageParams;
+    new(): ScheduledUserMessageParams;
     message: string;
     data: string;
     customType: string;
@@ -1475,24 +1491,32 @@ declare namespace SendBird {
 
     setSchedule(year: number, month: number, day: number, hour: number, min: number, timezone: string): void;
   }
+
+  interface GroupChannelChangeLogsParams {
+    new (): GroupChannelChangeLogsParams;
+    customTypes: Array<string>;
+    includeEmpty: boolean;
+    includeFrozen: boolean;
+  }
+
   interface DistinctGroupChannelResponse {
     channel: GroupChannel;
     isCreated: boolean;
   }
 
   interface MessageMetaArray {
-    new (key: string, value: Array<string>): MessageMetaArray;
+    new(key: string, value: Array<string>): MessageMetaArray;
     key: string;
     value: Array<string>;
   }
   interface Reaction {
-    new (): Reaction;
+    new(): Reaction;
     key: string;
     userIds: Array<string>;
     updatedAt: number;
   }
   interface ReactionEvent {
-    new (): ReactionEvent;
+    new(): ReactionEvent;
     messageId: string;
     userId: string;
     key: string;
@@ -1501,13 +1525,14 @@ declare namespace SendBird {
   }
 
   interface ThreadInfo {
-    new (): ThreadInfo;
+    new(): ThreadInfo;
     replyCount: number;
     mostRepliedUsers: Array<User>;
     lastRepliedAt: number;
+    updatedAt: number;
   }
   interface ThreadInfoUpdateEvent {
-    new (): ThreadInfoUpdateEvent;
+    new(): ThreadInfoUpdateEvent;
     threadInfo: ThreadInfo;
     targetMessageId: number;
     channelUrl: string;
@@ -1753,6 +1778,7 @@ declare namespace SendBird {
     memberStateFilter: 'all' | 'joined_only' | 'invited_only' | 'invited_by_friend' | 'invited_by_non_friend';
     hiddenChannelFilter: 'unhidden_only' | 'hidden_only' | 'hidden_allow_auto_unhide' | 'hidden_prevent_auto_unhide';
     unreadChannelFilter: 'all' | 'unread_message';
+    includeFrozen: boolean;
 
     setSearchFilter(fields: Array<string>, queryString: string): void;
     serialize(): object;
@@ -1772,6 +1798,8 @@ declare namespace SendBird {
     superChannelFilter: 'all' | 'super' | 'nonsuper';
     membershipFilter: 'all' | 'joined';
     metadataOrderKeyFilter: string;
+    includeFrozen: boolean;
+
     next(callback: groupChannelListQueryCallback): void;
   }
 }
