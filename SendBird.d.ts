@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.125
+ * Type Definitions for SendBird SDK v3.0.126
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/SendBird-SDK-JavaScript
  */
@@ -11,7 +11,7 @@ declare const SendBird: SendBirdStatic;
 
 interface SendBirdStatic {
   version: number;
-  new({ appId }: { appId: string }): SendBird.SendBirdInstance;
+  new ({ appId }: { appId: string }): SendBird.SendBirdInstance;
   getInstance(): SendBird.SendBirdInstance;
 }
 
@@ -277,7 +277,7 @@ declare namespace SendBird {
   }
 
   interface UserEventHandlerStatic {
-    new(): UserEventHandler;
+    new (): UserEventHandler;
   }
   interface UserEventHandler {
     onFriendsDiscovered(users: Array<User>): void;
@@ -285,7 +285,7 @@ declare namespace SendBird {
   }
 
   interface ChannelHandlerStatic {
-    new(): ChannelHandler;
+    new (): ChannelHandler;
   }
   interface ChannelHandler {
     onMessageReceived(channel: OpenChannel | GroupChannel, message: AdminMessage | UserMessage | FileMessage): void;
@@ -321,7 +321,7 @@ declare namespace SendBird {
   }
 
   interface ConnectionHandlerStatic {
-    new(): ConnectionHandler;
+    new (): ConnectionHandler;
   }
   interface ConnectionHandler {
     onReconnectStarted(): void;
@@ -343,6 +343,7 @@ declare namespace SendBird {
     reactions: Array<Reaction>;
     mentionType: string;
     mentionedUsers: Array<User>;
+    silent: boolean;
     createdAt: number;
     updatedAt: number;
     parentMessageId: number;
@@ -381,7 +382,7 @@ declare namespace SendBird {
   }
 
   interface GroupChannelTotalUnreadMessageCountParams {
-    new(): GroupChannelTotalUnreadMessageCountParams;
+    new (): GroupChannelTotalUnreadMessageCountParams;
     channelCustomTypesFilter: Array<string>;
     superChannelFilter: 'all' | 'super' | 'nonsuper';
   }
@@ -404,7 +405,7 @@ declare namespace SendBird {
   }
 
   interface UserMessageParams {
-    new(): UserMessageParams;
+    new (): UserMessageParams;
     message: string;
     data: string;
     customType: string;
@@ -437,7 +438,7 @@ declare namespace SendBird {
   }
 
   interface FileMessageParams {
-    new(): FileMessageParams;
+    new (): FileMessageParams;
     file: File;
     fileUrl: string;
     fileName: string;
@@ -476,7 +477,7 @@ declare namespace SendBird {
   }
 
   interface MessageRetrievalParams {
-    new(): MessageRetrievalParams;
+    new (): MessageRetrievalParams;
     channelUrl: string;
     channelType: string;
     messageId: number;
@@ -485,7 +486,7 @@ declare namespace SendBird {
     includeThreadInfo: boolean;
   }
   interface MessageListParams {
-    new(): MessageListParams;
+    new (): MessageListParams;
     prevResultSize: number;
     nextResultSize: number;
     isInclusive: boolean;
@@ -500,7 +501,7 @@ declare namespace SendBird {
     includeThreadInfo: boolean;
   }
   interface ThreadedMessageListParams {
-    new(): ThreadedMessageListParams;
+    new (): ThreadedMessageListParams;
     prevResultSize: number;
     nextResultSize: number;
     isInclusive: boolean;
@@ -513,7 +514,7 @@ declare namespace SendBird {
     includeParentMessageText: boolean;
   }
   interface MessageChangeLogsParams {
-    new(): MessageChangeLogsParams;
+    new (): MessageChangeLogsParams;
     includeMetaArray: boolean;
     includeReactions: boolean;
     includeReplies: boolean;
@@ -1445,7 +1446,7 @@ declare namespace SendBird {
    * GroupChannel
    */
   interface GroupChannelParams {
-    new(): GroupChannelParams;
+    new (): GroupChannelParams;
     isDistinct: boolean;
     isSuper: boolean;
     isBroadcast: boolean;
@@ -1471,7 +1472,7 @@ declare namespace SendBird {
   }
 
   interface ScheduledUserMessageParams {
-    new(): ScheduledUserMessageParams;
+    new (): ScheduledUserMessageParams;
     message: string;
     data: string;
     customType: string;
@@ -1505,18 +1506,18 @@ declare namespace SendBird {
   }
 
   interface MessageMetaArray {
-    new(key: string, value: Array<string>): MessageMetaArray;
+    new (key: string, value: Array<string>): MessageMetaArray;
     key: string;
     value: Array<string>;
   }
   interface Reaction {
-    new(): Reaction;
+    new (): Reaction;
     key: string;
     userIds: Array<string>;
     updatedAt: number;
   }
   interface ReactionEvent {
-    new(): ReactionEvent;
+    new (): ReactionEvent;
     messageId: string;
     userId: string;
     key: string;
@@ -1525,14 +1526,14 @@ declare namespace SendBird {
   }
 
   interface ThreadInfo {
-    new(): ThreadInfo;
+    new (): ThreadInfo;
     replyCount: number;
     mostRepliedUsers: Array<User>;
     lastRepliedAt: number;
     updatedAt: number;
   }
   interface ThreadInfoUpdateEvent {
-    new(): ThreadInfoUpdateEvent;
+    new (): ThreadInfoUpdateEvent;
     threadInfo: ThreadInfo;
     targetMessageId: number;
     channelUrl: string;

@@ -1,13 +1,18 @@
 # Changelog
 
-## v3.0.125(JUNE 1, 2020)
+## v3.0.126(JUN 16, 2020)
 
-* Added `includeFrozen` property in `GroupChannelListQuery`, `PublicGroupChannelListQuery`, `OpenChannelListQuery` and `GroupChannelChangeLogsParams`.
-* Added `GroupChannelChangeLogsParams`.
-* Added `getMyGroupChannelChangeLogsByToken()` and `getMyGroupChannelChangeLogsByTimestamp()` with `GroupChannelChangeLogsParams` in `SendBird`.
-* Deprecated some `getMyGroupChannelChangeLogsByToken()` and `getMyGroupChannelChangeLogsByTimestamp()` in `SendBird`.
-* Bug-fix: Failure in applying reactions.
-* Bug-fix: Invalid `channelUrl` on `getMessage()`.
+- Bug-fixes in message threading.
+- Improved stability.
+
+## v3.0.125(JUN 1, 2020)
+
+- Added `includeFrozen` property in `GroupChannelListQuery`, `PublicGroupChannelListQuery`, `OpenChannelListQuery` and `GroupChannelChangeLogsParams`.
+- Added `GroupChannelChangeLogsParams`.
+- Added `getMyGroupChannelChangeLogsByToken()` and `getMyGroupChannelChangeLogsByTimestamp()` with `GroupChannelChangeLogsParams` in `SendBird`.
+- Deprecated some `getMyGroupChannelChangeLogsByToken()` and `getMyGroupChannelChangeLogsByTimestamp()` in `SendBird`.
+- Bug-fix: Failure in applying reactions.
+- Bug-fix: Invalid `channelUrl` on `getMessage()`.
 
 ## v3.0.124(MAY 23, 2020)
 
@@ -571,7 +576,7 @@
 
 - Updated TypeScript Definition file(SendBird.d.ts).
   > **NOTE**
-  >  Install via NPM and import like below in your TypeScript file:
+  > Install via NPM and import like below in your TypeScript file:
 
 ```javascript
 import * as SendBird from "SendBird";

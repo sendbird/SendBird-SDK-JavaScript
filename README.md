@@ -45,16 +45,12 @@ Check out [Basic Sample with SyncManager](https://github.com/sendbird/SendBird-J
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
-## v3.0.125(JUNE 1, 2020)
+## v3.0.126(JUN 16, 2020)
 
 If you want to check the record of other version, go to [Change Log](https://github.com/sendbird/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-* Added `includeFrozen` property in `GroupChannelListQuery`, `PublicGroupChannelListQuery`, `OpenChannelListQuery` and `GroupChannelChangeLogsParams`.
-* Added `GroupChannelChangeLogsParams`.
-* Added `getMyGroupChannelChangeLogsByToken()` and `getMyGroupChannelChangeLogsByTimestamp()` with `GroupChannelChangeLogsParams` in `SendBird`.
-* Deprecated some `getMyGroupChannelChangeLogsByToken()` and `getMyGroupChannelChangeLogsByTimestamp()` in `SendBird`.
-* Bug-fix: Failure in applying reactions.
-* Bug-fix: Invalid `channelUrl` on `getMessage()`.
+- Bug-fixes in message threading.
+- Improved stability.
 
 ## [Change Log](https://github.com/sendbird/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)
 
