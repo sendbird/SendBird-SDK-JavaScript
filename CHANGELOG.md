@@ -1,5 +1,13 @@
 # Changelog
 
+## v3.0.127(JUN 26, 2020)
+
+- Added a dependency for `axios` and `form-data`.
+  - Please add [axios](https://github.com/axios/axios) to the `script` tag if you're using SendBird by copy-and-paste the `SendBird.min.js` file.
+- Added `getUnreadMemberCount()` and `getUndeliveredMemberCount()` in `GroupChannel`.
+  - Deprecated `getReadReceipt()` and `getDeliveryReceipt()` in `GroupChannel`.
+- Bug-fix in updating operators in `GroupChannel`.
+
 ## v3.0.126(JUN 16, 2020)
 
 - Bug-fixes in message threading.

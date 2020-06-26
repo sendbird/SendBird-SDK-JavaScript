@@ -6,15 +6,22 @@
 
 # Getting Started
 
-[Bower](http://bower.io) package for [SendBird.com](https://sendbird.com) JavaScript SDK
+[bower](http://bower.io) package for [SendBird](https://sendbird.com) JavaScript SDK
 
       bower install sendbird
 
-[npm](https://www.npmjs.com/package/sendbird) module for [SendBird.com](https://sendbird.com) JavaScript SDK
+[npm](https://www.npmjs.com/package/sendbird) module for [SendBird](https://sendbird.com) JavaScript SDK
 
       npm install sendbird --save
 
-[download](https://github.com/sendbird/SendBird-SDK-JavaScript) for [SendBird.com](https://sendbird.com) JavaScript SDK
+[Download](https://github.com/sendbird/SendBird-SDK-JavaScript) for [SendBird](https://sendbird.com) JavaScript SDK if you wish to use it without a package manager.
+
+> NOTICE! You should also add [axios](https://github.com/axios/axios) library into the `script` tag before the SendBird library inclusion since `v3.0.127`. You can host the library by your own, or utilize the CDN as the library refers to it. The below is an example.
+
+```html
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/your-own-path-to-sendbird/SendBird.min.js"></script>
+```
 
 # TypeScript
 
@@ -45,12 +52,15 @@ Check out [Basic Sample with SyncManager](https://github.com/sendbird/SendBird-J
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
-## v3.0.126(JUN 16, 2020)
+## v3.0.127(JUN 26, 2020)
 
 If you want to check the record of other version, go to [Change Log](https://github.com/sendbird/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Bug-fixes in message threading.
-- Improved stability.
+- Added a dependency for `axios` and `form-data`.
+  - Please add [axios](https://github.com/axios/axios) to the `script` tag if you're using SendBird by copy-and-paste the `SendBird.min.js` file.
+- Added `getUnreadMemberCount()` and `getUndeliveredMemberCount()` in `GroupChannel`.
+  - Deprecated `getReadReceipt()` and `getDeliveryReceipt()` in `GroupChannel`.
+- Bug-fix in updating operators in `GroupChannel`.
 
 ## [Change Log](https://github.com/sendbird/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)
 

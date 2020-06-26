@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.126
+ * Type Definitions for SendBird SDK v3.0.127
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/SendBird-SDK-JavaScript
  */
@@ -1615,13 +1615,15 @@ declare namespace SendBird {
     unhide(callback: commonCallback): void;
 
     markAsRead(): void;
-    getReadReceipt(message: UserMessage | FileMessage | AdminMessage): number;
+    getReadReceipt(message: UserMessage | FileMessage | AdminMessage): number; // DEPRECATED
     getReadStatus(includeAllMembers?: boolean): Object;
     getUnreadMembers(message: UserMessage | FileMessage, includeAllMembers?: boolean): Array<Member>;
     getReadMembers(message: UserMessage | FileMessage, includeAllMembers?: boolean): Array<Member>;
+    getUnreadMemberCount(message: UserMessage | FileMessage | AdminMessage): number;
 
     markAsDelivered(): void;
-    getDeliveryReceipt(message: UserMessage | FileMessage | AdminMessage): number;
+    getDeliveryReceipt(message: UserMessage | FileMessage | AdminMessage): number; // DEPRECATED
+    getUndeliveredMemberCount(message: UserMessage | FileMessage | AdminMessage): number;
 
     startTyping(): void;
     endTyping(): void;
