@@ -1,5 +1,10 @@
 # Changelog
 
+## v3.0.128(JUL 10, 2020)
+
+- Added `addOperators()` and `removeOperators()` in `GroupChannel` and `OpenChannel`.
+- Bug-fix in missing `data` field of file message.
+
 ## v3.0.127(JUN 26, 2020)
 
 - Added a dependency for `axios` and `form-data`.

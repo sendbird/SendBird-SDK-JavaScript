@@ -52,15 +52,12 @@ Check out [Basic Sample with SyncManager](https://github.com/sendbird/SendBird-J
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
-## v3.0.127(JUN 26, 2020)
+## v3.0.128(JUL 10, 2020)
 
 If you want to check the record of other version, go to [Change Log](https://github.com/sendbird/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Added a dependency for `axios` and `form-data`.
-  - Please add [axios](https://github.com/axios/axios) to the `script` tag if you're using SendBird by copy-and-paste the `SendBird.min.js` file.
-- Added `getUnreadMemberCount()` and `getUndeliveredMemberCount()` in `GroupChannel`.
-  - Deprecated `getReadReceipt()` and `getDeliveryReceipt()` in `GroupChannel`.
-- Bug-fix in updating operators in `GroupChannel`.
+- Added `addOperators()` and `removeOperators()` in `GroupChannel` and `OpenChannel`.
+- Bug-fix in missing `data` field of file message.
 
 ## [Change Log](https://github.com/sendbird/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)
 

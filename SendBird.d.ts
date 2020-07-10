@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.127
+ * Type Definitions for SendBird SDK v3.0.128
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/SendBird-SDK-JavaScript
  */
@@ -1110,6 +1110,10 @@ declare namespace SendBird {
     updateUserMessage(messageId: number, userMessageParams: UserMessageParams, callback: messageCallback): void;
     deleteMessage(message: FileMessage | UserMessage, callback: commonCallback): void;
     cancelUploadingFileMessage(messageReqId: string, callback: cancelUploadingFileMessageCallback): boolean;
+
+    /** Operators */
+    addOperators(operatorUserIds: Array<string>, callback: commonCallback): void;
+    removeOperators(operatorUserIds: Array<string>, callback: commonCallback): void;
 
     /** Reaction */
     addReaction(message: UserMessage | FileMessage | AdminMessage, key: string, callback: reactionEventCallback): void;
