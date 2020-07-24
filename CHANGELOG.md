@@ -1,5 +1,13 @@
 # Changelog
 
+## v3.0.129(JUL 24, 2020)
+
+- Renamed `includeReaction` to `includeReactions` in `channel.getMessageChangeLogs()` (`includeReaction` is deprecated).
+- Added `ogMetaData` in `BaseMessage`.
+  - `ogMetaData` holds open graph properties including `title`, `url`, `description`, and `defaultImage`.
+  - `ogMetaData.defaultImage` has the image-related properties including `url`, `secureUrl`, `type`, `width`, `height`, `alt` as defined in the target website.
+  - `ogMetaData` may not be set at the moment of sending. Once the message is sent, Sendbird service would fetch and analyze the open graph property and give the result as a form of message update event.
+
 ## v3.0.128(JUL 10, 2020)
 
 - Added `addOperators()` and `removeOperators()` in `GroupChannel` and `OpenChannel`.

@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.128
+ * Type Definitions for SendBird SDK v3.0.129
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/SendBird-SDK-JavaScript
  */
@@ -80,8 +80,10 @@ declare namespace SendBird {
     ScheduledUserMessageParams: ScheduledUserMessageParams;
     GroupChannelChangeLogsParams: GroupChannelChangeLogsParams;
     MessageMetaArray: MessageMetaArray;
-
     Options: Options;
+
+    appInfo: AppInfo;
+    ekey: string;
 
     setErrorFirstCallback(errorFirstCallback: boolean): void;
 
@@ -248,12 +250,16 @@ declare namespace SendBird {
     getEmojiCategory(categoryId: number): Promise<EmojiCategory>;
     getEmoji(emojiKey: string): Promise<Emoji>;
   }
-
   interface Options {
     useMemberAsMessageSender: boolean;
     typingIndicatorThrottle: number;
   }
-
+  interface AppInfo {
+    emojiHash: string;
+    uploadSizeLimit: number;
+    useReaction: boolean;
+    premiumFeatureList: Array<string>;
+  }
   interface FriendListQuery {
     hasMore: boolean;
     isLoading: boolean;
@@ -349,6 +355,7 @@ declare namespace SendBird {
     parentMessageId: number;
     parentMessageText: string;
     threadInfo: ThreadInfo;
+    ogMetaData: OGMetaData;
 
     isEqual(target: BaseMessageInstance): boolean;
     isIdentical(target: BaseMessageInstance): boolean;
@@ -459,7 +466,9 @@ declare namespace SendBird {
     messageType: 'file';
     sender: Sender;
     reqId: string;
-    url: string;
+    url: string; // DEPRECATED
+    plainUrl: string;
+    secureUrl: string;
     name: string;
     size: number;
     type: string;
@@ -523,7 +532,9 @@ declare namespace SendBird {
   }
 
   interface ThumbnailObject {
-    url: string;
+    url: string; // DEPRECATED
+    plainUrl: string;
+    secureUrl: string;
     height: number;
     width: number;
     real_height: number;
@@ -540,11 +551,14 @@ declare namespace SendBird {
   interface User {
     userId: string;
     nickname: string;
-    profileUrl: string;
+    profileUrl: string; // DEPRECATED
+    plainProfileUrl: string;
+    secureProfileUrl: string;
     metaData: Object;
     connectionStatus: string;
     lastSeenAt: string;
     isActive: boolean;
+    requireAuth: boolean;
     friendDiscoveryKey: string | null;
     friendName: string | null;
     preferredLanguages: Array<string>;
@@ -627,7 +641,8 @@ declare namespace SendBird {
     getMessageChangeLogsByToken(
       token: string,
       includeMetaArray: boolean,
-      includeReaction: boolean,
+      includeReaction: boolean, // DEPRECATED
+      includeReactions: boolean,
       callback: getMessageChangeLogsHandler
     ): void;
 
@@ -637,7 +652,8 @@ declare namespace SendBird {
     getMessageChangeLogsByTimestamp(
       ts: number,
       includeMetaArray: boolean,
-      includeReaction: boolean,
+      includeReaction: boolean, // DEPRECATED
+      includeReactions: boolean,
       callback: getMessageChangeLogsHandler
     ): void;
 
@@ -699,7 +715,8 @@ declare namespace SendBird {
       customType: string,
       senderUserIds: Array<string>,
       includeMetaArray: boolean,
-      includeReaction: boolean,
+      includeReaction: boolean, // DEPRECATED
+      includeReactions: boolean,
       callback: messageListCallback
     ): void;
     getPreviousMessagesByTimestamp(
@@ -741,7 +758,8 @@ declare namespace SendBird {
       customType: string,
       senderUserIds: Array<string>,
       includeMetaArray: boolean,
-      includeReaction: boolean,
+      includeReaction: boolean, // DEPRECATED
+      includeReactions: boolean,
       callback: messageListCallback
     ): void;
     getPreviousAndNextMessagesByTimestamp(
@@ -783,7 +801,8 @@ declare namespace SendBird {
       customType: string,
       senderUserIds: Array<string>,
       includeMetaArray: boolean,
-      includeReaction: boolean,
+      includeReaction: boolean, // DEPRECATED
+      includeReactions: boolean,
       callback: messageListCallback
     ): void;
     getNextMessagesByID(
@@ -825,7 +844,8 @@ declare namespace SendBird {
       customType: string,
       senderUserIds: Array<string>,
       includeMetaArray: boolean,
-      includeReaction: boolean,
+      includeReaction: boolean, // DEPRECATED
+      includeReactions: boolean,
       callback: messageListCallback
     ): void;
     getPreviousMessagesByID(
@@ -867,7 +887,8 @@ declare namespace SendBird {
       customType: string,
       senderUserIds: Array<string>,
       includeMetaArray: boolean,
-      includeReaction: boolean,
+      includeReaction: boolean, // DEPRECATED
+      includeReactions: boolean,
       callback: messageListCallback
     ): void;
     getPreviousAndNextMessagesByID(
@@ -909,7 +930,8 @@ declare namespace SendBird {
       customType: string,
       senderUserIds: Array<string>,
       includeMetaArray: boolean,
-      includeReaction: boolean,
+      includeReaction: boolean, // DEPRECATED
+      includeReactions: boolean,
       callback: messageListCallback
     ): void;
 
@@ -1219,7 +1241,8 @@ declare namespace SendBird {
     customTypeFilter: string;
     senderUserIdsFilter: Array<string>;
     includeMetaArray: boolean;
-    includeReaction: boolean;
+    includeReaction: boolean; // DEPRECATED
+    includeReactions: boolean;
     includeReplies: boolean;
     includeParentMessageText: boolean;
     includeThreadInfo: boolean;
@@ -1542,6 +1565,23 @@ declare namespace SendBird {
     targetMessageId: number;
     channelUrl: string;
     channelType: string;
+  }
+
+  interface OGMetaData {
+    new (): OGMetaData;
+    title: string;
+    url: string;
+    description: string;
+    defaultImage: OGImage;
+  }
+  interface OGImage {
+    new (): OGImage;
+    url: string;
+    secureUrl: string;
+    type: string;
+    width: number;
+    height: number;
+    alt: string;
   }
 
   type groupChannelCallback = (groupChannel: GroupChannel, error: SendBirdError) => void;
