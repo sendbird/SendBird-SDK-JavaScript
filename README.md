@@ -52,14 +52,11 @@ Check out [Basic Sample with SyncManager](https://github.com/sendbird/SendBird-J
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
-## v3.0.130(AUG 7, 2020)
+## v3.0.131(AUG 7, 2020)
 
 If you want to check the record of other version, go to [Change Log](https://github.com/sendbird/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Added `order` in `GroupChannelMemberListQuery`. The value could be `member_nickname_alphabetical` (default) or `operator_then_member_alphabetical`.
-- Added `isMuted` in `Member`.
-- Removed value type check in `channel.createMetaData()` and `channel.updateMetaData()`.
-- Bug-fix on `profileUrl` setter.
+- Fixed duplicated `appInfo` in `SendBird.d.ts`.
 
 ## [Change Log](https://github.com/sendbird/SendBird-SDK-JavaScript/blob/master/CHANGELOG.md)
 

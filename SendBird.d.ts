@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.130
+ * Type Definitions for SendBird SDK v3.0.131
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/SendBird-SDK-JavaScript
  */
@@ -59,9 +59,6 @@ declare namespace SendBird {
     friendName?: string;
   }
   interface SendBirdInstance {
-    currentUser: User;
-    appInfo: AppInfo;
-
     User: UserStatic;
     Member: MemberStatic;
     OpenChannel: OpenChannelStatic;
@@ -84,6 +81,7 @@ declare namespace SendBird {
     MessageMetaArray: MessageMetaArray;
     Options: Options;
 
+    currentUser: User;
     appInfo: AppInfo;
     ekey: string;
 

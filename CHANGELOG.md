@@ -1,6 +1,10 @@
 # Changelog
 
-## v3.0.130(AUG 7, 2020)
+## v3.0.131(AUG 7, 2020)
+
+- Fixed duplicated `appInfo` in `SendBird.d.ts`.
+
+## v3.0.130(AUG 7, 2020) (DEPRECATED)
 
 - Added `order` in `GroupChannelMemberListQuery`. The value could be `member_nickname_alphabetical` (default) or `operator_then_member_alphabetical`.
 - Added `isMuted` in `Member`.
