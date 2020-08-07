@@ -1,5 +1,5 @@
 /**
- * Type Definitions for SendBird SDK v3.0.129
+ * Type Definitions for SendBird SDK v3.0.130
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/SendBird-SDK-JavaScript
  */
@@ -60,6 +60,8 @@ declare namespace SendBird {
   }
   interface SendBirdInstance {
     currentUser: User;
+    appInfo: AppInfo;
+
     User: UserStatic;
     Member: MemberStatic;
     OpenChannel: OpenChannelStatic;
@@ -255,11 +257,13 @@ declare namespace SendBird {
     typingIndicatorThrottle: number;
   }
   interface AppInfo {
-    emojiHash: string;
     uploadSizeLimit: number;
-    useReaction: boolean;
+    emojiHash: string;
     premiumFeatureList: Array<string>;
+    applicationAttributes: Array<string>;
+    isUsingReaction: boolean;
   }
+
   interface FriendListQuery {
     hasMore: boolean;
     isLoading: boolean;
@@ -466,9 +470,8 @@ declare namespace SendBird {
     messageType: 'file';
     sender: Sender;
     reqId: string;
-    url: string; // DEPRECATED
     plainUrl: string;
-    secureUrl: string;
+    url: string;
     name: string;
     size: number;
     type: string;
@@ -532,9 +535,8 @@ declare namespace SendBird {
   }
 
   interface ThumbnailObject {
-    url: string; // DEPRECATED
+    url: string;
     plainUrl: string;
-    secureUrl: string;
     height: number;
     width: number;
     real_height: number;
@@ -551,9 +553,8 @@ declare namespace SendBird {
   interface User {
     userId: string;
     nickname: string;
-    profileUrl: string; // DEPRECATED
+    profileUrl: string;
     plainProfileUrl: string;
-    secureProfileUrl: string;
     metaData: Object;
     connectionStatus: string;
     lastSeenAt: string;
@@ -586,6 +587,7 @@ declare namespace SendBird {
   interface Member extends User {
     state: 'invited' | 'joined';
     role: 'none' | 'operator';
+    isMuted: boolean;
     isBlockedByMe: boolean;
     isBlockingMe: boolean;
   }
@@ -1789,6 +1791,7 @@ declare namespace SendBird {
     limit: number;
     hasNext: boolean;
     isLoading: boolean;
+    order: 'member_nickname_alphabetical' | 'operator_then_member_alphabetical';
     mutedMemberFilter: 'all' | 'muted' | 'unmuted';
     operatorFilter: 'all' | 'operator' | 'nonoperator'; // DEPRECATED
     memberStateFilter: 'all' | 'joined_only' | 'invited_only' | 'invited_by_friend' | 'invited_by_non_friend';

@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.0.130(AUG 7, 2020)
+
+- Added `order` in `GroupChannelMemberListQuery`. The value could be `member_nickname_alphabetical` (default) or `operator_then_member_alphabetical`.
+- Added `isMuted` in `Member`.
+- Removed value type check in `channel.createMetaData()` and `channel.updateMetaData()`.
+- Bug-fix on `profileUrl` setter.
+
 ## v3.0.129(JUL 24, 2020)
 
 - Renamed `includeReaction` to `includeReactions` in `channel.getMessageChangeLogs()` (`includeReaction` is deprecated).
