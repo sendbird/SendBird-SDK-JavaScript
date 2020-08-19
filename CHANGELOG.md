@@ -219,7 +219,7 @@
 
 - Improved stability.
 - Minor bug fixed.
-- Updated SendBird.d.ts file for TypeScript.
+- Updated `SendBird.d.ts` file for TypeScript.
 
 ## v3.0.93(JAN 17, 2019)
 

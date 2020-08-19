@@ -1,9 +1,9 @@
 {
   "name": "sendbird",
   "version": "3.0.131",
-  "authors": ["SendBird <support@sendbird.com>"],
-  "homepage": "https://github.com/sendbird/SendBird-SDK-JavaScript",
-  "description": "SendBird JavaScript SDK",
+  "authors": ["Sendbird <support@sendbird.com>"],
+  "homepage": "https://github.com/sendbird/Sendbird-SDK-JavaScript",
+  "description": "Sendbird JavaScript SDK",
   "main": "SendBird.min.js",
   "moduleType": [],
   "keywords": ["sendbird", "sendbird.com", "messaging", "chat", "js"],
