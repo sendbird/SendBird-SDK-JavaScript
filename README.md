@@ -52,11 +52,17 @@ Check out [Basic Sample with SyncManager](https://github.com/sendbird/Sendbird-J
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
-## v3.0.131(AUG 7, 2020)
+## v3.0.132(AUG 21, 2020)
 
 If you want to check the record of other version, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Fixed duplicated `appInfo` in `SendBird.d.ts`.
+
+- Added `creator` in `BaseChannel`.
+- Added `isOperatorMessage` in `BaseMessage`.
+- Added `copyUserMessage()` and `copyFileMessage()` in `BaseChannel`.
+- Change the type of all `messageId`s to `number`.
+- Bug-fix in wrong channel info in `onChannelFrozen` callback.
+- Bug-fix in unread member count and unread delivery count.
 
 ## [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md)
 

@@ -1,5 +1,14 @@
 # Changelog
 
+## v3.0.132(AUG 21, 2020)
+
+- Added `creator` in `BaseChannel`.
+- Added `isOperatorMessage` in `BaseMessage`.
+- Added `copyUserMessage()` and `copyFileMessage()` in `BaseChannel`.
+- Change the type of all `messageId`s to `number`.
+- Bug-fix in wrong channel info in `onChannelFrozen` callback.
+- Bug-fix in unread member count and unread delivery count.
+
 ## v3.0.131(AUG 7, 2020)
 
 - Fixed duplicated `appInfo` in `SendBird.d.ts`.
