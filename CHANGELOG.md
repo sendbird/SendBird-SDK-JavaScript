@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.0.133(SEP 4, 2020)
+
+- Added `nicknameStartsWithFilter` in `ApplicationUserListQuery`.
+
 ## v3.0.132(AUG 21, 2020)
 
 - Added `creator` in `BaseChannel`.
