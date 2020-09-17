@@ -1,5 +1,15 @@
 # Changelog
 
+## v3.0.134(SEP 17, 2020)
+
+- Added `getTypingUsers()` in `GroupChannel`.
+  - It returns the users even if the user is not in `members`.
+  - Deprecated `getTypingMembers()` in `GroupChanenl`.
+- Set `url` as visible in `FileMessage` object.
+- Set `profileUrl` as visible in `User` object.
+- Bug-fix in error handling
+- Improved stability.
+
 ## v3.0.133(SEP 4, 2020)
 
 - Added `nicknameStartsWithFilter` in `ApplicationUserListQuery`.
