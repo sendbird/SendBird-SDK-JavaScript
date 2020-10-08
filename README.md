@@ -52,17 +52,12 @@ Check out [Basic Sample with SyncManager](https://github.com/sendbird/Sendbird-J
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
-## v3.0.134(SEP 17, 2020)
+## v3.0.135(OCT 8, 2020)
 
 If you want to check the record of other version, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Added `getTypingUsers()` in `GroupChannel`.
-  - It returns the users even if the user is not in `members`.
-  - Deprecated `getTypingMembers()` in `GroupChanenl`.
-- Set `url` as visible in `FileMessage` object.
-- Set `profileUrl` as visible in `User` object.
-- Bug-fix in error handling
-- Improved stability.
+- Bug-fix in outdated `isMuted` in `Member`.
+- Bug-fix in error handling.
 
 ## [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md)
 

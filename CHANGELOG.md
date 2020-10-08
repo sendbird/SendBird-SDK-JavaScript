@@ -1,5 +1,10 @@
 # Changelog
 
+## v3.0.135(OCT 8, 2020)
+
+- Bug-fix in outdated `isMuted` in `Member`.
+- Bug-fix in error handling.
+
 ## v3.0.134(SEP 17, 2020)
 
 - Added `getTypingUsers()` in `GroupChannel`.
