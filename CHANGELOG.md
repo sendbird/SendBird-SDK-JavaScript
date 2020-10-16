@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.0.136(OCT 16, 2020)
+
+- Added `showSubchannelMessagesOnly` in `MessageListParams` and `PreviousMessageListQuery`.
+- Bug-fix in `profileUrl` not showing in `Sender`.
+- Improved stability.
+
 ## v3.0.135(OCT 8, 2020)
 
 - Bug-fix in outdated `isMuted` in `Member`.

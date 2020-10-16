@@ -52,12 +52,13 @@ Check out [Basic Sample with SyncManager](https://github.com/sendbird/Sendbird-J
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
-## v3.0.135(OCT 8, 2020)
+## v3.0.136(OCT 16, 2020)
 
 If you want to check the record of other version, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Bug-fix in outdated `isMuted` in `Member`.
-- Bug-fix in error handling.
+- Added `showSubchannelMessagesOnly` in `MessageListParams` and `PreviousMessageListQuery`.
+- Bug-fix in `profileUrl` not showing in `Sender`.
+- Improved stability.
 
 ## [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md)
 
