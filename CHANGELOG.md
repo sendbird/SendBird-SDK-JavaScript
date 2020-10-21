@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.0.137(OCT 21, 2020)
+
+- Bug-fix in `profileUrl`.
+
 ## v3.0.136(OCT 16, 2020)
 
 - Added `showSubchannelMessagesOnly` in `MessageListParams` and `PreviousMessageListQuery`.
