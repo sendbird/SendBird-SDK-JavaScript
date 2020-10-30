@@ -1,10 +1,17 @@
 # Changelog
 
+## v3.0.138(OCT 30, 2020)
+
+- Added `getAllowFriendDiscovery()` and `setAllowFriendDiscovery()` in `SendBird`.
+  - If it's set to `false`, `uploadFriendDiscoveries()` called by others does not add the user as a friend.
+- Set `size` in `FileMessage` automatically.
+- Improved stability.
+
 ## v3.0.137(OCT 21, 2020)
 
 - Bug-fix in `profileUrl`.
 
-## v3.0.136(OCT 16, 2020)
+## v3.0.136(OCT 16, 2020) (DEPRECATED)
 
 - Added `showSubchannelMessagesOnly` in `MessageListParams` and `PreviousMessageListQuery`.
 - Bug-fix in `profileUrl` not showing in `Sender`.

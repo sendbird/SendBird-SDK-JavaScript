@@ -52,11 +52,14 @@ Check out [Basic Sample with SyncManager](https://github.com/sendbird/Sendbird-J
 
 # [Documentation](https://docs.sendbird.com/javascript)
 
-## v3.0.137(OCT 21, 2020)
+## v3.0.138(OCT 30, 2020)
 
 If you want to check the record of other version, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Bug-fix in `profileUrl`.
+- Added `getAllowFriendDiscovery()` and `setAllowFriendDiscovery()` in `SendBird`.
+  - If it's set to `false`, `uploadFriendDiscoveries()` called by others does not add the user as a friend.
+- Set `size` in `FileMessage` automatically.
+- Improved stability.
 
 ## [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md)
 
