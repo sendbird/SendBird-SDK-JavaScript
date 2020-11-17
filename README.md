@@ -325,7 +325,7 @@ The `sb.setErrorFirstCallback(false)` returns callbacks to their original parame
 If you want to check the record of other version, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
 - Added `getAllowFriendDiscovery()` and `setAllowFriendDiscovery()` in `SendBird`.
-  - If it's set to `false`, `uploadFriendDiscoveries()` called by others does not add the user as a friend.
+  - If it's set to **false**, `uploadFriendDiscoveries()` called by others does not add the user as a friend.
 - Set `size` in `FileMessage` automatically.
 - Improved stability.
 
