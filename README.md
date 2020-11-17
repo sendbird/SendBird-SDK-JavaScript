@@ -10,6 +10,8 @@
   1. [Before getting started](#before-getting-started)
   1. [Getting started](#getting-started)
   1. [Send your first message](#send-your-first-message)
+  1. [Changelogs](#send-your-first-message)
+  
 
 <br />
 
@@ -314,6 +316,8 @@ The `sb.setErrorFirstCallback(false)` returns callbacks to their original parame
 
 > Note: Go to the [Event handler](https://sendbird.com/docs/chat/v3/javascript/guides/event-handler) page to learn more about the usages of the Chat SDK's handlers and callbacks.
 
+<br />
+
 ## Changelogs
 
 ### v3.0.138(OCT 30, 2020)
@@ -325,4 +329,4 @@ If you want to check the record of other version, go to [Change Log](https://git
 - Set `size` in `FileMessage` automatically.
 - Improved stability.
 
-### [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md)
+### [More changelogs](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md)
