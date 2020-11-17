@@ -257,7 +257,7 @@ sb.OpenChannel.getChannel(CHANNEL_URL, function(openChannel, error) {
 
 ### Step 5: Send a message to the channel
 
-Finally, send a message to the channel. There are three types: a user message, which is a plain text, a file message, which is a binary file, such as an image or PDF, and an admin message, which is a plain text sent through the dashboard or Chat Platform API
+Finally, send a message to the channel. There are [three types](https://sendbird.com/docs/chat/v3/platform-api/guides/messages#-3-resource-representation): a user message, which is a plain text, a file message, which is a binary file, such as an image or PDF, and an admin message, which is a plain text sent through the [dashboard](https://dashboard.sendbird.com/auth/signin) or [Chat Platform API](https://sendbird.com/docs/chat/v3/platform-api/guides/messages#2-send-a-message).
 
 ```javascript
 openChannel.sendUserMessage(MESSAGE, DATA, CUSTOM_TYPE, function(message, error) {
