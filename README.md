@@ -10,7 +10,8 @@
   1. [Before getting started](#before-getting-started)
   1. [Getting started](#getting-started)
   1. [Send your first message](#send-your-first-message)
-  1. [Changelogs](#send-your-first-message)
+  1. [Appendix](#appendix)
+  1. [Changelogs](#changelogs)
   
 
 <br />
