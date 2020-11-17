@@ -172,11 +172,11 @@ Or download the latest Chat SDK for JavaScript from the following link if you do
 
 ### Authentication
 
-To use the features of the Chat SDK in your client app, a `Sendbird` instance must be initiated in each client app before user authentication with Sendbird server. These instances communicate and interact with the server based on an authenticated user account, allowing for the client app to use the Chat SDK features. 
+To use the features of the Chat SDK in your client app, a `sb` instance must be initiated in each client app before user authentication with Sendbird server. These instances communicate and interact with the server based on an authenticated user account, allowing for the client app to use the Chat SDK features. 
 
 ### Step 1: Initialize the the the Chat SDK
 
-You need to initialize a `Sendbird` instance before authentication. Initialization binds the Chat SDK to Javascript’s context which allows the Chat SDK to respond to connection and state changes and also enables client apps to use the Chat SDK features. 
+You need to initialize a `sb` instance before authentication. Initialization binds the Chat SDK to Javascript’s context which allows the Chat SDK to respond to connection and state changes and also enables client apps to use the Chat SDK features. 
 
 To initialize a `Sendbird` instance, pass the `App_ID` of your Sendbird application in the dashboard as an argument to a parameter in the `new Sendbird()` method. As the `new SendBird()` can only be a single instance, call it only a single time across your Javascript client app. Typically, initialization is implemented in the user login screen.
 
