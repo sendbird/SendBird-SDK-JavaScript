@@ -121,7 +121,7 @@ A Sendbird application comprises everything required in a chat service including
 
 1. Go to the [Sendbird Dashboard](https://dashboard.sendbird.com/auth/signup) and enter your email and password, and create a new account. You can also sign up with a Google account.
 2. When prompted by the setup wizard, enter your organization information to manage Sendbird applications.
-3. Lastly, when your dashboard home appears after completing setup, click Create App at the top-right corner.
+3. Lastly, when your dashboard home appears after completing setup, click **Create +** at the top-right corner.
 
 Regardless of the platform, only one Sendbird application can be integrated per app; however, the application supports communication across allSendbird’s provided platforms without any additional setup. Sendbird currently supports iOS, Android, web, .NET, and Unity client apps.
 
