@@ -112,8 +112,9 @@ $ react-native run-android
 
 Before entering the two commands above, you should run the simulator from the [Android Studio](https://developer.android.com/studio/) in advance. The command for iOS works without further action.
 
-
 ### Here are the steps to install Chat SDK
+
+Follow the simple steps below to build the Chat SDK into your client app.
 
 #### Step 1: Create a Sendbird application from your dashboard
 
