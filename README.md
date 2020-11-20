@@ -171,6 +171,8 @@ Or download the latest Chat SDK for JavaScript from the following link if you do
 
 ## Sending your first message 
 
+Follow the step-by-step instructions below to authenticate and send your first message.
+
 ### Authentication
 
 To use the features of the Chat SDK in your client app, a `sb` instance must be initiated in each client app before user authentication with Sendbird server. These instances communicate and interact with the server based on an authenticated user account, allowing for the client app to use the Chat SDK features. 
