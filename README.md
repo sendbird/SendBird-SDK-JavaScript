@@ -65,8 +65,6 @@ The fastest way to test the Chat SDK is to build your chat app on top of our sam
 
 - https://github.com/sendbird/Sendbird-JavaScript
 
-> Note: Make sure to input your application ID into the sample app. Go to the Create a Sendbird application from your dashboard section to learn more.
-
 You can also download the sample using a git command:
 
 ```bash
