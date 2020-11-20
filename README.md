@@ -31,7 +31,7 @@ Find out more about Sendbird Chat for JavaScript on [Chat SDK for JavaScript doc
 
 ## Before getting started
 
-This section shows you the prerequisites you need to know for using Sendbird Calls for iOS sample app.
+This section shows you the prerequisites you need to check for using Sendbird Chat SDK for JavaScript.
 
 ### Supported browsers
 
@@ -56,6 +56,8 @@ Your application provides two add-ons, which are detailed as follows.
 <br />
 
 ## Getting started
+
+This section gives you information you need to get started with Sendbird Chat SDK for JavaScript.
 
 ### Try the sample app
 
