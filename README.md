@@ -17,7 +17,7 @@
 
 ## Introduction
 
-Through the Chat SDK for Javascript, you can efficiently integrate real-time chat into your client app. On the client-side implementation, you can initialize, configure and build the chat with minimal effort. On the server-side, Sendbird ensures reliable infra-management services for your chat within the app. This **read.me** provides the Chat SDK’s structure, supplementary features, and the installation steps. 
+Through Sendbird Chat SDK for Javascript, you can efficiently integrate real-time chat into your client app. On the client-side implementation, you can initialize, configure and build the chat with minimal effort. On the server-side, Sendbird ensures reliable infra-management services for your chat within the app. This **read.me** provides the Chat SDK’s structure, supplementary features, and the installation steps. 
 
 ### How it works
 
@@ -160,7 +160,7 @@ Or download the latest Chat SDK for JavaScript from the following link if you do
 
 - https://github.com/sendbird/Sendbird-SDK-JavaScript
 
-> Note: You should also add axios library into the script tag before the Sendbird library inclusion since v3.0.127. You can host the library or utilize the CDN as the library refers to it. The following serves as examples.
+> **Note**: You should also add `axios` library into the <script> tag before the Sendbird library inclusion since v3.0.127. You can host the library or utilize the CDN as the library refers to it. The following serves as examples.
 
 ```javascript
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -183,7 +183,7 @@ You need to initialize a `sb` instance before authentication. Initialization bin
 
 To initialize a `Sendbird` instance, pass the `App_ID` of your Sendbird application in the dashboard as an argument to a parameter in the `new Sendbird()` method. As the `new SendBird()` can only be a single instance, call it only a single time across your Javascript client app. Typically, initialization is implemented in the user login screen.
 
-> Note: It is recommended to initialize the Chat SDK at the top of your Javascript file. 
+> **Note**: It is recommended to initialize the Chat SDK at the top of your Javascript file. 
 
 ```javascript
 var sb = new SendBird({appId: APP_ID});
@@ -220,7 +220,7 @@ Sendbird prefers that you pass the APP ID through the use of a token, as it ensu
 sb.connect(USER_ID, ACCESS_TOKEN, function(user, error) {});
 ```
 
-#### Tips for user account security
+#### - Tips for user account security
 
 From **Settings** > **Application** > **Security** > **Access token permission** setting in your dashboard, you can prevent users without an access token from logging in to your Sendbird application or restrict their access to **read** and **write** messages.
 
@@ -280,7 +280,7 @@ Sendbird wants customers to be confident that Chat SDK will be useful, work well
 
 XSS (Cross-site scripting) is a type of computer security vulnerability. XSS helps attackers inject client-side scripts into web pages viewed by other users. Users can send any type of string data without restriction through Chat SDKs. Make sure that you check the safety of received data from other users before rendering it into your DOM.
 
-> Note: For more about the XSS prevention, visit the [OWASP's XSS Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) page.
+> **Note**: For more about the XSS prevention, visit the [OWASP's XSS Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) page.
 
 ### Use functions of Sendbird objects with Immutable-js
 
@@ -317,7 +317,7 @@ sb.connect(USER_ID, function(error, user) {});
 
 The `sb.setErrorFirstCallback(false)` returns callbacks to their original parameter ordering, with errors last.
 
-> Note: Go to the [Event handler](https://sendbird.com/docs/chat/v3/javascript/guides/event-handler) page to learn more about the usages of the Chat SDK's handlers and callbacks.
+> **Note**: Go to the [Event handler](https://sendbird.com/docs/chat/v3/javascript/guides/event-handler) page to learn more about the usages of the Chat SDK's handlers and callbacks.
 
 <br />
 
@@ -325,11 +325,9 @@ The `sb.setErrorFirstCallback(false)` returns callbacks to their original parame
 
 ### v3.0.138(OCT 30, 2020)
 
-If you want to check the record of other version, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
+If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
 - Added `getAllowFriendDiscovery()` and `setAllowFriendDiscovery()` in `SendBird`.
   - If it's set to **false**, `uploadFriendDiscoveries()` called by others does not add the user as a friend.
 - Set `size` in `FileMessage` automatically.
 - Improved stability.
-
-### [More changelogs](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md)
