@@ -48,7 +48,7 @@ This section shows you the prerequisites you need to check for using Sendbird Ch
 
 ### More about additional features of Sendbird the the Chat SDK
 
-Your application provides two add-ons, which are detailed as follows. 
+Try building your Sendbird application with these two add-ons:
 
 - [Sendbird UIKit for JavaScript](https://sendbird.com/docs/uikit/v1/javascript/getting-started/about-uikit): a development kit with a user interface that enables an easy and fast integration of standard chat features into new or existing client apps.
 - [Sendbird SyncManager for JavaScript](https://sendbird.com/docs/syncmanager/v1/javascript/getting-started/about-syncmanager): the Chat SDK add-on that optimizes the user caching experience by interlinking the synchronization of the local data storage with the chat data in Sendbird server through an event-driven structure. 
