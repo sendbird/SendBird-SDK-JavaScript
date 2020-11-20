@@ -9,7 +9,7 @@
   1. [Introduction](#introduction)
   1. [Before getting started](#before-getting-started)
   1. [Getting started](#getting-started)
-  1. [Send your first message](#send-your-first-message)
+  1. [Sending your first message](#sending-your-first-message)
   1. [Appendix](#appendix)
   1. [Changelogs](#changelogs)
   
@@ -169,7 +169,7 @@ Or download the latest Chat SDK for JavaScript from the following link if you do
 
 <br />
 
-## Send your first message 
+## Sending your first message 
 
 ### Authentication
 
