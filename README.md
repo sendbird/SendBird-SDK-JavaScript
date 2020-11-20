@@ -177,7 +177,7 @@ Follow the step-by-step instructions below to authenticate and send your first m
 
 To use the features of the Chat SDK in your client app, a `sb` instance must be initiated in each client app before user authentication with Sendbird server. These instances communicate and interact with the server based on an authenticated user account, allowing for the client app to use the Chat SDK features. 
 
-### Step 1: Initialize the the the Chat SDK
+### Step 1: Initialize the Chat SDK
 
 You need to initialize a `sb` instance before authentication. Initialization binds the Chat SDK to Javascript’s context which allows the Chat SDK to respond to connection and state changes and also enables client apps to use the Chat SDK features. 
 
