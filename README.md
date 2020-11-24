@@ -132,7 +132,7 @@ Regardless of the platform, only one Sendbird application can be integrated per 
 
 #### Step 2: Install the Chat SDK
 
-If you’re familiar with using external libraries or SDKs, installing the Chat SDK is simple.You can install the Chat SDK with package manager npm or Bower by entering the command below on the command line.
+If you’re familiar with using external libraries or SDKs, installing the Chat SDK is simple.You can install the Chat SDK with package manager `npm` or `yarn` by entering the command below on the command line.
 
 - **Npm**
 
