@@ -31,7 +31,7 @@ Find out more about Sendbird Chat for JavaScript on [Chat SDK for JavaScript doc
 
 ## Before getting started
 
-This section shows you the prerequisites you need to check for using Sendbird Chat SDK for JavaScript.
+This section shows you the prerequisites you need to check for using Sendbird Chat SDK for JavaScript. If you have any comments or questions regarding bugs and feature requests, visit [Sendbird community](https://community.sendbird.com).
 
 ### Supported browsers
 
