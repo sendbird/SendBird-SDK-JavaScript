@@ -71,6 +71,8 @@ You can also download the sample using a git command:
 $ git clone https://github.com/sendbird/SendBird-JavaScript
 ```
 
+> **Note**: Find out more about Sendbird SDK for JavaScript samples on https://sample.sendbird.com
+
 ### Different sample projects 
 
 For JavaScript, Sendbird supports a variety of sample projects. Their installation procedures are detailed as below:  
