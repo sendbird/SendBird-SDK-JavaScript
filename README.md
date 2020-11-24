@@ -152,10 +152,10 @@ var sb = new SendBird({ appId: "APP_ID" });
 
 If you have trouble importing Sendbird, please check your `tsconfig.json` file and change the value of `allowSyntheticDefaultImports` to true in `compilerOptions`.
 
-- **Bower**
+- **Yarn**
 
 ```bash
-$ bower install sendbird
+$ yarn add sendbird
 ```
 
 Or download the latest Chat SDK for JavaScript from the following link if you do not want to use package manager 
