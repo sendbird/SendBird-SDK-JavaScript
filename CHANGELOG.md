@@ -1,6 +1,11 @@
 # Changelog
 
-## v3.0.139(NOV 25, 2020)
+## v3.0.140(NOV 25, 2020)
+
+- Bug-fix in connection management.
+- Minor bug fixed.
+
+## v3.0.139(NOV 25, 2020) (DEPRECATED)
 
 - Removed `addOperator()`, `addOperators()`, `addOperatorUserId()`, `addOperatorUserIds()` from `OpenChannelParams`.
 - Improved stability.

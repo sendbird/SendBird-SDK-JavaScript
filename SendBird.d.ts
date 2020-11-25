@@ -1,5 +1,5 @@
 /**
- * Type Definitions for Sendbird SDK v3.0.139
+ * Type Definitions for Sendbird SDK v3.0.140
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/Sendbird-SDK-JavaScript
  */
@@ -1301,7 +1301,7 @@ declare namespace SendBird {
     new(): OpenChannelParams;
     channelUrl: string;
     name: string;
-    coverUrlOrImage: string|File;
+    coverUrlOrImage: string | File;
     data: string;
     customType: string;
 

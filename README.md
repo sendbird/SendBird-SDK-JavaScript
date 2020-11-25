@@ -325,9 +325,9 @@ The `sb.setErrorFirstCallback(false)` returns callbacks to their original parame
 
 ## Changelogs
 
-### v3.0.139(NOV 25, 2020)
+### v3.0.140(NOV 25, 2020)
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Removed `addOperator()`, `addOperators()`, `addOperatorUserId()`, `addOperatorUserIds()` from `OpenChannelParams`.
-- Improved stability.
+- Bug-fix in connection management.
+- Minor bug fixed.
