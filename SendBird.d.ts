@@ -1,5 +1,5 @@
 /**
- * Type Definitions for Sendbird SDK v3.0.138
+ * Type Definitions for Sendbird SDK v3.0.139
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/Sendbird-SDK-JavaScript
  */
@@ -73,12 +73,17 @@ declare namespace SendBird {
     ConnectionHandler: ConnectionHandlerStatic;
 
     GroupChannelParams: GroupChannelParams;
+    OpenChannelParams: OpenChannelParams;
     GroupChannelListQuery: GroupChannelListQueryStatic;
     UserMessageParams: UserMessageParams;
     FileMessageParams: FileMessageParams;
     GroupChannelTotalUnreadMessageCountParams: GroupChannelTotalUnreadMessageCountParams;
     ScheduledUserMessageParams: ScheduledUserMessageParams;
     GroupChannelChangeLogsParams: GroupChannelChangeLogsParams;
+    MessageRetrievalParams: MessageRetrievalParams;
+    MessageListParams: MessageListParams;
+    ThreadedMessageListParams: ThreadedMessageListParams;
+    MessageChangeLogsParams: MessageChangeLogsParams;
     MessageMetaArray: MessageMetaArray;
     Options: Options;
 
@@ -433,6 +438,12 @@ declare namespace SendBird {
     emojiCategories: Array<EmojiCategory>;
   }
 
+  interface Plugin {
+    type: string;
+    vendor: string;
+    detail: {};
+  }
+
   interface UserMessageParams {
     new(): UserMessageParams;
     message: string;
@@ -459,6 +470,7 @@ declare namespace SendBird {
     requestedMentionUserIds: Array<string>;
     errorCode: number;
     messageSurvivalSeconds: number;
+    plugins: Plugin[];
     isResendable(): boolean;
   }
   interface UserMessageStatic {
@@ -1284,6 +1296,18 @@ declare namespace SendBird {
    */
   type commonCallback = (response: Object, error: SendBirdError) => void;
   type openChannelCallback = (openChannel: OpenChannel, error: SendBirdError) => void;
+
+  interface OpenChannelParams {
+    new(): OpenChannelParams;
+    channelUrl: string;
+    name: string;
+    coverUrlOrImage: string|File;
+    data: string;
+    customType: string;
+
+    operatorUserIds(userIds: string[]): void;
+  }
+
   interface OpenChannel extends BaseChannel {
     participantCount: number;
     operators: Array<User>;
@@ -1297,6 +1321,7 @@ declare namespace SendBird {
     createMutedUserListQuery(): MutedUserListQuery;
     createBannedUserListQuery(): BannedUserListQuery;
 
+    updateChannel(params: OpenChannelParams, callback: openChannelCallback): void;
     updateChannel(name: string, coverUrlOrImageFile: string | File, data: string, callback: openChannelCallback): void;
     updateChannel(
       name: string,
@@ -1419,6 +1444,7 @@ declare namespace SendBird {
     getChannelWithoutCache(channelUrl: string, callback: openChannelCallback): void;
 
     createChannel(callback: openChannelCallback): void;
+    createChannel(params: OpenChannelParams, callback: openChannelCallback): void;
     createChannel(name: string, coverUrlOrImageFile: string | File, data: string, callback: openChannelCallback): void; // DEPRECATED
     createChannel(
       name: string,

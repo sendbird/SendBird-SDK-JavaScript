@@ -1,5 +1,10 @@
 # Changelog
 
+## v3.0.139(NOV 25, 2020)
+
+- Removed `addOperator()`, `addOperators()`, `addOperatorUserId()`, `addOperatorUserIds()` from `OpenChannelParams`.
+- Improved stability.
+
 ## v3.0.138(OCT 30, 2020)
 
 - Added `getAllowFriendDiscovery()` and `setAllowFriendDiscovery()` in `SendBird`.
