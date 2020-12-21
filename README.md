@@ -325,9 +325,10 @@ The `sb.setErrorFirstCallback(false)` returns callbacks to their original parame
 
 ## Changelogs
 
-### v3.0.140(NOV 25, 2020)
+## v3.0.141(DEC 21, 2020)
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Bug-fix in connection management.
-- Minor bug fixed.
+- Added a setter for `operators` in `OpenChannelParams`.
+- Added `getLogLevel()` and `setLogLevel()` in `SendBird`.
+- Improved stability.

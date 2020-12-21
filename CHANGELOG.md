@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.0.141(DEC 21, 2020)
+
+- Added a setter for `operators` in `OpenChannelParams`.
+- Added `getLogLevel()` and `setLogLevel()` in `SendBird`.
+- Improved stability.
+
 ## v3.0.140(NOV 25, 2020)
 
 - Bug-fix in connection management.

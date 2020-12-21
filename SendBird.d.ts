@@ -1,5 +1,5 @@
 /**
- * Type Definitions for Sendbird SDK v3.0.140
+ * Type Definitions for Sendbird SDK v3.0.141
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/Sendbird-SDK-JavaScript
  */
@@ -13,6 +13,11 @@ interface SendBirdStatic {
   version: number;
   new({ appId }: { appId: string }): SendBird.SendBirdInstance;
   getInstance(): SendBird.SendBirdInstance;
+
+  LogLevel: SendBird.LogLevel;
+
+  getLogLevel(): typeof SendBird.LogLevel[keyof typeof SendBird.LogLevel];
+  setLogLevel(logLevel: typeof SendBird.LogLevel[keyof typeof SendBird.LogLevel]);
 }
 
 declare namespace SendBird {
@@ -54,6 +59,14 @@ declare namespace SendBird {
   };
   type getMyPushTokensHandler = (data: pushTokens, error: SendBirdError) => void;
 
+  type LogLevel = {
+    VERBOSE: 'verbose',
+    DEBUG: 'debug',
+    INFO: 'info',
+    WARN: 'warn',
+    ERROR: 'error',
+  };
+
   interface DiscoveryObject {
     friendDiscoveryKey: string;
     friendName?: string;
@@ -93,16 +106,16 @@ declare namespace SendBird {
 
     setErrorFirstCallback(errorFirstCallback: boolean): void;
 
-    connect(userId: string, callback?: userCallback): void;
-    connect(userId: string, apiHost: string, wsHost: string, callback?: userCallback): void;
-    connect(userId: string, accessToken: string, callback?: userCallback): void;
-    connect(userId: string, accessToken: string, apiHost: string, wsHost: string, callback?: userCallback): void;
-    disconnect(callback?: commonCallback): void;
+    connect(userId: string, callback?: userCallback): void | Promise;
+    connect(userId: string, apiHost: string, wsHost: string, callback?: userCallback): void | Promise;
+    connect(userId: string, accessToken: string, callback?: userCallback): void | Promise;
+    connect(userId: string, accessToken: string, apiHost: string, wsHost: string, callback?: userCallback): void | Promise;
+    disconnect(callback?: commonCallback): void | Promise;
     reconnect(): boolean; // You can initiate auto-reconnect manually.
 
-    updateCurrentUserInfo(nickname: string, profileUrl: string, callback?: userCallback): void;
-    updateCurrentUserInfoWithProfileImage(nickname: string, profileImageFile: File, callback?: userCallback): void;
-    updateCurrentUserInfoWithPreferredLanguages(preferredLanguages: Array<string>, callback?: userCallback): void;
+    updateCurrentUserInfo(nickname: string, profileUrl: string, callback?: userCallback): void | Promise;
+    updateCurrentUserInfoWithProfileImage(nickname: string, profileImageFile: File, callback?: userCallback): void | Promise;
+    updateCurrentUserInfoWithPreferredLanguages(preferredLanguages: Array<string>, callback?: userCallback): void | Promise;
 
     getCurrentUserId(): string; // DEPRECATED
     getApplicationId(): string;
@@ -1440,43 +1453,43 @@ declare namespace SendBird {
   interface OpenChannelStatic {
     buildFromSerializedData(serializedObject: Object): OpenChannel;
 
-    getChannel(channelUrl: string, callback: openChannelCallback): void;
-    getChannelWithoutCache(channelUrl: string, callback: openChannelCallback): void;
+    getChannel(channelUrl: string, callback?: openChannelCallback): void | Promise;
+    getChannelWithoutCache(channelUrl: string, callback?: openChannelCallback): void | Promise;
 
-    createChannel(callback: openChannelCallback): void;
-    createChannel(params: OpenChannelParams, callback: openChannelCallback): void;
-    createChannel(name: string, coverUrlOrImageFile: string | File, data: string, callback: openChannelCallback): void; // DEPRECATED
+    createChannel(callback?: openChannelCallback): void | Promise;
+    createChannel(params: OpenChannelParams, callback?: openChannelCallback): void | Promise;
+    createChannel(name: string, coverUrlOrImageFile: string | File, data: string, callback?: openChannelCallback): void | Promise; // DEPRECATED
     createChannel(
       name: string,
       coverUrlOrImageFile: string | File,
       data: string,
       operatorUserIds: Array<string> | string,
-      callback: openChannelCallback
-    ): void; // DEPRECATED
+      callback?: openChannelCallback
+    ): void | Promise; // DEPRECATED
     createChannel(
       name: string,
       coverUrlOrImageFile: string | File,
       data: string,
       operatorUserIds: Array<string> | string,
       customType: string,
-      callback: openChannelCallback
-    ): void;
+      callback?: openChannelCallback
+    ): void | Promise;
 
     createChannelWithOperatorUserIds(
       name: string,
       coverUrlOrImageFile: string | File,
       data: string,
       operatorUserIds: Array<string> | string,
-      callback: openChannelCallback
-    ): void;
+      callback?: openChannelCallback
+    ): void | Promise;
     createChannelWithOperatorUserIds(
       name: string,
       coverUrlOrImageFile: string | File,
       data: string,
       operatorUserIds: Array<string> | string,
       customType: string,
-      callback: openChannelCallback
-    ): void;
+      callback?: openChannelCallback
+    ): void | Promise;
 
     createOpenChannelListQuery(): OpenChannelListQuery;
   }
@@ -1487,7 +1500,7 @@ declare namespace SendBird {
     hasNext: boolean;
     nameKeyword: string;
     urlKeyword: string;
-    customType: string;
+    customTypes: string[];
     includeFrozen: boolean;
 
     next(callback: openChannelListQueryCallback): void;
