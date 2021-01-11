@@ -12,20 +12,20 @@
   1. [Sending your first message](#sending-your-first-message)
   1. [Appendix](#appendix)
   1. [Changelogs](#changelogs)
-  
+
 <br />
 
 ## Introduction
 
-Through Sendbird Chat SDK for Javascript, you can efficiently integrate real-time chat into your client app. On the client-side implementation, you can initialize, configure and build the chat with minimal effort. On the server-side, Sendbird ensures reliable infra-management services for your chat within the app. This **read.me** provides the Chat SDK’s structure, supplementary features, and the installation steps. 
+Through Sendbird Chat SDK for Javascript, you can efficiently integrate real-time chat into your client app. On the client-side implementation, you can initialize, configure and build the chat with minimal effort. On the server-side, Sendbird ensures reliable infra-management services for your chat within the app. This **read.me** provides the Chat SDK’s structure, supplementary features, and the installation steps.
 
 ### How it works
 
-It is simple to implement chat in your client app with the Chat SDK: a user logs in, sees a list of channels, selects or creates an [open channel](https://sendbird.com/docs/chat/v3/javascript/guides/open-channel#2-create-a-channel) or a [group channel](https://sendbird.com/docs/chat/v3/javascript/guides/group-channel#2-create-a-channel), and, through the use of the [channel event handlers](https://sendbird.com/docs/chat/v3/javascript/guides/event-handler), sends messages to the channel, while also receiving them from other users within the channel. 
+It is simple to implement chat in your client app with the Chat SDK: a user logs in, sees a list of channels, selects or creates an [open channel](https://sendbird.com/docs/chat/v3/javascript/guides/open-channel#2-create-a-channel) or a [group channel](https://sendbird.com/docs/chat/v3/javascript/guides/group-channel#2-create-a-channel), and, through the use of the [channel event handlers](https://sendbird.com/docs/chat/v3/javascript/guides/event-handler), sends messages to the channel, while also receiving them from other users within the channel.
 
 ### More about Sendbird Chat SDK for JavaScript
 
-Find out more about Sendbird Chat for JavaScript on [Chat SDK for JavaScript doc](https://sendbird.com/docs/chat/v3/javascript/getting-started/about-chat-sdk). 
+Find out more about Sendbird Chat for JavaScript on [Chat SDK for JavaScript doc](https://sendbird.com/docs/chat/v3/javascript/getting-started/about-chat-sdk).
 
 <br />
 
@@ -51,7 +51,7 @@ This section shows you the prerequisites you need to check for using Sendbird Ch
 Try building your Sendbird application with these two add-ons:
 
 - [Sendbird UIKit for JavaScript](https://sendbird.com/docs/uikit/v1/javascript/getting-started/about-uikit): a development kit with a user interface that enables an easy and fast integration of standard chat features into new or existing client apps.
-- [Sendbird SyncManager for JavaScript](https://sendbird.com/docs/syncmanager/v1/javascript/getting-started/about-syncmanager): the Chat SDK add-on that optimizes the user caching experience by interlinking the synchronization of the local data storage with the chat data in Sendbird server through an event-driven structure. 
+- [Sendbird SyncManager for JavaScript](https://sendbird.com/docs/syncmanager/v1/javascript/getting-started/about-syncmanager): the Chat SDK add-on that optimizes the user caching experience by interlinking the synchronization of the local data storage with the chat data in Sendbird server through an event-driven structure.
 
 <br />
 
@@ -61,7 +61,7 @@ This section gives you information you need to get started with Sendbird Chat SD
 
 ### Try the sample app
 
-The fastest way to test the Chat SDK is to build your chat app on top of our sample app. To create a project for the sample app, download the app from our GitHub repository. The link is down below. 
+The fastest way to test the Chat SDK is to build your chat app on top of our sample app. To create a project for the sample app, download the app from our GitHub repository. The link is down below.
 
 - https://github.com/sendbird/Sendbird-JavaScript
 
@@ -73,9 +73,9 @@ $ git clone https://github.com/sendbird/SendBird-JavaScript
 
 > **Note**: Find out more about Sendbird SDK for JavaScript samples on https://sample.sendbird.com
 
-### Different sample projects 
+### Different sample projects
 
-For JavaScript, Sendbird supports a variety of sample projects. Their installation procedures are detailed as below:  
+For JavaScript, Sendbird supports a variety of sample projects. Their installation procedures are detailed as below:
 
 #### Run the web sample projects
 
@@ -142,7 +142,7 @@ If you’re familiar with using external libraries or SDKs, installing the Chat 
 $ npm install sendbird (request to npm server)
 ```
 
-Install via `Npm` and import like below in your `TypeScript` file. 
+Install via `Npm` and import like below in your `TypeScript` file.
 
 ```bash
 import * as SendBird from "sendbird";
@@ -158,7 +158,7 @@ If you have trouble importing Sendbird, please check your `tsconfig.json` file a
 $ yarn add sendbird
 ```
 
-Or download the latest Chat SDK for JavaScript from the following link if you do not want to use package manager 
+Or download the latest Chat SDK for JavaScript from the following link if you do not want to use package manager
 
 - https://github.com/sendbird/Sendbird-SDK-JavaScript
 
@@ -171,21 +171,21 @@ Or download the latest Chat SDK for JavaScript from the following link if you do
 
 <br />
 
-## Sending your first message 
+## Sending your first message
 
 Follow the step-by-step instructions below to authenticate and send your first message.
 
 ### Authentication
 
-To use the features of the Chat SDK in your client app, a `sb` instance must be initiated in each client app before user authentication with Sendbird server. These instances communicate and interact with the server based on an authenticated user account, allowing for the client app to use the Chat SDK features. 
+To use the features of the Chat SDK in your client app, a `sb` instance must be initiated in each client app before user authentication with Sendbird server. These instances communicate and interact with the server based on an authenticated user account, allowing for the client app to use the Chat SDK features.
 
 ### Step 1: Initialize the Chat SDK
 
-You need to initialize a `sb` instance before authentication. Initialization binds the Chat SDK to Javascript’s context which allows the Chat SDK to respond to connection and state changes and also enables client apps to use the Chat SDK features. 
+You need to initialize a `sb` instance before authentication. Initialization binds the Chat SDK to Javascript’s context which allows the Chat SDK to respond to connection and state changes and also enables client apps to use the Chat SDK features.
 
 To initialize a `Sendbird` instance, pass the `App_ID` of your Sendbird application in the dashboard as an argument to a parameter in the `new Sendbird()` method. As the `new SendBird()` can only be a single instance, call it only a single time across your Javascript client app. Typically, initialization is implemented in the user login screen.
 
-> **Note**: It is recommended to initialize the Chat SDK at the top of your Javascript file. 
+> **Note**: It is recommended to initialize the Chat SDK at the top of your Javascript file.
 
 ```javascript
 var sb = new SendBird({appId: APP_ID});
@@ -209,7 +209,7 @@ sb.connect(USER_ID, function(user, error) {
 });
 ```
 
-#### B. A combination of user ID and access token ID 
+#### B. A combination of user ID and access token ID
 
 Sendbird prefers that you pass the APP ID through the use of a token, as it ensures privacy for the users. Create a user along with their access token, or issue an access token for an existing user. Once an access token is issued, a user is required to provide the access token in the `sb.connect()` method which is used for logging in.
 
@@ -251,7 +251,7 @@ sb.OpenChannel.getChannel(CHANNEL_URL, function(openChannel, error) {
     if (error) {
         return;
     }
-    
+
     openChannel.enter(function(response, error) {
         if (error) {
             return;
@@ -276,7 +276,7 @@ openChannel.sendUserMessage(MESSAGE, DATA, CUSTOM_TYPE, function(message, error)
 
 ## Appendix
 
-Sendbird wants customers to be confident that Chat SDK will be useful, work well, and fit within their needs. Thus, we have compiled a couple of optional guidelines. Take a few minutes to read and apply them at your convenience. 
+Sendbird wants customers to be confident that Chat SDK will be useful, work well, and fit within their needs. Thus, we have compiled a couple of optional guidelines. Take a few minutes to read and apply them at your convenience.
 
 ### XSS prevention
 
@@ -290,7 +290,7 @@ If you are using the [Immutable-js](https://immutable-js.github.io/immutable-js/
 So you can call the functions of Sendbird objects because the `fromJS()` method returns internal objects. But if you use a `Map` function, you can't call any functions of a Sendbird object.
 
 ```javascript
-var userIds = ['John', 'Harry']; 
+var userIds = ['John', 'Harry'];
 
 sb.GroupChannel.createChannelWithUserIds(userIds, false, NAME, COVER_URL, DATA, function(groupChannel, error) {
     if (error) {
@@ -325,10 +325,11 @@ The `sb.setErrorFirstCallback(false)` returns callbacks to their original parame
 
 ## Changelogs
 
-## v3.0.141(DEC 21, 2020)
+## v3.0.142(JAN 11, 2021)
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Added a setter for `operators` in `OpenChannelParams`.
-- Added `getLogLevel()` and `setLogLevel()` in `SendBird`.
+- Added `sendingStatus` to `AdminMessage`.
+- Updated TypeScript DefinitelyTyped file for Promise feature support.
+- Resolved security advisory on `axios` dependency.
 - Improved stability.

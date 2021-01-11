@@ -1,5 +1,5 @@
 /**
- * Type Definitions for Sendbird SDK v3.0.141
+ * Type Definitions for Sendbird SDK v3.0.142
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/Sendbird-SDK-JavaScript
  */
@@ -106,18 +106,31 @@ declare namespace SendBird {
 
     setErrorFirstCallback(errorFirstCallback: boolean): void;
 
-    connect(userId: string, callback?: userCallback): void | Promise;
-    connect(userId: string, apiHost: string, wsHost: string, callback?: userCallback): void | Promise;
-    connect(userId: string, accessToken: string, callback?: userCallback): void | Promise;
-    connect(userId: string, accessToken: string, apiHost: string, wsHost: string, callback?: userCallback): void | Promise;
-    disconnect(callback?: commonCallback): void | Promise;
+    connect(userId: string): Promise<User>;
+    connect(userId: string, callback: userCallback): void;
+    connect(userId: string, accessToken: string): Promise<User>;
+    connect(userId: string, accessToken: string, callback?: userCallback): void;
+    connect(userId: string, apiHost: string, wsHost: string): Promise<User>;
+    connect(userId: string, apiHost: string, wsHost: string, callback: userCallback): void;
+    connect(userId: string, accessToken: string, apiHost: string, wsHost: string): Promise<User>;
+    connect(userId: string, accessToken: string, apiHost: string, wsHost: string, callback?: userCallback): void;
+
+    disconnect(): Promise<void>;
+    disconnect(callback?: commonCallback): void;
+
     reconnect(): boolean; // You can initiate auto-reconnect manually.
 
-    updateCurrentUserInfo(nickname: string, profileUrl: string, callback?: userCallback): void | Promise;
-    updateCurrentUserInfoWithProfileImage(nickname: string, profileImageFile: File, callback?: userCallback): void | Promise;
-    updateCurrentUserInfoWithPreferredLanguages(preferredLanguages: Array<string>, callback?: userCallback): void | Promise;
+    updateCurrentUserInfo(nickname: string, profileUrl: string): Promise<User>;
+    updateCurrentUserInfo(nickname: string, profileUrl: string, callback?: userCallback): void;
+    updateCurrentUserInfoWithProfileImage(nickname: string, profileImageFile: File): Promise<User>;
+    updateCurrentUserInfoWithProfileImage(nickname: string, profileImageFile: File, callback?: userCallback): void;
+    updateCurrentUserInfoWithPreferredLanguages(preferredLanguages: Array<string>): Promise<User>;
+    updateCurrentUserInfoWithPreferredLanguages(preferredLanguages: Array<string>, callback?: userCallback): void;
 
-    getCurrentUserId(): string; // DEPRECATED
+    /**
+     * @deprecated
+     */
+    getCurrentUserId(): string;
     getApplicationId(): string;
     getConnectionState(): string;
     getLastConnectedAt(): number;
@@ -136,8 +149,14 @@ declare namespace SendBird {
     removeUserEventHandler(id: string): void;
     removeAllUserEventHandler(): void;
 
-    createUserListQuery(): UserListQuery; // DEPRECATED
-    createUserListQuery(userIds: Array<string>): UserListQuery; // DEPRECATED
+    /**
+     * @deprecated
+     */
+    createUserListQuery(): UserListQuery;
+    /**
+     * @deprecated
+     */
+    createUserListQuery(userIds: Array<string>): UserListQuery;
     createApplicationUserListQuery(): ApplicationUserListQuery;
     createBlockedUserListQuery(): BlockedUserListQuery;
     createMessageSearchQuery(keyword: String, options: MessageSearchQueryOptions): MessageSearchQuery;
@@ -226,13 +245,17 @@ declare namespace SendBird {
     getSubscribedCustomTypeTotalUnreadMessageCount(): number;
     getSubscribedCustomTypeUnreadMessageCount(customType: string): number;
 
-    // DEPRECATED
+    /**
+     * @deprecated
+     */
     getMyGroupChannelChangeLogsByToken(
       token: string,
       customTypes: Array<string>,
       callback: getGroupChannelChangeLogsHandler
     ): void;
-    // DEPRECATED
+    /**
+     * @deprecated
+     */
     getMyGroupChannelChangeLogsByToken(
       token: string,
       customTypes: Array<string>,
@@ -244,13 +267,17 @@ declare namespace SendBird {
       params: GroupChannelChangeLogsParams,
       callback: getGroupChannelChangeLogsHandler
     ): void;
-    // DEPRECATED
+    /**
+     * @deprecated
+     */
     getMyGroupChannelChangeLogsByTimestamp(
       ts: number,
       customTypes: Array<string>,
       callback: getGroupChannelChangeLogsHandler
     ): void;
-    // DEPRECATED
+    /**
+     * @deprecated
+     */
     getMyGroupChannelChangeLogsByTimestamp(
       ts: number,
       customTypes: Array<string>,
@@ -414,8 +441,14 @@ declare namespace SendBird {
     ): void;
     applyThreadInfoUpdateEvent(threadInfoUpdateEvent: ThreadInfoUpdateEvent): boolean;
 
-    metaArray: Object; // DEPRECATED
-    getMetaArrayByKeys(keys: Array<string>): Object; // DEPRECATED
+    /**
+     * @deprecated
+     */
+    metaArray: Object;
+    /**
+     * @deprecated
+     */
+    getMetaArrayByKeys(keys: Array<string>): Object;
   }
 
   interface AdminMessage extends BaseMessageInstance {
@@ -462,13 +495,19 @@ declare namespace SendBird {
     message: string;
     data: string;
     customType: string;
-    targetLanguages: Array<string>; // DEPRECATED
+    /**
+     * @deprecated
+     */
+    targetLanguages: Array<string>;
     translationTargetLanguages: Array<string>;
     mentionType: 'users' | 'channel';
     mentionedUserIds: Array<string>;
     mentionedUsers: Array<User>;
     metaArrays: Array<MessageMetaArray>;
-    metaArrayKeys: Array<string>; // DEPRECATED
+    /**
+     * @deprecated
+     */
+    metaArrayKeys: Array<string>;
     pushNotificationDeliveryOption: 'default' | 'suppress';
     parentMessageId: number;
   }
@@ -478,7 +517,10 @@ declare namespace SendBird {
     sender: Sender;
     reqId: string;
     translations: Object;
-    requestState: 'none' | 'pending' | 'failed' | 'succeeded'; // DEPRECATED
+    /**
+     * @deprecated
+     */
+    requestState: 'none' | 'pending' | 'failed' | 'succeeded';
     sendingStatus: 'none' | 'pending' | 'failed' | 'canceled' | 'succeeded';
     requestedMentionUserIds: Array<string>;
     errorCode: number;
@@ -505,7 +547,10 @@ declare namespace SendBird {
     mentionedUserIds: Array<string>;
     mentionedUsers: Array<User>;
     metaArrays: Array<MessageMetaArray>;
-    metaArrayKeys: Array<string>; // DEPRECATED
+    /**
+     * @deprecated
+     */
+    metaArrayKeys: Array<string>;
     pushNotificationDeliveryOption: 'default' | 'suppress';
     parentMessageId: number;
   }
@@ -519,7 +564,10 @@ declare namespace SendBird {
     size: number;
     type: string;
     thumbnails: Array<ThumbnailObject>;
-    requestState: 'none' | 'pending' | 'failed' | 'succeeded'; // DEPRECATED
+    /**
+     * @deprecated
+     */
+    requestState: 'none' | 'pending' | 'failed' | 'succeeded';
     sendingStatus: 'none' | 'pending' | 'failed' | 'canceled' | 'succeeded';
     requestedMentionUserIds: Array<string>;
     errorCode: number;
@@ -547,7 +595,11 @@ declare namespace SendBird {
     isInclusive: boolean;
     shouldReverse: boolean;
     messageType: string;
+    /**
+     * @deprecated
+     */
     customType: string;
+    customTypes: string[];
     senderUserIds: Array<string>;
     includeMetaArray: boolean;
     includeReactions: boolean;
@@ -563,7 +615,11 @@ declare namespace SendBird {
     isInclusive: boolean;
     shouldReverse: boolean;
     messageType: string;
+    /**
+     * @deprecated
+     */
     customType: string;
+    customTypes: string[];
     senderUserIds: Array<string>;
     includeMetaArray: boolean;
     includeReactions: boolean;
@@ -681,25 +737,44 @@ declare namespace SendBird {
     isOpenChannel(): boolean;
     serialize(): Object;
 
-    /* DEPRECATED */
+    /**
+     * @deprecated
+     */
     getMessageChangeLogsByToken(callback: getMessageChangeLogsHandler): void;
+    /**
+     * @deprecated
+     */
     getMessageChangeLogsByToken(token: string, callback: getMessageChangeLogsHandler): void;
+    /**
+     * @deprecated
+     */
     getMessageChangeLogsByToken(token: string, includeMetaArray: boolean, callback: getMessageChangeLogsHandler): void;
+    /**
+     * @deprecated
+     */
     getMessageChangeLogsByToken(
       token: string,
       includeMetaArray: boolean,
-      includeReaction: boolean, // DEPRECATED
+      includeReaction: boolean,
       includeReactions: boolean,
       callback: getMessageChangeLogsHandler
     ): void;
 
-    /* DEPRECATED */
+    /**
+     * @deprecated
+     */
     getMessageChangeLogsByTimestamp(ts: number, callback: getMessageChangeLogsHandler): void;
+    /**
+     * @deprecated
+     */
     getMessageChangeLogsByTimestamp(ts: number, includeMetaArray: boolean, callback: getMessageChangeLogsHandler): void;
+    /**
+     * @deprecated
+     */
     getMessageChangeLogsByTimestamp(
       ts: number,
       includeMetaArray: boolean,
-      includeReaction: boolean, // DEPRECATED
+      includeReaction: boolean,
       includeReactions: boolean,
       callback: getMessageChangeLogsHandler
     ): void;
@@ -719,10 +794,15 @@ declare namespace SendBird {
     createOperatorListQuery(): OperatorListQuery;
 
     /** Message  */
-    createMessageListQuery(): MessageListQuery /* DEPRECATED */;
+    /**
+     * @deprecated
+     */
+    createMessageListQuery(): MessageListQuery;
     createPreviousMessageListQuery(): PreviousMessageListQuery;
 
-    /* DEPRECATED */
+    /**
+     * @deprecated
+     */
     getNextMessagesByTimestamp(
       ts: number,
       isInclusive: boolean,
@@ -732,6 +812,9 @@ declare namespace SendBird {
       customType: string,
       callback: messageListCallback
     ): void;
+    /**
+     * @deprecated
+     */
     getNextMessagesByTimestamp(
       ts: number,
       isInclusive: boolean,
@@ -742,6 +825,9 @@ declare namespace SendBird {
       senderUserIds: Array<string>,
       callback: messageListCallback
     ): void;
+    /**
+     * @deprecated
+     */
     getNextMessagesByTimestamp(
       ts: number,
       isInclusive: boolean,
@@ -753,6 +839,9 @@ declare namespace SendBird {
       includeMetaArray: boolean,
       callback: messageListCallback
     ): void;
+    /**
+     * @deprecated
+     */
     getNextMessagesByTimestamp(
       ts: number,
       isInclusive: boolean,
@@ -762,10 +851,13 @@ declare namespace SendBird {
       customType: string,
       senderUserIds: Array<string>,
       includeMetaArray: boolean,
-      includeReaction: boolean, // DEPRECATED
+      includeReaction: boolean,
       includeReactions: boolean,
       callback: messageListCallback
     ): void;
+    /**
+     * @deprecated
+     */
     getPreviousMessagesByTimestamp(
       ts: number,
       isInclusive: boolean,
@@ -775,6 +867,9 @@ declare namespace SendBird {
       customType: string,
       callback: messageListCallback
     ): void;
+    /**
+     * @deprecated
+     */
     getPreviousMessagesByTimestamp(
       ts: number,
       isInclusive: boolean,
@@ -785,6 +880,9 @@ declare namespace SendBird {
       senderUserIds: Array<string>,
       callback: messageListCallback
     ): void;
+    /**
+     * @deprecated
+     */
     getPreviousMessagesByTimestamp(
       ts: number,
       isInclusive: boolean,
@@ -796,6 +894,9 @@ declare namespace SendBird {
       includeMetaArray: boolean,
       callback: messageListCallback
     ): void;
+    /**
+     * @deprecated
+     */
     getPreviousMessagesByTimestamp(
       ts: number,
       isInclusive: boolean,
@@ -805,10 +906,13 @@ declare namespace SendBird {
       customType: string,
       senderUserIds: Array<string>,
       includeMetaArray: boolean,
-      includeReaction: boolean, // DEPRECATED
+      includeReaction: boolean,
       includeReactions: boolean,
       callback: messageListCallback
     ): void;
+    /**
+     * @deprecated
+     */
     getPreviousAndNextMessagesByTimestamp(
       ts: number,
       prevResultSize: number,
@@ -818,6 +922,9 @@ declare namespace SendBird {
       customType: string,
       callback: messageListCallback
     ): void;
+    /**
+     * @deprecated
+     */
     getPreviousAndNextMessagesByTimestamp(
       ts: number,
       prevResultSize: number,
@@ -828,6 +935,9 @@ declare namespace SendBird {
       senderUserIds: Array<string>,
       callback: messageListCallback
     ): void;
+    /**
+     * @deprecated
+     */
     getPreviousAndNextMessagesByTimestamp(
       ts: number,
       prevResultSize: number,
@@ -839,6 +949,9 @@ declare namespace SendBird {
       includeMetaArray: boolean,
       callback: messageListCallback
     ): void;
+    /**
+     * @deprecated
+     */
     getPreviousAndNextMessagesByTimestamp(
       ts: number,
       prevResultSize: number,
@@ -848,10 +961,13 @@ declare namespace SendBird {
       customType: string,
       senderUserIds: Array<string>,
       includeMetaArray: boolean,
-      includeReaction: boolean, // DEPRECATED
+      includeReaction: boolean,
       includeReactions: boolean,
       callback: messageListCallback
     ): void;
+    /**
+     * @deprecated
+     */
     getNextMessagesByID(
       messageId: number,
       isInclusive: boolean,
@@ -861,6 +977,9 @@ declare namespace SendBird {
       customType: string,
       callback: messageListCallback
     ): void;
+    /**
+     * @deprecated
+     */
     getNextMessagesByID(
       messageId: number,
       isInclusive: boolean,
@@ -871,17 +990,9 @@ declare namespace SendBird {
       senderUserIds: Array<string>,
       callback: messageListCallback
     ): void;
-    getNextMessagesByID(
-      messageId: number,
-      isInclusive: boolean,
-      nextResultSize: number,
-      shouldReverse: boolean,
-      messageType: string,
-      customType: string,
-      senderUserIds: Array<string>,
-      includeMetaArray: boolean,
-      callback: messageListCallback
-    ): void;
+    /**
+     * @deprecated
+     */
     getNextMessagesByID(
       messageId: number,
       isInclusive: boolean,
@@ -891,10 +1002,27 @@ declare namespace SendBird {
       customType: string,
       senderUserIds: Array<string>,
       includeMetaArray: boolean,
-      includeReaction: boolean, // DEPRECATED
+      callback: messageListCallback
+    ): void;
+    /**
+     * @deprecated
+     */
+    getNextMessagesByID(
+      messageId: number,
+      isInclusive: boolean,
+      nextResultSize: number,
+      shouldReverse: boolean,
+      messageType: string,
+      customType: string,
+      senderUserIds: Array<string>,
+      includeMetaArray: boolean,
+      includeReaction: boolean,
       includeReactions: boolean,
       callback: messageListCallback
     ): void;
+    /**
+     * @deprecated
+     */
     getPreviousMessagesByID(
       messageId: number,
       isInclusive: boolean,
@@ -904,6 +1032,9 @@ declare namespace SendBird {
       customType: string,
       callback: messageListCallback
     ): void;
+    /**
+     * @deprecated
+     */
     getPreviousMessagesByID(
       messageId: number,
       isInclusive: boolean,
@@ -914,17 +1045,9 @@ declare namespace SendBird {
       senderUserIds: Array<string>,
       callback: messageListCallback
     ): void;
-    getPreviousMessagesByID(
-      messageId: number,
-      isInclusive: boolean,
-      prevResultSize: number,
-      shouldReverse: boolean,
-      messageType: string,
-      customType: string,
-      senderUserIds: Array<string>,
-      includeMetaArray: boolean,
-      callback: messageListCallback
-    ): void;
+    /**
+     * @deprecated
+     */
     getPreviousMessagesByID(
       messageId: number,
       isInclusive: boolean,
@@ -934,10 +1057,27 @@ declare namespace SendBird {
       customType: string,
       senderUserIds: Array<string>,
       includeMetaArray: boolean,
-      includeReaction: boolean, // DEPRECATED
+      callback: messageListCallback
+    ): void;
+    /**
+     * @deprecated
+     */
+    getPreviousMessagesByID(
+      messageId: number,
+      isInclusive: boolean,
+      prevResultSize: number,
+      shouldReverse: boolean,
+      messageType: string,
+      customType: string,
+      senderUserIds: Array<string>,
+      includeMetaArray: boolean,
+      includeReaction: boolean,
       includeReactions: boolean,
       callback: messageListCallback
     ): void;
+    /**
+     * @deprecated
+     */
     getPreviousAndNextMessagesByID(
       messageId: number,
       prevResultSize: number,
@@ -947,6 +1087,9 @@ declare namespace SendBird {
       customType: string,
       callback: messageListCallback
     ): void;
+    /**
+     * @deprecated
+     */
     getPreviousAndNextMessagesByID(
       messageId: number,
       prevResultSize: number,
@@ -957,17 +1100,9 @@ declare namespace SendBird {
       senderUserIds: Array<string>,
       callback: messageListCallback
     ): void;
-    getPreviousAndNextMessagesByID(
-      messageId: number,
-      prevResultSize: number,
-      nextResultSize: number,
-      shouldReverse: boolean,
-      messageType: string,
-      customType: string,
-      senderUserIds: Array<string>,
-      includeMetaArray: boolean,
-      callback: messageListCallback
-    ): void;
+    /**
+     * @deprecated
+     */
     getPreviousAndNextMessagesByID(
       messageId: number,
       prevResultSize: number,
@@ -977,7 +1112,21 @@ declare namespace SendBird {
       customType: string,
       senderUserIds: Array<string>,
       includeMetaArray: boolean,
-      includeReaction: boolean, // DEPRECATED
+      callback: messageListCallback
+    ): void;
+    /**
+     * @deprecated
+     */
+    getPreviousAndNextMessagesByID(
+      messageId: number,
+      prevResultSize: number,
+      nextResultSize: number,
+      shouldReverse: boolean,
+      messageType: string,
+      customType: string,
+      senderUserIds: Array<string>,
+      includeMetaArray: boolean,
+      includeReaction: boolean,
       includeReactions: boolean,
       callback: messageListCallback
     ): void;
@@ -988,15 +1137,27 @@ declare namespace SendBird {
     /** FileMessage  */
     sendFileMessage(fileMessageParams: FileMessageParams, callback: messageCallback): FileMessage;
     sendFileMessage(file: File, callback: messageCallback): FileMessage;
-    sendFileMessage(file: File, data: string, callback: messageCallback): FileMessage; // DEPRECATED
-    sendFileMessage(file: File, data: string, customType: string, callback: messageCallback): FileMessage; // DEPRECATED
+    /**
+     * @deprecated
+     */
+    sendFileMessage(file: File, data: string, callback: messageCallback): FileMessage;
+    /**
+     * @deprecated
+     */
+    sendFileMessage(file: File, data: string, customType: string, callback: messageCallback): FileMessage;
+    /**
+     * @deprecated
+     */
     sendFileMessage(
       file: File,
       data: string,
       customType: string,
       thumbnailSizes: Array<ThumbnailSize>,
       callback: messageCallback
-    ): FileMessage; // DEPRECATED
+    ): FileMessage;
+    /**
+     * @deprecated
+     */
     sendFileMessage(
       file: File,
       name: string,
@@ -1004,7 +1165,10 @@ declare namespace SendBird {
       size: number,
       data: string,
       callback: messageCallback
-    ): FileMessage; // DEPRECATED
+    ): FileMessage;
+    /**
+     * @deprecated
+     */
     sendFileMessage(
       file: File,
       name: string,
@@ -1013,7 +1177,7 @@ declare namespace SendBird {
       data: string,
       customType: string,
       callback: messageCallback
-    ): FileMessage; // DEPRECATED
+    ): FileMessage;
     sendFileMessage(
       file: File,
       name: string,
@@ -1031,19 +1195,28 @@ declare namespace SendBird {
       callback: messageCallback
     ): FileMessage;
     sendFileMessage(file: File, progressHandler: fileUploadprogressHandler, callback: messageCallback): FileMessage;
+    /**
+     * @deprecated
+     */
     sendFileMessage(
       file: File,
       data: string,
       progressHandler: fileUploadprogressHandler,
       callback: messageCallback
-    ): FileMessage; // DEPRECATED
+    ): FileMessage;
+    /**
+     * @deprecated
+     */
     sendFileMessage(
       file: File,
       data: string,
       customType: string,
       progressHandler: fileUploadprogressHandler,
       callback: messageCallback
-    ): FileMessage; // DEPRECATED
+    ): FileMessage;
+    /**
+     * @deprecated
+     */
     sendFileMessage(
       file: File,
       data: string,
@@ -1051,7 +1224,10 @@ declare namespace SendBird {
       thumbnailSizes: Array<ThumbnailSize>,
       progressHandler: fileUploadprogressHandler,
       callback: messageCallback
-    ): FileMessage; // DEPRECATED
+    ): FileMessage;
+    /**
+     * @deprecated
+     */
     sendFileMessage(
       file: File,
       name: string,
@@ -1060,7 +1236,10 @@ declare namespace SendBird {
       data: string,
       progressHandler: fileUploadprogressHandler,
       callback: messageCallback
-    ): FileMessage; // DEPRECATED
+    ): FileMessage;
+    /**
+     * @deprecated
+     */
     sendFileMessage(
       file: File,
       name: string,
@@ -1070,7 +1249,7 @@ declare namespace SendBird {
       customType: string,
       progressHandler: fileUploadprogressHandler,
       callback: messageCallback
-    ): FileMessage; // DEPRECATED
+    ): FileMessage;
     sendFileMessage(
       file: File,
       name: string,
@@ -1084,8 +1263,17 @@ declare namespace SendBird {
     ): FileMessage;
 
     sendFileMessage(file: string, callback: messageCallback): FileMessage;
-    sendFileMessage(file: string, data: string, callback: messageCallback): FileMessage; // DEPRECATED
-    sendFileMessage(file: string, data: string, customType: string, callback: messageCallback): FileMessage; // DEPRECATED
+    /**
+     * @deprecated
+     */
+    sendFileMessage(file: string, data: string, callback: messageCallback): FileMessage;
+    /**
+     * @deprecated
+     */
+    sendFileMessage(file: string, data: string, customType: string, callback: messageCallback): FileMessage;
+    /**
+     * @deprecated
+     */
     sendFileMessage(
       file: string,
       name: string,
@@ -1093,7 +1281,7 @@ declare namespace SendBird {
       size: number,
       data: string,
       callback: messageCallback
-    ): FileMessage; // DEPRECATED
+    ): FileMessage;
     sendFileMessage(
       file: string,
       name: string,
@@ -1104,20 +1292,32 @@ declare namespace SendBird {
       callback: messageCallback
     ): FileMessage;
 
-    sendFileMessage(file: string, progressHandler: fileUploadprogressHandler, callback: messageCallback): FileMessage; // DEPRECATED
+    /**
+     * @deprecated
+     */
+    sendFileMessage(file: string, progressHandler: fileUploadprogressHandler, callback: messageCallback): FileMessage;
+    /**
+     * @deprecated
+     */
     sendFileMessage(
       file: string,
       data: string,
       progressHandler: fileUploadprogressHandler,
       callback: messageCallback
-    ): FileMessage; // DEPRECATED
+    ): FileMessage;
+    /**
+     * @deprecated
+     */
     sendFileMessage(
       file: string,
       data: string,
       customType: string,
       progressHandler: fileUploadprogressHandler,
       callback: messageCallback
-    ): FileMessage; // DEPRECATED
+    ): FileMessage;
+    /**
+     * @deprecated
+     */
     sendFileMessage(
       file: string,
       name: string,
@@ -1126,7 +1326,10 @@ declare namespace SendBird {
       data: string,
       progressHandler: fileUploadprogressHandler,
       callback: messageCallback
-    ): FileMessage; // DEPRECATED
+    ): FileMessage;
+    /**
+     * @deprecated
+     */
     sendFileMessage(
       file: string,
       name: string,
@@ -1136,7 +1339,7 @@ declare namespace SendBird {
       customType: string,
       progressHandler: fileUploadprogressHandler,
       callback: messageCallback
-    ): FileMessage; // DEPRECATED
+    ): FileMessage;
 
     sendFileMessages(
       fileMessageParamsList: Array<FileMessageParams>,
@@ -1146,8 +1349,14 @@ declare namespace SendBird {
     /** UserMessage  */
     sendUserMessage(userMessageParams: UserMessageParams, callback: messageCallback): UserMessage;
     sendUserMessage(message: string, callback: messageCallback): UserMessage;
-    sendUserMessage(message: string, data: string, callback: messageCallback): UserMessage; // DEPRECATED
-    sendUserMessage(message: string, data: string, customType: string, callback: messageCallback): UserMessage; // DEPRECATED
+    /**
+     * @deprecated
+     */
+    sendUserMessage(message: string, data: string, callback: messageCallback): UserMessage;
+    /**
+     * @deprecated
+     */
+    sendUserMessage(message: string, data: string, customType: string, callback: messageCallback): UserMessage;
     sendUserMessage(
       message: string,
       data: string,
@@ -1238,16 +1447,22 @@ declare namespace SendBird {
       callback: commonCallback
     ): void;
 
+    /**
+     * @deprecated
+     */
     addMessageMetaArrayValues(
       message: UserMessage | FileMessage | AdminMessage,
       data: Object,
       callback: commonCallback
-    ): void; // DEPRECATED
+    ): void;
+    /**
+     * @deprecated
+     */
     removeMessageMetaArrayValues(
       message: UserMessage | FileMessage | AdminMessage,
       data: Object,
       callback: commonCallback
-    ): void; // DEPRECATED
+    ): void;
 
     /** Report */
     report(category: string, description: string, callback: commonCallback): void;
@@ -1265,7 +1480,9 @@ declare namespace SendBird {
     error: SendBirdError
   ) => void;
   interface MessageListQuery {
-    // DEPRECATED
+    /**
+     * @deprecated
+     */
     next(messageTimestamp: number, limit: number, reverse: boolean, callback: messageListCallback): void;
     prev(messageTimestamp: number, limit: number, reverse: boolean, callback: messageListCallback): void;
     load(
@@ -1289,10 +1506,17 @@ declare namespace SendBird {
     limit: number;
     reverse: boolean;
     messageTypeFilter: 0 | 1 | 2 | 3; // 0: ALL, 1: USER, 2: FILE, 3: ADMIN
+    /**
+     * @deprecated
+     */
     customTypeFilter: string;
+    customTypesFilter: string;
     senderUserIdsFilter: Array<string>;
     includeMetaArray: boolean;
-    includeReaction: boolean; // DEPRECATED
+    /**
+     * @deprecated
+     */
+    includeReaction: boolean;
     includeReactions: boolean;
     includeReplies: boolean;
     includeParentMessageText: boolean;
@@ -1336,13 +1560,16 @@ declare namespace SendBird {
 
     updateChannel(params: OpenChannelParams, callback: openChannelCallback): void;
     updateChannel(name: string, coverUrlOrImageFile: string | File, data: string, callback: openChannelCallback): void;
+    /**
+     * @deprecated
+     */
     updateChannel(
       name: string,
       coverUrlOrImageFile: string | File,
       data: string,
       operatorUserIds: Array<string> | string,
       callback: openChannelCallback
-    ): void; // DEPRECATED
+    ): void;
     updateChannel(
       name: string,
       coverUrlOrImageFile: string | File,
@@ -1388,7 +1615,9 @@ declare namespace SendBird {
 
   type userListQueryCallback = (userList: Array<User>, error: SendBirdError) => void;
   interface UserListQuery {
-    // DEPRECATED
+    /**
+     * @deprecated
+     */
     limit: number;
     hasNext: boolean;
     isLoading: boolean;
@@ -1453,43 +1682,88 @@ declare namespace SendBird {
   interface OpenChannelStatic {
     buildFromSerializedData(serializedObject: Object): OpenChannel;
 
-    getChannel(channelUrl: string, callback?: openChannelCallback): void | Promise;
-    getChannelWithoutCache(channelUrl: string, callback?: openChannelCallback): void | Promise;
+    getChannel(channelUrl: string): Promise<OpenChannel>;
+    getChannel(channelUrl: string, callback: openChannelCallback): void;
+    getChannelWithoutCache(channelUrl: string): Promise<OpenChannel>;
+    getChannelWithoutCache(channelUrl: string, callback: openChannelCallback): void;
 
-    createChannel(callback?: openChannelCallback): void | Promise;
-    createChannel(params: OpenChannelParams, callback?: openChannelCallback): void | Promise;
-    createChannel(name: string, coverUrlOrImageFile: string | File, data: string, callback?: openChannelCallback): void | Promise; // DEPRECATED
+    createChannel(): Promise<OpenChannel>;
+    createChannel(callback: openChannelCallback): void;
+    createChannel(params: OpenChannelParams): Promise<OpenChannel>;
+    createChannel(params: OpenChannelParams, callback: openChannelCallback): void;
+
+    /**
+     * @deprecated
+     */
+    createChannel(name: string, coverUrlOrImageFile: string | File, data: string): Promise<OpenChannel>;
+    /**
+     * @deprecated
+     */
+    createChannel(name: string, coverUrlOrImageFile: string | File, data: string, callback: openChannelCallback): void;
+
+    /**
+     * @deprecated
+     */
+    createChannel(
+      name: string,
+      coverUrlOrImageFile: string | File,
+      data: string,
+      operatorUserIds: Array<string> | string
+    ): Promise<OpenChannel>;
+    /**
+     * @deprecated
+     */
     createChannel(
       name: string,
       coverUrlOrImageFile: string | File,
       data: string,
       operatorUserIds: Array<string> | string,
-      callback?: openChannelCallback
-    ): void | Promise; // DEPRECATED
+      callback: openChannelCallback
+    ): void;
     createChannel(
       name: string,
       coverUrlOrImageFile: string | File,
       data: string,
       operatorUserIds: Array<string> | string,
       customType: string,
-      callback?: openChannelCallback
-    ): void | Promise;
+    ): Promise<OpenChannel>;
+    createChannel(
+      name: string,
+      coverUrlOrImageFile: string | File,
+      data: string,
+      operatorUserIds: Array<string> | string,
+      customType: string,
+      callback: openChannelCallback
+    ): void;
 
     createChannelWithOperatorUserIds(
       name: string,
       coverUrlOrImageFile: string | File,
       data: string,
+      operatorUserIds: Array<string> | string
+    ): Promise<OpenChannel>;
+    createChannelWithOperatorUserIds(
+      name: string,
+      coverUrlOrImageFile: string | File,
+      data: string,
       operatorUserIds: Array<string> | string,
-      callback?: openChannelCallback
-    ): void | Promise;
+      callback: openChannelCallback
+    ): void;
     createChannelWithOperatorUserIds(
       name: string,
       coverUrlOrImageFile: string | File,
       data: string,
       operatorUserIds: Array<string> | string,
       customType: string,
-      callback?: openChannelCallback
-    ): void | Promise;
+    ): Promise<OpenChannel>;
+    createChannelWithOperatorUserIds(
+      name: string,
+      coverUrlOrImageFile: string | File,
+      data: string,
+      operatorUserIds: Array<string> | string,
+      customType: string,
+      callback: openChannelCallback
+    ): void;
 
     createOpenChannelListQuery(): OpenChannelListQuery;
   }
@@ -1521,7 +1795,10 @@ declare namespace SendBird {
     message: string;
     customType: string;
     data: string;
-    metaArray: Object; // DEPRECATED
+    /**
+     * @deprecated
+     */
+    metaArray: Object;
     metaArrays: Array<MessageMetaArray>;
     mentionType: 'users' | 'channel';
     mentionedUsers: Array<User>;
@@ -1664,7 +1941,10 @@ declare namespace SendBird {
     isSuper: boolean;
     isBroadcast: boolean;
     isPublic: boolean;
-    isPushEnabled: boolean; // DEPRECATED
+    /**
+     * @deprecated
+     */
+    isPushEnabled: boolean;
     myPushTriggerOption: 'default' | 'all' | 'mention_only' | 'off';
     myCountPreference: string;
     lastMessage: UserMessage | FileMessage | AdminMessage;
@@ -1692,13 +1972,16 @@ declare namespace SendBird {
 
     updateChannel(groupChannelParams: GroupChannelParams, callback: groupChannelCallback): void;
     updateChannel(name: string, coverUrlOrImageFile: string | File, data: string, callback: groupChannelCallback): void;
+    /**
+     * @deprecated
+     */
     updateChannel(
       isDistinct: boolean,
       name: string,
       coverUrlOrImageFile: string | File,
       data: string,
       callback: groupChannelCallback
-    ): void; // DEPRECATED
+    ): void;
     updateChannel(
       isDistinct: boolean,
       name: string,
@@ -1712,6 +1995,8 @@ declare namespace SendBird {
 
     invite(users: Array<User>, callback: groupChannelCallback): void;
     inviteWithUserIds(userIds: Array<string>, callback: groupChannelCallback): void;
+    acceptInvitation(): Promise<GroupChannel>;
+    acceptInvitation(accessCode: string): Promise<GroupChannel>;
     acceptInvitation(callback: groupChannelCallback): void;
     acceptInvitation(accessCode: string, callback: groupChannelCallback): void;
     declineInvitation(callback: commonCallback): void;
@@ -1726,14 +2011,20 @@ declare namespace SendBird {
     unhide(callback: commonCallback): void;
 
     markAsRead(): void;
-    getReadReceipt(message: UserMessage | FileMessage | AdminMessage): number; // DEPRECATED
+    /**
+     * @deprecated
+     */
+    getReadReceipt(message: UserMessage | FileMessage | AdminMessage): number;
     getReadStatus(includeAllMembers?: boolean): Object;
     getUnreadMembers(message: UserMessage | FileMessage, includeAllMembers?: boolean): Array<Member>;
     getReadMembers(message: UserMessage | FileMessage, includeAllMembers?: boolean): Array<Member>;
     getUnreadMemberCount(message: UserMessage | FileMessage | AdminMessage): number;
 
     markAsDelivered(): void;
-    getDeliveryReceipt(message: UserMessage | FileMessage | AdminMessage): number; // DEPRECATED
+    /**
+     * @deprecated
+     */
+    getDeliveryReceipt(message: UserMessage | FileMessage | AdminMessage): number;
     getUndeliveredMemberCount(message: UserMessage | FileMessage | AdminMessage): number;
 
     startTyping(): void;
@@ -1742,8 +2033,14 @@ declare namespace SendBird {
     getTypingMembers(): Array<Member>; // DEPRECATE
     getTypingUsers(): Array<User>;
 
-    setPushPreference(pushOn: boolean, callback: commonCallback): void; // DEPRECATED
-    getPushPreference(callback: getPushPreferenceCallback): void; // DEPRECATED
+    /**
+     * @deprecated
+     */
+    setPushPreference(pushOn: boolean, callback: commonCallback): void;
+    /**
+     * @deprecated
+     */
+    getPushPreference(callback: getPushPreferenceCallback): void;
     setMyPushTriggerOption(
       pushTriggerOption: 'all' | 'mention_only' | 'off' | 'default',
       callback: getPushTriggerOptionCallback
@@ -1787,19 +2084,43 @@ declare namespace SendBird {
     createMyGroupChannelListQuery(): GroupChannelListQuery;
     createPublicGroupChannelListQuery(): PublicGroupChannelListQuery;
 
-    getUnreadItemCount(keys: Array<string>, callback: commonCallback): void; // DEPRECATED
+    /**
+     * @deprecated
+     */
+    getUnreadItemCount(keys: Array<string>, callback: commonCallback): void;
+    /**
+     * @deprecated
+     */
     getTotalUnreadMessageCount(
       groupChannelTotalUnreadMessageCountParams: GroupChannelTotalUnreadMessageCountParams,
       callback: groupChannelCountCallback
-    ): void; // DEPRECATED
-    getTotalUnreadMessageCount(callback: groupChannelCountCallback): void; // DEPRECATED
-    getTotalUnreadMessageCount(channelCustomTypes: Array<string>, callback: groupChannelCountCallback): void; // DEPRECATED
-    getTotalUnreadChannelCount(callback: groupChannelCountCallback): void; // DEPRECATED
+    ): void;
+    /**
+     * @deprecated
+     */
+    getTotalUnreadMessageCount(callback: groupChannelCountCallback): void;
+    /**
+     * @deprecated
+     */
+    getTotalUnreadMessageCount(channelCustomTypes: Array<string>, callback: groupChannelCountCallback): void;
+    /**
+     * @deprecated
+     */
+    getTotalUnreadChannelCount(callback: groupChannelCountCallback): void;
 
     createChannel(groupChannelParams: GroupChannelParams, callback: groupChannelCallback): void;
     createChannel(users: Array<User>, callback: groupChannelCallback): void;
-    createChannel(users: Array<User>, isDistinct: boolean, callback: groupChannelCallback): void; // DEPRECATED
-    createChannel(users: Array<User>, isDistinct: boolean, customType: string, callback: groupChannelCallback): void; // DEPRECATED
+    /**
+     * @deprecated
+     */
+    createChannel(users: Array<User>, isDistinct: boolean, callback: groupChannelCallback): void;
+    /**
+     * @deprecated
+     */
+    createChannel(users: Array<User>, isDistinct: boolean, customType: string, callback: groupChannelCallback): void;
+    /**
+     * @deprecated
+     */
     createChannel(
       users: Array<User>,
       isDistinct: boolean,
@@ -1807,7 +2128,7 @@ declare namespace SendBird {
       coverUrlOrImageFile: string | File,
       data: string,
       callback: groupChannelCallback
-    ): void; // DEPRECATED
+    ): void;
     createChannel(
       users: Array<User>,
       isDistinct: boolean,
@@ -1823,13 +2144,22 @@ declare namespace SendBird {
     ): void;
 
     createChannelWithUserIds(userIds: Array<string>, callback: groupChannelCallback): void;
-    createChannelWithUserIds(userIds: Array<string>, isDistinct: boolean, callback: groupChannelCallback): void; // DEPRECATED
+    /**
+     * @deprecated
+     */
+    createChannelWithUserIds(userIds: Array<string>, isDistinct: boolean, callback: groupChannelCallback): void;
+    /**
+     * @deprecated
+     */
     createChannelWithUserIds(
       userIds: Array<string>,
       isDistinct: boolean,
       customType: string,
       callback: groupChannelCallback
-    ): void; // DEPRECATED
+    ): void;
+    /**
+     * @deprecated
+     */
     createChannelWithUserIds(
       userIds: Array<string>,
       isDistinct: boolean,
@@ -1837,7 +2167,7 @@ declare namespace SendBird {
       coverUrlOrImageFile: string | File,
       data: string,
       callback: groupChannelCallback
-    ): void; // DEPRECATED
+    ): void;
     createChannelWithUserIds(
       userIds: Array<string>,
       isDistinct: boolean,
@@ -1851,7 +2181,10 @@ declare namespace SendBird {
     getChannel(channelUrl: string, callback: groupChannelCallback): void;
     getChannelWithoutCache(channelUrl: string, callback: groupChannelCallback): void;
 
-    markAsReadAll(callback: commonCallback): void; // DEPRECATED
+    /**
+     * @deprecated
+     */
+    markAsReadAll(callback: commonCallback): void;
   }
 
   type groupChannelMemberListQueryCallback = (groupChannelList: Array<Member>, error: SendBirdError) => void;
@@ -1861,7 +2194,10 @@ declare namespace SendBird {
     isLoading: boolean;
     order: 'member_nickname_alphabetical' | 'operator_then_member_alphabetical';
     mutedMemberFilter: 'all' | 'muted' | 'unmuted';
-    operatorFilter: 'all' | 'operator' | 'nonoperator'; // DEPRECATED
+    /**
+     * @deprecated
+     */
+    operatorFilter: 'all' | 'operator' | 'nonoperator';
     memberStateFilter: 'all' | 'joined_only' | 'invited_only' | 'invited_by_friend' | 'invited_by_non_friend';
     nicknameStartsWithFilter: string;
 
@@ -1878,15 +2214,27 @@ declare namespace SendBird {
     isLoading: boolean;
     includeEmpty: boolean;
     order: 'latest_last_message' | 'chronological' | 'channel_name_alphabetical' | 'metadata_value_alphabetical';
-    userIdsFilter: Array<string>; // DEPRECATED
-    userIdsFilterExactMatch: boolean; // DEPRECATED
-    queryType: 'AND' | 'OR'; // DEPRECATED
+    /**
+     * @deprecated
+     */
+    userIdsFilter: Array<string>;
+    /**
+     * @deprecated
+     */
+    userIdsFilterExactMatch: boolean;
+    /**
+     * @deprecated
+     */
+    queryType: 'AND' | 'OR';
     userIdsExactFilter: Array<string>;
     userIdsIncludeFilter: Array<string>;
     userIdsIncludeFilterQueryType: 'AND' | 'OR';
     nicknameContainsFilter: string;
     channelNameContainsFilter: string;
-    customTypeFilter: string; // DEPRECATED
+    /**
+     * @deprecated
+     */
+    customTypeFilter: string;
     customTypesFilter: Array<string>;
     customTypeStartsWithFilter: string;
     channelUrlsFilter: Array<string>;

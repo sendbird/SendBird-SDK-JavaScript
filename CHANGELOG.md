@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.0.142(JAN 11, 2021)
+
+- Added `sendingStatus` to `AdminMessage`.
+- Updated TypeScript DefinitelyTyped file for Promise feature support.
+- Resolved security advisory on `axios` dependency.
+- Improved stability.
+
 ## v3.0.141(DEC 21, 2020)
 
 - Added a setter for `operators` in `OpenChannelParams`.
