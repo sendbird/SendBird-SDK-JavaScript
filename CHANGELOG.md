@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.0.143(FEB 04, 2021)
+
+- IE11 compatibility fix for `getPreviousMessagesByID()`.
+- Deprecated `markAsDelivered()` in `GroupChannel`.
+- Improved stability.
+
 ## v3.0.142(JAN 11, 2021)
 
 - Added `sendingStatus` to `AdminMessage`.
