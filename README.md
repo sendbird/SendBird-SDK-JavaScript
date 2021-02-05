@@ -325,11 +325,10 @@ The `sb.setErrorFirstCallback(false)` returns callbacks to their original parame
 
 ## Changelogs
 
-## v3.0.142(JAN 11, 2021)
+## v3.0.143(FEB 04, 2021)
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Added `sendingStatus` to `AdminMessage`.
-- Updated TypeScript DefinitelyTyped file for Promise feature support.
-- Resolved security advisory on `axios` dependency.
+- IE11 compatibility fix for `getPreviousMessagesByID()`.
+- Deprecated `markAsDelivered()` in `GroupChannel`.
 - Improved stability.
