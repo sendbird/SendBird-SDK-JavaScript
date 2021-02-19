@@ -1,5 +1,10 @@
 # Changelog
 
+## v3.0.144(FEB 19, 2021)
+
+- Add & Delete reaction API bug-fix to support emoji code and URI encoding.
+- React native bug fix: Group channel static `buildFromSerializedData()`.
+
 ## v3.0.143(FEB 04, 2021)
 
 - IE11 compatibility fix for `getPreviousMessagesByID()`.
