@@ -327,6 +327,6 @@ The `sb.setErrorFirstCallback(false)` returns callbacks to their original parame
 
 ## v3.0.145(MAR 05, 2021)
 
-- Added MetaData Cache feature with new API `getCachedMetaData()`.
+- Added `getCachedMetaData()` in BaseChannel.
 - Corrected type signatures in `getMessagesByTimestamp()` and `getMessagesByMessageId()`.
 - Corrected attribute name to `reverse` in `MessageListParams`.
