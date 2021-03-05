@@ -1,5 +1,5 @@
 /**
- * Type Definitions for Sendbird SDK v3.0.144
+ * Type Definitions for Sendbird SDK v3.0.145
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/Sendbird-SDK-JavaScript
  */
@@ -563,7 +563,7 @@ declare namespace SendBird {
     prevResultSize: number;
     nextResultSize: number;
     isInclusive: boolean;
-    shouldReverse: boolean;
+    reverse: boolean;
     messageType: string;
     /**
      * @deprecated
@@ -583,7 +583,7 @@ declare namespace SendBird {
     prevResultSize: number;
     nextResultSize: number;
     isInclusive: boolean;
-    shouldReverse: boolean;
+    reverse: boolean;
     messageType: string;
     /**
      * @deprecated
@@ -1092,8 +1092,8 @@ declare namespace SendBird {
       callback?: messageListCallback
     ): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
 
-    getMessagesByTimestamp(params: MessageListParams, timestamp: number, callback?: messageListCallback): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
-    getMessagesByMessageId(params: MessageListParams, messageId: number, callback?: messageListCallback): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
+    getMessagesByTimestamp(timestamp: number, params: MessageListParams, callback?: messageListCallback): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
+    getMessagesByMessageId(messageId: number, params: MessageListParams, callback?: messageListCallback): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
 
     /** FileMessage  */
     sendFileMessage(fileMessageParams: FileMessageParams, callback: messageCallback): FileMessage;
@@ -1374,6 +1374,7 @@ declare namespace SendBird {
     getAllMetaData(callback?: commonCallback): Promise<Object>;
     deleteMetaData(key: string, callback?: commonCallback): Promise<Object>;
     deleteAllMetaData(callback?: commonCallback): Promise<Object>;
+    getCachedMetaData(): object;
 
     /** MetaCounter */
     createMetaCounters(metaCounterMap: Object, callback?: commonCallback): Promise<Object>;

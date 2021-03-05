@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.0.145(MAR 05, 2021)
+
+- Added `getCachedMetaData()` in BaseChannel.
+- Corrected type signatures in `getMessagesByTimestamp()` and `getMessagesByMessageId()`.
+- Corrected attribute name to `reverse` in `MessageListParams`.
+
 ## v3.0.144(FEB 19, 2021)
 
 - Add & Delete reaction API bug-fix to support emoji code and URI encoding.
