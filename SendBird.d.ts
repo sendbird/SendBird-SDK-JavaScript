@@ -17,7 +17,7 @@ interface SendBirdStatic {
   LogLevel: SendBird.LogLevel;
 
   getLogLevel(): typeof SendBird.LogLevel[keyof typeof SendBird.LogLevel];
-  setLogLevel(logLevel: typeof SendBird.LogLevel[keyof typeof SendBird.LogLevel]);
+  setLogLevel(logLevel: typeof SendBird.LogLevel[keyof typeof SendBird.LogLevel]): void;
 }
 
 declare namespace SendBird {
