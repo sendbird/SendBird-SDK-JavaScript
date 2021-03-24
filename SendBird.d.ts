@@ -1,5 +1,5 @@
 /**
- * Type Definitions for Sendbird SDK v3.0.145
+ * Type Definitions for Sendbird SDK v3.0.146
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/Sendbird-SDK-JavaScript
  */
@@ -361,6 +361,8 @@ declare namespace SendBird {
     onReactionUpdated(channel: OpenChannel | GroupChannel, reactionEvent: ReactionEvent): void;
     onMentionReceived(channel: OpenChannel | GroupChannel, message: AdminMessage | UserMessage | FileMessage): void;
     onThreadInfoUpdated(channel: OpenChannel | GroupChannel, threadInfoUpdateEvent: ThreadInfoUpdateEvent): void;
+    onChannelMemberCountChanged(channels: Array<GroupChannel>): void;
+    onChannelParticipantCountChanged(channels: Array<OpenChannel>): void;
   }
 
   interface ConnectionHandlerStatic {

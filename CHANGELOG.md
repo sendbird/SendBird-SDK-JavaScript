@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.0.146(MAR 24, 2021)
+
+- Added `onChannelMemberCountChanged` and `onChannelParticipantCountChanged` in `ChannelHandler`.
+- Changed `markAsDelivered` policy to remove rate limit timer.
+- Improved stability.
+
 ## v3.0.145(MAR 05, 2021)
 
 - Added `getCachedMetaData()` in BaseChannel.

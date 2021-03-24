@@ -325,7 +325,10 @@ The `sb.setErrorFirstCallback(false)` returns callbacks to their original parame
 
 ## Changelogs
 
-## v3.0.144(FEB 19, 2021)
+## v3.0.146(MAR 24, 2021)
 
-- Add & Delete reaction API bug-fix to support emoji code and URI encoding.
-- React native bug fix: Group channel static `buildFromSerializedData()`.
+If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
+
+- Added `onChannelMemberCountChanged` and `onChannelParticipantCountChanged` in `ChannelHandler`.
+- Changed `markAsDelivered` policy to remove rate limit timer.
+- Improved stability.
