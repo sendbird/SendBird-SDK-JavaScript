@@ -1,6 +1,6 @@
 # Changelog
 
-## v3.0.146(MAR 24, 2021)
+## v3.0.147(MAR 24, 2021)
 
 - Added `onChannelMemberCountChanged` and `onChannelParticipantCountChanged` in `ChannelHandler`.
 - Changed `markAsDelivered` policy to remove rate limit timer.
