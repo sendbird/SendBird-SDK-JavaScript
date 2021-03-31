@@ -162,7 +162,7 @@ Or download the latest Chat SDK for JavaScript from the following link if you do
 
 - https://github.com/sendbird/Sendbird-SDK-JavaScript
 
-> **Note**: You should also add `axios` library into the <script> tag before the Sendbird library inclusion since v3.0.127. You can host the library or utilize the CDN as the library refers to it. The following serves as examples.
+> **Note**: You should also add `axios` library into the `<script>` tag before the Sendbird library inclusion since v3.0.127. You can host the library or utilize the CDN as the library refers to it. The following serves as examples.
 
 ```javascript
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -325,10 +325,10 @@ The `sb.setErrorFirstCallback(false)` returns callbacks to their original parame
 
 ## Changelogs
 
-## v3.0.147(MAR 24, 2021)
+## v3.0.148(MAR 31, 2021)
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Added `onChannelMemberCountChanged` and `onChannelParticipantCountChanged` in `ChannelHandler`.
-- Changed `markAsDelivered` policy to remove rate limit timer.
-- Improved stability.
+- Added `AppleCriticalAlertOptions` interface.
+- Added `appleCriticalAlertOptions` in `BaseMessage`, `UserMessageParams`, `FileMessageParams`, `ScheduledUserMessage`, and `ScheduledUserMessageParams`.
+- Downgraded log level from `ERROR` to `DEBUG` for all internal API calls.

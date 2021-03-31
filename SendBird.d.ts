@@ -1,5 +1,5 @@
 /**
- * Type Definitions for Sendbird SDK v3.0.147
+ * Type Definitions for Sendbird SDK v3.0.148
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/Sendbird-SDK-JavaScript
  */
@@ -395,6 +395,7 @@ declare namespace SendBird {
     parentMessageText: string;
     threadInfo: ThreadInfo;
     ogMetaData: OGMetaData;
+    appleCriticalAlertOptions: AppleCriticalAlertOptions;
 
     isEqual(target: BaseMessageInstance): boolean;
     isIdentical(target: BaseMessageInstance): boolean;
@@ -462,6 +463,13 @@ declare namespace SendBird {
     detail: {};
   }
 
+  interface AppleCriticalAlertOptions {
+    name: string;
+    volume: number;
+
+    serialize(): Object;
+  }
+
   interface UserMessageParams {
     new(): UserMessageParams;
     message: string;
@@ -482,6 +490,7 @@ declare namespace SendBird {
     metaArrayKeys: Array<string>;
     pushNotificationDeliveryOption: 'default' | 'suppress';
     parentMessageId: number;
+    appleCriticalAlertOptions: AppleCriticalAlertOptions;
   }
   interface UserMessage extends BaseMessageInstance {
     messageType: 'user';
@@ -525,6 +534,7 @@ declare namespace SendBird {
     metaArrayKeys: Array<string>;
     pushNotificationDeliveryOption: 'default' | 'suppress';
     parentMessageId: number;
+    appleCriticalAlertOptions: AppleCriticalAlertOptions;
   }
   interface FileMessage extends BaseMessageInstance {
     messageType: 'file';
@@ -1729,6 +1739,7 @@ declare namespace SendBird {
     translationTargetLanguages: Array<string>;
     errorMessage: string;
     errorCode: number;
+    appleCriticalAlertOptions: AppleCriticalAlertOptions;
 
     isGroupChannel(): boolean;
     isOpenChannel(): boolean;
@@ -1783,6 +1794,7 @@ declare namespace SendBird {
     min: number;
     timezone: string;
     scheduledDateTimeString: string;
+    appleCriticalAlertOptions: AppleCriticalAlertOptions;
 
     setSchedule(year: number, month: number, day: number, hour: number, min: number, timezone: string): void;
   }

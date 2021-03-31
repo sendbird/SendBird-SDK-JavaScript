@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.0.148(MAR 31, 2021)
+
+- Added `AppleCriticalAlertOptions` interface.
+- Added `appleCriticalAlertOptions` in `BaseMessage`, `UserMessageParams`, `FileMessageParams`, `ScheduledUserMessage`, and `ScheduledUserMessageParams`.
+- Downgraded log level from `ERROR` to `DEBUG` for all internal API calls.
+
 ## v3.0.147(MAR 24, 2021)
 
 - Added `onChannelMemberCountChanged` and `onChannelParticipantCountChanged` in `ChannelHandler`.
