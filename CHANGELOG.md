@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.0.149(APR 20, 2021)
+- Added `NONE` log level in `LogLevel`.
+- Improved stability.
+
 ## v3.0.148(MAR 31, 2021)
 
 - Added `AppleCriticalAlertOptions` interface.

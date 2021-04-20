@@ -1,5 +1,5 @@
 /**
- * Type Definitions for Sendbird SDK v3.0.148
+ * Type Definitions for Sendbird SDK v3.0.149
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/Sendbird-SDK-JavaScript
  */
@@ -17,7 +17,7 @@ interface SendBirdStatic {
   LogLevel: SendBird.LogLevel;
 
   getLogLevel(): typeof SendBird.LogLevel[keyof typeof SendBird.LogLevel];
-  setLogLevel(logLevel: typeof SendBird.LogLevel[keyof typeof SendBird.LogLevel]);
+  setLogLevel(logLevel: typeof SendBird.LogLevel[keyof typeof SendBird.LogLevel]): void;
 }
 
 declare namespace SendBird {
@@ -65,6 +65,7 @@ declare namespace SendBird {
     INFO: 'info',
     WARN: 'warn',
     ERROR: 'error',
+    NONE: 'none',
   };
 
   interface DiscoveryObject {
@@ -120,7 +121,7 @@ declare namespace SendBird {
     updateCurrentUserInfoWithPreferredLanguages(preferredLanguages: Array<string>, callback?: userCallback): Promise<User>;
 
     /**
-     * @deprecated
+     * @deprecated since version v3.0.109, please use {@link currentUser} instead
      */
     getCurrentUserId(): string;
     getApplicationId(): string;
@@ -142,11 +143,11 @@ declare namespace SendBird {
     removeAllUserEventHandler(): void;
 
     /**
-     * @deprecated
+     * @deprecated since version v3.0.86, please use {@link createApplicationUserListQuery()} instead
      */
     createUserListQuery(): UserListQuery;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.86, please use {@link createApplicationUserListQuery()} instead
      */
     createUserListQuery(userIds: Array<string>): UserListQuery;
     createApplicationUserListQuery(): ApplicationUserListQuery;
@@ -211,7 +212,7 @@ declare namespace SendBird {
     getFriendChangeLogsByToken(callback?: getFriendChangeLogsByTokenHandler): Promise<Object>;
     getFriendChangeLogsByToken(token: string, callback?: getFriendChangeLogsByTokenHandler): Promise<Object>;
 
-    addFriends(userIds: Array<string>, callback?: userListQueryCallback): Promise<User[]>;
+    addFriends(userIds: Array<string>, callback?: userListQueryCallback): Promise<Array<User>>;
     deleteFriend(userId: string, callback?: commonCallback): Promise<null>;
     deleteFriends(userIds: Array<string>, callback?: commonCallback): Promise<null>;
 
@@ -229,16 +230,24 @@ declare namespace SendBird {
       groupChannelTotalUnreadMessageCountParams: GroupChannelTotalUnreadMessageCountParams,
       callback?: groupChannelCountCallback
     ): Promise<number>;
-    getTotalUnreadMessageCount(callback?: groupChannelCountCallback): Promise<number>;
     getTotalUnreadMessageCount(channelCustomTypes: Array<string>, callback?: groupChannelCountCallback): Promise<number>;
+    /**
+     * @deprecated since version v3.0.80, please use {@link getTotalUnreadMessageCount()} instead
+     */
+    getTotalUnreadMessageCount(callback?: groupChannelCountCallback): Promise<number>;
     getTotalUnreadChannelCount(callback?: groupChannelCountCallback): Promise<number>;
 
     getSubscribedTotalUnreadMessageCount(): number;
     getSubscribedCustomTypeTotalUnreadMessageCount(): number;
     getSubscribedCustomTypeUnreadMessageCount(customType: string): number;
 
+    getMyGroupChannelChangeLogsByToken(
+      token: string,
+      params: GroupChannelChangeLogsParams,
+      callback?: getGroupChannelChangeLogsHandler
+    ): Promise<groupChannelChangeLogs>;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.125
      */
     getMyGroupChannelChangeLogsByToken(
       token: string,
@@ -246,23 +255,18 @@ declare namespace SendBird {
       includeEmpty?: boolean,
       callback?: getGroupChannelChangeLogsHandler
     ): Promise<groupChannelChangeLogs>;
-    getMyGroupChannelChangeLogsByToken(
-      token: string,
+    getMyGroupChannelChangeLogsByTimestamp(
+      ts: number,
       params: GroupChannelChangeLogsParams,
       callback?: getGroupChannelChangeLogsHandler
     ): Promise<groupChannelChangeLogs>;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.125
      */
     getMyGroupChannelChangeLogsByTimestamp(
       ts: number,
       customTypes: Array<string>,
       includeEmpty?: boolean,
-      callback?: getGroupChannelChangeLogsHandler
-    ): Promise<groupChannelChangeLogs>;
-    getMyGroupChannelChangeLogsByTimestamp(
-      ts: number,
-      params: GroupChannelChangeLogsParams,
       callback?: getGroupChannelChangeLogsHandler
     ): Promise<groupChannelChangeLogs>;
 
@@ -290,12 +294,12 @@ declare namespace SendBird {
     hasMore: boolean;
     isLoading: boolean;
     limit: number;
-    next(callback?: userListQueryCallback): Promise<User[]>;
+    next(callback?: userListQueryCallback): Promise<Array<User>>;
   }
   interface MessageSearchQuery {
     hasNext: boolean;
     isLoading: boolean;
-    next(callback?: messageListCallback): Promise<User[]>;
+    next(callback?: messageListCallback): Promise<Array<User>>;
   }
   interface MessageSearchQueryOptions {
     limit: number;
@@ -388,6 +392,7 @@ declare namespace SendBird {
     reactions: Array<Reaction>;
     mentionType: string;
     mentionedUsers: Array<User>;
+    sendingStatus: 'none' | 'pending' | 'failed' | 'canceled' | 'succeeded';
     silent: boolean;
     createdAt: number;
     updatedAt: number;
@@ -476,7 +481,7 @@ declare namespace SendBird {
     data: string;
     customType: string;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.84, please use {@link translationTargetLanguages} instead
      */
     targetLanguages: Array<string>;
     translationTargetLanguages: Array<string>;
@@ -485,7 +490,7 @@ declare namespace SendBird {
     mentionedUsers: Array<User>;
     metaArrays: Array<MessageMetaArray>;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.122, please use {@link metaArrays} instead
      */
     metaArrayKeys: Array<string>;
     pushNotificationDeliveryOption: 'default' | 'suppress';
@@ -499,14 +504,13 @@ declare namespace SendBird {
     reqId: string;
     translations: Object;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.119, please use {@link BaseMessageInstance.sendingStatus} instead
      */
     requestState: 'none' | 'pending' | 'failed' | 'succeeded';
-    sendingStatus: 'none' | 'pending' | 'failed' | 'canceled' | 'succeeded';
     requestedMentionUserIds: Array<string>;
     errorCode: number;
     messageSurvivalSeconds: number;
-    plugins: Plugin[];
+    plugins: Array<Plugin>;
     isResendable(): boolean;
   }
   interface UserMessageStatic {
@@ -529,7 +533,7 @@ declare namespace SendBird {
     mentionedUsers: Array<User>;
     metaArrays: Array<MessageMetaArray>;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.122, please use {@link metaArrays} instead
      */
     metaArrayKeys: Array<string>;
     pushNotificationDeliveryOption: 'default' | 'suppress';
@@ -547,10 +551,9 @@ declare namespace SendBird {
     type: string;
     thumbnails: Array<ThumbnailObject>;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.119, please use {@link BaseMessageInstance.sendingStatus} instead
      */
     requestState: 'none' | 'pending' | 'failed' | 'succeeded';
-    sendingStatus: 'none' | 'pending' | 'failed' | 'canceled' | 'succeeded';
     requestedMentionUserIds: Array<string>;
     errorCode: number;
     messageSurvivalSeconds: number;
@@ -578,12 +581,16 @@ declare namespace SendBird {
     reverse: boolean;
     messageType: string;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.142, please use {@link customTypes} instead
      */
     customType: string;
-    customTypes: string[];
+    customTypes: Array<string>;
     senderUserIds: Array<string>;
     includeMetaArray: boolean;
+    /**
+     * @deprecated since version v3.0.125, please use {@link includeReactions} instead
+     */
+    includeReaction: boolean;
     includeReactions: boolean;
     includeReplies: boolean;
     includeParentMessageText: boolean;
@@ -598,18 +605,26 @@ declare namespace SendBird {
     reverse: boolean;
     messageType: string;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.142, please use {@link customTypes} instead
      */
     customType: string;
-    customTypes: string[];
+    customTypes: Array<string>;
     senderUserIds: Array<string>;
     includeMetaArray: boolean;
+    /**
+     * @deprecated since version v3.0.125, please use {@link includeReactions} instead
+     */
+    includeReaction: boolean;
     includeReactions: boolean;
     includeParentMessageText: boolean;
   }
   interface MessageChangeLogsParams {
     new(): MessageChangeLogsParams;
     includeMetaArray: boolean;
+    /**
+     * @deprecated since version v3.0.125, please use {@link includeReactions} instead
+     */
+    includeReaction: boolean;
     includeReactions: boolean;
     includeReplies: boolean;
     includeParentMessageText: string;
@@ -719,35 +734,37 @@ declare namespace SendBird {
     serialize(): Object;
 
     /**
-     * @deprecated
+     * @deprecated since version v3.0.123, please use {@link getMessageChangeLogsSinceToken()} instead
      */
-    getMessageChangeLogsByToken(token?: string, callback?: getMessageChangeLogsHandler): Promise<messageChangeLogs>;
+    getMessageChangeLogsByToken(token: string, callback?: getMessageChangeLogsHandler): Promise<messageChangeLogs>;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.123, please use {@link getMessageChangeLogsSinceToken()} instead
      */
     getMessageChangeLogsByToken(token: string, includeMetaArray: boolean, callback?: getMessageChangeLogsHandler): Promise<messageChangeLogs>;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.123, please use {@link getMessageChangeLogsSinceToken()} instead
      */
     getMessageChangeLogsByToken(
       token: string,
       includeMetaArray: boolean,
-      includeReaction: boolean,
       includeReactions: boolean,
       callback?: getMessageChangeLogsHandler
     ): Promise<messageChangeLogs>;
 
     /**
-     * @deprecated
+     * @deprecated since version v3.0.123, please use {@link getMessageChangeLogsSinceTimestamp()} instead
      */
-    getMessageChangeLogsByTimestamp(ts: number, includeMetaArray?: boolean, callback?: getMessageChangeLogsHandler): Promise<messageChangeLogs>;
+    getMessageChangeLogsByTimestamp(ts: number, callback?: getMessageChangeLogsHandler): Promise<messageChangeLogs>;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.123, please use {@link getMessageChangeLogsSinceTimestamp()} instead
+     */
+    getMessageChangeLogsByTimestamp(ts: number, includeMetaArray: boolean, callback?: getMessageChangeLogsHandler): Promise<messageChangeLogs>;
+    /**
+     * @deprecated since version v3.0.123, please use {@link getMessageChangeLogsSinceTimestamp()} instead
      */
     getMessageChangeLogsByTimestamp(
       ts: number,
       includeMetaArray: boolean,
-      includeReaction: boolean,
       includeReactions: boolean,
       callback?: getMessageChangeLogsHandler
     ): Promise<messageChangeLogs>;
@@ -768,13 +785,13 @@ declare namespace SendBird {
 
     /** Message  */
     /**
-     * @deprecated
+     * @deprecated since version v3.0.36, please use {@link createPreviousMessageListQuery()} instead
      */
     createMessageListQuery(): MessageListQuery;
     createPreviousMessageListQuery(): PreviousMessageListQuery;
 
     /**
-     * @deprecated
+     * @deprecated since version v3.0.123, please use {@link getMessagesByTimestamp()} instead
      */
     getNextMessagesByTimestamp(
       ts: number,
@@ -786,7 +803,7 @@ declare namespace SendBird {
       callback?: messageListCallback
     ): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.123, please use {@link getMessagesByTimestamp()} instead
      */
     getNextMessagesByTimestamp(
       ts: number,
@@ -799,7 +816,7 @@ declare namespace SendBird {
       callback?: messageListCallback
     ): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.123, please use {@link getMessagesByTimestamp()} instead
      */
     getNextMessagesByTimestamp(
       ts: number,
@@ -813,7 +830,7 @@ declare namespace SendBird {
       callback?: messageListCallback
     ): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.123, please use {@link getMessagesByTimestamp()} instead
      */
     getNextMessagesByTimestamp(
       ts: number,
@@ -824,12 +841,11 @@ declare namespace SendBird {
       customType: string,
       senderUserIds: Array<string>,
       includeMetaArray: boolean,
-      includeReaction: boolean,
       includeReactions: boolean,
       callback?: messageListCallback
     ): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.123, please use {@link getMessagesByTimestamp()} instead
      */
     getPreviousMessagesByTimestamp(
       ts: number,
@@ -841,7 +857,7 @@ declare namespace SendBird {
       callback?: messageListCallback
     ): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.123, please use {@link getMessagesByTimestamp()} instead
      */
     getPreviousMessagesByTimestamp(
       ts: number,
@@ -854,7 +870,7 @@ declare namespace SendBird {
       callback?: messageListCallback
     ): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.123, please use {@link getMessagesByTimestamp()} instead
      */
     getPreviousMessagesByTimestamp(
       ts: number,
@@ -868,7 +884,7 @@ declare namespace SendBird {
       callback?: messageListCallback
     ): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.123, please use {@link getMessagesByTimestamp()} instead
      */
     getPreviousMessagesByTimestamp(
       ts: number,
@@ -879,12 +895,11 @@ declare namespace SendBird {
       customType: string,
       senderUserIds: Array<string>,
       includeMetaArray: boolean,
-      includeReaction: boolean,
       includeReactions: boolean,
       callback?: messageListCallback
     ): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.123, please use {@link getMessagesByTimestamp()} instead
      */
     getPreviousAndNextMessagesByTimestamp(
       ts: number,
@@ -896,7 +911,7 @@ declare namespace SendBird {
       callback?: messageListCallback
     ): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.123, please use {@link getMessagesByTimestamp()} instead
      */
     getPreviousAndNextMessagesByTimestamp(
       ts: number,
@@ -909,7 +924,7 @@ declare namespace SendBird {
       callback?: messageListCallback
     ): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.123, please use {@link getMessagesByTimestamp()} instead
      */
     getPreviousAndNextMessagesByTimestamp(
       ts: number,
@@ -923,7 +938,7 @@ declare namespace SendBird {
       callback?: messageListCallback
     ): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.123, please use {@link getMessagesByTimestamp()} instead
      */
     getPreviousAndNextMessagesByTimestamp(
       ts: number,
@@ -934,12 +949,11 @@ declare namespace SendBird {
       customType: string,
       senderUserIds: Array<string>,
       includeMetaArray: boolean,
-      includeReaction: boolean,
       includeReactions: boolean,
       callback?: messageListCallback
     ): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.123, please use {@link getMessagesByMessageId()} instead
      */
     getNextMessagesByID(
       messageId: number,
@@ -951,20 +965,7 @@ declare namespace SendBird {
       callback?: messageListCallback
     ): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
     /**
-     * @deprecated
-     */
-    getNextMessagesByID(
-      messageId: number,
-      isInclusive: boolean,
-      nextResultSize: number,
-      shouldReverse: boolean,
-      messageType: string,
-      customType: string,
-      senderUserIds: Array<string>,
-      callback?: messageListCallback
-    ): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
-    /**
-     * @deprecated
+     * @deprecated since version v3.0.123, please use {@link getMessagesByMessageId()} instead
      */
     getNextMessagesByID(
       messageId: number,
@@ -974,11 +975,10 @@ declare namespace SendBird {
       messageType: string,
       customType: string,
       senderUserIds: Array<string>,
-      includeMetaArray: boolean,
       callback?: messageListCallback
     ): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.123, please use {@link getMessagesByMessageId()} instead
      */
     getNextMessagesByID(
       messageId: number,
@@ -989,12 +989,25 @@ declare namespace SendBird {
       customType: string,
       senderUserIds: Array<string>,
       includeMetaArray: boolean,
-      includeReaction: boolean,
+      callback?: messageListCallback
+    ): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
+    /**
+     * @deprecated since version v3.0.123, please use {@link getMessagesByMessageId()} instead
+     */
+    getNextMessagesByID(
+      messageId: number,
+      isInclusive: boolean,
+      nextResultSize: number,
+      shouldReverse: boolean,
+      messageType: string,
+      customType: string,
+      senderUserIds: Array<string>,
+      includeMetaArray: boolean,
       includeReactions: boolean,
       callback?: messageListCallback
     ): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.123, please use {@link getMessagesByMessageId()} instead
      */
     getPreviousMessagesByID(
       messageId: number,
@@ -1006,20 +1019,7 @@ declare namespace SendBird {
       callback?: messageListCallback
     ): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
     /**
-     * @deprecated
-     */
-    getPreviousMessagesByID(
-      messageId: number,
-      isInclusive: boolean,
-      prevResultSize: number,
-      shouldReverse: boolean,
-      messageType: string,
-      customType: string,
-      senderUserIds: Array<string>,
-      callback?: messageListCallback
-    ): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
-    /**
-     * @deprecated
+     * @deprecated since version v3.0.123, please use {@link getMessagesByMessageId()} instead
      */
     getPreviousMessagesByID(
       messageId: number,
@@ -1029,11 +1029,10 @@ declare namespace SendBird {
       messageType: string,
       customType: string,
       senderUserIds: Array<string>,
-      includeMetaArray: boolean,
       callback?: messageListCallback
     ): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.123, please use {@link getMessagesByMessageId()} instead
      */
     getPreviousMessagesByID(
       messageId: number,
@@ -1044,12 +1043,25 @@ declare namespace SendBird {
       customType: string,
       senderUserIds: Array<string>,
       includeMetaArray: boolean,
-      includeReaction: boolean,
+      callback?: messageListCallback
+    ): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
+    /**
+     * @deprecated since version v3.0.123, please use {@link getMessagesByMessageId()} instead
+     */
+    getPreviousMessagesByID(
+      messageId: number,
+      isInclusive: boolean,
+      prevResultSize: number,
+      shouldReverse: boolean,
+      messageType: string,
+      customType: string,
+      senderUserIds: Array<string>,
+      includeMetaArray: boolean,
       includeReactions: boolean,
       callback?: messageListCallback
     ): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.123, please use {@link getMessagesByMessageId()} instead
      */
     getPreviousAndNextMessagesByID(
       messageId: number,
@@ -1061,20 +1073,7 @@ declare namespace SendBird {
       callback?: messageListCallback
     ): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
     /**
-     * @deprecated
-     */
-    getPreviousAndNextMessagesByID(
-      messageId: number,
-      prevResultSize: number,
-      nextResultSize: number,
-      shouldReverse: boolean,
-      messageType: string,
-      customType: string,
-      senderUserIds: Array<string>,
-      callback?: messageListCallback
-    ): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
-    /**
-     * @deprecated
+     * @deprecated since version v3.0.123, please use {@link getMessagesByMessageId()} instead
      */
     getPreviousAndNextMessagesByID(
       messageId: number,
@@ -1084,11 +1083,10 @@ declare namespace SendBird {
       messageType: string,
       customType: string,
       senderUserIds: Array<string>,
-      includeMetaArray: boolean,
       callback?: messageListCallback
     ): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.123, please use {@link getMessagesByMessageId()} instead
      */
     getPreviousAndNextMessagesByID(
       messageId: number,
@@ -1099,7 +1097,20 @@ declare namespace SendBird {
       customType: string,
       senderUserIds: Array<string>,
       includeMetaArray: boolean,
-      includeReaction: boolean,
+      callback?: messageListCallback
+    ): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
+    /**
+     * @deprecated since version v3.0.123, please use {@link getMessagesByMessageId()} instead
+     */
+    getPreviousAndNextMessagesByID(
+      messageId: number,
+      prevResultSize: number,
+      nextResultSize: number,
+      shouldReverse: boolean,
+      messageType: string,
+      customType: string,
+      senderUserIds: Array<string>,
+      includeMetaArray: boolean,
       includeReactions: boolean,
       callback?: messageListCallback
     ): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
@@ -1414,22 +1425,21 @@ declare namespace SendBird {
       data: Array<MessageMetaArray>,
       callback?: commonCallback
     ): Promise<UserMessage | FileMessage | AdminMessage>;
-    removeMessageMetaArrayValues(
-      message: UserMessage | FileMessage | AdminMessage,
-      data: Array<MessageMetaArray>,
-      callback?: commonCallback
-    ): Promise<UserMessage | FileMessage | AdminMessage>;
-
     /**
-     * @deprecated
+     * @deprecated since version v3.0.105
      */
     addMessageMetaArrayValues(
       message: UserMessage | FileMessage | AdminMessage,
       data: Object,
       callback?: commonCallback
     ): Promise<UserMessage | FileMessage | AdminMessage>;
+    removeMessageMetaArrayValues(
+      message: UserMessage | FileMessage | AdminMessage,
+      data: Array<MessageMetaArray>,
+      callback?: commonCallback
+    ): Promise<UserMessage | FileMessage | AdminMessage>;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.105
      */
     removeMessageMetaArrayValues(
       message: UserMessage | FileMessage | AdminMessage,
@@ -1452,10 +1462,10 @@ declare namespace SendBird {
     messageList: Array<UserMessage | FileMessage | AdminMessage>,
     error: SendBirdError
   ) => void;
+  /**
+   * @deprecated since version v3.0.36, please use {@link PreviousMessageListQuery} instead
+   */
   interface MessageListQuery {
-    /**
-     * @deprecated
-     */
     next(messageTimestamp: number, limit: number, reverse: boolean, callback?: messageListCallback): void;
     prev(messageTimestamp: number, limit: number, reverse: boolean, callback?: messageListCallback): void;
     load(
@@ -1480,14 +1490,14 @@ declare namespace SendBird {
     reverse: boolean;
     messageTypeFilter: 0 | 1 | 2 | 3; // 0: ALL, 1: USER, 2: FILE, 3: ADMIN
     /**
-     * @deprecated
+     * @deprecated since version v3.0.142, please use {@link customTypesFilter} instead
      */
     customTypeFilter: string;
     customTypesFilter: string;
     senderUserIdsFilter: Array<string>;
     includeMetaArray: boolean;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.129, please use {@link includeReactions} instead
      */
     includeReaction: boolean;
     includeReactions: boolean;
@@ -1514,7 +1524,7 @@ declare namespace SendBird {
     data: string;
     customType: string;
 
-    operatorUserIds(userIds: string[]): void;
+    operatorUserIds(userIds: Array<string>): void;
   }
 
   interface OpenChannel extends BaseChannel {
@@ -1584,10 +1594,10 @@ declare namespace SendBird {
   }
 
   type userListQueryCallback = (userList: Array<User>, error: SendBirdError) => void;
+  /**
+   * @deprecated since version v3.0.86, please use {@link ApplicationUserListQuery} instead
+   */
   interface UserListQuery {
-    /**
-     * @deprecated
-     */
     limit: number;
     hasNext: boolean;
     isLoading: boolean;
@@ -1707,7 +1717,7 @@ declare namespace SendBird {
     hasNext: boolean;
     nameKeyword: string;
     urlKeyword: string;
-    customTypes: string[];
+    customTypes: Array<string>;
     includeFrozen: boolean;
 
     next(callback?: openChannelListQueryCallback): Promise<OpenChannel>;
@@ -1877,7 +1887,7 @@ declare namespace SendBird {
     isBroadcast: boolean;
     isPublic: boolean;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.93, please use {@link myPushTriggerOption} instead
      */
     isPushEnabled: boolean;
     myPushTriggerOption: 'default' | 'all' | 'mention_only' | 'off';
@@ -1942,7 +1952,7 @@ declare namespace SendBird {
 
     markAsRead(): void;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.127, please use {@link getUnreadMemberCount()} instead
      */
     getReadReceipt(message: UserMessage | FileMessage | AdminMessage): number;
     getReadStatus(includeAllMembers?: boolean): Object;
@@ -1951,11 +1961,11 @@ declare namespace SendBird {
     getUnreadMemberCount(message: UserMessage | FileMessage | AdminMessage): number;
 
     /**
-     * @deprecated
+     * @deprecated since version v3.0.143, please use {@link SendBirdInstance.markAsDelivered()} instead
      */
     markAsDelivered(): void;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.127, please use {@link getUndeliveredMemberCount()} instead
      */
     getDeliveryReceipt(message: UserMessage | FileMessage | AdminMessage): number;
     getUndeliveredMemberCount(message: UserMessage | FileMessage | AdminMessage): number;
@@ -1967,11 +1977,11 @@ declare namespace SendBird {
     getTypingUsers(): Array<User>;
 
     /**
-     * @deprecated
+     * @deprecated since version v3.0.93, please use {@link getMyPushTriggerOption()} instead
      */
     setPushPreference(pushOn: boolean, callback?: commonCallback): Promise<Object>;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.93, please use {@link getMyPushTriggerOption()} instead
      */
     getPushPreference(callback?: getPushPreferenceCallback): Promise<boolean>;
     setMyPushTriggerOption(
@@ -2016,22 +2026,22 @@ declare namespace SendBird {
     createPublicGroupChannelListQuery(): PublicGroupChannelListQuery;
 
     /**
-     * @deprecated
+     * @deprecated since version v3.0.80, please use {@link SendBirdInstance.getUnreadItemCount()} instead
      */
     getUnreadItemCount(keys: Array<string>, callback?: commonCallback): Promise<Object>;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.80, please use {@link SendBirdInstance.getTotalUnreadMessageCount()} instead
      */
     getTotalUnreadMessageCount(
       groupChannelTotalUnreadMessageCountParams?: GroupChannelTotalUnreadMessageCountParams,
       callback?: groupChannelCountCallback
     ): Promise<number>;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.80, please use {@link SendBirdInstance.getTotalUnreadMessageCount()} instead
      */
     getTotalUnreadMessageCount(channelCustomTypes: Array<string>, callback?: groupChannelCountCallback): Promise<number>;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.80, please use {@link SendBirdInstance.getTotalUnreadChannelCount()} instead
      */
     getTotalUnreadChannelCount(callback?: groupChannelCountCallback): Promise<number>;
 
@@ -2109,7 +2119,7 @@ declare namespace SendBird {
     getChannelWithoutCache(channelUrl: string, callback?: groupChannelCallback): Promise<GroupChannel>;
 
     /**
-     * @deprecated
+     * @deprecated since version v3.0.50, please use {@link SendBirdInstance.markAsReadAll()} instead
      */
     markAsReadAll(callback?: commonCallback): Promise<null>;
   }
@@ -2159,7 +2169,7 @@ declare namespace SendBird {
     nicknameContainsFilter: string;
     channelNameContainsFilter: string;
     /**
-     * @deprecated
+     * @deprecated since version v3.0.49, please use {@link customTypesFilter} instead
      */
     customTypeFilter: string;
     customTypesFilter: Array<string>;
