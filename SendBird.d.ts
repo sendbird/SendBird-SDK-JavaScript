@@ -1,5 +1,5 @@
 /**
- * Type Definitions for Sendbird SDK v3.0.149
+ * Type Definitions for Sendbird SDK v3.0.150
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/Sendbird-SDK-JavaScript
  */
@@ -310,6 +310,8 @@ declare namespace SendBird {
     messageTimestampFrom: number;
     messageTimestampTo: number;
     order: 'score' | 'ts';
+    advancedQuery: boolean;
+    targetFields: Array<string>;
   }
 
   interface SessionHandlerStatic {
@@ -1903,6 +1905,7 @@ declare namespace SendBird {
     myMutedState: 'muted' | 'unmuted';
     inviter: User;
     invitedAt: number;
+    joinedAt: number;
     isAccessCodeRequired: boolean;
     hiddenState: 'unhidden' | 'hidden_allow_auto_unhide' | 'hidden_prevent_auto_unhide';
     isDiscoverable: boolean;

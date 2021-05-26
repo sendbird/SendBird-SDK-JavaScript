@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.0.150(MAY 26, 2021)
+- Added `joinedAt` in `GroupChannel`.
+- Improved stability.
+
 ## v3.0.149(APR 20, 2021)
 - Added `NONE` log level in `LogLevel`.
 - Improved stability.

@@ -325,9 +325,10 @@ The `sb.setErrorFirstCallback(false)` returns callbacks to their original parame
 
 ## Changelogs
 
-## v3.0.149(APR 20, 2021)
+## v3.0.150(MAY 26, 2021)
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Added `NONE` log level in `LogLevel`.
+- Added `advancedQuery` and `targetFields` in `MessageSearchQuery`.
+- Added `joinedAt` in `GroupChannel`.
 - Improved stability.
