@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.0.151(MAY 28, 2021)
+- Added `MessageTypeFilter` in `BaseChannel`.
+- Improved stability.
+
 ## v3.0.150(MAY 26, 2021)
 - Added `joinedAt` in `GroupChannel`.
 - Improved stability.
