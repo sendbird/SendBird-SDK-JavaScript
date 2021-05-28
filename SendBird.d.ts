@@ -1,5 +1,5 @@
 /**
- * Type Definitions for Sendbird SDK v3.0.150
+ * Type Definitions for Sendbird SDK v3.0.151
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/Sendbird-SDK-JavaScript
  */
@@ -68,6 +68,13 @@ declare namespace SendBird {
     NONE: 'none',
   };
 
+  type MessageTypeFilter = {
+    ALL: '',
+    USER: 'MESG',
+    FILE: 'FILE',
+    ADMIN: 'ADMM'
+  };
+
   interface DiscoveryObject {
     friendDiscoveryKey: string;
     friendName?: string;
@@ -75,6 +82,9 @@ declare namespace SendBird {
   interface SendBirdInstance {
     User: UserStatic;
     Member: MemberStatic;
+    BaseChannel: {
+      MessageTypeFilter: MessageTypeFilter;
+    };
     OpenChannel: OpenChannelStatic;
     GroupChannel: GroupChannelStatic;
     UserMessage: UserMessageStatic;
@@ -720,6 +730,7 @@ declare namespace SendBird {
     description: string;
   };
   type getMyMutedInfoHandler = (info: mutedInfo, error: SendBirdError) => void;
+
   interface BaseChannel {
     url: string;
     name: string;
@@ -1490,7 +1501,7 @@ declare namespace SendBird {
     isLoading: boolean;
     limit: number;
     reverse: boolean;
-    messageTypeFilter: 0 | 1 | 2 | 3; // 0: ALL, 1: USER, 2: FILE, 3: ADMIN
+    messageTypeFilter: 0 | 1 | 2 | 3 | '' | 'MESG' | 'FILE' | 'ADMM';
     /**
      * @deprecated since version v3.0.142, please use {@link customTypesFilter} instead
      */
@@ -1508,7 +1519,7 @@ declare namespace SendBird {
     includeThreadInfo: boolean;
     showSubchannelMessagesOnly: boolean;
 
-    load(limit: number, reverse: boolean, messageType?: number, callback?: messageListCallback): Array<UserMessage | FileMessage | AdminMessage>;
+    load(limit: number, reverse: boolean, messageType?: number | string, callback?: messageListCallback): Array<UserMessage | FileMessage | AdminMessage>;
     load(callback?: messageListCallback): Array<UserMessage | FileMessage | AdminMessage>;
   }
 
