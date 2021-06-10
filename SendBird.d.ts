@@ -1,5 +1,5 @@
 /**
- * Type Definitions for Sendbird SDK v3.0.151
+ * Type Definitions for Sendbird SDK v3.0.152
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/Sendbird-SDK-JavaScript
  */
@@ -87,6 +87,10 @@ declare namespace SendBird {
     };
     OpenChannel: OpenChannelStatic;
     GroupChannel: GroupChannelStatic;
+
+    BaseMessage: {
+      getMessage(params: MessageRetrievalParams, callback?: messageCallback): Promise<BaseMessageInstance>;
+    };
     UserMessage: UserMessageStatic;
     FileMessage: FileMessageStatic;
     AdminMessage: AdminMessageStatic;

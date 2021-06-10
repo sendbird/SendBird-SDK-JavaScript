@@ -1,5 +1,8 @@
 # Changelog
 
+## v3.0.152(JUNE 10, 2021)
+- Added `getMessage` in `BaseMessage`.
+
 ## v3.0.151(MAY 28, 2021)
 - Added `MessageTypeFilter` in `BaseChannel`.
 - Improved stability.
