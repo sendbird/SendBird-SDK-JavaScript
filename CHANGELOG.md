@@ -1,5 +1,8 @@
 # Changelog
 
+## v3.0.153(JUNE 11, 2021)
+- Improved stability.
+
 ## v3.0.152(JUNE 10, 2021)
 - Added `getMessage` in `BaseMessage`.
 

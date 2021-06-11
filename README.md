@@ -325,8 +325,8 @@ The `sb.setErrorFirstCallback(false)` returns callbacks to their original parame
 
 ## Changelogs
 
-## v3.0.152(JUNE 10, 2021)
+## v3.0.153(JUNE 11, 2021)
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Added `getMessage` in `BaseMessage`.
+- Improved stability.
