@@ -1510,7 +1510,7 @@ declare namespace SendBird {
      * @deprecated since version v3.0.142, please use {@link customTypesFilter} instead
      */
     customTypeFilter: string;
-    customTypesFilter: string;
+    customTypesFilter: Array<string>;
     senderUserIdsFilter: Array<string>;
     includeMetaArray: boolean;
     /**
