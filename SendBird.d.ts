@@ -1,5 +1,5 @@
 /**
- * Type Definitions for Sendbird SDK v3.0.153
+ * Type Definitions for Sendbird SDK v3.0.154
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/Sendbird-SDK-JavaScript
  */
@@ -2196,6 +2196,9 @@ declare namespace SendBird {
     superChannelFilter: 'all' | 'super' | 'nonsuper';
     publicChannelFilter: 'all' | 'public' | 'private';
     metadataOrderKeyFilter: string;
+    metadataKey: string;
+    metadataValues: Array<string>;
+    metadataValueStartsWith: string;
     memberStateFilter: 'all' | 'joined_only' | 'invited_only' | 'invited_by_friend' | 'invited_by_non_friend';
     hiddenChannelFilter: 'unhidden_only' | 'hidden_only' | 'hidden_allow_auto_unhide' | 'hidden_prevent_auto_unhide';
     unreadChannelFilter: 'all' | 'unread_message';
@@ -2219,6 +2222,9 @@ declare namespace SendBird {
     superChannelFilter: 'all' | 'super' | 'nonsuper';
     membershipFilter: 'all' | 'joined';
     metadataOrderKeyFilter: string;
+    metadataKey: string;
+    metadataValues: Array<string>;
+    metadataValueStartsWith: string;
     includeFrozen: boolean;
 
     next(callback?: groupChannelListQueryCallback): Promise<Array<GroupChannel>>;

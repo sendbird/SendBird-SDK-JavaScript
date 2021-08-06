@@ -325,8 +325,10 @@ The `sb.setErrorFirstCallback(false)` returns callbacks to their original parame
 
 ## Changelogs
 
-## v3.0.153(JUNE 11, 2021)
+### v3.0.154(JUL 6, 2021)
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
+- Added `metadataKey`, `metadataValues` and `metadataValueStartsWith` in `GroupChannelListQuery` and `PublicGroupChannelListQuery`.
+- Optimized Supergroup protocol handling to improve performance for specific use cases.
 - Improved stability.

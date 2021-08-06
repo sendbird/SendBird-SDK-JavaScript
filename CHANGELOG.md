@@ -1,9 +1,14 @@
 # Changelog
 
-## v3.0.153(JUNE 11, 2021)
+## v3.0.154(JUL 6, 2021)
+- Added `metadataKey`, `metadataValues` and `metadataValueStartsWith` in `GroupChannelListQuery` and `PublicGroupChannelListQuery`.
+- Optimized Supergroup protocol handling to improve performance for specific use cases.
 - Improved stability.
 
-## v3.0.152(JUNE 10, 2021)
+## v3.0.153(JUN 11, 2021)
+- Improved stability.
+
+## v3.0.152(JUN 10, 2021)
 - Added `getMessage` in `BaseMessage`.
 
 ## v3.0.151(MAY 28, 2021)
