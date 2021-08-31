@@ -26,7 +26,7 @@ declare namespace SendBird {
     message: string;
   }
 
-  type userCallback = (user: User, error: SendBirdError) => void;
+  type userCallback = (error: SendBirdError, user: User) => void;
   type pushSettingCallback = (response: string, error: SendBirdError) => void;
 
   type getFriendChangeLogs = {
