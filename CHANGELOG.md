@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.0.155(SEP 1, 2021)
+- Added `includeReactions` in `MessageRetrievalParams`.
+- Resolved security advisory on `ws` dependency with version upgrade.
+
 ## v3.0.154(AUG 6, 2021)
 - Added `metadataKey`, `metadataValues` and `metadataValueStartsWith` in `GroupChannelListQuery` and `PublicGroupChannelListQuery`.
 - Optimized Supergroup protocol handling to improve performance for specific use cases.
