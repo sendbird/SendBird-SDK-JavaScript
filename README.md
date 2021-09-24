@@ -325,9 +325,9 @@ The `sb.setErrorFirstCallback(false)` returns callbacks to their original parame
 
 ## Changelogs
 
-### v3.0.155(SEP 1, 2021)
+### v3.0.156(SEP 24, 2021)
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Added `includeReactions` in `MessageRetrievalParams`.
-- Resolved security advisory on `ws` dependency with version upgrade.
+- Added `markAsRead(callback)` in `GroupChannel`.
+  - Deprecated `markAsRead()` in `GroupChannel`.

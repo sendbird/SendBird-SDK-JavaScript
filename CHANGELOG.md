@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.0.156(SEP 24, 2021)
+- Added `markAsRead(callback)` in `GroupChannel`.
+  - Deprecated `markAsRead()` in `GroupChannel`.
+
 ## v3.0.155(SEP 1, 2021)
 - Added `includeReactions` in `MessageRetrievalParams`.
 - Resolved security advisory on `ws` dependency with version upgrade.

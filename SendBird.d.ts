@@ -1,5 +1,5 @@
 /**
- * Type Definitions for Sendbird SDK v3.0.155
+ * Type Definitions for Sendbird SDK v3.0.156
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/Sendbird-SDK-JavaScript
  */
@@ -2123,6 +2123,10 @@ declare namespace SendBird {
     hide(hidePreviousMessages: boolean, allowAutoUnhide: boolean, callback?: commonCallback): Promise<Object>;
     unhide(callback?: commonCallback): Promise<Object>;
 
+    markAsRead(callback?: voidCallback): Promise<void>;
+    /**
+     * @deprecated since version v3.0.156
+     */
     markAsRead(): void;
     /**
      * @deprecated since version v3.0.127, please use {@link getUnreadMemberCount()} instead

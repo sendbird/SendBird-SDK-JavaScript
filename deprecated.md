@@ -1,6 +1,15 @@
 # Deprecated classes, methods, properties
 
 
+## v3.0.156
+
+### Methods
+
+| Old class | Old pmethod | New class | New method |
+| --------- | ----------- | --------- | ---------- |
+| GroupChannel | markAsRead(): void | GroupChannel | markAsRead(callback: VoidCallback): Promise&lt;void&gt; |
+
+
 ## v3.0.143
 
 ### Methods
