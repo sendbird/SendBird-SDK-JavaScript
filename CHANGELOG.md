@@ -1,8 +1,11 @@
 # Changelog
 
+## v3.0.157(OCT 01, 2021)
+- Downgraded ws version from 8.2.0 to 7.5.5 due to Webpack 5 build error.
+
 ## v3.0.156(SEP 24, 2021)
 - Added `markAsRead(callback)` in `GroupChannel`.
-  - Deprecated `markAsRead()` in `GroupChannel`.
+- Deprecated `markAsRead()` in `GroupChannel`.
 
 ## v3.0.155(SEP 1, 2021)
 - Added `includeReactions` in `MessageRetrievalParams`.

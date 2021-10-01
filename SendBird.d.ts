@@ -1,5 +1,5 @@
 /**
- * Type Definitions for Sendbird SDK v3.0.156
+ * Type Definitions for Sendbird SDK v3.0.157
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/Sendbird-SDK-JavaScript
  */
