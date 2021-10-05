@@ -1,5 +1,8 @@
 # Changelog
 
+## v3.0.158(OCT 06, 2021)
+- Improved stability.
+
 ## v3.0.157(OCT 01, 2021)
 - Downgraded ws version from 8.2.0 to 7.5.5 due to Webpack 5 build error.
 

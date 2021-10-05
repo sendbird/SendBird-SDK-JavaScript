@@ -325,9 +325,9 @@ The `sb.setErrorFirstCallback(false)` returns callbacks to their original parame
 
 ## Changelogs
 
-### v3.0.157(OCT 01, 2021)
+### v3.0.158(OCT 06, 2021)
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Downgraded ws version from 8.2.0 to 7.5.5 due to Webpack 5 build error.
+- Improved stability.
 
