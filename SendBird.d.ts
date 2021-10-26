@@ -1,5 +1,5 @@
 /**
- * Type Definitions for Sendbird SDK v3.0.158
+ * Type Definitions for Sendbird SDK v3.0.159
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/Sendbird-SDK-JavaScript
  */
@@ -88,6 +88,17 @@ declare namespace SendBird {
     REMOVED: 'removed'
   };
 
+  type ReplyType = {
+    ALL: 'all',
+    NONE: 'none',
+    ONLY_REPLY_TO_CHANNEL: 'only_reply_to_channel'
+  }
+
+  type RestrictionType = {
+    MUTED: 'muted',
+    BANNED: 'banned'
+  };
+
   interface DiscoveryObject {
     friendDiscoveryKey: string;
     friendName?: string;
@@ -95,6 +106,7 @@ declare namespace SendBird {
   interface SendBirdInstance {
     User: UserStatic;
     Member: MemberStatic;
+    RestrictedUser: RestrictedUserStatic;
     BaseChannel: {
       MessageTypeFilter: MessageTypeFilter;
     };
@@ -102,7 +114,8 @@ declare namespace SendBird {
     GroupChannel: GroupChannelStatic;
 
     BaseMessage: {
-      getMessage(params: MessageRetrievalParams, callback?: messageCallback): Promise<BaseMessageInstance>;
+      ReplyType: ReplyType;
+      getMessage(params: MessageRetrievalParams, callback?: messageCallback): Promise<UserMessage | FileMessage | AdminMessage>;
     };
     UserMessage: UserMessageStatic;
     FileMessage: FileMessageStatic;
@@ -442,6 +455,8 @@ declare namespace SendBird {
     threadInfo: ThreadInfo;
     ogMetaData: OGMetaData;
     appleCriticalAlertOptions: AppleCriticalAlertOptions;
+    isReplyToChannel: boolean;
+    parentMessage: UserMessage | FileMessage | AdminMessage;
 
     isEqual(target: BaseMessageInstance): boolean;
     isIdentical(target: BaseMessageInstance): boolean;
@@ -456,8 +471,8 @@ declare namespace SendBird {
     getThreadedMessagesByTimestamp(
       timestamp: number,
       params: ThreadedMessageListParams,
-      callback?: messageListCallback
-    ): Promise<Object>;
+      callback?: threadedMessageCallback
+    ): Promise<ThreadedMessageListInfo>;
     applyThreadInfoUpdateEvent(event: ThreadInfoUpdateEvent): boolean;
 
     /**
@@ -524,6 +539,7 @@ declare namespace SendBird {
     pushNotificationDeliveryOption: 'default' | 'suppress';
     parentMessageId: number;
     appleCriticalAlertOptions: AppleCriticalAlertOptions;
+    isReplyToChannel: boolean;
   }
   interface UserMessage extends BaseMessageInstance {
     messageType: 'user';
@@ -569,6 +585,7 @@ declare namespace SendBird {
     pushNotificationDeliveryOption: 'default' | 'suppress';
     parentMessageId: number;
     appleCriticalAlertOptions: AppleCriticalAlertOptions;
+    isReplyToChannel: boolean;
   }
   interface FileMessage extends BaseMessageInstance {
     messageType: 'file';
@@ -601,8 +618,12 @@ declare namespace SendBird {
     messageId: number;
     includeMetaArray: boolean;
     includeReactions: boolean;
+    /**
+     * @deprecated since version v3.0.159, please use {@link includeParentMessageInfo} instead
+     */
     includeParentMessageText: boolean;
     includeThreadInfo: boolean;
+    includeParentMessageInfo: boolean;
     includePollDetails: boolean;
   }
   interface MessageListParams {
@@ -624,11 +645,21 @@ declare namespace SendBird {
      */
     includeReaction: boolean;
     includeReactions: boolean;
+    /**
+     * @deprecated since version v3.0.159, please use {@link replyType} instead
+     */
     includeReplies: boolean;
+    /**
+     * @deprecated since version v3.0.159, please use {@link includeParentMessageInfo} instead
+     */
     includeParentMessageText: boolean;
     includeThreadInfo: boolean;
     showSubchannelMessagesOnly: boolean;
+    replyType: ReplyType[keyof ReplyType];
+    includeParentMessageInfo: boolean;
     includePollDetails: boolean;
+
+    belongsTo(messageParams: UserMessageParams | FileMessageParams);
   }
   interface ThreadedMessageListParams {
     new(): ThreadedMessageListParams;
@@ -649,7 +680,11 @@ declare namespace SendBird {
      */
     includeReaction: boolean;
     includeReactions: boolean;
+    /**
+     * @deprecated since version v3.0.159, please use {@link includeParentMessageInfo} instead
+     */
     includeParentMessageText: boolean;
+    includeParentMessageInfo: boolean;
     includePollDetails: boolean;
   }
   interface MessageChangeLogsParams {
@@ -660,9 +695,17 @@ declare namespace SendBird {
      */
     includeReaction: boolean;
     includeReactions: boolean;
+    /**
+     * @deprecated since version v3.0.159, please use {@link replyType} instead
+     */
     includeReplies: boolean;
+    /**
+     * @deprecated since version v3.0.159, please use {@link includeParentMessageInfo} instead
+     */
     includeParentMessageText: boolean;
     includeThreadInfo: boolean;
+    replyType: ReplyType[keyof ReplyType];
+    includeParentMessageInfo: boolean;
     includePollDetails: boolean;
   }
 
@@ -721,9 +764,22 @@ declare namespace SendBird {
     isMuted: boolean;
     isBlockedByMe: boolean;
     isBlockingMe: boolean;
+    restrictionInfo: RestrictionInfo;
   }
   interface MemberStatic {
     buildFromSerializedData(serializedObject: Object): Member;
+  }
+
+  interface RestrictionInfo {
+    restrictionType: RestrictionType[keyof RestrictionType];
+    description: string;
+    endAt: number;
+  }
+  interface RestrictedUser extends User {
+    restrictionInfo: RestrictionInfo;
+  }
+  interface RestrictedUserStatic {
+    RestrictionType: RestrictionType;
   }
 
   /**
@@ -1501,6 +1557,7 @@ declare namespace SendBird {
     messageList: Array<UserMessage | FileMessage | AdminMessage>,
     error: SendBirdError
   ) => void;
+
   /**
    * @deprecated since version v3.0.36, please use {@link PreviousMessageListQuery} instead
    */
@@ -1516,11 +1573,16 @@ declare namespace SendBird {
     ): void;
   }
 
-  type threadedMessageList = {
+  type ThreadedMessageListInfo = {
     parentMessage: UserMessage | FileMessage | AdminMessage;
     threadedReplies: Array<UserMessage | FileMessage | AdminMessage>;
   };
-  type threadedMessageCallback = (threadedMessageList: threadedMessageList, error: SendBirdError) => void;
+  /**
+   * @deprecated since version v3.0.27, please use {@link SendBirdInstance.setErrorFirstCallback}
+   */
+  type threadedMessageErrorLastCallback = (threadedMessageListInfo: ThreadedMessageListInfo, error: SendBirdError) => void;
+  type threadedMessageErrorFirstCallback = (error: SendBirdError, threadedMessageListInfo: ThreadedMessageListInfo) => void;
+  type threadedMessageCallback = threadedMessageErrorFirstCallback | threadedMessageErrorLastCallback;
 
   interface PreviousMessageListQuery {
     hasMore: boolean;
@@ -1681,7 +1743,7 @@ declare namespace SendBird {
     hasNext: boolean;
     isLoading: boolean;
 
-    next(callback?: userListQueryCallback): Promise<Array<User>>;
+    next(callback?: userListQueryCallback): Promise<Array<RestrictedUser>>;
   }
 
   interface BannedUserListQuery {
@@ -1689,7 +1751,7 @@ declare namespace SendBird {
     hasNext: boolean;
     isLoading: boolean;
 
-    next(callback?: userListQueryCallback): Promise<Array<User>>;
+    next(callback?: userListQueryCallback): Promise<Array<RestrictedUser>>;
   }
 
   interface OperatorListQuery {

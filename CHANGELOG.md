@@ -1,5 +1,10 @@
 # Changelog
 
+## v3.0.159(OCT 26, 2021)
+- Changed `User` to `RestrictedUser` when `MutedUserListQuery` and `BannedUserListQuery` fetch users.
+- Changed `User` to `RestrictedUser` in `onUserMuted` and `onUserBanned` in `ChannelHandler`.
+- Added `restrictionInfo` in `Member`.
+
 ## v3.0.158(OCT 06, 2021)
 - Improved stability.
 

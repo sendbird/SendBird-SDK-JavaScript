@@ -325,9 +325,10 @@ The `sb.setErrorFirstCallback(false)` returns callbacks to their original parame
 
 ## Changelogs
 
-### v3.0.158(OCT 06, 2021)
+### v3.0.159(OCT 26, 2021)
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Improved stability.
-
+- Changed `User` to `RestrictedUser` when `MutedUserListQuery` and `BannedUserListQuery` fetch users.
+- Changed `User` to `RestrictedUser` in `onUserMuted` and `onUserBanned` in `ChannelHandler`.
+- Added `restrictionInfo` in `Member`.
