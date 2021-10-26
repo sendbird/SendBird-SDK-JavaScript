@@ -1,11 +1,27 @@
 # Deprecated classes, methods, properties
 
 
+## v3.0.159
+
+### Methods
+
+| Old class | Old property | New class | New property |
+| --------- | ----------- | --------- | ---------- |
+| MessageRetrievalParams | includeParentMessageText: boolean | MessageRetrievalParams | includeParentMessageInfo: boolean |
+| PreviousMessageListQuery | includeParentMessageText: boolean | PreviousMessageListQuery | includeParentMessageInfo: boolean |
+| PreviousMessageListQuery | includeReplies: boolean | PreviousMessageListQuery | replyType: ReplyType |
+| MessageListParams | includeParentMessageText: boolean | MessageListParams | includeParentMessageInfo: boolean |
+| MessageListParams | includeReplies: boolean | MessageListParams | replyType: ReplyType |
+| ThreadedMessageListParams | includeParentMessageText: boolean | ThreadedMessageListParams | includeParentMessageInfo: boolean |
+| MessageChangeLogsParams | includeParentMessageText: boolean | MessageChangeLogsParams | includeParentMessageInfo: boolean |
+| MessageChangeLogsParams | includeReplies: boolean | MessageChangeLogsParams | replyType: ReplyType |
+
+
 ## v3.0.156
 
 ### Methods
 
-| Old class | Old pmethod | New class | New method |
+| Old class | Old method | New class | New method |
 | --------- | ----------- | --------- | ---------- |
 | GroupChannel | markAsRead(): void | GroupChannel | markAsRead(callback: VoidCallback): Promise&lt;void&gt; |
 
@@ -14,7 +30,7 @@
 
 ### Methods
 
-| Old class | Old pmethod | New class | New method |
+| Old class | Old method | New class | New method |
 | --------- | ----------- | --------- | ---------- |
 | GroupChannel | markAsDelivered(): void | SendBird | markAsDelivered(channelUrl: String): void |
 
@@ -60,8 +76,8 @@
 
 | Old class | Old method | New class | New method |
 | --------- | ---------- | --------- | ---------- |
-| GroupChannel | getReadReceipt(message: UserMessage | FileMessage): number | GroupChannel | getUnreadMemberCount(message: UserMessage | FileMessage): number |
-| GroupChannel | getDeliveryReceipt(message: UserMessage | FileMessage): number | GroupChannel | getUndeliveredMemberCount(message: UserMessage | FileMessage): number |
+| GroupChannel | getReadReceipt(message: UserMessage &#124; FileMessage): number | GroupChannel | getUnreadMemberCount(message: UserMessage &#124; FileMessage): number |
+| GroupChannel | getDeliveryReceipt(message: UserMessage &#124; FileMessage): number | GroupChannel | getUndeliveredMemberCount(message: UserMessage &#124; FileMessage): number |
 
 
 ## v3.0.125
