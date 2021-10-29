@@ -1,5 +1,5 @@
 /**
- * Type Definitions for Sendbird SDK v3.0.159
+ * Type Definitions for Sendbird SDK v3.0.160
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/Sendbird-SDK-JavaScript
  */
@@ -368,8 +368,11 @@ declare namespace SendBird {
     new(): SessionHandler;
   }
   interface SessionHandler {
+    /**
+     * @deprecated since v3.0.160
+     */
     onSessionExpired(): void;
-    onSessionTokenRequired(resolve: (accessToken: string) => void, reject: () => void): void;
+    onSessionTokenRequired(onSuccess: (accessToken: string) => void, onFail: () => void): void;
     onSessionRefreshed(): void;
     onSessionError(err: SendBirdError): void;
     onSessionClosed(): void;
