@@ -1,5 +1,45 @@
 # Changelog
 
+## v3.1.0 (NOV 23, 2021)
+- Added local caching support (see the [details](https://sendbird.com/docs/chat/v3/javascript/guides/local-caching)):
+  - Added `GroupChannelCollection`.
+  - Added `GroupChannelCollectionHandler`.
+  - Added `GroupChannelContext`.
+  - Added `MessageCollectionInitPolicy`.
+  - Added `MessageCollection`.
+  - Added `MessageCollectionHandler`.
+  - Added `MessageContext`.
+  - Added `CollectionEventSource`.
+  - Added new parameter `localCacheEnabled` in `SendBird` constructor.
+  - Added `GroupChannelFilter` in `SendBird`.
+  - Added `MessageFilter` enum in `SendBird`.
+  - Added `messageParams` in `UserMessage`.
+  - Added `messageParams` in `FileMessage`.
+  - Added `clearCachedMessages()` in `SendBird`.
+- Added reply to channel feature:
+  - Added `includeParentMessageInfo` in `MessageRetrievalParams`.
+  - Added `includeParentMessageInfo` in `MessageListParams`.
+  - Added `includeParentMessageInfo` in `PreviousMessageListQuery`.
+  - Added `includeParentMessageInfo` in `ThreadedMessageListParams`.
+  - Added `includeParentMessageInfo` in `MessageChangeLogsParams`.
+  - Added `parentMessage` in `BaseMessage`.
+  - Deprecated `includeParentMessageText` in `MessageRetrievalParams`.
+  - Deprecated `includeParentMessageText` in `MessageListParams`.
+  - Deprecated `includeParentMessageText` in `PreviousMessageListQuery`.
+  - Deprecated `includeParentMessageText` in `ThreadedMessageListParams`.
+  - Deprecated `includeParentMessageText` in `MessageChangeLogsParams`.
+  - Added `isReplyToChannel` in `UserMessageParams`.
+  - Added `isReplyToChannel` in `FileMessageParams`.
+  - Added `isReplyToChannel` in `BaseMessage`.
+  - Added `replyType` in `MessageListParams`.
+  - Added `replyType` in `PreviousMessageListQuery`.
+  - Added `replyType` in `MessageChangeLogsParams`.
+  - Added `ReplyType` enum in `BaseMessage`.
+  - Deprecated `includeReplies` in `MessageListParams`.
+  - Deprecated `includeReplies` in `PreviousMessageListQuery`.
+  - Deprecated `includeReplies` in `MessageChangeLogsParams`.
+- Added `belongsTo()` in `MessageListParams`.
+
 ## v3.0.160(OCT 29, 2021)
 - Improved stability.
 
@@ -31,7 +71,7 @@
 - Improved stability.
 
 ## v3.0.152(JUN 10, 2021)
-- Added `getMessage` in `BaseMessage`.
+- Added `getMessage()` in `BaseMessage`.
 
 ## v3.0.151(MAY 28, 2021)
 - Added `MessageTypeFilter` in `BaseChannel`.
