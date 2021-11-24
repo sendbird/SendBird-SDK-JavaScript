@@ -1,5 +1,8 @@
 # Changelog
 
+## v3.1.1 (NOV 24, 2021)
+- `dns` dependency removed.
+
 ## v3.1.0 (NOV 23, 2021)
 - Added local caching support (see the [details](https://sendbird.com/docs/chat/v3/javascript/guides/local-caching)):
   - Added `GroupChannelCollection`.

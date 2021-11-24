@@ -325,45 +325,8 @@ The `sb.setErrorFirstCallback(false)` returns callbacks to their original parame
 
 ## Changelogs
 
-### v3.1.0 (NOV 23, 2021)
+### v3.1.1 (NOV 24, 2021)
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Added local caching support (see the [details](https://sendbird.com/docs/chat/v3/javascript/guides/local-caching)):
-  - Added `GroupChannelCollection`.
-  - Added `GroupChannelCollectionHandler`.
-  - Added `GroupChannelContext`.
-  - Added `MessageCollectionInitPolicy`.
-  - Added `MessageCollection`.
-  - Added `MessageCollectionHandler`.
-  - Added `MessageContext`.
-  - Added `CollectionEventSource`.
-  - Added new parameter `localCacheEnabled` in `SendBird` constructor.
-  - Added `GroupChannelFilter` in `SendBird`.
-  - Added `MessageFilter` enum in `SendBird`.
-  - Added `messageParams` in `UserMessage`.
-  - Added `messageParams` in `FileMessage`.
-  - Added `clearCachedMessages()` in `SendBird`.
-- Added reply to channel feature:
-  - Added `includeParentMessageInfo` in `MessageRetrievalParams`.
-  - Added `includeParentMessageInfo` in `MessageListParams`.
-  - Added `includeParentMessageInfo` in `PreviousMessageListQuery`.
-  - Added `includeParentMessageInfo` in `ThreadedMessageListParams`.
-  - Added `includeParentMessageInfo` in `MessageChangeLogsParams`.
-  - Added `parentMessage` in `BaseMessage`.
-  - Deprecated `includeParentMessageText` in `MessageRetrievalParams`.
-  - Deprecated `includeParentMessageText` in `MessageListParams`.
-  - Deprecated `includeParentMessageText` in `PreviousMessageListQuery`.
-  - Deprecated `includeParentMessageText` in `ThreadedMessageListParams`.
-  - Deprecated `includeParentMessageText` in `MessageChangeLogsParams`.
-  - Added `isReplyToChannel` in `UserMessageParams`.
-  - Added `isReplyToChannel` in `FileMessageParams`.
-  - Added `isReplyToChannel` in `BaseMessage`.
-  - Added `replyType` in `MessageListParams`.
-  - Added `replyType` in `PreviousMessageListQuery`.
-  - Added `replyType` in `MessageChangeLogsParams`.
-  - Added `ReplyType` enum in `BaseMessage`.
-  - Deprecated `includeReplies` in `MessageListParams`.
-  - Deprecated `includeReplies` in `PreviousMessageListQuery`.
-  - Deprecated `includeReplies` in `MessageChangeLogsParams`.
-- Added `belongsTo()` in `MessageListParams`.
+- `dns` dependency removed.
