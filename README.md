@@ -11,7 +11,8 @@
   1. [Getting started](#getting-started)
   1. [Sending your first message](#sending-your-first-message)
   1. [Appendix](#appendix)
-  1. [Changelogs](#changelogs)
+  2. [Notice](#notice)
+  3. [Changelogs](#changelogs)
 
 <br />
 
@@ -332,7 +333,10 @@ Sendbird Chat SDK with local caching supports new functionalities such as group 
 SyncManager will be deprecated eventually as the embedded local caching serves as the new and better version of it.
 
 For further information, please see our [Docs](https://sendbird.com/docs/chat/v3/javascript/guides/local-caching).
+
 Additionally, migration guide for clients currently using SyncManager will be available soon.
+
+<br />
 
 ## Changelogs
 
