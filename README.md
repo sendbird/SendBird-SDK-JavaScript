@@ -328,7 +328,7 @@ The `sb.setErrorFirstCallback(false)` returns callbacks to their original parame
 
 ### v.3.1.0 Release (Local Caching)
 
-Local caching has been introduced to the Chat SDK in this v3.1.0 release. The newly embedded local caching functionalities can be enabled through an optional parameter `localCacheEnabled` in the `connect()`, whose default is **false**. When local caching is turned off, the SDK is backward compatible with v3.0. This means it will work exactly the same as v3.0 and therefore is compatible with SyncManager. However, we strongly recommend you to use the Chat SDK with local caching instead of SyncManager for the following reasons:
+Local caching has been introduced to the Chat SDK in this v3.1.0 release. The newly embedded local caching functionalities can be enabled through an optional parameter `localCacheEnabled` in the `Sendbird` constructor, whose default is **false**. When local caching is turned off, the SDK is backward compatible with v3.0. This means it will work exactly the same as v3.0 and therefore is compatible with SyncManager. However, we strongly recommend you to use the Chat SDK with local caching instead of SyncManager for the following reasons:
 Sendbird Chat SDK with local caching supports new functionalities such as group channel collection, message collection, and message auto-resend.
 SyncManager will be deprecated eventually as the embedded local caching serves as the new and better version of it.
 
