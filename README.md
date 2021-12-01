@@ -341,8 +341,10 @@ Additionally, migration guide for clients currently using SyncManager will be av
 
 ## Changelogs
 
-### v3.1.1 (NOV 24, 2021)
+### v3.1.2 (DEC 01, 2021)
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- `dns` dependency removed.
+- Fixed TypeScript interface in `PreviousMessageListQuery`.
+- Deprecated `includeReplies` and `includeParentMessageText`.
+- Added `replyType` and `includeParentMessageInfo`.

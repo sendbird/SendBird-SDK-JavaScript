@@ -1,5 +1,5 @@
 /**
- * Type Definitions for Sendbird SDK v3.1.1
+ * Type Definitions for Sendbird SDK v3.1.2
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/Sendbird-SDK-JavaScript
  */
@@ -1644,10 +1644,18 @@ declare namespace SendBird {
      */
     includeReaction: boolean;
     includeReactions: boolean;
+    /**
+     * @deprecated since version v3.0.159, please use {@link replyType} instead
+     */
     includeReplies: boolean;
+    /**
+     * @deprecated since version v3.0.159, please use {@link includeParentMessageInfo} instead
+     */
     includeParentMessageText: boolean;
     includeThreadInfo: boolean;
     showSubchannelMessagesOnly: boolean;
+    replyType: ReplyType[keyof ReplyType];
+    includeParentMessageInfo: boolean;
     includePollDetails: boolean;
 
     load(limit: number, reverse: boolean, messageType?: number | string, callback?: messageListCallback): Array<UserMessage | FileMessage | AdminMessage>;
