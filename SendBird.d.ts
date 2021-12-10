@@ -1,5 +1,5 @@
 /**
- * Type Definitions for Sendbird SDK v3.1.2
+ * Type Definitions for Sendbird SDK v3.1.3
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/Sendbird-SDK-JavaScript
  */
@@ -349,6 +349,8 @@ declare namespace SendBird {
     setAllowFriendDiscovery(allowFriendDiscovery: boolean, callback?: commonCallback): Promise<boolean>;
 
     clearCachedMessages(channelUrls: string[]): Promise<void[]>;
+
+    useAsyncStorageAsDatabase(AsyncStorage: object): void;
   }
   interface Options {
     useMemberAsMessageSender: boolean;
@@ -1658,8 +1660,8 @@ declare namespace SendBird {
     includeParentMessageInfo: boolean;
     includePollDetails: boolean;
 
-    load(limit: number, reverse: boolean, messageType?: number | string, callback?: messageListCallback): Array<UserMessage | FileMessage | AdminMessage>;
-    load(callback?: messageListCallback): Array<UserMessage | FileMessage | AdminMessage>;
+    load(limit: number, reverse: boolean, messageType?: number | string, callback?: messageListCallback): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
+    load(callback?: messageListCallback): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
   }
 
   /**
@@ -1872,7 +1874,7 @@ declare namespace SendBird {
     customTypes: Array<string>;
     includeFrozen: boolean;
 
-    next(callback?: openChannelListQueryCallback): Promise<OpenChannel>;
+    next(callback?: openChannelListQueryCallback): Promise<Array<OpenChannel>>;
   }
 
   /**
@@ -2475,7 +2477,7 @@ declare namespace SendBird {
 
   interface GroupChannelCollectionBuilder {
     setFilter(filter: GroupChannelFilter): GroupChannelCollectionBuilder;
-    setOrder(order: GroupChannelOrder): GroupChannelCollectionBuilder;
+    setOrder(order: GroupChannelOrder[keyof GroupChannelOrder]): GroupChannelCollectionBuilder;
     setLimit(limit: number): GroupChannelCollectionBuilder;
     build(): GroupChannelCollection;
   }

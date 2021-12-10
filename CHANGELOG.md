@@ -1,8 +1,16 @@
 # Changelog
 
-## v3.1.2 (DEC 01, 2021)
+## v3.1.3 (DEC 10, 2021)
+- Added `useAsyncStorageAsDatabase` in `SendBird` for React Native.
+- Fixed type signatures:
+  - Fixed `setOrder` in `GroupChannelCollection`.
+  - Fixed `next` in `OpenChannelListQuery`.
+  - Fixed `load` in `PreviousMessageListQuery`.
+- Improved stability.
+
+## v3.1.2 (DEC 1, 2021)
 - Fixed TypeScript interface in `PreviousMessageListQuery`.
-- Deprecated `includeReplies` and `includeParentMessageText`. 
+- Deprecated `includeReplies` and `includeParentMessageText`.
 - Added `replyType` and `includeParentMessageInfo`.
 
 ## v3.1.1 (NOV 24, 2021)
