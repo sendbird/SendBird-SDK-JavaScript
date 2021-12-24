@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.5 (DEC 24, 2021)
+- Fixed pending message not being added to a message collection issue when local cache enabled in React Native.
+- All properties of `MessageSearchQueryOptions` are now made optional.
+- Added type definitions `PUSH_TEMPLATE_DEFAULT` and `PUSH_TEMPLATE_ALTERNATIVE` in `SendBird`.
+- Added `clearCachedData()` interface in `SendBird` for local caching.
+
 ## v3.1.4 (DEC 14, 2021)
 - Improved stability.
 

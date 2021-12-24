@@ -1,5 +1,5 @@
 /**
- * Type Definitions for Sendbird SDK v3.1.4
+ * Type Definitions for Sendbird SDK v3.1.5
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/Sendbird-SDK-JavaScript
  */
@@ -118,6 +118,9 @@ declare namespace SendBird {
     friendName?: string;
   }
   interface SendBirdInstance {
+    PUSH_TEMPLATE_DEFAULT: string;
+    PUSH_TEMPLATE_ALTERNATIVE: string;
+
     User: UserStatic;
     Member: MemberStatic;
     RestrictedUser: RestrictedUserStatic;
@@ -223,7 +226,7 @@ declare namespace SendBird {
     createUserListQuery(userIds: Array<string>): UserListQuery;
     createApplicationUserListQuery(): ApplicationUserListQuery;
     createBlockedUserListQuery(): BlockedUserListQuery;
-    createMessageSearchQuery(keyword: String, options: MessageSearchQueryOptions): MessageSearchQuery;
+    createMessageSearchQuery(keyword: String, options?: MessageSearchQueryOptions): MessageSearchQuery;
 
     blockUser(userToBlock: User, callback?: userCallback): Promise<User>;
     blockUserWithUserId(userToBlock: string, callback?: userCallback): Promise<User>;
@@ -349,6 +352,7 @@ declare namespace SendBird {
     setAllowFriendDiscovery(allowFriendDiscovery: boolean, callback?: commonCallback): Promise<boolean>;
 
     clearCachedMessages(channelUrls: string[]): Promise<void[]>;
+    clearCachedData(): Promise<void>;
 
     useAsyncStorageAsDatabase(AsyncStorage: object): void;
   }
@@ -378,16 +382,16 @@ declare namespace SendBird {
     next(callback?: messageListCallback): Promise<Array<User>>;
   }
   interface MessageSearchQueryOptions {
-    limit: number;
-    reverse: boolean;
-    exactMatch: boolean;
-    channelUrl: string;
-    channelCustomType: string;
-    messageTimestampFrom: number;
-    messageTimestampTo: number;
-    order: 'score' | 'ts';
-    advancedQuery: boolean;
-    targetFields: Array<string>;
+    limit?: number;
+    reverse?: boolean;
+    exactMatch?: boolean;
+    channelUrl?: string;
+    channelCustomType?: string;
+    messageTimestampFrom?: number;
+    messageTimestampTo?: number;
+    order?: 'score' | 'ts';
+    advancedQuery?: boolean;
+    targetFields?: Array<string>;
   }
 
   interface SessionHandlerStatic {
@@ -1981,13 +1985,11 @@ declare namespace SendBird {
     value: Array<string>;
   }
   interface Reaction {
-    new(): Reaction;
     key: string;
     userIds: Array<string>;
     updatedAt: number;
   }
   interface ReactionEvent {
-    new(): ReactionEvent;
     messageId: number;
     userId: string;
     key: string;
@@ -1996,14 +1998,12 @@ declare namespace SendBird {
   }
 
   interface ThreadInfo {
-    new(): ThreadInfo;
     replyCount: number;
     mostRepliedUsers: Array<User>;
     lastRepliedAt: number;
     updatedAt: number;
   }
   interface ThreadInfoUpdateEvent {
-    new(): ThreadInfoUpdateEvent;
     threadInfo: ThreadInfo;
     targetMessageId: number;
     channelUrl: string;
@@ -2011,14 +2011,12 @@ declare namespace SendBird {
   }
 
   interface OGMetaData {
-    new(): OGMetaData;
     title: string;
     url: string;
     description: string;
     defaultImage: OGImage;
   }
   interface OGImage {
-    new(): OGImage;
     url: string;
     secureUrl: string;
     type: string;
