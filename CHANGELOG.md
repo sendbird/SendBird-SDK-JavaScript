@@ -1,5 +1,8 @@
 # Changelog
 
+## v3.1.4 (DEC 14, 2021)
+- Improved stability.
+
 ## v3.1.3 (DEC 10, 2021)
 - Added `useAsyncStorageAsDatabase` in `SendBird` for React Native.
 - Fixed type signatures:

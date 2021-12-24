@@ -341,13 +341,8 @@ Additionally, migration guide for clients currently using SyncManager will be av
 
 ## Changelogs
 
-### v3.1.3 (DEC 10, 2021)
+### v3.1.4 (DEC 14, 2021)
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Added `useAsyncStorageAsDatabase` in `SendBird` for React Native.
-- Fixed type signatures:
-  - Fixed `setOrder` in `GroupChannelCollection`.
-  - Fixed `next` in `OpenChannelListQuery`.
-  - Fixed `load` in `PreviousMessageListQuery`.
 - Improved stability.
