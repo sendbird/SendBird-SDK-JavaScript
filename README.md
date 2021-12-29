@@ -341,11 +341,9 @@ Additionally, migration guide for clients currently using SyncManager will be av
 
 ## Changelogs
 
-### v3.1.5 (DEC 24, 2021)
+### v3.1.6 (DEC 29, 2021)
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Fixed pending message not being added to a message collection issue when local cache enabled in React Native.
-- All properties of `MessageSearchQueryOptions` are now made optional.
-- Added type definitions `PUSH_TEMPLATE_DEFAULT` and `PUSH_TEMPLATE_ALTERNATIVE` in `SendBird`.
-- Added `clearCachedData()` interface in `SendBird` for local caching.
+- Bug-fix in retrying reconnect with application settings.
+- Fixed type definitions to `enum`.

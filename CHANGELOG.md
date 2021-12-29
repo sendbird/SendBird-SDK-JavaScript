@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.1.6 (DEC 29, 2021)
+- Bug-fix in retrying reconnect with application settings.
+- Fixed type definitions to `enum`.
+
 ## v3.1.5 (DEC 24, 2021)
 - Fixed pending message not being added to a message collection issue when local cache enabled in React Native.
 - All properties of `MessageSearchQueryOptions` are now made optional.

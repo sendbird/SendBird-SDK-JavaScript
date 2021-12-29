@@ -1,5 +1,5 @@
 /**
- * Type Definitions for Sendbird SDK v3.1.5
+ * Type Definitions for Sendbird SDK v3.1.6
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/Sendbird-SDK-JavaScript
  */
@@ -18,6 +18,100 @@ interface SendBirdStatic {
 
   getLogLevel(): typeof SendBird.LogLevel[keyof typeof SendBird.LogLevel];
   setLogLevel(logLevel: typeof SendBird.LogLevel[keyof typeof SendBird.LogLevel]): void;
+}
+
+declare enum CollectionEventSource {
+  // Real-time event types (0 <= code < 1000)
+  EVENT_CHANNEL_CHANGED,
+  EVENT_USER_RECEIVED_INVITATION,
+  EVENT_USER_DECLINED_INVITATION,
+  EVENT_USER_JOINED,
+  EVENT_USER_LEFT,
+  EVENT_CHANNEL_ENTER,
+  EVENT_CHANNEL_EXIT,
+  EVENT_CHANNEL_FROZEN,
+  EVENT_CHANNEL_UNFROZEN,
+  EVENT_CHANNEL_HIDDEN,
+  EVENT_CHANNEL_UNHIDDEN,
+  EVENT_TYPING_STATUS_UPDATED,
+  EVENT_OPERATOR_UPDATED,
+  EVENT_CHANNEL_METADATA_UPDATED,
+  EVENT_CHANNEL_METADATA_DELETED,
+  EVENT_CHANNEL_METACOUNTER_UPDATED,
+  EVENT_CHANNEL_METACOUNTER_DELETED,
+  EVENT_CHANNEL_DELETED,
+  EVENT_USER_MUTED,
+  EVENT_USER_UNMUTED,
+  EVENT_USER_BANNED,
+  EVENT_USER_UNBANNED,
+  EVENT_MESSAGE_RECEIVED,
+  EVENT_MESSAGE_SENT,
+  EVENT_MESSAGE_UPDATED,
+  EVENT_MESSAGE_DELETED,
+  EVENT_READ_RECEIPT_UPDATED,
+  EVENT_DELIVERY_RECEIPT_UPDATED,
+  EVENT_MENTION,
+  EVENT_REACTION_UPDATED,
+  EVENT_THREAD_INFO_UPDATED,
+
+  // Api request event types (code >= 1000)
+  CHANNEL_BACKGROUND = 1000,
+  CHANNEL_CHANGELOG,
+  MESSAGE_BACKGROUND,
+  MESSAGE_FILL,
+  MESSAGE_CHANGELOG,
+
+  LOCAL_MESSAGE_PENDING_CREATED = 2000,
+  LOCAL_MESSAGE_FAILED,
+  LOCAL_MESSAGE_CANCELED,
+  LOCAL_MESSAGE_RESEND_STARTED,
+  MESSAGE_COLLECTION_FILTER_MISMATCH,
+}
+
+declare enum GroupChannelOrder {
+  LATEST_LAST_MESSAGE = 'latest_last_message',
+  CHRONOLOGICAL = 'chronological',
+  CHANNEL_NAME_ALPHABETICAL = 'channel_name_alphabetical',
+}
+
+declare enum MessageCollectionInitPolicy {
+  CACHE_AND_REPLACE_BY_API = 'cache_and_replace_by_api',
+}
+
+declare enum QueryType {
+  AND = 'AND',
+  OR = 'OR',
+}
+declare enum SearchField {
+  MEMBER_NICKNAME = 'member_nickname',
+  CHANNEL_NAME = 'channel_name',
+}
+declare enum MemberStateFilter {
+  ALL = 'all',
+  JOINED = 'joined_only',
+  INVITED = 'invited_only',
+  INVITED_BY_FRIEND = 'invited_by_friend',
+  INVITED_BY_NON_FRIEND = 'invited_by_non_friend',
+}
+declare enum SuperChannelFilter {
+  ALL = 'all',
+  SUPER = 'super',
+  NON_SUPER = 'nonsuper',
+}
+declare enum PublicChannelFilter {
+  ALL = 'all',
+  PUBLIC = 'public',
+  PRIVATE = 'private',
+}
+declare enum UnreadChannelFilter {
+  ALL = 'all',
+  UNREAD_MESSAGE = 'unread_message',
+}
+declare enum HiddenChannelFilter {
+  UNHIDDEN = 'unhidden_only',
+  HIDDEN = 'hidden_only',
+  HIDDEN_ALLOW_AUTO_UNHIDE = 'hidden_allow_auto_unhide',
+  HIDDEN_PREVENT_AUTO_UNHIDE = 'hidden_prevent_auto_unhide',
 }
 
 declare namespace SendBird {
@@ -80,12 +174,6 @@ declare namespace SendBird {
     USER: 'MESG',
     FILE: 'FILE',
     ADMIN: 'ADMM'
-  };
-
-  type GroupChannelOrder = {
-    LATEST_LAST_MESSAGE: 'latest_last_message',
-    CHRONOLOGICAL: 'chronological',
-    CHANNEL_NAME_ALPHABETICAL: 'channel_name_alphabetical',
   };
 
   type PollStatus = {
@@ -173,7 +261,7 @@ declare namespace SendBird {
     PollListQuery: PollListQuery;
     PollVoterListQuery: PollVoterListQuery;
 
-    CollectionEventSource: CollectionEventSource;
+    CollectionEventSource: typeof CollectionEventSource;
 
     currentUser: User;
     appInfo: AppInfo;
@@ -484,26 +572,26 @@ declare namespace SendBird {
    */
   interface BaseMessageInstance {
     channelUrl: string;
-    channelType: string;
+    channelType: string | null;
     messageId: number;
     messageType: 'base' | 'user' | 'file' | 'admin';
-    data: string;
-    customType: string;
+    data: string | null;
+    customType: string | null;
     metaArrays: Array<MessageMetaArray>;
     reactions: Array<Reaction>;
-    mentionType: string;
+    mentionType: string | null;
     mentionedUsers: Array<User>;
-    sendingStatus: MessageSendingStatus[keyof MessageSendingStatus];
+    sendingStatus: MessageSendingStatus[keyof MessageSendingStatus] | null;
     silent: boolean;
     createdAt: number;
     updatedAt: number;
     parentMessageId: number;
-    parentMessageText: string;
-    threadInfo: ThreadInfo;
-    ogMetaData: OGMetaData;
-    appleCriticalAlertOptions: AppleCriticalAlertOptions;
+    parentMessageText: string | null;
+    threadInfo: ThreadInfo | null;
+    ogMetaData: OGMetaData | null;
+    appleCriticalAlertOptions: AppleCriticalAlertOptions | null;
     isReplyToChannel: boolean;
-    parentMessage: UserMessage | FileMessage | AdminMessage;
+    parentMessage: UserMessage | FileMessage | AdminMessage | null;
 
     isEqual(target: BaseMessageInstance): boolean;
     isIdentical(target: BaseMessageInstance): boolean;
@@ -596,20 +684,21 @@ declare namespace SendBird {
   }
   interface UserMessage extends BaseMessageInstance {
     messageType: 'user';
-    message: string;
-    sender: Sender;
+    message: string | null;
+    sender: Sender | null;
     reqId: string;
     translations: Object;
     /**
      * @deprecated since version v3.0.119, please use {@link BaseMessageInstance.sendingStatus} instead
      */
-    requestState: 'none' | 'pending' | 'failed' | 'succeeded';
+    requestState: 'none' | 'pending' | 'failed' | 'succeeded' | null;
     requestedMentionUserIds: Array<string>;
     errorCode: number;
     messageSurvivalSeconds: number;
     plugins: Array<Plugin>;
+    poll: Poll | null;
 
-    readonly messageParams: UserMessageParams;
+    readonly messageParams: UserMessageParams | null;
 
     applyPollUpdateEvent(event: PollUpdateEvent): boolean;
     applyPollVoteEvent(event: PollVoteEvent): boolean;
@@ -633,23 +722,23 @@ declare namespace SendBird {
   }
   interface FileMessage extends BaseMessageInstance {
     messageType: 'file';
-    sender: Sender;
+    sender: Sender | null;
     reqId: string;
-    plainUrl: string;
+    plainUrl: string | null;
     url: string;
     name: string;
     size: number;
-    type: string;
+    type: string | null;
     thumbnails: Array<ThumbnailObject>;
     /**
      * @deprecated since version v3.0.119, please use {@link BaseMessageInstance.sendingStatus} instead
      */
-    requestState: 'none' | 'pending' | 'failed' | 'succeeded';
+    requestState: 'none' | 'pending' | 'failed' | 'succeeded' | null;
     requestedMentionUserIds: Array<string>;
     errorCode: number;
     messageSurvivalSeconds: number;
 
-    readonly messageParams: FileMessageParams;
+    readonly messageParams: FileMessageParams | null;
 
     isResendable(): boolean;
     serialize(): Object;
@@ -862,11 +951,11 @@ declare namespace SendBird {
     url: string;
     name: string;
     coverUrl: string;
-    data: string;
-    customType: string;
+    data: string | null;
+    customType: string | null;
     isFrozen: boolean;
     isEphemeral: boolean;
-    creator: User;
+    creator: User | null;
     createdAt: number;
 
     isGroupChannel(): boolean;
@@ -2176,7 +2265,7 @@ declare namespace SendBird {
     isPushEnabled: boolean;
     myPushTriggerOption: 'default' | 'all' | 'mention_only' | 'off';
     myCountPreference: string;
-    lastMessage: UserMessage | FileMessage | AdminMessage;
+    lastMessage: UserMessage | FileMessage | AdminMessage | null;
     unreadMessageCount: number;
     unreadMentionCount: number;
     members: Array<Member>;
@@ -2185,7 +2274,7 @@ declare namespace SendBird {
     myMemberState: 'none' | 'joined' | 'invited';
     myRole: 'operator' | 'none';
     myMutedState: 'muted' | 'unmuted';
-    inviter: User;
+    inviter: User | null;
     invitedAt: number;
     joinedAt: number;
     isAccessCodeRequired: boolean;
@@ -2311,73 +2400,37 @@ declare namespace SendBird {
 
   type groupChannelCountCallback = (count: number, error: SendBirdError) => void;
 
-  type SearchField = {
-    MEMBER_NICKNAME: 'member_nickname',
-    CHANNEL_NAME: 'channel_name',
-  };
-  type QueryType = {
-    AND: 'AND',
-    OR: 'OR',
-  };
-  type MemberStateFilter = {
-    ALL: 'all',
-    JOINED: 'joined_only',
-    INVITED: 'invited_only',
-    INVITED_BY_FRIEND: 'invited_by_friend',
-    INVITED_BY_NON_FRIEND: 'invited_by_non_friend',
-  };
-  type SuperChannelFilter = {
-    ALL: 'all',
-    SUPER: 'super',
-    NON_SUPER: 'nonsuper',
-  };
-  type PublicChannelFilter = {
-    ALL: 'all',
-    PUBLIC: 'public',
-    PRIVATE: 'private',
-  };
-  type UnreadChannelFilter = {
-    ALL: 'all',
-    UNREAD_MESSAGE: 'unread_message',
-  };
-  type HiddenChannelFilter = {
-    UNHIDDEN: 'unhidden_only',
-    HIDDEN: 'hidden_only',
-    HIDDEN_ALLOW_AUTO_UNHIDE: 'hidden_allow_auto_unhide',
-    HIDDEN_PREVENT_AUTO_UNHIDE: 'hidden_prevent_auto_unhide',
-  };
-
   type SearchFilterParams = {
     searchQuery: string,
-    searchFields: SearchField[keyof SearchField][]
+    searchFields: SearchField[]
   };
 
   type UserIdsFilterParams = {
     userIds: string[],
     includeMode: boolean,
-    queryType: QueryType[keyof QueryType]
+    queryType: QueryType
   };
 
   interface GroupChannelFilter {
     includeEmpty: boolean;
     nicknameContainsFilter: string;
     channelNameContainsFilter: string;
-    memberStateFilter: MemberStateFilter[keyof MemberStateFilter];
+    memberStateFilter: MemberStateFilter;
     customTypesFilter: string[];
     channelUrlsFilter: string[];
-    superChannelFilter: SuperChannelFilter[keyof SuperChannelFilter];
-    publicChannelFilter: PublicChannelFilter[keyof PublicChannelFilter];
+    superChannelFilter: SuperChannelFilter;
+    publicChannelFilter: PublicChannelFilter;
     customTypeStartsWithFilter: string;
-    unreadChannelFilter: UnreadChannelFilter[keyof UnreadChannelFilter];
-    hiddenChannelFilter: HiddenChannelFilter[keyof HiddenChannelFilter];
+    unreadChannelFilter: UnreadChannelFilter;
+    hiddenChannelFilter: HiddenChannelFilter;
     includeFrozen: boolean;
     includeMetaData: boolean;
 
     searchFilter: SearchFilterParams;
     userIdsFilter: UserIdsFilterParams;
 
-    setSearchFilter(fields: SearchField[keyof SearchField][], query: string): void;
-    setUserIdsFilter(userIds: string[], includeMode: boolean, queryType: QueryType[keyof QueryType]): void;
+    setSearchFilter(fields: SearchField[], query: string): void;
+    setUserIdsFilter(userIds: string[], includeMode: boolean, queryType: QueryType): void;
 
     match(channel: GroupChannel): boolean;
   }
@@ -2385,13 +2438,13 @@ declare namespace SendBird {
   interface GroupChannelFilterStatic {
     new(): GroupChannelFilter;
 
-    QueryType: QueryType;
-    SearchField: SearchField;
-    MemberStateFilter: MemberStateFilter;
-    SuperChannelFilter: SuperChannelFilter;
-    PublicChannelFilter: PublicChannelFilter;
-    UnreadChannelFilter: UnreadChannelFilter;
-    HiddenChannelFilter: HiddenChannelFilter;
+    QueryType: typeof QueryType;
+    SearchField: typeof SearchField;
+    MemberStateFilter: typeof MemberStateFilter;
+    SuperChannelFilter: typeof SuperChannelFilter;
+    PublicChannelFilter: typeof PublicChannelFilter;
+    UnreadChannelFilter: typeof UnreadChannelFilter;
+    HiddenChannelFilter: typeof HiddenChannelFilter;
   }
 
   type MessageCollectionInitResultHandler = (err: Error, messages: BaseMessageInstance[]) => void;
@@ -2399,54 +2452,6 @@ declare namespace SendBird {
   interface MessageCollectionInitHandler {
     onCacheResult(handler: MessageCollectionInitResultHandler): MessageCollectionInitHandler;
     onApiResult(handler: MessageCollectionInitResultHandler): MessageCollectionInitHandler;
-  }
-
-  type CollectionEventSource = {
-    // Real-time event types (0 <= code < 1000)
-    EVENT_CHANNEL_CHANGED: 0,
-    EVENT_USER_RECEIVED_INVITATION: 1,
-    EVENT_USER_DECLINED_INVITATION: 2,
-    EVENT_USER_JOINED: 3,
-    EVENT_USER_LEFT: 4,
-    EVENT_CHANNEL_ENTER: 5,
-    EVENT_CHANNEL_EXIT: 6,
-    EVENT_CHANNEL_FROZEN: 7,
-    EVENT_CHANNEL_UNFROZEN: 8,
-    EVENT_CHANNEL_HIDDEN: 9,
-    EVENT_CHANNEL_UNHIDDEN: 10,
-    EVENT_TYPING_STATUS_UPDATED: 11,
-    EVENT_OPERATOR_UPDATED: 12,
-    EVENT_CHANNEL_METADATA_UPDATED: 13,
-    EVENT_CHANNEL_METADATA_DELETED: 14,
-    EVENT_CHANNEL_METACOUNTER_UPDATED: 15,
-    EVENT_CHANNEL_METACOUNTER_DELETED: 16,
-    EVENT_CHANNEL_DELETED: 17,
-    EVENT_USER_MUTED: 18,
-    EVENT_USER_UNMUTED: 19,
-    EVENT_USER_BANNED: 20,
-    EVENT_USER_UNBANNED: 21,
-    EVENT_MESSAGE_RECEIVED: 22,
-    EVENT_MESSAGE_SENT: 23,
-    EVENT_MESSAGE_UPDATED: 24,
-    EVENT_MESSAGE_DELETED: 25,
-    EVENT_READ_RECEIPT_UPDATED: 26,
-    EVENT_DELIVERY_RECEIPT_UPDATED: 27,
-    EVENT_MENTION: 28,
-    EVENT_REACTION_UPDATED: 29,
-    EVENT_THREAD_INFO_UPDATED: 30,
-
-    // Api request event types (code >= 1000)
-    CHANNEL_BACKGROUND: 1000,
-    CHANNEL_CHANGELOG: 1001,
-    MESSAGE_BACKGROUND: 1002,
-    MESSAGE_FILL: 1003,
-    MESSAGE_CHANGELOG: 1004,
-
-    LOCAL_MESSAGE_PENDING_CREATED: 2000,
-    LOCAL_MESSAGE_FAILED: 2001,
-    LOCAL_MESSAGE_CANCELED: 2002,
-    LOCAL_MESSAGE_RESEND_STARTED: 2003,
-    MESSAGE_COLLECTION_FILTER_MISMATCH: 2004,
   }
 
   interface GroupChannelContext {
@@ -2470,12 +2475,12 @@ declare namespace SendBird {
   }
 
   interface GroupChannelCollectionStatic {
-    GroupChannelOrder: GroupChannelOrder;
+    GroupChannelOrder: typeof GroupChannelOrder;
   }
 
   interface GroupChannelCollectionBuilder {
     setFilter(filter: GroupChannelFilter): GroupChannelCollectionBuilder;
-    setOrder(order: GroupChannelOrder[keyof GroupChannelOrder]): GroupChannelCollectionBuilder;
+    setOrder(order: GroupChannelOrder): GroupChannelCollectionBuilder;
     setLimit(limit: number): GroupChannelCollectionBuilder;
     build(): GroupChannelCollection;
   }
@@ -2495,10 +2500,6 @@ declare namespace SendBird {
     onHugeGapDetected: () => void;
   }
 
-  type MessageCollectionInitPolicy = {
-    CACHE_AND_REPLACE_BY_API: 'cache_and_replace_by_api',
-  }
-
   interface MessageCollection {
     readonly channel: BaseChannel;
     readonly succeededMessages: BaseMessageInstance[];
@@ -2508,7 +2509,7 @@ declare namespace SendBird {
     readonly hasPrevious: boolean;
     readonly hasNext: boolean;
 
-    initialize(initPolicy: MessageCollectionInitPolicy[keyof MessageCollectionInitPolicy]): MessageCollectionInitHandler;
+    initialize(initPolicy: MessageCollectionInitPolicy): MessageCollectionInitHandler;
     loadPrevious(): Promise<BaseMessageInstance[]>;
     loadNext(): Promise<BaseMessageInstance[]>;
     removeFailedMessages(messages: BaseMessageInstance[]): Promise<string[]>;
@@ -2518,7 +2519,7 @@ declare namespace SendBird {
   }
 
   interface MessageCollectionStatic {
-    MessageCollectionInitPolicy: MessageCollectionInitPolicy;
+    MessageCollectionInitPolicy: typeof MessageCollectionInitPolicy;
   }
 
   interface MessageCollectionBuilder {
