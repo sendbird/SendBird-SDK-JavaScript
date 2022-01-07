@@ -341,9 +341,13 @@ Additionally, migration guide for clients currently using SyncManager will be av
 
 ## Changelogs
 
-### v3.1.6 (DEC 29, 2021)
+### v3.1.7 (JAN 07, 2022)
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Bug-fix in retrying reconnect with application settings.
-- Fixed type definitions to `enum`.
+- Applied type narrowing to `BaseMessage`, `BaseChannel` and  `messageCallback`.
+- Replaced all `File` type with the new `FileType` for React Native support.
+- Fixed create channel with cover image error in React Native.
+- Fixed child message's `parentMessage` update on parent message update when local cache is enabled.
+- Added `applyParentMessage` in `BaseMessage`.
+- Improved stability.

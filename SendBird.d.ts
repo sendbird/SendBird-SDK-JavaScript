@@ -1,5 +1,5 @@
 /**
- * Type Definitions for Sendbird SDK v3.1.6
+ * Type Definitions for Sendbird SDK v3.1.7
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/Sendbird-SDK-JavaScript
  */
@@ -279,7 +279,7 @@ declare namespace SendBird {
     reconnect(): boolean; // You can initiate auto-reconnect manually.
 
     updateCurrentUserInfo(nickname: string, profileUrl: string, callback?: userCallback): Promise<User>;
-    updateCurrentUserInfoWithProfileImage(nickname: string, profileImageFile: File, callback?: userCallback): Promise<User>;
+    updateCurrentUserInfoWithProfileImage(nickname: string, profileImageFile: FileType, callback?: userCallback): Promise<User>;
     updateCurrentUserInfoWithPreferredLanguages(preferredLanguages: Array<string>, callback?: userCallback): Promise<User>;
 
     /**
@@ -597,9 +597,9 @@ declare namespace SendBird {
     isIdentical(target: BaseMessageInstance): boolean;
     isOpenChannel(): boolean;
     isGroupChannel(): boolean;
-    isUserMessage(): boolean;
-    isFileMessage(): boolean;
-    isAdminMessage(): boolean;
+    isUserMessage(): this is UserMessage;
+    isFileMessage(): this is FileMessage;
+    isAdminMessage(): this is AdminMessage;
     serialize(): Object;
     getMetaArraysByKeys(keys: Array<string>): Array<MessageMetaArray>;
     applyReactionEvent(event: ReactionEvent): void;
@@ -618,6 +618,7 @@ declare namespace SendBird {
      * @deprecated
      */
     getMetaArrayByKeys(keys: Array<string>): Object;
+    applyParentMessage(updatedParentMessage: UserMessage | FileMessage | AdminMessage): boolean;
   }
 
   interface AdminMessage extends BaseMessageInstance {
@@ -627,7 +628,7 @@ declare namespace SendBird {
   }
   interface AdminMessageStatic {
     buildFromSerializedData(serializedObject: Object): AdminMessage;
-    getMessage(params: MessageRetrievalParams, callback?: messageCallback): Promise<AdminMessage>;
+    getMessage(params: MessageRetrievalParams, callback?: messageCallback<AdminMessage>): Promise<AdminMessage>;
   }
 
   interface GroupChannelTotalUnreadMessageCountParams {
@@ -708,12 +709,12 @@ declare namespace SendBird {
   }
   interface UserMessageStatic {
     buildFromSerializedData(serializedObject: Object): UserMessage;
-    getMessage(params: MessageRetrievalParams, callback?: messageCallback): Promise<UserMessage>;
+    getMessage(params: MessageRetrievalParams, callback?: messageCallback<UserMessage>): Promise<UserMessage>;
   }
 
   interface FileMessageParams extends BaseMessageParams {
     new(): FileMessageParams;
-    file: Blob;
+    file: FileType;
     fileUrl: string;
     fileName: string;
     fileSize: number;
@@ -745,7 +746,7 @@ declare namespace SendBird {
   }
   interface FileMessageStatic {
     buildFromSerializedData(serializedObject: Object): FileMessage;
-    getMessage(params: MessageRetrievalParams, callback?: messageCallback): Promise<FileMessage>;
+    getMessage(params: MessageRetrievalParams, callback?: messageCallback<FileMessage>): Promise<FileMessage>;
   }
 
   interface MessageRetrievalParams {
@@ -860,6 +861,20 @@ declare namespace SendBird {
   }
 
   /**
+   * File interface for React Native
+   * @see {@link https://github.com/facebook/react-native/blob/main/Libraries/Network/FormData.js#L73-L85} for further information about interface.
+   * For the reason that the name and type properties are not optional, refer {@link module:utils/FileConverter#isFileLikeObject}
+   */
+  interface ReactNativeFileLikeObject {
+    uri: string;
+    name: string;
+    type: string
+    size?: number;
+  }
+
+  type FileType = File | Blob | ReactNativeFileLikeObject;
+
+  /**
    * User
    */
   interface User {
@@ -890,9 +905,6 @@ declare namespace SendBird {
 
   interface Sender extends User {
     isBlockedByMe: boolean;
-  }
-  interface SenderStatic {
-    buildFromSerializedData(serializedObject: Object): Sender;
   }
 
   interface Member extends User {
@@ -927,7 +939,7 @@ declare namespace SendBird {
     sent: (message: FileMessage, error: SendBirdError) => void;
     complete: (error: SendBirdError) => void;
   };
-  type messageCallback = (message: UserMessage | FileMessage | AdminMessage, error: SendBirdError) => void;
+  type messageCallback<T = UserMessage | FileMessage | AdminMessage> = (message: T, error: SendBirdError) => void;
   type reactionEventCallback = (event: ReactionEvent, error: SendBirdError) => void;
   type cancelUploadingFileMessageCallback = (isSuccess: boolean, error: SendBirdError) => void;
   type fileUploadprogressHandler = (event: ProgressEvent) => void;
@@ -958,8 +970,8 @@ declare namespace SendBird {
     creator: User | null;
     createdAt: number;
 
-    isGroupChannel(): boolean;
-    isOpenChannel(): boolean;
+    isGroupChannel(): this is GroupChannel;
+    isOpenChannel(): this is OpenChannel;
     serialize(): Object;
 
     /**
@@ -1352,141 +1364,141 @@ declare namespace SendBird {
 
     /** FileMessage  */
     sendFileMessage(fileMessageParams: FileMessageParams, callback: messageCallback): FileMessage;
-    sendFileMessage(file: File, callback: messageCallback): FileMessage;
+    sendFileMessage(file: FileType, callback: messageCallback): FileMessage;
     /**
      * @deprecated
      */
-    sendFileMessage(file: File, data: string, callback: messageCallback): FileMessage;
+    sendFileMessage(file: FileType, data: string, callback: messageCallback): FileMessage;
     /**
      * @deprecated
      */
-    sendFileMessage(file: File, data: string, customType: string, callback: messageCallback): FileMessage;
+    sendFileMessage(file: FileType, data: string, customType: string, callback: messageCallback): FileMessage;
     /**
      * @deprecated
      */
     sendFileMessage(
-      file: File,
+      file: FileType,
       data: string,
       customType: string,
       thumbnailSizes: Array<ThumbnailSize>,
-      callback: messageCallback
+      callback: messageCallback<FileMessage>
     ): FileMessage;
     /**
      * @deprecated
      */
     sendFileMessage(
-      file: File,
+      file: FileType,
       name: string,
       type: string,
       size: number,
       data: string,
-      callback: messageCallback
+      callback: messageCallback<FileMessage>
     ): FileMessage;
     /**
      * @deprecated
      */
     sendFileMessage(
-      file: File,
+      file: FileType,
       name: string,
       type: string,
       size: number,
       data: string,
       customType: string,
-      callback: messageCallback
+      callback: messageCallback<FileMessage>
     ): FileMessage;
     sendFileMessage(
-      file: File,
+      file: FileType,
       name: string,
       type: string,
       size: number,
       data: string,
       customType: string,
       thumbnailSizes: Array<ThumbnailSize>,
-      callback: messageCallback
+      callback: messageCallback<FileMessage>
     ): FileMessage;
 
     sendFileMessage(
       fileMessageParams: FileMessageParams,
       progressHandler: fileUploadprogressHandler,
-      callback: messageCallback
+      callback: messageCallback<FileMessage>
     ): FileMessage;
-    sendFileMessage(file: File, progressHandler: fileUploadprogressHandler, callback: messageCallback): FileMessage;
+    sendFileMessage(file: FileType, progressHandler: fileUploadprogressHandler, callback: messageCallback): FileMessage;
     /**
      * @deprecated
      */
     sendFileMessage(
-      file: File,
+      file: FileType,
       data: string,
       progressHandler: fileUploadprogressHandler,
-      callback: messageCallback
+      callback: messageCallback<FileMessage>
     ): FileMessage;
     /**
      * @deprecated
      */
     sendFileMessage(
-      file: File,
-      data: string,
-      customType: string,
-      progressHandler: fileUploadprogressHandler,
-      callback: messageCallback
-    ): FileMessage;
-    /**
-     * @deprecated
-     */
-    sendFileMessage(
-      file: File,
-      data: string,
-      customType: string,
-      thumbnailSizes: Array<ThumbnailSize>,
-      progressHandler: fileUploadprogressHandler,
-      callback: messageCallback
-    ): FileMessage;
-    /**
-     * @deprecated
-     */
-    sendFileMessage(
-      file: File,
-      name: string,
-      type: string,
-      size: number,
-      data: string,
-      progressHandler: fileUploadprogressHandler,
-      callback: messageCallback
-    ): FileMessage;
-    /**
-     * @deprecated
-     */
-    sendFileMessage(
-      file: File,
-      name: string,
-      type: string,
-      size: number,
+      file: FileType,
       data: string,
       customType: string,
       progressHandler: fileUploadprogressHandler,
-      callback: messageCallback
+      callback: messageCallback<FileMessage>
     ): FileMessage;
+    /**
+     * @deprecated
+     */
     sendFileMessage(
-      file: File,
-      name: string,
-      type: string,
-      size: number,
+      file: FileType,
       data: string,
       customType: string,
       thumbnailSizes: Array<ThumbnailSize>,
       progressHandler: fileUploadprogressHandler,
-      callback: messageCallback
+      callback: messageCallback<FileMessage>
+    ): FileMessage;
+    /**
+     * @deprecated
+     */
+    sendFileMessage(
+      file: FileType,
+      name: string,
+      type: string,
+      size: number,
+      data: string,
+      progressHandler: fileUploadprogressHandler,
+      callback: messageCallback<FileMessage>
+    ): FileMessage;
+    /**
+     * @deprecated
+     */
+    sendFileMessage(
+      file: FileType,
+      name: string,
+      type: string,
+      size: number,
+      data: string,
+      customType: string,
+      progressHandler: fileUploadprogressHandler,
+      callback: messageCallback<FileMessage>
+    ): FileMessage;
+    sendFileMessage(
+      file: FileType,
+      name: string,
+      type: string,
+      size: number,
+      data: string,
+      customType: string,
+      thumbnailSizes: Array<ThumbnailSize>,
+      progressHandler: fileUploadprogressHandler,
+      callback: messageCallback<FileMessage>
     ): FileMessage;
 
-    sendFileMessage(file: string, callback: messageCallback): FileMessage;
+    sendFileMessage(file: string, callback: messageCallback<FileMessage>): FileMessage;
     /**
      * @deprecated
      */
-    sendFileMessage(file: string, data: string, callback: messageCallback): FileMessage;
+    sendFileMessage(file: string, data: string, callback: messageCallback<FileMessage>): FileMessage;
     /**
      * @deprecated
      */
-    sendFileMessage(file: string, data: string, customType: string, callback: messageCallback): FileMessage;
+    sendFileMessage(file: string, data: string, customType: string, callback: messageCallback<FileMessage>): FileMessage;
     /**
      * @deprecated
      */
@@ -1496,7 +1508,7 @@ declare namespace SendBird {
       type: string,
       size: number,
       data: string,
-      callback: messageCallback
+      callback: messageCallback<FileMessage>
     ): FileMessage;
     sendFileMessage(
       file: string,
@@ -1505,13 +1517,13 @@ declare namespace SendBird {
       size: number,
       data: string,
       customType: string,
-      callback: messageCallback
+      callback: messageCallback<FileMessage>
     ): FileMessage;
 
     /**
      * @deprecated
      */
-    sendFileMessage(file: string, progressHandler: fileUploadprogressHandler, callback: messageCallback): FileMessage;
+    sendFileMessage(file: string, progressHandler: fileUploadprogressHandler, callback: messageCallback<FileMessage>): FileMessage;
     /**
      * @deprecated
      */
@@ -1519,7 +1531,7 @@ declare namespace SendBird {
       file: string,
       data: string,
       progressHandler: fileUploadprogressHandler,
-      callback: messageCallback
+      callback: messageCallback<FileMessage>
     ): FileMessage;
     /**
      * @deprecated
@@ -1529,7 +1541,7 @@ declare namespace SendBird {
       data: string,
       customType: string,
       progressHandler: fileUploadprogressHandler,
-      callback: messageCallback
+      callback: messageCallback<FileMessage>
     ): FileMessage;
     /**
      * @deprecated
@@ -1541,7 +1553,7 @@ declare namespace SendBird {
       size: number,
       data: string,
       progressHandler: fileUploadprogressHandler,
-      callback: messageCallback
+      callback: messageCallback<FileMessage>
     ): FileMessage;
     /**
      * @deprecated
@@ -1554,7 +1566,7 @@ declare namespace SendBird {
       data: string,
       customType: string,
       progressHandler: fileUploadprogressHandler,
-      callback: messageCallback
+      callback: messageCallback<FileMessage>
     ): FileMessage;
 
     sendFileMessages(
@@ -1563,52 +1575,52 @@ declare namespace SendBird {
     ): Array<FileMessage>;
 
     /** UserMessage  */
-    sendUserMessage(userMessageParams: UserMessageParams, callback: messageCallback): UserMessage;
-    sendUserMessage(message: string, callback: messageCallback): UserMessage;
+    sendUserMessage(userMessageParams: UserMessageParams, callback: messageCallback<UserMessage>): UserMessage;
+    sendUserMessage(message: string, callback: messageCallback<UserMessage>): UserMessage;
     /**
      * @deprecated
      */
-    sendUserMessage(message: string, data: string, callback: messageCallback): UserMessage;
+    sendUserMessage(message: string, data: string, callback: messageCallback<UserMessage>): UserMessage;
     /**
      * @deprecated
      */
-    sendUserMessage(message: string, data: string, customType: string, callback: messageCallback): UserMessage;
+    sendUserMessage(message: string, data: string, customType: string, callback: messageCallback<UserMessage>): UserMessage;
     sendUserMessage(
       message: string,
       data: string,
       customType: string,
       translationTargetLanguages: Array<string>,
-      callback: messageCallback
+      callback: messageCallback<UserMessage>
     ): UserMessage;
 
     resendUserMessage(userMessage: UserMessage, callback?: messageCallback): Promise<UserMessage>;
     resendFileMessage(fileMessage: FileMessage, callback?: messageCallback): Promise<FileMessage>;
-    resendFileMessage(fileMessage: FileMessage, file: Blob, callback?: messageCallback): Promise<FileMessage>;
+    resendFileMessage(fileMessage: FileMessage, file: FileType, callback?: messageCallback): Promise<FileMessage>;
 
     translateUserMessage(
       message: UserMessage,
       translationTargetLanguages: Array<string>,
-      callback?: messageCallback
+      callback?: messageCallback<UserMessage>
     ): Promise<UserMessage>;
 
     /** Edit Message  */
-    updateFileMessage(messageId: number, data: string, customType: string, callback?: messageCallback): Promise<FileMessage>;
-    updateFileMessage(messageId: number, fileMessageParams: FileMessageParams, callback?: messageCallback): Promise<FileMessage>;
+    updateFileMessage(messageId: number, data: string, customType: string, callback?: messageCallback<FileMessage>): Promise<FileMessage>;
+    updateFileMessage(messageId: number, fileMessageParams: FileMessageParams, callback?: messageCallback<FileMessage>): Promise<FileMessage>;
     updateUserMessage(
       messageId: number,
       message: string,
       data: string,
       customType: string,
-      callback?: messageCallback
+      callback?: messageCallback<UserMessage>
     ): Promise<UserMessage>;
-    updateUserMessage(messageId: number, userMessageParams: UserMessageParams, callback?: messageCallback): Promise<UserMessage>;
+    updateUserMessage(messageId: number, userMessageParams: UserMessageParams, callback?: messageCallback<UserMessage>): Promise<UserMessage>;
     deleteMessage(message: FileMessage, callback?: commonCallback): Promise<Object>;
     deleteMessage(message: UserMessage, callback?: commonCallback): Promise<Object>;
     cancelUploadingFileMessage(messageReqId: string, callback: cancelUploadingFileMessageCallback): boolean;
 
     /** Copy Message */
-    copyUserMessage(channel: BaseChannel, message: UserMessage, callback: messageCallback): UserMessage;
-    copyFileMessage(channel: BaseChannel, message: FileMessage, callback: messageCallback): FileMessage;
+    copyUserMessage(channel: BaseChannel, message: UserMessage, callback: messageCallback<UserMessage>): UserMessage;
+    copyFileMessage(channel: BaseChannel, message: FileMessage, callback: messageCallback<FileMessage>): FileMessage;
 
     /** Operators */
     addOperators(operatorUserIds: Array<string>, callback?: commonCallback): Promise<Object>;
@@ -1767,7 +1779,7 @@ declare namespace SendBird {
     new(): OpenChannelParams;
     channelUrl: string;
     name: string;
-    coverUrlOrImage: string | File;
+    coverUrlOrImage: string | FileType;
     data: string;
     customType: string;
 
@@ -1788,20 +1800,20 @@ declare namespace SendBird {
     createBannedUserListQuery(): BannedUserListQuery;
 
     updateChannel(params: OpenChannelParams, callback?: openChannelCallback): Promise<OpenChannel>;
-    updateChannel(name: string, coverUrlOrImageFile: string | File, data: string, callback?: openChannelCallback): Promise<OpenChannel>;
+    updateChannel(name: string, coverUrlOrImageFile: string | FileType, data: string, callback?: openChannelCallback): Promise<OpenChannel>;
     /**
      * @deprecated
      */
     updateChannel(
       name: string,
-      coverUrlOrImageFile: string | File,
+      coverUrlOrImageFile: string | FileType,
       data: string,
       operatorUserIds: Array<string> | string,
       callback?: openChannelCallback
     ): Promise<OpenChannel>;
     updateChannel(
       name: string,
-      coverUrlOrImageFile: string | File,
+      coverUrlOrImageFile: string | FileType,
       data: string,
       operatorUserIds: Array<string> | string,
       customType: string,
@@ -1810,14 +1822,14 @@ declare namespace SendBird {
 
     updateChannelWithOperatorUserIds(
       name: string,
-      coverUrlOrImageFile: string | File,
+      coverUrlOrImageFile: string | FileType,
       data: string,
       operatorUserIds: Array<string> | string,
       callback?: openChannelCallback
     ): Promise<OpenChannel>;
     updateChannelWithOperatorUserIds(
       name: string,
-      coverUrlOrImageFile: string | File,
+      coverUrlOrImageFile: string | FileType,
       data: string,
       operatorUserIds: Array<string> | string,
       customType: string,
@@ -1918,21 +1930,21 @@ declare namespace SendBird {
     /**
      * @deprecated
      */
-    createChannel(name: string, coverUrlOrImageFile: string | File, data: string, callback?: openChannelCallback): Promise<OpenChannel>;
+    createChannel(name: string, coverUrlOrImageFile: string | FileType, data: string, callback?: openChannelCallback): Promise<OpenChannel>;
 
     /**
      * @deprecated
      */
     createChannel(
       name: string,
-      coverUrlOrImageFile: string | File,
+      coverUrlOrImageFile: string | FileType,
       data: string,
       operatorUserIds: Array<string> | string,
       callback?: openChannelCallback
     ): Promise<OpenChannel>;
     createChannel(
       name: string,
-      coverUrlOrImageFile: string | File,
+      coverUrlOrImageFile: string | FileType,
       data: string,
       operatorUserIds: Array<string> | string,
       customType: string,
@@ -1941,14 +1953,14 @@ declare namespace SendBird {
 
     createChannelWithOperatorUserIds(
       name: string,
-      coverUrlOrImageFile: string | File,
+      coverUrlOrImageFile: string | FileType,
       data: string,
       operatorUserIds: Array<string> | string,
       callback?: openChannelCallback
     ): Promise<OpenChannel>;
     createChannelWithOperatorUserIds(
       name: string,
-      coverUrlOrImageFile: string | File,
+      coverUrlOrImageFile: string | FileType,
       data: string,
       operatorUserIds: Array<string> | string,
       customType: string,
@@ -2021,7 +2033,7 @@ declare namespace SendBird {
     data: string;
     customType: string;
     coverUrl: string;
-    coverImage: File;
+    coverImage: FileType;
     operators: Array<User>;
     operatorUserIds: Array<string>;
     accessCode: string;
@@ -2290,21 +2302,21 @@ declare namespace SendBird {
     delete(callback?: commonCallback): Promise<Object>;
 
     updateChannel(groupChannelParams: GroupChannelParams, callback?: groupChannelCallback): Promise<GroupChannel>;
-    updateChannel(name: string, coverUrlOrImageFile: string | File, data: string, callback?: groupChannelCallback): Promise<GroupChannel>;
+    updateChannel(name: string, coverUrlOrImageFile: string | FileType, data: string, callback?: groupChannelCallback): Promise<GroupChannel>;
     /**
      * @deprecated
      */
     updateChannel(
       isDistinct: boolean,
       name: string,
-      coverUrlOrImageFile: string | File,
+      coverUrlOrImageFile: string | FileType,
       data: string,
       callback?: groupChannelCallback
     ): Promise<GroupChannel>;
     updateChannel(
       isDistinct: boolean,
       name: string,
-      coverUrlOrImageFile: string | File,
+      coverUrlOrImageFile: string | FileType,
       data: string,
       customType: string,
       callback?: groupChannelCallback
@@ -2572,7 +2584,7 @@ declare namespace SendBird {
       users: Array<User>,
       isDistinct: boolean,
       name: string,
-      coverUrlOrImageFile: string | File,
+      coverUrlOrImageFile: string | FileType,
       data: string,
       callback?: groupChannelCallback
     ): Promise<GroupChannel>;
@@ -2580,7 +2592,7 @@ declare namespace SendBird {
       users: Array<User>,
       isDistinct: boolean,
       name: string,
-      coverUrlOrImageFile: string | File,
+      coverUrlOrImageFile: string | FileType,
       data: string,
       customType: string,
       callback?: groupChannelCallback
@@ -2611,7 +2623,7 @@ declare namespace SendBird {
       userIds: Array<string>,
       isDistinct: boolean,
       name: string,
-      coverUrlOrImageFile: string | File,
+      coverUrlOrImageFile: string | FileType,
       data: string,
       callback?: groupChannelCallback
     ): Promise<GroupChannel>;
@@ -2619,7 +2631,7 @@ declare namespace SendBird {
       userIds: Array<string>,
       isDistinct: boolean,
       name: string,
-      coverUrlOrImageFile: string | File,
+      coverUrlOrImageFile: string | FileType,
       data: string,
       customType: string,
       callback?: groupChannelCallback
