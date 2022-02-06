@@ -2459,7 +2459,9 @@ declare namespace SendBird {
     HiddenChannelFilter: typeof HiddenChannelFilter;
   }
 
-  type MessageCollectionInitResultHandler = (err: Error, messages: BaseMessageInstance[]) => void;
+  type AnyMessage = UserMessage | FileMessage | AdminMessage
+
+  type MessageCollectionInitResultHandler = (err: Error, messages: AnyMessage[]) => void;
 
   interface MessageCollectionInitHandler {
     onCacheResult(handler: MessageCollectionInitResultHandler): MessageCollectionInitHandler;
@@ -2503,20 +2505,23 @@ declare namespace SendBird {
     readonly sendingStatus: MessageSendingStatus[keyof MessageSendingStatus];
   }
 
+
+  type AnyChannel = OpenChannel | GroupChannel
+
   interface MessageCollectionHandler {
-    onMessagesAdded: (context: MessageContext, channel: BaseChannel, messages: BaseMessageInstance[]) => void;
-    onMessagesUpdated: (context: MessageContext, channel: BaseChannel, messages: BaseMessageInstance[]) => void;
-    onMessagesDeleted: (context: MessageContext, channel: BaseChannel, messages: BaseMessageInstance[]) => void;
-    onChannelUpdated: (context: GroupChannelContext, channel: BaseChannel) => void;
+    onMessagesAdded: (context: MessageContext, channel: AnyChannel, messages: AnyMessage[]) => void;
+    onMessagesUpdated: (context: MessageContext, channel: AnyChannel, messages: AnyMessage[]) => void;
+    onMessagesDeleted: (context: MessageContext, channel: AnyChannel, messages: AnyMessage[]) => void;
+    onChannelUpdated: (context: GroupChannelContext, channel: AnyChannel) => void;
     onChannelDeleted: (context: GroupChannelContext, channelUrl: string) => void;
     onHugeGapDetected: () => void;
   }
 
   interface MessageCollection {
-    readonly channel: BaseChannel;
-    readonly succeededMessages: BaseMessageInstance[];
-    readonly pendingMessages: BaseMessageInstance[];
-    readonly failedMessages: BaseMessageInstance[];
+    readonly channel: AnyChannel;
+    readonly succeededMessages: AnyMessage[];
+    readonly pendingMessages: AnyMessage[];
+    readonly failedMessages: AnyMessage[];
     readonly startingPoint: number;
     readonly hasPrevious: boolean;
     readonly hasNext: boolean;
