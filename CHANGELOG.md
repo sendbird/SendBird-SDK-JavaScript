@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.1.8 (FEB 11, 2022)
+- Fixed duplicate file messages being sent by `sendFileMessage()` in React Native.
+- Fixed new messages not being fetched on websocket connect/reconnect in `MessageCollection`.
+- 
 ## v3.1.7 (JAN 07, 2022)
 - Applied type narrowing to `BaseMessage`, `BaseChannel` and  `messageCallback`.
 - Replaced all `File` type with the new `FileType` for React Native support.

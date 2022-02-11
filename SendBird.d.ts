@@ -1,5 +1,5 @@
 /**
- * Type Definitions for Sendbird SDK v3.1.7
+ * Type Definitions for Sendbird SDK v3.1.8
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/Sendbird-SDK-JavaScript
  */
@@ -9,15 +9,22 @@ export as namespace SendBird;
 
 declare const SendBird: SendBirdStatic;
 
+declare interface SendBirdParams {
+  appId: string;
+  localCacheEnabled?: boolean;
+}
+
 interface SendBirdStatic {
   version: number;
-  new({ appId, localCacheEnabled }: { appId: string, localCacheEnabled?: boolean }): SendBird.SendBirdInstance;
+  new(sendBirdParams: SendBirdParams): SendBird.SendBirdInstance;
   getInstance(): SendBird.SendBirdInstance;
 
   LogLevel: SendBird.LogLevel;
 
   getLogLevel(): typeof SendBird.LogLevel[keyof typeof SendBird.LogLevel];
   setLogLevel(logLevel: typeof SendBird.LogLevel[keyof typeof SendBird.LogLevel]): void;
+  getAppVersion(): string;
+  setAppVersion(appVersion: string): void;
 }
 
 declare enum CollectionEventSource {
