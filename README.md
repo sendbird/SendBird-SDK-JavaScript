@@ -341,9 +341,12 @@ Additionally, migration guide for clients currently using SyncManager will be av
 
 ## Changelogs
 
-### v3.1.8 (FEB 11, 2022)
+### v3.1.9 (MAR 16, 2022)
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Fixed duplicate file messages being sent by `sendFileMessage()` in React Native.
-- Fixed new messages not being fetched on websocket connect/reconnect in `MessageCollection`.
+- Deprecated `ConnectionManager` in `SendBird`.
+- Fixed wrong channel list order in `GroupChannelCollection`.
+- Added GroupChannelTotalUnreadChannelCountParams.
+- Added `getTotalUnreadChannelCount(params)` in `SendBird`.
+-

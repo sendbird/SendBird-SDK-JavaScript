@@ -1,12 +1,21 @@
 # Deprecated classes, methods, properties
 
 
+## v3.1.9
+
+### Classes
+
+| Old class | New Class |
+| --------- | --------- |
+| ConnectionManager | N/A |
+
+
 ## v3.0.159
 
 ### Methods
 
 | Old class | Old property | New class | New property |
-| --------- | ----------- | --------- | ---------- |
+| --------- | ------------ | --------- | ------------ |
 | MessageRetrievalParams | includeParentMessageText: boolean | MessageRetrievalParams | includeParentMessageInfo: boolean |
 | PreviousMessageListQuery | includeParentMessageText: boolean | PreviousMessageListQuery | includeParentMessageInfo: boolean |
 | PreviousMessageListQuery | includeReplies: boolean | PreviousMessageListQuery | replyType: ReplyType |
@@ -22,7 +31,7 @@
 ### Methods
 
 | Old class | Old method | New class | New method |
-| --------- | ----------- | --------- | ---------- |
+| --------- | ---------- | --------- | ---------- |
 | GroupChannel | markAsRead(): void | GroupChannel | markAsRead(callback: VoidCallback): Promise&lt;void&gt; |
 
 
@@ -31,7 +40,7 @@
 ### Methods
 
 | Old class | Old method | New class | New method |
-| --------- | ----------- | --------- | ---------- |
+| --------- | ---------- | --------- | ---------- |
 | GroupChannel | markAsDelivered(): void | SendBird | markAsDelivered(channelUrl: String): void |
 
 
@@ -40,7 +49,7 @@
 ### Properties
 
 | Old class | Old property | New class | New property |
-| --------- | ---------- | --------- | ---------- |
+| --------- | ------------ | --------- | ------------ |
 | UserMessage | sendingStatus: string | BaseMessage | sendingStatus: string |
 | FileMessage | sendingStatus: string | BaseMessage | sendingStatus: string |
 | AdminMessage | N/A | BaseMessage | sendingStatus: string |
@@ -63,7 +72,7 @@
 ### Properties
 
 | Old class | Old property | New class | New property |
-| --------- | ---------- | --------- | ---------- |
+| --------- | ------------ | --------- | ------------ |
 | PreviousMessageListQuery | includeReaction: boolean | PreviousMessageListQuery | includeReactions: boolean |
 | MessageChangeLogsParams | includeReaction: boolean | MessageChangeLogsParams | includeReactions: boolean |
 | MessageListParams | includeReaction: boolean | MessageListParams | includeReactions: boolean |
@@ -148,7 +157,7 @@
 ### Properties
 
 | Old class | Old property | New class | New property |
-| --------- | ---------- | --------- | ---------- |
+| --------- | ------------ | --------- | ------------ |
 | BaseMessageParams | metaArrayKeys: string[] | BaseMessageParams | metaArrays: MessageMetaArray[] |
 
 
@@ -157,7 +166,7 @@
 ### Properties
 
 | Old class | Old property | New class | New property |
-| --------- | ---------- | --------- | ---------- |
+| --------- | ------------ | --------- | ------------ |
 | UserMessage | requestState: string | UserMessage | sendingStatus: string |
 | FileMessage | requestState: string | FileMessage | sendingStatus: string |
 
@@ -174,7 +183,7 @@
 ### Methods
 
 | Old class | Old method | New class | New method/property |
-| --------- | ---------- | --------- | ---------- |
+| --------- | ---------- | --------- | ------------------- |
 | SendBird | getCurrentUserId(): string | SendBird | currentUser: User |
 
 
@@ -200,7 +209,7 @@
 ### Properties
 
 | Old class | Old property | New class | New property |
-| --------- | ---------- | --------- | ---------- |
+| --------- | ------------ | --------- | ------------ |
 | GroupChannel | isPushEnabled: boolean | GroupChannel | myPushTriggerOption: string |
 
 
@@ -225,7 +234,7 @@
 ### Properties
 
 | Old class | Old property | New class | New property |
-| --------- | ---------- | --------- | ---------- |
+| --------- | ------------ | --------- | ------------ |
 | UserMessageParams | targetLanguages: string[] | UserMessageParams | translationTargetLanguages: string[] |
 
 
@@ -257,7 +266,7 @@
 ### Properties
 
 | Old class | Old property | New class | New property |
-| --------- | ---------- | --------- | ---------- |
+| --------- | ------------ | --------- | ------------ |
 | GroupChannelListQuery | customTypeFilter: string | GroupChannelListQuery | customTypesFilter: string[] |
 
 

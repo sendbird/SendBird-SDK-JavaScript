@@ -1,5 +1,5 @@
 /**
- * Type Definitions for Sendbird SDK v3.1.8
+ * Type Definitions for Sendbird SDK v3.1.9
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/Sendbird-SDK-JavaScript
  */
@@ -256,6 +256,7 @@ declare namespace SendBird {
     UserMessageParams: UserMessageParams;
     FileMessageParams: FileMessageParams;
     GroupChannelTotalUnreadMessageCountParams: GroupChannelTotalUnreadMessageCountParams;
+    GroupChannelTotalUnreadChannelCountParams: GroupChannelTotalUnreadChannelCountParams;
     ScheduledUserMessageParams: ScheduledUserMessageParams;
     GroupChannelChangeLogsParams: GroupChannelChangeLogsParams;
     MessageRetrievalParams: MessageRetrievalParams;
@@ -273,6 +274,7 @@ declare namespace SendBird {
     currentUser: User;
     appInfo: AppInfo;
     ekey: string;
+    isCacheEnabled: boolean;
 
     setErrorFirstCallback(errorFirstCallback: boolean): void;
 
@@ -405,6 +407,10 @@ declare namespace SendBird {
      */
     getTotalUnreadMessageCount(callback?: groupChannelCountCallback): Promise<number>;
     getTotalUnreadChannelCount(callback?: groupChannelCountCallback): Promise<number>;
+    getTotalUnreadChannelCount(
+      groupChannelTotalUnreadChannelCountParams: GroupChannelTotalUnreadChannelCountParams,
+      callback?: groupChannelCountCallback
+    ): Promise<number>;
 
     getSubscribedTotalUnreadMessageCount(): number;
     getSubscribedCustomTypeTotalUnreadMessageCount(): number;
@@ -640,6 +646,12 @@ declare namespace SendBird {
 
   interface GroupChannelTotalUnreadMessageCountParams {
     new(): GroupChannelTotalUnreadMessageCountParams;
+    channelCustomTypesFilter: Array<string>;
+    superChannelFilter: 'all' | 'super' | 'nonsuper';
+  }
+
+  interface GroupChannelTotalUnreadChannelCountParams {
+    new(): GroupChannelTotalUnreadChannelCountParams;
     channelCustomTypesFilter: Array<string>;
     superChannelFilter: 'all' | 'super' | 'nonsuper';
   }
@@ -1789,8 +1801,7 @@ declare namespace SendBird {
     coverUrlOrImage: string | FileType;
     data: string;
     customType: string;
-
-    operatorUserIds(userIds: Array<string>): void;
+    operatorUserIds: Array<string>;
   }
 
   interface OpenChannel extends BaseChannel {
