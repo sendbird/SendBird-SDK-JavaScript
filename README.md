@@ -341,12 +341,9 @@ Additionally, migration guide for clients currently using SyncManager will be av
 
 ## Changelogs
 
-### v3.1.9 (MAR 16, 2022)
+## v3.1.10 (APR 04, 2022)
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Deprecated `ConnectionManager` in `SendBird`.
-- Fixed wrong channel list order in `GroupChannelCollection`.
-- Added GroupChannelTotalUnreadChannelCountParams.
-- Added `getTotalUnreadChannelCount(params)` in `SendBird`.
--
+- Fixed issue of MessageCollection changelog partially not updating/deleting cached messages.
+- Fixed type error of `isUserMessage()` being undefined.

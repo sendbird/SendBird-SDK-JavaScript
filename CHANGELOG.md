@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.1.10 (APR 04, 2022)
+- Fixed issue of MessageCollection changelog partially not updating/deleting cached messages.
+- Fixed type error of `isUserMessage()` being undefined.
+
 ## v3.1.9 (MAR 16, 2022)
 - Deprecated `ConnectionManager` in `SendBird`.
 - Fixed wrong channel list order in `GroupChannelCollection`.

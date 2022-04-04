@@ -1,5 +1,5 @@
 /**
- * Type Definitions for Sendbird SDK v3.1.9
+ * Type Definitions for Sendbird SDK v3.1.10
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/Sendbird-SDK-JavaScript
  */
@@ -593,6 +593,7 @@ declare namespace SendBird {
     metaArrays: Array<MessageMetaArray>;
     reactions: Array<Reaction>;
     mentionType: string | null;
+    mentionedMessageTemplate: string | null;
     mentionedUsers: Array<User>;
     sendingStatus: MessageSendingStatus[keyof MessageSendingStatus] | null;
     silent: boolean;
@@ -677,6 +678,7 @@ declare namespace SendBird {
     mentionType: 'users' | 'channel';
     mentionedUserIds: Array<string>;
     mentionedUsers: Array<User>;
+    mentionedMessageTemplate: string | null;
     metaArrays: Array<MessageMetaArray>;
     /**
      * @deprecated since version v3.0.122, please use {@link metaArrays} instead
