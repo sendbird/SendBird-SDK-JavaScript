@@ -341,9 +341,9 @@ Additionally, migration guide for clients currently using SyncManager will be av
 
 ## Changelogs
 
-## v3.1.10 (APR 04, 2022)
+### v3.1.11 (APR 29, 2022)
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Fixed issue of MessageCollection changelog partially not updating/deleting cached messages.
-- Fixed type error of `isUserMessage()` being undefined.
+- Fixed bug when reading unsent file message from local cache in React Native.
+- Fixed bug storing cached metadata into local cache in `BaseChannel`.

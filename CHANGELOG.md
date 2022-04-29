@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.1.11 (APR 29, 2022)
+- Fixed bug when reading unsent file message from local cache in React Native.
+- Fixed bug storing cached metadata into local cache in `BaseChannel`.
+
 ## v3.1.10 (APR 04, 2022)
 - Fixed issue of MessageCollection changelog partially not updating/deleting cached messages.
 - Fixed type error of `isUserMessage()` being undefined.
