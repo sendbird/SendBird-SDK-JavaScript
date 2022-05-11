@@ -5,7 +5,7 @@
   "main": "SendBird.min.js",
   "dependencies": {
     "agentkeepalive": "4.1.4",
-    "axios": "^0.21.4",
+    "axios": "^0.27.2",
     "form-data": "^4.0.0",
     "ws": "^7.5.5"
   },
