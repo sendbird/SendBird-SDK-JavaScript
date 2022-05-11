@@ -1,5 +1,5 @@
 /**
- * Type Definitions for Sendbird SDK v3.1.11
+ * Type Definitions for Sendbird SDK v3.1.12
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/Sendbird-SDK-JavaScript
  */
@@ -115,6 +115,7 @@ declare enum UnreadChannelFilter {
   UNREAD_MESSAGE = 'unread_message',
 }
 declare enum HiddenChannelFilter {
+  ALL = 'all',
   UNHIDDEN = 'unhidden_only',
   HIDDEN = 'hidden_only',
   HIDDEN_ALLOW_AUTO_UNHIDE = 'hidden_allow_auto_unhide',
@@ -905,7 +906,7 @@ declare namespace SendBird {
     plainProfileUrl: string;
     metaData: Object;
     connectionStatus: string;
-    lastSeenAt: string;
+    lastSeenAt: number;
     isActive: boolean;
     requireAuth: boolean;
     friendDiscoveryKey: string | null;
@@ -2726,7 +2727,7 @@ declare namespace SendBird {
     metadataValues: Array<string>;
     metadataValueStartsWith: string;
     memberStateFilter: 'all' | 'joined_only' | 'invited_only' | 'invited_by_friend' | 'invited_by_non_friend';
-    hiddenChannelFilter: 'unhidden_only' | 'hidden_only' | 'hidden_allow_auto_unhide' | 'hidden_prevent_auto_unhide';
+    hiddenChannelFilter: 'all' | 'unhidden_only' | 'hidden_only' | 'hidden_allow_auto_unhide' | 'hidden_prevent_auto_unhide';
     unreadChannelFilter: 'all' | 'unread_message';
     includeFrozen: boolean;
 

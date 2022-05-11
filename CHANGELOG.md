@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.1.12 (MAY 11, 2022)
+- Fixed incorrect type in User.lastSeenAt.
+- Fixed bug when createChannelWithUserIds without callback.
+- Fixed bug "operators is not defined" on `CHANNEL_OPERATOR_UPDATE` event.
+- Added `HiddenChannelFilter.ALL`.
+- Update `axios` library.
+
 ## v3.1.11 (APR 29, 2022)
 - Fixed bug when reading unsent file message from local cache in React Native.
 - Fixed bug storing cached metadata into local cache in `BaseChannel`.
