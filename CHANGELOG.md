@@ -1,6 +1,6 @@
 # Changelog
 
-## v3.1.12 (MAY 11, 2022)
+## v3.1.13 (MAY 11, 2022)
 - Fixed incorrect type in User.lastSeenAt.
 - Fixed bug when createChannelWithUserIds without callback.
 - Fixed bug "operators is not defined" on `CHANNEL_OPERATOR_UPDATE` event.
