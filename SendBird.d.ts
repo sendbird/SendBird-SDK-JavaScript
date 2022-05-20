@@ -1,5 +1,5 @@
 /**
- * Type Definitions for Sendbird SDK v3.1.13
+ * Type Definitions for Sendbird SDK v3.1.14
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/Sendbird-SDK-JavaScript
  */
@@ -457,6 +457,7 @@ declare namespace SendBird {
     clearCachedData(): Promise<void>;
 
     useAsyncStorageAsDatabase(AsyncStorage: object): void;
+    useMMKVAsDatabase(MMKV: object): void;
   }
   interface Options {
     useMemberAsMessageSender: boolean;

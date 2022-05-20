@@ -1,5 +1,8 @@
 # Changelog
 
+## v3.1.14 (MAY 20, 2022)
+- Fixed bug SessionHandlers Broken.
+
 ## v3.1.13 (MAY 11, 2022)
 - Fixed incorrect type in User.lastSeenAt.
 - Fixed bug when createChannelWithUserIds without callback.

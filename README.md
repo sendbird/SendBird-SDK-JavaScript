@@ -341,12 +341,8 @@ Additionally, migration guide for clients currently using SyncManager will be av
 
 ## Changelogs
 
-### v3.1.13 (MAY 11, 2022)
+### v3.1.14 (MAY 20, 2022)
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Fixed incorrect type in User.lastSeenAt.
-- Fixed bug when createChannelWithUserIds without callback.
-- Fixed bug "operators is not defined" on `CHANNEL_OPERATOR_UPDATE` event.
-- Added `HiddenChannelFilter.ALL`.
-- Update `axios` library.
+- Fixed bug SessionHandlers Broken.
