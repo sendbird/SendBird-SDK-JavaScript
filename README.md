@@ -347,4 +347,4 @@ If you want to check the record of other versions, go to [Change Log](https://gi
 
 - Fixed bug TypingStatusUpdate event does not work in GroupChannelCollection.
 - Fixed Wrong Type definition in SendBird.d.ts
-- Fixed bug Android file upload if not working(RN)
+- Fixed bug Android file upload is not working(RN)
