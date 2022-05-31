@@ -1,5 +1,5 @@
 /**
- * Type Definitions for Sendbird SDK v3.1.14
+ * Type Definitions for Sendbird SDK v3.1.15
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/Sendbird-SDK-JavaScript
  */
@@ -482,7 +482,7 @@ declare namespace SendBird {
   interface MessageSearchQuery {
     hasNext: boolean;
     isLoading: boolean;
-    next(callback?: messageListCallback): Promise<Array<User>>;
+    next(callback?: messageListCallback): Promise<Array<AdminMessage | UserMessage | FileMessage>>;
   }
   interface MessageSearchQueryOptions {
     limit?: number;
@@ -551,6 +551,7 @@ declare namespace SendBird {
     onMetaCountersDeleted(channel: OpenChannel | GroupChannel, metaCounterKeys: Array<string>): void;
     onChannelHidden(channel: GroupChannel): void;
     onReactionUpdated(channel: OpenChannel | GroupChannel, event: ReactionEvent): void;
+    onDeliveryReceiptUpdated(channel: OpenChannel | GroupChannel): void;
     onMentionReceived(channel: OpenChannel | GroupChannel, message: AdminMessage | UserMessage | FileMessage): void;
     onThreadInfoUpdated(channel: OpenChannel | GroupChannel, event: ThreadInfoUpdateEvent): void;
     onChannelMemberCountChanged(channels: Array<GroupChannel>): void;
@@ -650,13 +651,13 @@ declare namespace SendBird {
   interface GroupChannelTotalUnreadMessageCountParams {
     new(): GroupChannelTotalUnreadMessageCountParams;
     channelCustomTypesFilter: Array<string>;
-    superChannelFilter: 'all' | 'super' | 'nonsuper';
+    superChannelFilter: 'all' | 'super' | 'nonsuper' | 'broadcast_only';
   }
 
   interface GroupChannelTotalUnreadChannelCountParams {
     new(): GroupChannelTotalUnreadChannelCountParams;
     channelCustomTypesFilter: Array<string>;
-    superChannelFilter: 'all' | 'super' | 'nonsuper';
+    superChannelFilter: 'all' | 'super' | 'nonsuper' | 'broadcast_only';
   }
 
   interface Emoji {
@@ -903,7 +904,6 @@ declare namespace SendBird {
   interface User {
     userId: string;
     nickname: string;
-    profileUrl: string;
     plainProfileUrl: string;
     metaData: Object;
     connectionStatus: string;

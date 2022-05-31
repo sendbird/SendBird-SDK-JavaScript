@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.1.15 (MAY 31, 2022)
+- Fixed bug TypingStatusUpdate event does not work in GroupChannelCollection.
+- Fixed Wrong Type definition in SendBird.d.ts
+- Fixed bug Android file upload if not working(RN)
 ## v3.1.14 (MAY 20, 2022)
 - Fixed bug SessionHandlers Broken.
 
