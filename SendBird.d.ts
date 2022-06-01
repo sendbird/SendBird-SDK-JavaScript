@@ -1,5 +1,5 @@
 /**
- * Type Definitions for Sendbird SDK v3.1.15
+ * Type Definitions for Sendbird SDK v3.1.16
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/Sendbird-SDK-JavaScript
  */
@@ -904,6 +904,7 @@ declare namespace SendBird {
   interface User {
     userId: string;
     nickname: string;
+    profileUrl: string;
     plainProfileUrl: string;
     metaData: Object;
     connectionStatus: string;

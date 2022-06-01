@@ -341,7 +341,7 @@ Additionally, migration guide for clients currently using SyncManager will be av
 
 ## Changelogs
 
-### v3.1.15 (MAY 31, 2022)
+### v3.1.16 (MAY 31, 2022)
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
