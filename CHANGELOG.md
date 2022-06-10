@@ -1,5 +1,8 @@
 # Changelog
 
+## v3.1.17 (JUN 10, 2022)
+- Fixed bug that enables custom typed messages being filtered out of message collection
+
 ## v3.1.16 (MAY 31, 2022)
 - Fixed bug TypingStatusUpdate event does not work in GroupChannelCollection.
 - Fixed Wrong Type definition in SendBird.d.ts

@@ -1,6 +1,6 @@
 {
   "name": "sendbird",
-  "version": "3.1.16",
+  "version": "3.1.17",
   "description": "Sendbird JavaScript SDK",
   "main": "SendBird.min.js",
   "dependencies": {

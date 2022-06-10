@@ -341,10 +341,8 @@ Additionally, migration guide for clients currently using SyncManager will be av
 
 ## Changelogs
 
-### v3.1.16 (MAY 31, 2022)
+### v3.1.17 (JUN 10, 2022)
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Fixed bug TypingStatusUpdate event does not work in GroupChannelCollection.
-- Fixed Wrong Type definition in SendBird.d.ts
-- Fixed bug Android file upload is not working(RN)
+- Fixed bug that enables custom typed messages being filtered out of message collection
