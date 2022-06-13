@@ -80,7 +80,7 @@ For JavaScript, Sendbird supports a variety of sample projects. Their installati
 
 #### Run the web sample projects
 
-There are three web sample projects: [basic sample](https://github.com/sendbird/SendBird-JavaScript/tree/master/web-basic-sample), [live chat sample](https://github.com/sendbird/SendBird-JavaScript/tree/master/web-live-chat), and [widget sample](https://github.com/sendbird/SendBird-JavaScript/tree/master/web-widget). To run the sample projects, do the following to use `NodeJS` for your local server:
+There are three web sample projects: [basic sample](https://github.com/sendbird/sendbird-javascript-samples/tree/master/javascript/javascript-basic), [live chat sample](https://github.com/sendbird/sendbird-javascript-samples/tree/master/javascript/javascript-live-chat), and [widget sample](https://github.com/sendbird/sendbird-javascript-samples/tree/master/javascript/javascript-widget). To run the sample projects, do the following to use `NodeJS` for your local server:
 
 1. Download and install `NodeJS` if your system doesn't have it yet.
 2. Open a terminal and move to the project path.
