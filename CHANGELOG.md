@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.18 (JUN 22, 2022)
+- Fixed incorrect failedMessage validation in resendFileMessage()
+- Fixed issue in loading messages from cache using default limit
+- Fixed incorrect type definition of CustomTypesFilterProperty in PreviousMessageListQuery
+- Added nickname startswith/nickname exact match filter in groupChannelListQuery
+- Fixed error occurs after deleteReaction in RN
 ## v3.1.17 (JUN 10, 2022)
 - Fixed bug that enables custom typed messages being filtered out of message collection
 

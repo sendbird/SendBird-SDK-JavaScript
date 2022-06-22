@@ -341,8 +341,12 @@ Additionally, migration guide for clients currently using SyncManager will be av
 
 ## Changelogs
 
-### v3.1.17 (JUN 10, 2022)
+### v3.1.18 (JUN 22, 2022)
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Fixed bug that enables custom typed messages being filtered out of message collection
+- Fixed incorrect failedMessage validation in resendFileMessage()
+- Fixed issue in loading messages from cache using default limit
+- Fixed incorrect type definition of CustomTypesFilterProperty in PreviousMessageListQuery
+- Added nickname startswith/nickname exact match filter in groupChannelListQuery
+- Fixed error occurs after deleteReaction in RN

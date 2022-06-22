@@ -1,5 +1,5 @@
 /**
- * Type Definitions for Sendbird SDK v3.1.17
+ * Type Definitions for Sendbird SDK v3.1.18
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/Sendbird-SDK-JavaScript
  */
@@ -1767,7 +1767,7 @@ declare namespace SendBird {
      * @deprecated since version v3.0.142, please use {@link customTypesFilter} instead
      */
     customTypeFilter: string;
-    customTypesFilter: string;
+    customTypesFilter: Array<string>;
     senderUserIdsFilter: Array<string>;
     includeMetaArray: boolean;
     /**
@@ -2714,6 +2714,8 @@ declare namespace SendBird {
     userIdsIncludeFilter: Array<string>;
     userIdsIncludeFilterQueryType: 'AND' | 'OR';
     nicknameContainsFilter: string;
+    nicknameStartWithFilter: string;
+    nicknameExactMatchFilter: string;
     channelNameContainsFilter: string;
     /**
      * @deprecated since version v3.0.49, please use {@link customTypesFilter} instead
