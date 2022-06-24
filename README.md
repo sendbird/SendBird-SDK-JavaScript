@@ -341,12 +341,8 @@ Additionally, migration guide for clients currently using SyncManager will be av
 
 ## Changelogs
 
-### v3.1.18 (JUN 22, 2022)
+### v3.1.19 (JUN 24, 2022)
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Fixed incorrect failedMessage validation in resendFileMessage()
-- Fixed issue in loading messages from cache using default limit
-- Fixed incorrect type definition of CustomTypesFilterProperty in PreviousMessageListQuery
-- Added nickname startswith/nickname exact match filter in groupChannelListQuery
-- Fixed error occurs after deleteReaction in RN
+- Fixed a bug in `BaseChannel.resendFileMessage()` such that `reqId` of resent message is the same as `reqId` of the original failed message.

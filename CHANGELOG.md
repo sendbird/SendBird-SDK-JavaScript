@@ -1,5 +1,8 @@
 # Changelog
 
+## v3.1.19 (JUN 24, 2022)
+- Fixed a bug in `BaseChannel.resendFileMessage()` such that `reqId` of resent message is the same as `reqId` of the original failed message.
+
 ## v3.1.18 (JUN 22, 2022)
 - Fixed incorrect failedMessage validation in resendFileMessage()
 - Fixed issue in loading messages from cache using default limit
