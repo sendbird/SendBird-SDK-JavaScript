@@ -341,8 +341,8 @@ Additionally, migration guide for clients currently using SyncManager will be av
 
 ## Changelogs
 
-### v3.1.19 (JUN 24, 2022)
+### v3.1.20 (JUN 30, 2022)
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
 
-- Fixed a bug in `BaseChannel.resendFileMessage()` such that `reqId` of resent message is the same as `reqId` of the original failed message.
+- Fixed File upload error with PUT requests in RN

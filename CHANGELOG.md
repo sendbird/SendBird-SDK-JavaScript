@@ -1,5 +1,6 @@
 # Changelog
-
+## v3.1.20 (JUN 30, 2022)
+- Fixed File upload error with PUT requests in RN
 ## v3.1.19 (JUN 24, 2022)
 - Fixed a bug in `BaseChannel.resendFileMessage()` such that `reqId` of resent message is the same as `reqId` of the original failed message.
 
