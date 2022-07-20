@@ -341,8 +341,12 @@ Additionally, migration guide for clients currently using SyncManager will be av
 
 ## Changelogs
 
-### v3.1.20 (JUN 30, 2022)
+## v3.1.21 (JUL 20, 2022)
+
+- File upload failed messages are now resendable through `channel.resendFileMessage()`.
+- Fixed a bug where `groupChannelCollection.onChannelsUpdated()` is not called when `groupChannel.lastMessage` is updated.
+- When local cache is enabled, conversion of pending messages that are not registered for auto-resend to failed messages is now being processed only when `sb.connect()` is called by customer.
+- `channel.resendFileMessage()` now considers `fileMessage.messageParams.file` if blob is not given as an argument.
+- Improved stability.
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
-
-- Fixed File upload error with PUT requests in RN
