@@ -1,5 +1,5 @@
 /**
- * Type Definitions for Sendbird SDK v3.1.21
+ * Type Definitions for Sendbird SDK v3.1.22
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/Sendbird-SDK-JavaScript
  */
@@ -134,6 +134,9 @@ declare namespace SendBird {
   type voidErrorLastCallback = (result: null, error: SendBirdError) => void;
   type voidErrorFirstCallback = (error: SendBirdError) => void;
   type voidCallback = voidErrorFirstCallback | voidErrorLastCallback;
+
+  type ListenerCallback = () => void;
+  type Unsubscribe = () => void;
 
   type userCallback = (user: User, error: SendBirdError) => void;
   type pushSettingCallback = (response: string, error: SendBirdError) => void;
@@ -458,6 +461,15 @@ declare namespace SendBird {
 
     useAsyncStorageAsDatabase(AsyncStorage: object): void;
     useMMKVAsDatabase(MMKV: object): void;
+
+    /**
+     * Set online listener to onlineDetector for mobile environment
+     * */
+    setOnlineListener(onlineListener: (onOnline: ListenerCallback) => Unsubscribe): void;
+    /**
+     * Set offline listener to onlineDetector for mobile environment
+     * */
+    setOfflineListener(offlineListener: (onOffline: ListenerCallback) => Unsubscribe): void;
   }
   interface Options {
     useMemberAsMessageSender: boolean;

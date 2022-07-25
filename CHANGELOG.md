@@ -1,4 +1,7 @@
 # Changelog
+## v3.1.22 (JUL 25, 2022)
+- Added `sb.setOnlineListener()` and `sb.setOfflineListener()` interfaces for non-browser environments
+- Improved stability
 
 ## v3.1.21 (JUL 20, 2022)
 - File upload failed messages are now resendable through `channel.resendFileMessage()`.
