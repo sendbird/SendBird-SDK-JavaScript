@@ -1,4 +1,9 @@
 # Changelog
+
+## v3.1.23 (AUG 03, 2022)
+- Fixed a bug where `message.mentionedUsers` is not updated when `updateUserMessage()` is called with `messageParams.mentionedUserIds` set to an empty array
+- Improved stability
+
 ## v3.1.22 (JUL 25, 2022)
 - Added `sb.setOnlineListener()` and `sb.setOfflineListener()` interfaces for non-browser environments
 - Improved stability

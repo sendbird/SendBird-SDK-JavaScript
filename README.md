@@ -341,8 +341,8 @@ Additionally, migration guide for clients currently using SyncManager will be av
 
 ## Changelogs
 
-## v3.1.22 (JUL 25, 2022)
-- Added `sb.setOnlineListener()` and `sb.setOfflineListener()` interfaces for non-browser environments
+## v3.1.23 (AUG 03, 2022)
+- Fixed a bug where `message.mentionedUsers` is not updated when `updateUserMessage()` is called with `messageParams.mentionedUserIds` set to an empty array
 - Improved stability
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
