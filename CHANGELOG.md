@@ -1,5 +1,8 @@
 # Changelog
 
+## v3.1.24 (AUG 119, 2022)
+- Fixed Promise polyfill for browsers that do not support 'Promise.finally()'
+- Improved stability
 ## v3.1.23 (AUG 03, 2022)
 - Fixed a bug where `message.mentionedUsers` is not updated when `updateUserMessage()` is called with `messageParams.mentionedUserIds` set to an empty array
 - Improved stability

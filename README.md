@@ -341,8 +341,8 @@ Additionally, migration guide for clients currently using SyncManager will be av
 
 ## Changelogs
 
-## v3.1.23 (AUG 03, 2022)
-- Fixed a bug where `message.mentionedUsers` is not updated when `updateUserMessage()` is called with `messageParams.mentionedUserIds` set to an empty array
+## v3.1.24 (AUG 19, 2022)
+- Fixed Promise polyfill for browsers that do not support 'Promise.finally()'
 - Improved stability
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
