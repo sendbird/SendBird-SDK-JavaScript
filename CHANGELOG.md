@@ -1,5 +1,7 @@
 # Changelog
-
+## v3.1.25 (AUG 31, 2022)
+- Implemented channel membership history where clients can retrieve whether users have joined or left the channel
+- Improved stability
 ## v3.1.24 (AUG 119, 2022)
 - Fixed Promise polyfill for browsers that do not support 'Promise.finally()'
 - Improved stability

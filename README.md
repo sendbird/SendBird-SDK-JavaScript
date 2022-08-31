@@ -341,8 +341,8 @@ Additionally, migration guide for clients currently using SyncManager will be av
 
 ## Changelogs
 
-## v3.1.24 (AUG 19, 2022)
-- Fixed Promise polyfill for browsers that do not support 'Promise.finally()'
+## v3.1.25 (AUG 31, 2022)
+- Implemented channel membership history where clients can retrieve whether users have joined or left the channel
 - Improved stability
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).

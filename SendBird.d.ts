@@ -1,5 +1,5 @@
 /**
- * Type Definitions for Sendbird SDK v3.1.24
+ * Type Definitions for Sendbird SDK v3.1.25
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/Sendbird-SDK-JavaScript
  */
