@@ -341,8 +341,7 @@ Additionally, migration guide for clients currently using SyncManager will be av
 
 ## Changelogs
 
-## v3.1.25 (AUG 31, 2022)
-- Implemented channel membership history where clients can retrieve whether users have joined or left the channel
-- Improved stability
+## v3.1.26 (SEP 7, 2022)
+- Fixed wrong includeMetaArray property happening during changelog sync
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).

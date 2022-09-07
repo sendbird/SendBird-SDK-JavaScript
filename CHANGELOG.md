@@ -1,4 +1,6 @@
 # Changelog
+## v3.1.26 (SEP 7, 2022)
+- Fixed wrong includeMetaArray property happening during changelog sync
 ## v3.1.25 (AUG 31, 2022)
 - Implemented channel membership history where clients can retrieve whether users have joined or left the channel
 - Improved stability
