@@ -341,7 +341,8 @@ Additionally, migration guide for clients currently using SyncManager will be av
 
 ## Changelogs
 
-## v3.1.26 (SEP 7, 2022)
-- Fixed wrong includeMetaArray property happening during changelog sync
+## v3.1.27 (SEP 23, 2022)
+- Fixed onMessageUpdate being called for the same message in View after checking HugeGap when connecting or reconnecting
+- Fixed a bug in group channel changelogs
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).

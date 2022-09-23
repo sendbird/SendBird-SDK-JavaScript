@@ -1,4 +1,7 @@
 # Changelog
+## v3.1.27 (SEP 23, 2022)
+- Fixed onMessageUpdate being called for the same message in View after checking HugeGap when connecting or reconnecting
+- Fixed a bug in group channel changelogs
 ## v3.1.26 (SEP 7, 2022)
 - Fixed wrong includeMetaArray property happening during changelog sync
 ## v3.1.25 (AUG 31, 2022)
