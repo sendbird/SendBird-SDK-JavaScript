@@ -1,5 +1,5 @@
 /**
- * Type Definitions for Sendbird SDK v3.1.27
+ * Type Definitions for Sendbird SDK v3.1.28
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/Sendbird-SDK-JavaScript
  */
@@ -187,12 +187,6 @@ declare namespace SendBird {
     ADMIN: 'ADMM'
   };
 
-  type PollStatus = {
-    OPEN: 'open',
-    CLOSED: 'closed',
-    REMOVED: 'removed'
-  };
-
   type ReplyType = {
     ALL: 'all',
     NONE: 'none',
@@ -246,9 +240,6 @@ declare namespace SendBird {
     MessageMetaArray: MessageMetaArray;
     Options: Options;
 
-    Poll: PollStatic;
-    PollOption: PollOptionStatic;
-
     SessionHandler: SessionHandlerStatic;
     UserEventHandler: UserEventHandlerStatic;
     ChannelHandler: ChannelHandlerStatic;
@@ -267,11 +258,6 @@ declare namespace SendBird {
     MessageListParams: MessageListParams;
     ThreadedMessageListParams: ThreadedMessageListParams;
     MessageChangeLogsParams: MessageChangeLogsParams;
-    PollParams: PollParams;
-    PollRetrievalParams: PollRetrievalParams;
-
-    PollListQuery: PollListQuery;
-    PollVoterListQuery: PollVoterListQuery;
 
     CollectionEventSource: typeof CollectionEventSource;
 
@@ -475,7 +461,6 @@ declare namespace SendBird {
     useMemberAsMessageSender: boolean;
     typingIndicatorThrottle: number;
     websocketResponseTimeout: number;
-    includePollDetails: boolean;
   }
   interface AppInfo {
     uploadSizeLimit: number;
@@ -568,8 +553,6 @@ declare namespace SendBird {
     onThreadInfoUpdated(channel: OpenChannel | GroupChannel, event: ThreadInfoUpdateEvent): void;
     onChannelMemberCountChanged(channels: Array<GroupChannel>): void;
     onChannelParticipantCountChanged(channels: Array<OpenChannel>): void;
-    onPollUpdated(event: PollUpdateEvent): void;
-    onPollVoted(event: PollVoteEvent): void;
   }
 
   interface ConnectionHandlerStatic {
@@ -717,7 +700,6 @@ declare namespace SendBird {
      */
     targetLanguages: Array<string>;
     translationTargetLanguages: Array<string>;
-    pollId: number;
   }
   interface UserMessage extends BaseMessageInstance {
     messageType: 'user';
@@ -733,12 +715,8 @@ declare namespace SendBird {
     errorCode: number;
     messageSurvivalSeconds: number;
     plugins: Array<Plugin>;
-    poll: Poll | null;
 
     readonly messageParams: UserMessageParams | null;
-
-    applyPollUpdateEvent(event: PollUpdateEvent): boolean;
-    applyPollVoteEvent(event: PollVoteEvent): boolean;
 
     isResendable(): boolean;
     serialize(): Object;
@@ -798,7 +776,6 @@ declare namespace SendBird {
     includeParentMessageText: boolean;
     includeThreadInfo: boolean;
     includeParentMessageInfo: boolean;
-    includePollDetails: boolean;
   }
   interface MessageListParams {
     new(): MessageListParams;
@@ -831,7 +808,6 @@ declare namespace SendBird {
     showSubchannelMessagesOnly: boolean;
     replyType: ReplyType[keyof ReplyType];
     includeParentMessageInfo: boolean;
-    includePollDetails: boolean;
 
     belongsTo(messageParams: UserMessageParams | FileMessageParams): boolean;
   }
@@ -859,7 +835,6 @@ declare namespace SendBird {
      */
     includeParentMessageText: boolean;
     includeParentMessageInfo: boolean;
-    includePollDetails: boolean;
   }
   interface MessageChangeLogsParams {
     new(): MessageChangeLogsParams;
@@ -880,7 +855,6 @@ declare namespace SendBird {
     includeThreadInfo: boolean;
     replyType: ReplyType[keyof ReplyType];
     includeParentMessageInfo: boolean;
-    includePollDetails: boolean;
   }
 
   interface ThumbnailObject {
@@ -1066,9 +1040,6 @@ declare namespace SendBird {
      */
     createMessageListQuery(): MessageListQuery;
     createPreviousMessageListQuery(): PreviousMessageListQuery;
-
-    createPollListQuery(): PollListQuery;
-    createPollVoterListQuery(pollId: number, optionId: number): PollVoterListQuery;
 
     /**
      * @deprecated since version v3.0.123, please use {@link getMessagesByTimestamp()} instead
@@ -1799,7 +1770,6 @@ declare namespace SendBird {
     showSubchannelMessagesOnly: boolean;
     replyType: ReplyType[keyof ReplyType];
     includeParentMessageInfo: boolean;
-    includePollDetails: boolean;
 
     load(limit: number, reverse: boolean, messageType?: number | string, callback?: messageListCallback): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
     load(callback?: messageListCallback): Promise<Array<UserMessage | FileMessage | AdminMessage>>;
@@ -2172,125 +2142,6 @@ declare namespace SendBird {
     volume: number;
 
     serialize(): Object;
-  }
-
-  /**
-   * @deprecated
-   */
-  type pollErrorLastCallback = (poll: Poll, error: SendBirdError) => void;
-  type pollErrorFirstCallback = (error: SendBirdError, poll: Poll) => void;
-  type pollCallback = pollErrorFirstCallback | pollErrorLastCallback;
-  /**
-   * @deprecated
-   */
-  type pollOptionErrorLastCallback = (option: PollOption, error: SendBirdError) => void;
-  type pollOptionErrorFirstCallback = (error: SendBirdError, option: PollOption) => void;
-  type pollOptionCallback = pollOptionErrorFirstCallback | pollOptionErrorLastCallback;
-  /**
-   * @deprecated
-   */
-  type pollListQueryErrorLastCallback = (polls: Array<Poll>, error: SendBirdError) => void;
-  type pollListQueryErrorFirstCallback = (error: SendBirdError, polls: Array<Poll>) => void;
-  type pollListQueryCallback = pollListQueryErrorFirstCallback | pollListQueryErrorLastCallback;
-
-  interface PollStatic {
-    Status: PollStatus;
-
-    get(params: PollRetrievalParams, callback?: pollCallback): Promise<Poll>;
-    create(pollParams: PollParams, callback?: pollCallback): Promise<Poll>;
-  }
-  interface Poll {
-    id: number;
-    title: string;
-    details: PollDetails;
-
-    update(pollParams: PollParams, callback?: pollCallback): Promise<Poll>;
-    delete(callback?: voidCallback): Promise<void>;
-    addOption(channelUrl: string, text: string, callback?: pollCallback): Promise<Poll>;
-    vote(channelUrl: string, optionIds: Array<number>, callback?: pollCallback): Promise<Poll>;
-    close(callback?: pollCallback): Promise<Poll>;
-  }
-  interface PollDetails {
-    options: Array<PollOption>;
-    data: object;
-    isAnonymous: boolean;
-    allowUserSuggestion: boolean;
-    allowMultipleVotes: boolean;
-    closeAt: number;
-    voterCount: number;
-    status: PollStatus[keyof PollStatus];
-    createdBy: string;
-    createdAt: number;
-    updatedAt: number;
-  }
-  interface PollOptionStatic {
-    get(channelUrl: string, pollId: number, optionId: number, callback?: pollOptionCallback): Promise<PollOption>;
-  }
-  interface PollOption {
-    pollId: number;
-    id: number;
-    text: string;
-    voteCount: number;
-    partialVoters: User[];
-    createdBy: string;
-    createdAt: number;
-    updatedAt: number;
-
-    update(text: string, callback?: pollCallback): Promise<Poll>;
-    delete(callback?: voidCallback): Promise<void>;
-  }
-
-  interface PollParams {
-    new(): PollParams;
-
-    title: string;
-    options: Array<string>;
-    data?: string;
-    isAnonymous?: boolean;
-    allowUserSuggestion?: boolean;
-    allowMultipleVotes?: boolean;
-    closeAt?: number;
-  }
-  interface PollRetrievalParams {
-    new(): PollRetrievalParams;
-
-    channelUrl: string;
-    pollId: number;
-    showPartialVoters?: boolean;
-  }
-
-  interface PollListQuery {
-    token?: string;
-    limit?: number;
-    readonly hasNext: boolean;
-    readonly isLoading: boolean;
-    next(callback?: pollListQueryCallback): Promise<Array<Poll>>;
-  }
-
-  interface PollVoterListQuery {
-    pollId: number;
-    optionId: number;
-    token?: string;
-    limit?: number;
-    readonly hasNext: boolean;
-    readonly isLoading: boolean;
-    next(callback?: userListQueryCallback): Promise<Array<User>>;
-  }
-
-  interface PollUpdateEvent {
-    new(): PollUpdateEvent;
-    poll: Poll;
-    status: PollStatus[keyof PollStatus];
-  }
-  interface PollUpdatedVoteCount {
-    optionId: number;
-    voteCount: number;
-  }
-  interface PollVoteEvent {
-    new(): PollVoteEvent;
-    pollId: number;
-    updatedVoteCounts: Array<PollUpdatedVoteCount>;
-    ts: number;
   }
 
   type groupChannelCallback = (groupChannel: GroupChannel, error: SendBirdError) => void;

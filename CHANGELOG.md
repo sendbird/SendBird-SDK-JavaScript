@@ -1,15 +1,22 @@
 # Changelog
+## v3.1.28 (OCT 27, 2022)
+- Fixed a bug where `channel.sendFileMessage()` fails when it is called in a web worker, `Worker`
+
 ## v3.1.27 (SEP 23, 2022)
 - Fixed onMessageUpdate being called for the same message in View after checking HugeGap when connecting or reconnecting
 - Fixed a bug in group channel changelogs
+
 ## v3.1.26 (SEP 7, 2022)
 - Fixed wrong includeMetaArray property happening during changelog sync
+
 ## v3.1.25 (AUG 31, 2022)
 - Implemented channel membership history where clients can retrieve whether users have joined or left the channel
 - Improved stability
+
 ## v3.1.24 (AUG 119, 2022)
 - Fixed Promise polyfill for browsers that do not support 'Promise.finally()'
 - Improved stability
+
 ## v3.1.23 (AUG 03, 2022)
 - Fixed a bug where `message.mentionedUsers` is not updated when `updateUserMessage()` is called with `messageParams.mentionedUserIds` set to an empty array
 - Improved stability

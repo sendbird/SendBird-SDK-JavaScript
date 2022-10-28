@@ -341,8 +341,7 @@ Additionally, migration guide for clients currently using SyncManager will be av
 
 ## Changelogs
 
-## v3.1.27 (SEP 23, 2022)
-- Fixed onMessageUpdate being called for the same message in View after checking HugeGap when connecting or reconnecting
-- Fixed a bug in group channel changelogs
+## v3.1.28 (OCT 27, 2022)
+- Fixed a bug where `channel.sendFileMessage()` fails when it is called in a web worker, `Worker`
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
