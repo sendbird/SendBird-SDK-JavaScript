@@ -341,7 +341,9 @@ Additionally, migration guide for clients currently using SyncManager will be av
 
 ## Changelogs
 
-## v3.1.28 (OCT 27, 2022)
-- Fixed a bug where `channel.sendFileMessage()` fails when it is called in a web worker, `Worker`
+## v3.1.29 (NOV 04, 2022)
+### Improvements
+- Changed ackStateMap cleanup time when disconnect is called
+- Fixed Message Filter in LocalCache not working with customTypes
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).

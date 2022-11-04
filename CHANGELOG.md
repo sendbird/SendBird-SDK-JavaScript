@@ -1,4 +1,8 @@
 # Changelog
+## v3.1.29 (NOV 04, 2022)
+### Improvements
+- Changed ackStateMap cleanup time when disconnect is called
+- Fixed Message Filter in LocalCache not working with customTypes
 ## v3.1.28 (OCT 27, 2022)
 - Fixed a bug where `channel.sendFileMessage()` fails when it is called in a web worker, `Worker`
 
