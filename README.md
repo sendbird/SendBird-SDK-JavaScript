@@ -341,9 +341,9 @@ Additionally, migration guide for clients currently using SyncManager will be av
 
 ## Changelogs
 
-## v3.1.29 (NOV 04, 2022)
+## v3.1.30 (JAN 10, 2023)
 ### Improvements
-- Changed ackStateMap cleanup time when disconnect is called
-- Fixed Message Filter in LocalCache not working with customTypes
+- Added changed security attributes for ACL
+- Fixed a bug where MessageCollection is logging quota exceeded errors when local storage is full
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
