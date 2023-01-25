@@ -341,9 +341,9 @@ Additionally, migration guide for clients currently using SyncManager will be av
 
 ## Changelogs
 
-## v3.1.30 (JAN 10, 2023)
+## v3.1.31 (JAN 25, 2023)
 ### Improvements
-- Added changed security attributes for ACL
-- Fixed a bug where MessageCollection is logging quota exceeded errors when local storage is full
+- Fixed a bug where `pendingMessage.data` is set to 'null' string when `sendUserMessage()` is called with a message text as an argument
+- Fixed a bug where `MessageCollection` calls `onMessagesUpdated()` with old messages on connect and reconnect when `localCacheEnabled` is set to false
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).

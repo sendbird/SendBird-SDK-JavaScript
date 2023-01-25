@@ -1,4 +1,9 @@
 # Changelog
+## v3.1.31 (JAN 25, 2023)
+### Improvements
+- Fixed a bug where `pendingMessage.data` is set to 'null' string when `sendUserMessage()` is called with a message text as an argument
+- Fixed a bug where `MessageCollection` calls `onMessagesUpdated()` with old messages on connect and reconnect when `localCacheEnabled` is set to false
+
 ## v3.1.30 (JAN 10, 2023)
 ### Improvements
 - Fixed a bug where MessageCollection is logging quota exceeded errors when local storage is full
