@@ -341,9 +341,8 @@ Additionally, migration guide for clients currently using SyncManager will be av
 
 ## Changelogs
 
-## v3.1.31 (JAN 25, 2023)
+## v3.1.32 (JAN 31, 2023)
 ### Improvements
-- Fixed a bug where `pendingMessage.data` is set to 'null' string when `sendUserMessage()` is called with a message text as an argument
-- Fixed a bug where `MessageCollection` calls `onMessagesUpdated()` with old messages on connect and reconnect when `localCacheEnabled` is set to false
+- Fixed a bug where `sb.connect()` fails in React Native due to unexpected `localStorage` access
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
