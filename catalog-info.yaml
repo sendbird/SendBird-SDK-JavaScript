@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: SendBird-SDK-JavaScript
+  description: Sendbird Chat SDK for JavaScript for enablement of a rich, engaging, scalable, and real-time chat service
+  annotations:
+    github.com/project-slug: sendbird/SendBird-SDK-JavaScript
+spec:
+  type: library
+  lifecycle: production
+  owner: dep-client-platform
+  system: sendbird-chat
