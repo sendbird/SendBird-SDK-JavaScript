@@ -348,8 +348,9 @@ Additionally, migration guide for clients currently using SyncManager will be av
 
 ## Changelogs
 
-## v3.1.32 (JAN 31, 2023)
+## v3.1.33 (Aug 24, 2023)
+> **Thank you everyone for using our SDK v3. This is our final release as we transition to our latest SDK v4 (first released in Apr 2022). Please reach out to our support if you have any questions.**
 ### Improvements
-- Fixed a bug where `sb.connect()` fails in React Native due to unexpected `localStorage` access
+- Fixed a bug where called `ChangeLogAPI` infinitely
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).

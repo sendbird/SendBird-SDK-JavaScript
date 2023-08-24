@@ -1,5 +1,5 @@
 /**
- * Type Definitions for Sendbird SDK v3.1.32
+ * Type Definitions for Sendbird SDK v3.1.33
  * homepage: https://sendbird.com/
  * git: https://github.com/sendbird/Sendbird-SDK-JavaScript
  */
@@ -2312,6 +2312,8 @@ declare namespace SendBird {
   interface GroupChannelFilter {
     includeEmpty: boolean;
     nicknameContainsFilter: string;
+    nicknameStartsWithFilter: string;
+    nicknameExactMatchFilter: string;
     channelNameContainsFilter: string;
     memberStateFilter: MemberStateFilter;
     customTypesFilter: string[];
