@@ -1,4 +1,8 @@
 # Changelog
+## v3.1.33 (Aug 24, 2023)
+> **Thank you everyone for using our SDK v3. This is our final release as we transition to our latest SDK v4 (first released in Apr 2022). Please reach out to our support if you have any questions.**
+### Improvements
+- Fixed a bug where called `ChangeLogAPI` infinitely
 ## v3.1.32 (JAN 31, 2023)
 ### Improvements
 - Fixed a bug where `sb.connect()` fails in React Native due to unexpected `localStorage` access
