@@ -1,8 +1,15 @@
-# [Sendbird](https://sendbird.com) Chat SDK for JavaScript
+# [Sendbird](https://sendbird.com) Chat SDK v3 for JavaScript
 
 ![Platform](https://img.shields.io/badge/platform-JAVASCRIPT-orange.svg)
 ![Languages](https://img.shields.io/badge/language-JAVASCRIPT-orange.svg)
 [![npm](https://img.shields.io/npm/v/sendbird.svg?style=popout&colorB=red)](https://www.npmjs.com/package/sendbird)
+
+## Deprecation Note (v3)
+:warning: Please note that Sendbird’s SDK v3 will be deprecated by **July 2023**. You may still use the older SDKs at your choice, but no new updates or bug fixes will be made to SDK v3.
+
+**We recommend clients to plan their migration to SDK v4 as early as possible as there are breaking changes.** We also provide prioritized support for migration and any issues related to v4. SDK v4 provides far richer and robust features in Websocket, Local caching, Polls, Scheduled Messages, Pinned Message, and many more. So try it out now! ([Chat SDK v4](https://github.com/sendbird/sendbird-chat-sdk-javascript/))
+
+<br />
 
 ## Table of contents
 
@@ -341,9 +348,8 @@ Additionally, migration guide for clients currently using SyncManager will be av
 
 ## Changelogs
 
-## v3.1.30 (JAN 10, 2023)
+## v3.1.32 (JAN 31, 2023)
 ### Improvements
-- Added changed security attributes for ACL
-- Fixed a bug where MessageCollection is logging quota exceeded errors when local storage is full
+- Fixed a bug where `sb.connect()` fails in React Native due to unexpected `localStorage` access
 
 If you want to check the record of other versions, go to [Change Log](https://github.com/sendbird/Sendbird-SDK-JavaScript/blob/master/CHANGELOG.md).
